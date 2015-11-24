@@ -1,0 +1,10 @@
+﻿body section .menuTabs {
+  background-color: #099ABB;
+  height: 30px;
+  line-height: 2; }
+  body section .menuTabs ul > li {
+    width: 200px;
+    border-right: 1px solid #EEE; }
+    body section .menuTabs ul > li > a {
+      color: white; }
+

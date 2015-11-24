@@ -1,0 +1,8 @@
+﻿body .navbar {
+  background-color: #099ABB !important;
+  min-height: initial;
+  margin-bottom: 12px !important; }
+  body .navbar .navbar-nav > li > a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important; }
+

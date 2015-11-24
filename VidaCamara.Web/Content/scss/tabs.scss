@@ -1,0 +1,19 @@
+﻿$camara:#099ABB;
+body {
+    section{
+        .menuTabs{
+            background-color:$camara;
+            height:30px;
+            line-height:2;
+            ul{
+                &>li{
+                    width:200px;
+                    border-right:1px solid #EEE;
+                    &>a{
+                        color:white;
+                    }
+                }
+            }
+        }
+    }
+}

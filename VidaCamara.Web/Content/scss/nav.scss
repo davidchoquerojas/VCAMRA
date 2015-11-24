@@ -1,0 +1,16 @@
+﻿$camara:#099ABB;
+body {
+    .navbar{
+        background-color:$camara!important;
+        min-height:initial;
+        margin-bottom:12px!important;
+        .navbar-nav{
+            &>li{
+                &>a{
+                    padding-top:10px!important;
+                    padding-bottom:10px!important;
+                }
+            }
+        }
+    }
+}
