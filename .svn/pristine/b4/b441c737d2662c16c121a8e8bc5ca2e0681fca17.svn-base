@@ -1,0 +1,163 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+
+using Library.Data.Repositories;
+
+namespace Library.Data.Dapper
+{
+    public class TableValuedParameterFactory<TSearchRequest>
+    {
+        private readonly IDbSchemaProvider _schemaProvider;
+
+        public TableValuedParameterFactory(IDbSchemaProvider schemaProvider)
+        {
+            _schemaProvider = schemaProvider;
+        }
+
+        public TableValuedParameterBase MakeTableValuedParameter(PropertyInfo propertyInfo, TSearchRequest searchRequest)
+        {
+            if (IsNumberList(propertyInfo))
+            {
+                var values = GetNumberValues(propertyInfo, searchRequest);
+                var param = new TvpNumberList(propertyInfo.Name, values);
+                AddDbSchema(param);
+
+                return param;
+            }
+
+            if (IsNumberPairList(propertyInfo))
+            {
+                var values = GetNumberPairValues(propertyInfo, searchRequest);
+                var param = new TvpNumberPairList(propertyInfo.Name, values);
+
+                return param;
+            }
+
+            if (IsDataTimeList(propertyInfo))
+            {
+                var values = GetDateTimeValues(propertyInfo, searchRequest);
+                var param = new TvpDataTimeList(propertyInfo.Name, values);
+
+                return param;
+            }
+
+            if (IsStringList(propertyInfo))
+            {
+                var values = GetStringValues(propertyInfo, searchRequest);
+                var param = new TvpStringList(propertyInfo.Name, values);
+
+                return param;
+            }
+
+            if (IsDataTimeOffsetList(propertyInfo))
+            {
+                var values = GetDateTimeOffsetValues(propertyInfo, searchRequest);
+                var param = new TvpDateTimeOffsetList(propertyInfo.Name, values);
+
+                return param;
+            }
+ 
+            return TableValuedParameterBase.NULL;
+        }
+
+        private void AddDbSchema(TableValuedParameterBase param)
+        {
+            var schema = _schemaProvider.GetSchema();
+
+            if (!string.IsNullOrEmpty(schema))
+            {
+                param.Type = string.Format("{0}.{1}", schema, param.Type);
+            }
+        }
+
+        private bool IsStringList(PropertyInfo propertyInfo)
+        {
+            return typeof(IEnumerable<string>).IsAssignableFrom(propertyInfo.PropertyType);
+        }
+
+        private bool IsDataTimeList(PropertyInfo propertyInfo)
+        {
+            return typeof(IEnumerable<DateTime>).IsAssignableFrom(propertyInfo.PropertyType);
+        }
+
+        private bool IsDataTimeOffsetList(PropertyInfo propertyInfo)
+        {
+            return typeof(IEnumerable<DateTimeOffset>).IsAssignableFrom(propertyInfo.PropertyType);
+        }
+
+        private bool IsNumberPairList(PropertyInfo propertyInfo)
+        {
+            return typeof(IEnumerable<Tuple<int, int>>).IsAssignableFrom(propertyInfo.PropertyType);
+        }
+
+        private bool IsList(PropertyInfo propertyInfo)
+        {
+            var isCollection = propertyInfo.PropertyType.IsGenericType
+                               && propertyInfo.PropertyType.GetInterface(typeof(IEnumerable<>).FullName) != null;
+
+            return isCollection || IsEnumerable(propertyInfo);
+        }
+
+        private bool IsEnumerable(PropertyInfo propertyInfo)
+        {
+            return (typeof(IEnumerable<>).IsAssignableFrom(propertyInfo.PropertyType));
+        }
+
+        private bool IsEnumerableInt(PropertyInfo propertyInfo)
+        {
+            return (typeof(IEnumerable<int>).IsAssignableFrom(propertyInfo.PropertyType));
+        }
+
+        private bool IsNumberList(PropertyInfo propertyInfo)
+        {
+            if (IsList(propertyInfo))
+            {
+                var itemType = propertyInfo.PropertyType.GetGenericArguments()[0];
+
+                return (itemType.IsEnum || itemType == typeof(int));
+            }
+
+            return IsEnumerableInt(propertyInfo);
+        }
+
+        private IEnumerable<int> GetNumberValues(PropertyInfo propertyInfo, TSearchRequest searchRequest)
+        {
+            if (IsNumberList(propertyInfo))
+            {
+                var values = propertyInfo.GetValue(searchRequest, null) as IEnumerable;
+
+                
+                //TODO
+                //return values.ConvertAll(value => (int)value);
+                return null;
+            }
+
+            return Enumerable.Empty<int>().Distinct();
+        }
+
+        private IEnumerable<string> GetStringValues(PropertyInfo propertyInfo, TSearchRequest searchRequest)
+        {
+            return ((IEnumerable<string>)propertyInfo.GetValue(searchRequest, null)).Distinct();
+        }
+
+        private IEnumerable<DateTime> GetDateTimeValues(PropertyInfo propertyInfo, TSearchRequest searchRequest)
+        {
+            return ((IEnumerable<DateTime>)propertyInfo.GetValue(searchRequest, null)).Distinct();
+        }
+
+        private IEnumerable<DateTimeOffset> GetDateTimeOffsetValues(PropertyInfo propertyInfo, TSearchRequest searchRequest)
+        {
+            return ((IEnumerable<DateTimeOffset>)propertyInfo.GetValue(searchRequest, null)).Distinct();
+        }
+
+        private IEnumerable<Tuple<int, int>> GetNumberPairValues(
+            PropertyInfo propertyInfo,
+            TSearchRequest searchRequest)
+        {
+            return ((IEnumerable<Tuple<int, int>>)propertyInfo.GetValue(searchRequest, null)).Distinct();
+        }
+    }
+}

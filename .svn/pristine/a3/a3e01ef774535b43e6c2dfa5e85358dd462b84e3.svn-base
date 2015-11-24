@@ -1,0 +1,55 @@
+﻿using System;
+using System.Data;
+using System.Diagnostics.CodeAnalysis;
+
+using PetaPoco;
+
+namespace Library.Data.BulkOperations
+{
+    [ExcludeFromCodeCoverage]
+    public class SqlBulkCopyOperation : ISqlBulkCopyOperation
+    {
+        private readonly IDatabase _database;
+
+        private readonly BulkCopyFactory _bulkCopyFactory;
+
+        public SqlBulkCopyOperation(IDatabase database)
+        {
+            if (database == null)
+            {
+                throw new ArgumentNullException("database");
+            }
+
+            _database = database;
+            _bulkCopyFactory = new BulkCopyFactory(_database);
+        }
+
+        public void PerformCopy(DataTable dataTable)
+        {
+            try
+            {
+                _database.OpenSharedConnection();
+                PerformSqlBulkCopy(dataTable);
+            }
+            finally
+            {
+                _database.CloseSharedConnection();
+            }
+        }
+
+        private void PerformSqlBulkCopy(DataTable dataTable)
+        {
+            using (var sqlBulkCopy = _bulkCopyFactory.CreateBulkCopy())
+            {
+                sqlBulkCopy.DestinationTableName = dataTable.TableName;
+
+                foreach (var column in dataTable.Columns)
+                {
+                    sqlBulkCopy.ColumnMappings.Add(column.ToString(), column.ToString());
+                }
+
+                sqlBulkCopy.WriteToServer(dataTable);
+            }
+        }
+    }
+}

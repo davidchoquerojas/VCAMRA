@@ -1,0 +1,100 @@
+﻿using System;
+using System.Collections;
+
+using Microsoft.SqlServer.Server;
+
+namespace Library.Data.Dapper
+{
+    public abstract class TableValuedParameterBase
+    {
+        private readonly IEnumerable _data;
+
+        private readonly SqlMetaData[] _metaData;
+
+        private readonly string _name;
+
+        private string _type;
+
+        private readonly Action<SqlDataRecord, object> _setData;
+
+        protected TableValuedParameterBase(
+            IEnumerable data,
+            SqlMetaData[] metaData,
+            string name,
+            string type,
+            Action<SqlDataRecord, object> setData)
+        {
+            _data = data;
+            _metaData = metaData;
+            _name = name;
+            _type = type;
+            _setData = setData;
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+        }
+
+        public string Type
+        {
+            get
+            {
+                return _type;
+            }
+            set
+            {
+                _type = value;
+            }
+        }
+
+        public SqlMetaData[] MetaData
+        {
+            get
+            {
+                return _metaData;
+            }
+        }
+
+        public IEnumerable Data
+        {
+            get
+            {
+                return _data;
+            }
+        }
+
+        public Action<SqlDataRecord, object> SetData
+        {
+            get
+            {
+                return _setData;
+            }
+        }
+
+        #region Null Object Pattern
+
+        private static readonly NullTableValuedParameter _nullTableValuedParameter = new NullTableValuedParameter();
+
+        public static NullTableValuedParameter NULL
+        {
+            get
+            {
+                return _nullTableValuedParameter;
+            }
+        }
+
+        public sealed class NullTableValuedParameter : TableValuedParameterBase
+        {
+            public NullTableValuedParameter()
+                : base(null, null, string.Empty, string.Empty, null)
+            {
+            }
+        }
+
+        #endregion
+    }
+}

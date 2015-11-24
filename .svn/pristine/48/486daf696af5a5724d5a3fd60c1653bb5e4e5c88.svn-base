@@ -1,0 +1,19 @@
+﻿using System.Diagnostics.CodeAnalysis;
+using PetaPoco;
+using System.Configuration;
+
+namespace Library.Data.Repositories
+{
+    [ExcludeFromCodeCoverage]
+    public class DatabaseFactory : IDatabaseFactory
+    {
+        public IDatabase Create()
+        {
+            const string providerName = "System.Data.SqlClient";
+            var connectionString = ConfigurationManager.ConnectionStrings["SQL"].ConnectionString;
+            var context = new Database(connectionString, providerName);
+
+            return context;
+        }
+    }
+}

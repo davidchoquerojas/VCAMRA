@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{407AA91C-5EB9-491D-83B9-2A4D95794483}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VidaCamara.DIS</RootNamespace>
+    <AssemblyName>VidaCamara.DIS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Modelo\AFP.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Archivo.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Bitacora.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Checkeado.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\CheckList.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Consulta.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Contrato.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ContratoCSV.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Correlativo.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\CSV.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\DISModelo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DISModelo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\DISModelo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\DISModelo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DISModelo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Documento.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\DocumentoSolicitado.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Enumerado\EstadoPago.cs" />
+    <Compile Include="Modelo\EstadoArchivo.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\EstadoPago.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Exactu.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\HistorialCargaArchivo.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Imputacion.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Moneda.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\MontoAlto.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Pago.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Parametro.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Parentesco.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\pa_devuelveresultado_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\pa_file_ObtieneErrorArchivo_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\pa_file_ObtieneReglasArchivoPorLinea_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\pa_impactanegocio_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\pa_ReporteArchivo_CUSPP_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\pa_rptNominas_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\pa_rpt_archivocarga_fecha_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Persona.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\RegistroMontoAlto.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ReglaArchivo.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Role.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Siniestro.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\sp_helpdiagrams_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_INS_EXACTUS_CABECERA_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_ACCESO_PAGINA_SESSION_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_ACCESO_USUARIO_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_ANEXO_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_CIERRE_PROCESO_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_DATO_M_GRID_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_DATO_M_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_ES18A_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_ES18B_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_ES18C_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_ES18D_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_ES18E_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_ES18F_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_EXACTUS_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_MODELO1_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_MODELO2_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_TOTAL_REGISTRO_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_SEL_VALIDAR_CIERRE_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SP_TRANSFER_EXACTUS_Result.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TipoArchivo.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TipoCambio.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TipoDocumentoIdentificacion.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TipoInforme.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TipoMoneda.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TipoMovimiento.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TipoPension.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TipoRegistro.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TipoSolicitude.cs">
+      <DependentUpon>DISModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\CargaLogica.cs" />
+    <Compile Include="Negocio\CheckListLogica.cs" />
+    <Compile Include="Negocio\Regla.cs" />
+    <Compile Include="Negocio\SiniestroLogica.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Modelo\DISModelo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DISModelo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelo\DISModelo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DISModelo.edmx</DependentUpon>
+      <LastGenOutput>DISModelo.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Modelo\DISModelo.edmx.diagram">
+      <DependentUpon>DISModelo.edmx</DependentUpon>
+    </None>
+    <None Include="Modelo\DISModelo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DISModelo.edmx</DependentUpon>
+      <LastGenOutput>DISModelo.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

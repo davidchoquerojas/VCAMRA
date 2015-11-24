@@ -1,0 +1,25 @@
+﻿namespace Library.Data.SqlBuilder
+{
+    public enum SqlCondition
+    {
+        IsNull,
+
+        IsNotNull,
+
+        Equal,
+
+        NotEqual,
+
+        Less,
+
+        Greater,
+
+        LessEqual,
+
+        GreaterEqual,
+
+        Between,
+
+        Like
+    }
+}

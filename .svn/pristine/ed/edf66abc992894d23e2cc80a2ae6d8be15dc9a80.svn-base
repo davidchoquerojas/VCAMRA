@@ -1,0 +1,10 @@
+﻿namespace Library.Data.Repositories
+{
+    public class NullDbSchemaProvider : IDbSchemaProvider
+    {
+        public string GetSchema()
+        {
+            return string.Empty;
+        }
+    }
+}

@@ -1,0 +1,108 @@
+﻿using System;
+
+namespace Library.Ioc
+{
+    public interface IIocContainer
+    {
+        // Summary:
+        //     Bind a type.
+        //
+        // Type parameters:
+        //   T:
+        ITypeBinder<T> Bind<T>() where T : class;
+        //
+        // Summary:
+        //     Bind an initialization delegate for a given type.
+        //
+        // Parameters:
+        //   initializer:
+        //
+        // Type parameters:
+        //   T:
+        void Bind<T>(Func<T> initializer, ObjectReuseScope scope = ObjectReuseScope.None);
+        //
+        // Summary:
+        //     Retrieve an instance of a type known at design-time.
+        //
+        // Type parameters:
+        //   T:
+        T Get<T>();
+        //
+        // Summary:
+        //     Retrieve an instance of a type known at design-time.
+        //
+        // Parameters:
+        //   parameters:
+        //
+        // Type parameters:
+        //   T:
+        T Get<T>(params IParameter[] parameters);
+        //
+        // Summary:
+        //     Retrieve an instance of a type known at run-time.
+        //
+        // Parameters:
+        //   type:
+        object Get(Type type);
+        //
+        // Summary:
+        //     Retrieve an instance of a type known at run-time.
+        //
+        // Parameters:
+        //   type:
+        //
+        //   parameters:
+        object Get(Type type, params IParameter[] parameters);
+        //
+        // Summary:
+        //     Load all configurators from all assemblies in the given directory.
+        //
+        // Parameters:
+        //   directory:
+        void LoadConfigurators(string directory);
+        //
+        // Summary:
+        //     Release resources and dispose of the instance. Allows call into ServiceStack
+        //     Funq.Container.Dispose() method to release Stack of WeakReference
+        //
+        // Parameters:
+        //   instance:
+        //
+        // Type parameters:
+        //   Object:
+        void Release(object instance);
+        //
+        // Summary:
+        //     Attempt to retrieve an instance of a type known at design-time.
+        //
+        // Type parameters:
+        //   T:
+        T TryGet<T>();
+        //
+        // Summary:
+        //     Attempt to retrieve an instance of a type known at design-time.
+        //
+        // Parameters:
+        //   parameters:
+        //
+        // Type parameters:
+        //   T:
+        T TryGet<T>(params IParameter[] parameters);
+        //
+        // Summary:
+        //     Attempt to retrieve an instance of a type known at run-time.
+        //
+        // Parameters:
+        //   type:
+        object TryGet(Type type);
+        //
+        // Summary:
+        //     Attempt to retrieve an instance of a type known at run-time.
+        //
+        // Parameters:
+        //   type:
+        //
+        //   paramters:
+        object TryGet(Type type, params IParameter[] parameters);
+    }
+}

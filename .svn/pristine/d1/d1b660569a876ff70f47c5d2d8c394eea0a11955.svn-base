@@ -1,0 +1,14 @@
+﻿using System.Collections.Generic;
+using System.Reflection;
+
+namespace Library.Ioc
+{
+    public interface IAssemblyManager
+    {
+        List<Assembly> GetAssembliesFromDomain();
+
+        IEnumerable<string> GetFilesNamesFromDirectory(string directory);
+
+        Assembly LoadFile(string path);
+    }
+}

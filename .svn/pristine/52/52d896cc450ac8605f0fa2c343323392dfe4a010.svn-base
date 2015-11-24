@@ -1,0 +1,61 @@
+﻿using System;
+using System.Web.Routing;
+
+namespace VidaCamaraWeb
+{
+    public class Global : System.Web.HttpApplication
+    {
+
+        protected void Application_Start(object sender, EventArgs e)
+        {
+            RoutingData(RouteTable.Routes);
+        }
+        private void RoutingData(RouteCollection coleccion) 
+        {
+            coleccion.MapPageRoute("login", "Login", "~/WebPage/Inicio/frmLogin.aspx");
+            coleccion.MapPageRoute("Inicio", "Inicio", "~/WebPage/Inicio/frmInicio.aspx");
+            coleccion.MapPageRoute("hahah", "Parametros", "~/WebPage/Mantenimiento/frmGeneral.aspx");
+            coleccion.MapPageRoute("Error", "Error", "~/WebPage/Inicio/frmError.aspx");
+            coleccion.MapPageRoute("CargaDatos", "CargaDatos", "~/WebPage/Operaciones/frmCargaDatos.aspx");
+            coleccion.MapPageRoute("OperacionManual", "OperacionManual", "~/WebPage/Operaciones/frmOperacionManual.aspx");
+            coleccion.MapPageRoute("RegistroDatos", "RegistroDatos", "~/WebPage/Operaciones/frmRegistroDatos.aspx");
+            coleccion.MapPageRoute("ProcesoOperacion", "ProcesoOperacion", "~/WebPage/Operaciones/frmProcesaOperacion.aspx");
+            coleccion.MapPageRoute("CierreOperacion", "CierreOperacion", "~/WebPage/Operaciones/frmCierreProceso.aspx");
+            coleccion.MapPageRoute("InterfaceContable", "InterfaceContable", "~/WebPage/Operaciones/frmInterfaceContable.aspx");
+            coleccion.MapPageRoute("Usuarios", "Usuarios", "~/WebPage/Mantenimiento/frmUsuario.aspx");
+            coleccion.MapPageRoute("Tablas", "Tablas", "~/WebPage/Mantenimiento/frmTabla.aspx");
+            coleccion.MapPageRoute("Operaciones", "Operaciones", "~/WebPage/Consultas/frmConsultaOperaciones.aspx");
+            coleccion.MapPageRoute("Comprobantes", "Comprobantes", "~/WebPage/Consultas/frmConsultaComprobante.aspx");
+            coleccion.MapPageRoute("Informes", "Informes", "~/WebPage/Consultas/frmInformes.aspx");
+        }
+        protected void Session_Start(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+            Session.Abandon();
+        }
+
+        protected void Application_End(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

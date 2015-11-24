@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{97035B6D-A260-4857-B61E-450F8A600D8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Library.Data</RootNamespace>
+    <AssemblyName>Library.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\packages\Dapper.1.42\lib\net40\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DapperWrapper">
+      <HintPath>..\packages\DapperWrapper.0.3.0.0\lib\net40\DapperWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BulkOperations\BulkCopyFactory.cs" />
+    <Compile Include="BulkOperations\BulkOperationRepository.cs" />
+    <Compile Include="BulkOperations\IBulkOperationRepository.cs" />
+    <Compile Include="BulkOperations\ISqlBulkCopyOperation.cs" />
+    <Compile Include="BulkOperations\SqlBulkCopyOperation.cs" />
+    <Compile Include="CommonResources.Designer.cs" />
+    <Compile Include="Dapper\DynamicParametersWithTVP.cs" />
+    <Compile Include="Dapper\TableValuedParameterBase.cs" />
+    <Compile Include="Dapper\TableValuedParameterFactory.cs" />
+    <Compile Include="Dapper\TvpDataTimeList.cs" />
+    <Compile Include="Dapper\TvpDateTimeoffsetList.cs" />
+    <Compile Include="Dapper\TvpNumberList.cs" />
+    <Compile Include="Dapper\TvpNumberPairList.cs" />
+    <Compile Include="Dapper\TvpStringList.cs" />
+    <Compile Include="Exceptions\DeleteFailedException.cs" />
+    <Compile Include="Exceptions\InsertFailedException.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
+    <Compile Include="Exceptions\UpdateFailedException.cs" />
+    <Compile Include="ExtensionMethods\IsNullOrEmpyExtension.cs" />
+    <Compile Include="IGetReturn.cs" />
+    <Compile Include="IocInitializer.cs" />
+    <Compile Include="Models\Audit.generated.cs" />
+    <Compile Include="Models\Audit.manual.cs" />
+    <Compile Include="Models\Auth.generated.cs" />
+    <Compile Include="Models\Core.generated.cs" />
+    <Compile Include="Models\Core.manual.cs" />
+    <Compile Include="Models\IDbModel.cs" />
+    <Compile Include="Models\IProcModel.cs" />
+    <Compile Include="Models\ITableModel.cs" />
+    <Compile Include="Models\TableModel.cs" />
+    <Compile Include="PetaPoco\IDatabase.cs" />
+    <Compile Include="PetaPoco\PetaPoco.cs" />
+    <Compile Include="PetaPoco\PetaPocoMapper.cs" />
+    <Compile Include="PetaPoco\PetaPocoSqlBuilderHelper.cs" />
+    <Compile Include="PetaPoco\SqlBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DatabaseFactory.cs" />
+    <Compile Include="Repositories\DbContext.cs" />
+    <Compile Include="Repositories\DbTransaction.cs" />
+    <Compile Include="Repositories\DeleteProcResult.cs" />
+    <Compile Include="Repositories\IDatabaseFactory.cs" />
+    <Compile Include="Repositories\IDbContext.cs" />
+    <Compile Include="Repositories\IDbSchemaProvider.cs" />
+    <Compile Include="Repositories\IDbTransaction.cs" />
+    <Compile Include="Repositories\IModelRepository.cs" />
+    <Compile Include="Repositories\InsertProcResult.cs" />
+    <Compile Include="Repositories\IProcRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IRepositoryFactory.cs" />
+    <Compile Include="Repositories\ITransactionFactory.cs" />
+    <Compile Include="Repositories\ModelRepository.cs" />
+    <Compile Include="Repositories\NullDbSchemaProvider.cs" />
+    <Compile Include="Repositories\ProcRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\RepositoryFactory.cs" />
+    <Compile Include="Repositories\TransactionFactory.cs" />
+    <Compile Include="Repositories\UpdateProcResult.cs" />
+    <Compile Include="SqlBuilder\ISqlBuilder.cs" />
+    <Compile Include="SqlBuilder\ISqlDeleteStatement.cs" />
+    <Compile Include="SqlBuilder\ISqlStatement.cs" />
+    <Compile Include="SqlBuilder\SqlCondition.cs" />
+    <Compile Include="SqlBuilder\SqlConditionExtension.cs" />
+    <Compile Include="SqlBuilder\SqlDeleteStatement.cs" />
+    <Compile Include="SqlBuilder\SqlStatement.cs" />
+    <Compile Include="TypeSafeEnums\TableValuedParameterType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Models\Audit.Template.json" />
+    <None Include="Models\Core.Template.json" />
+    <None Include="Models\Saml.Template.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CommonResources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library.Ioc\Library.Ioc.csproj">
+      <Project>{bf9fa3a9-5ac5-4440-8b0f-cfb367996ce2}</Project>
+      <Name>Library.Ioc</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

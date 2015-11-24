@@ -1,0 +1,90 @@
+﻿using System;
+using System.Linq;
+using Ninject;
+using Ninject.Parameters;
+
+namespace Library.Ioc
+{
+    public class NinjectIocContainer : IocContainerBase
+    {
+        protected static IKernel _kernel;
+
+        public NinjectIocContainer()
+        {
+            InitializeKernel();
+        }
+
+        private static void InitializeKernel()
+        {
+            if (_kernel == null)
+            {
+                _kernel = new StandardKernel();
+            }
+        }
+
+        public override ITypeBinder<T> Bind<T>()
+        {
+            return new NinjectTypeBinder<T>(_kernel);
+        }
+
+        public override void Bind<T>(Func<T> initializer, ObjectReuseScope scope = ObjectReuseScope.None)
+        {
+            var binding = _kernel.Rebind<T>().ToMethod(x => initializer());
+            ScopeTranslator.BindScope(binding, scope);
+        }
+
+        public override T Get<T>()
+        {
+            return _kernel.Get<T>();
+        }
+
+        public override T Get<T>(params IParameter[] parameters)
+        {
+            return _kernel.Get<T>(this.TranslateParameters(parameters));
+        }
+
+        public override object TryGet(Type type)
+        {
+            return _kernel.TryGet(type);
+        }
+
+        public override object TryGet(Type type, params IParameter[] parameters)
+        {
+            return _kernel.TryGet(type, this.TranslateParameters(parameters));
+        }
+
+        public override object Get(Type type)
+        {
+            return _kernel.Get(type);
+        }
+
+        public override object Get(Type type, params IParameter[] parameters)
+        {
+            return _kernel.Get(type, this.TranslateParameters(parameters));
+        }
+
+        public override T TryGet<T>()
+        {
+            return _kernel.TryGet<T>();
+        }
+
+        public override T TryGet<T>(params IParameter[] parameters)
+        {
+            return _kernel.TryGet<T>(this.TranslateParameters(parameters));
+        }
+
+        private Ninject.Parameters.IParameter[] TranslateParameters(IParameter[] parameters)
+        {
+            return parameters.Select(x => new ConstructorArgument(x.Name, x.Value)).ToArray();
+        }
+
+        public override void Release(object instance)
+        {
+            var disposable = instance as IDisposable;
+            if (disposable != null)
+            {
+                disposable.Dispose();
+            }
+        }
+    }
+}

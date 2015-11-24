@@ -1,0 +1,22 @@
+﻿namespace Library.Data.TypeSafeEnums
+{
+    public sealed class TableValuedParameterType
+    {
+        public static readonly TableValuedParameterType Id = new TableValuedParameterType("udt_id");
+        
+        public static readonly TableValuedParameterType String = new TableValuedParameterType("udt_string");
+
+        public static readonly TableValuedParameterType DateTime = new TableValuedParameterType("udt_datetime");
+
+        public static readonly TableValuedParameterType IdPair = new TableValuedParameterType("udt_id_pair");
+
+        public static readonly TableValuedParameterType DateTimeOffset = new TableValuedParameterType("udt_datetimeoffset");
+
+        private TableValuedParameterType(string value)
+        {
+            Value = value;
+        }
+
+        public string Value { get; private set; }
+    }
+}

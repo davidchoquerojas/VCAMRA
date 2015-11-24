@@ -1,0 +1,17 @@
+﻿using System.Diagnostics.CodeAnalysis;
+using Library.Data.Repositories;
+using Library.Ioc;
+using VidaCamaraData.Repository;
+
+namespace VidaCamaraData
+{
+    [ExcludeFromCodeCoverage]
+    public class IocConfigurator : IIocConfigurator
+    {
+        public void Configure(IIocContainer container)
+        {
+            container.Bind<IModelRepository>().To<ModelRepository>();
+            container.Bind<IUsuarioDao>().To<UsuarioDao>();
+        }
+    }
+}

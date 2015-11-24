@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using Library.Data.Models;
+
+namespace Library.Data.SqlBuilder
+{
+    public interface ISqlBuilder<T>
+        where T : class, ITableModel
+    {
+        ISqlBuilder<T> WhereEqual<TValue>(Expression<Func<T, TValue>> property, TValue searchValue);
+
+        ISqlBuilder<T> WhereEqual<TValue>(Expression<Func<T, TValue?>> property, TValue searchValue) where TValue : struct;
+
+        ISqlBuilder<T> WhereEqual<TValue>(Expression<Func<T, TValue>> property, TValue? searchValue) where TValue : struct;
+
+        ISqlBuilder<T> WhereNotEqual<TValue>(Expression<Func<T, TValue>> property, TValue searchValue);
+
+        ISqlBuilder<T> WhereNotEqual<TValue>(Expression<Func<T, TValue?>> property, TValue searchValue) where TValue : struct;
+
+        ISqlBuilder<T> WhereNotEqual<TValue>(Expression<Func<T, TValue>> property, TValue? searchValue) where TValue : struct;
+
+        ISqlBuilder<T> WhereIn<TValue>(Expression<Func<T, TValue>> property, IList<TValue> value);
+
+        ISqlBuilder<T> WhereIn<TValue>(Expression<Func<T, TValue?>> property, IList<TValue> values) where TValue : struct;
+        
+        ISqlBuilder<T> WhereGreater<TValue>(Expression<Func<T, TValue>> property, TValue value);
+
+        ISqlBuilder<T> WhereGreater<TValue>(Expression<Func<T, TValue?>> property, TValue value) where TValue : struct;
+
+        ISqlBuilder<T> WhereGreater<TValue>(Expression<Func<T, TValue>> property, TValue? value) where TValue : struct;
+
+        ISqlBuilder<T> WhereLess<TValue>(Expression<Func<T, TValue>> property, TValue value);
+
+        ISqlBuilder<T> WhereLess<TValue>(Expression<Func<T, TValue?>> property, TValue value) where TValue : struct;
+
+        ISqlBuilder<T> WhereLess<TValue>(Expression<Func<T, TValue>> property, TValue? value) where TValue : struct;
+
+        ISqlBuilder<T> WhereGreaterEqual<TValue>(Expression<Func<T, TValue>> property, TValue value);
+
+        ISqlBuilder<T> WhereGreaterEqual<TValue>(Expression<Func<T, TValue?>> property, TValue value) where TValue : struct;
+
+        ISqlBuilder<T> WhereGreaterEqual<TValue>(Expression<Func<T, TValue>> property, TValue? value) where TValue : struct;
+
+        ISqlBuilder<T> WhereLessEqual<TValue>(Expression<Func<T, TValue>> property, TValue value);
+
+        ISqlBuilder<T> WhereLessEqual<TValue>(Expression<Func<T, TValue?>> property, TValue value) where TValue : struct;
+
+        ISqlBuilder<T> WhereLessEqual<TValue>(Expression<Func<T, TValue>> property, TValue? value) where TValue : struct;
+        
+        ISqlStatement Select();
+
+        ISqlDeleteStatement Delete();
+    }
+}

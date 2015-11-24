@@ -1,0 +1,34 @@
+﻿using System;
+
+namespace Library.Ioc
+{
+    public abstract class IocContainerBase : IIocContainer
+    {
+        public void LoadConfigurators(string directory)
+        {            
+            new IocConfiguratorFinder(new AssemblyIterator(directory)).FindAll().ForEach(x => x.Configure(this));
+        }
+
+        public abstract ITypeBinder<T> Bind<T>() where T : class;
+
+        public abstract void Bind<T>(Func<T> initializer, ObjectReuseScope scope = ObjectReuseScope.None);
+
+        public abstract T Get<T>();
+
+        public abstract T Get<T>(params IParameter[] parameters);
+
+        public abstract object Get(Type type);
+
+        public abstract object Get(Type type, params IParameter[] parameters);
+
+        public abstract object TryGet(Type type);
+
+        public abstract T TryGet<T>();
+
+        public abstract object TryGet(Type type, params IParameter[] parameters);
+
+        public abstract T TryGet<T>(params IParameter[] parameters);
+
+        public abstract void Release(object instance);
+    }
+}

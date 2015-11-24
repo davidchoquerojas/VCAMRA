@@ -1,0 +1,9 @@
+﻿namespace Library.Ioc
+{
+    public enum ObjectReuseScope
+    {
+        None = 0,
+        Request = 1,
+        Singleton = 2,
+    }
+}

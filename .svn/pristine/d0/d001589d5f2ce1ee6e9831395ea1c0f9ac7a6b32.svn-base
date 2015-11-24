@@ -1,0 +1,21 @@
+﻿using Ninject.Syntax;
+
+namespace Library.Ioc
+{
+    public class ScopeTranslator
+    {
+        public static void BindScope<T>(IBindingWhenInNamedWithOrOnSyntax<T> binding, ObjectReuseScope scope)
+        {
+            switch (scope)
+            {
+                case ObjectReuseScope.Request:
+                    binding.InThreadScope();
+                    return;
+                case ObjectReuseScope.Singleton:
+                    binding.InSingletonScope();
+                    return;
+            }
+            binding.InTransientScope();
+        }
+    }
+}

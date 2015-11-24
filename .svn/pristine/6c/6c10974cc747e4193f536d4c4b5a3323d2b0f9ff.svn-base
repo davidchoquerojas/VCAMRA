@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using Library.Data.Models;
+using Library.Data.SqlBuilder;
+
+namespace Library.Data.Repositories
+{
+    public interface IModelRepository
+    {
+        T Add<T>(T newEntity) where T : class, ITableModel;
+
+        void Update<T>(T entity) where T : class, ITableModel;
+
+        void Remove<T>(int id) where T : class, ITableModel;
+
+        void Remove<T>(Func<ISqlBuilder<T>, ISqlDeleteStatement> sqlStatementFactory) where T : class, ITableModel;
+
+        void Remove<T>(ISqlDeleteStatement sqlStatement) where T : class, ITableModel;
+
+        T FindById<T>(int id) where T : class, ITableModel;
+
+        IEnumerable<T> FindByIds<T>(IEnumerable<int> ids) where T : class, ITableModel;
+
+        IEnumerable<T> FindAll<T>() where T : class, ITableModel;
+
+        List<T> Query<T>(Func<ISqlBuilder<T>, ISqlStatement> sqlStatementFactory) where T : class, ITableModel;
+
+        List<T> Query<T>(ISqlStatement sqlStatement) where T : class, ITableModel;
+    }
+}

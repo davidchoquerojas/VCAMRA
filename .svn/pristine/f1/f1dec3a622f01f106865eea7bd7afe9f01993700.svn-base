@@ -1,0 +1,350 @@
+using System.Runtime.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Web;
+using PetaPoco;
+
+// This file is generated; please do not edit it by hand.
+// To make changes, follow these steps:
+//   * Ensure you've installed the Chatham Developer Module: http://itsablogyo/?p=1992
+//   * Modify the corresponding *.Template.json file.
+//   * Run the following command in the Package Manager Console: Set-DataAccessEntityModel
+namespace Library.Data.Models.Auth
+{
+    [ExcludeFromCodeCoverage]
+    [TableName("oauth2.access_token")]
+    [PrimaryKey("token_id")]
+    [ExplicitColumns]
+    public class AccessTokenTableModel : TableModel
+    {
+        
+        public const string ColumnNameId = "token_id";
+        [Column(ColumnNameId)]
+        public override int Id { get; set; }
+        
+        public const string ColumnNameCodeId = "token_code_id";
+        private int _codeId;
+        [Column(ColumnNameCodeId)]
+        public int CodeId
+        {
+            get { return _codeId; }
+            set { _codeId = value; MarkColumnModified(ColumnNameCodeId); }
+        }
+        
+        public const string ColumnNameToken = "token_access_token";
+        private string _token;
+        [Column(ColumnNameToken)]
+        public string Token
+        {
+            get { return _token; }
+            set { _token = value; MarkColumnModified(ColumnNameToken); }
+        }
+        
+        public const string ColumnNameRefreshToken = "token_refresh_token";
+        private string _refreshToken;
+        [Column(ColumnNameRefreshToken)]
+        public string RefreshToken
+        {
+            get { return _refreshToken; }
+            set { _refreshToken = value; MarkColumnModified(ColumnNameRefreshToken); }
+        }
+        
+        public const string ColumnNameIssueDate = "token_issue_dt";
+        private DateTimeOffset _issueDate;
+        [Column(ColumnNameIssueDate)]
+        public DateTimeOffset IssueDate
+        {
+            get { return _issueDate; }
+            set { _issueDate = value; MarkColumnModified(ColumnNameIssueDate); }
+        }
+        
+        public const string ColumnNameExpiryDate = "token_expiry_dt";
+        private DateTimeOffset _expiryDate;
+        [Column(ColumnNameExpiryDate)]
+        public DateTimeOffset ExpiryDate
+        {
+            get { return _expiryDate; }
+            set { _expiryDate = value; MarkColumnModified(ColumnNameExpiryDate); }
+        }
+        
+        public const string ColumnNameIsRevoked = "token_is_revoked_bit";
+        private bool _isRevoked;
+        [Column(ColumnNameIsRevoked)]
+        public bool IsRevoked
+        {
+            get { return _isRevoked; }
+            set { _isRevoked = value; MarkColumnModified(ColumnNameIsRevoked); }
+        }
+    }
+
+    [ExcludeFromCodeCoverage]
+    [TableName("oauth2.application")]
+    [PrimaryKey("app_id")]
+    [ExplicitColumns]
+    public class ApplicationTableModel : TableModel
+    {
+        
+        public const string ColumnNameId = "app_id";
+        [Column(ColumnNameId)]
+        public override int Id { get; set; }
+        
+        public const string ColumnNameName = "app_name";
+        private string _name;
+        [Column(ColumnNameName)]
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; MarkColumnModified(ColumnNameName); }
+        }
+        
+        public const string ColumnNameDescription = "app_description";
+        private string _description;
+        [Column(ColumnNameDescription)]
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value; MarkColumnModified(ColumnNameDescription); }
+        }
+        
+        public const string ColumnNameRedirectUri = "app_redirect_uri";
+        private string _redirectUri;
+        [Column(ColumnNameRedirectUri)]
+        public string RedirectUri
+        {
+            get { return _redirectUri; }
+            set { _redirectUri = value; MarkColumnModified(ColumnNameRedirectUri); }
+        }
+        
+        public const string ColumnNameClientId = "app_client_id";
+        private string _clientId;
+        [Column(ColumnNameClientId)]
+        public string ClientId
+        {
+            get { return _clientId; }
+            set { _clientId = value; MarkColumnModified(ColumnNameClientId); }
+        }
+        
+        public const string ColumnNameClientSecret = "app_client_secret";
+        private string _clientSecret;
+        [Column(ColumnNameClientSecret)]
+        public string ClientSecret
+        {
+            get { return _clientSecret; }
+            set { _clientSecret = value; MarkColumnModified(ColumnNameClientSecret); }
+        }
+        
+        public const string ColumnNameCreatedDate = "app_create_dt";
+        [ResultColumn(ColumnNameCreatedDate)]
+        public DateTimeOffset CreatedDate { get; set; }
+        
+        public const string ColumnNameIsActive = "app_is_active_bit";
+        private bool _isActive;
+        [Column(ColumnNameIsActive)]
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set { _isActive = value; MarkColumnModified(ColumnNameIsActive); }
+        }
+        
+        public const string ColumnNameEntityId = "app_entity_id";
+        private int _entityId;
+        [Column(ColumnNameEntityId)]
+        public int EntityId
+        {
+            get { return _entityId; }
+            set { _entityId = value; MarkColumnModified(ColumnNameEntityId); }
+        }
+    }
+
+    [ExcludeFromCodeCoverage]
+    [TableName("oauth2.auth_code")]
+    [PrimaryKey("code_id")]
+    [ExplicitColumns]
+    public class AuthenticationCodeTableModel : TableModel
+    {
+        
+        public const string ColumnNameId = "code_id";
+        [Column(ColumnNameId)]
+        public override int Id { get; set; }
+        
+        public const string ColumnNameApplicationId = "code_app_id";
+        private int _applicationId;
+        [Column(ColumnNameApplicationId)]
+        public int ApplicationId
+        {
+            get { return _applicationId; }
+            set { _applicationId = value; MarkColumnModified(ColumnNameApplicationId); }
+        }
+        
+        public const string ColumnNameUserId = "code_user_id";
+        private int _userId;
+        [Column(ColumnNameUserId)]
+        public int UserId
+        {
+            get { return _userId; }
+            set { _userId = value; MarkColumnModified(ColumnNameUserId); }
+        }
+        
+        public const string ColumnNameCode = "code_auth_code";
+        private string _code;
+        [Column(ColumnNameCode)]
+        public string Code
+        {
+            get { return _code; }
+            set { _code = value; MarkColumnModified(ColumnNameCode); }
+        }
+        
+        public const string ColumnNameIssueDate = "code_issue_dt";
+        private DateTimeOffset _issueDate;
+        [Column(ColumnNameIssueDate)]
+        public DateTimeOffset IssueDate
+        {
+            get { return _issueDate; }
+            set { _issueDate = value; MarkColumnModified(ColumnNameIssueDate); }
+        }
+        
+        public const string ColumnNameExpiryDate = "code_expiry_dt";
+        private DateTimeOffset _expiryDate;
+        [Column(ColumnNameExpiryDate)]
+        public DateTimeOffset ExpiryDate
+        {
+            get { return _expiryDate; }
+            set { _expiryDate = value; MarkColumnModified(ColumnNameExpiryDate); }
+        }
+        
+        public const string ColumnNameIsRevoked = "code_is_revoked_bit";
+        private bool _isRevoked;
+        [Column(ColumnNameIsRevoked)]
+        public bool IsRevoked
+        {
+            get { return _isRevoked; }
+            set { _isRevoked = value; MarkColumnModified(ColumnNameIsRevoked); }
+        }
+    }
+
+    [ExcludeFromCodeCoverage]
+    [TableName("saml.saml_user")]
+    [PrimaryKey("su_user_id")]
+    [ExplicitColumns]
+    public class SamlUserTableModel : TableModel
+    {
+        
+        public const string ColumnNameId = "su_user_id";
+        [Column(ColumnNameId)]
+        public override int Id { get; set; }
+        
+        public const string ColumnNameUserIdentfier = "su_user_identifier";
+        private string _userIdentfier;
+        [Column(ColumnNameUserIdentfier)]
+        public string UserIdentfier
+        {
+            get { return _userIdentfier; }
+            set { _userIdentfier = value; MarkColumnModified(ColumnNameUserIdentfier); }
+        }
+        
+        public const string ColumnNameUserId = "su_us_user_id";
+        private int _userId;
+        [Column(ColumnNameUserId)]
+        public int UserId
+        {
+            get { return _userId; }
+            set { _userId = value; MarkColumnModified(ColumnNameUserId); }
+        }
+        
+        public const string ColumnNameCreated = "su_create_dto";
+        [ResultColumn(ColumnNameCreated)]
+        public DateTimeOffset? Created { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    [TableName("saml.sponsor_setup")]
+    [PrimaryKey("sss_sponsor_setup_id")]
+    [ExplicitColumns]
+    public class SponsorSetupTableModel : TableModel
+    {
+        
+        public const string ColumnNameId = "sss_sponsor_setup_id";
+        [Column(ColumnNameId)]
+        public override int Id { get; set; }
+        
+        public const string ColumnNameSponsorId = "sss_rs_sponsor_id";
+        private int _sponsorId;
+        [Column(ColumnNameSponsorId)]
+        public int SponsorId
+        {
+            get { return _sponsorId; }
+            set { _sponsorId = value; MarkColumnModified(ColumnNameSponsorId); }
+        }
+        
+        public const string ColumnNameIdpIssuer = "sss_idp_issuer";
+        private string _idpIssuer;
+        [Column(ColumnNameIdpIssuer)]
+        public string IdpIssuer
+        {
+            get { return _idpIssuer; }
+            set { _idpIssuer = value; MarkColumnModified(ColumnNameIdpIssuer); }
+        }
+        
+        public const string ColumnNameIdentityCertificate = "sss_identity_certificate";
+        private string _identityCertificate;
+        [Column(ColumnNameIdentityCertificate)]
+        public string IdentityCertificate
+        {
+            get { return _identityCertificate; }
+            set { _identityCertificate = value; MarkColumnModified(ColumnNameIdentityCertificate); }
+        }
+        
+        public const string ColumnNameUserIdSamlLocation = "sss_rv_user_id_location";
+        private int _userIdSamlLocation;
+        [Column(ColumnNameUserIdSamlLocation)]
+        public int UserIdSamlLocation
+        {
+            get { return _userIdSamlLocation; }
+            set { _userIdSamlLocation = value; MarkColumnModified(ColumnNameUserIdSamlLocation); }
+        }
+        
+        public const string ColumnNameUserIdAttributeName = "sss_user_id_attribute_name";
+        private string _userIdAttributeName;
+        [Column(ColumnNameUserIdAttributeName)]
+        public string UserIdAttributeName
+        {
+            get { return _userIdAttributeName; }
+            set { _userIdAttributeName = value; MarkColumnModified(ColumnNameUserIdAttributeName); }
+        }
+        
+        public const string ColumnNameLogoutUrl = "sss_logout_url";
+        private string _logoutUrl;
+        [Column(ColumnNameLogoutUrl)]
+        public string LogoutUrl
+        {
+            get { return _logoutUrl; }
+            set { _logoutUrl = value; MarkColumnModified(ColumnNameLogoutUrl); }
+        }
+        
+        public const string ColumnNameErrorUrl = "sss_error_url";
+        private string _errorUrl;
+        [Column(ColumnNameErrorUrl)]
+        public string ErrorUrl
+        {
+            get { return _errorUrl; }
+            set { _errorUrl = value; MarkColumnModified(ColumnNameErrorUrl); }
+        }
+        
+        public const string ColumnNameCreated = "sss_create_dto";
+        [ResultColumn(ColumnNameCreated)]
+        public DateTimeOffset? Created { get; set; }
+        
+        public const string ColumnNameIdentityProviderServiceUrl = "sss_identity_provider_service_url";
+        private string _identityProviderServiceUrl;
+        [Column(ColumnNameIdentityProviderServiceUrl)]
+        public string IdentityProviderServiceUrl
+        {
+            get { return _identityProviderServiceUrl; }
+            set { _identityProviderServiceUrl = value; MarkColumnModified(ColumnNameIdentityProviderServiceUrl); }
+        }
+    }
+
+
+}

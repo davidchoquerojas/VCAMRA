@@ -1,0 +1,8 @@
+﻿namespace Library.Ioc
+{
+    public interface ITypeBinder<in TSource> where TSource : class
+    {
+        void To<TTarget>(ObjectReuseScope scope = ObjectReuseScope.None) where TTarget : TSource;
+        void ToFactory();
+    }
+}

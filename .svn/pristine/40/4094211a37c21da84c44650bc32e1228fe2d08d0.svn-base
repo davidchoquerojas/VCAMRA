@@ -1,0 +1,7 @@
+﻿namespace Library.Data.Models
+{
+    public interface IProcModel : IDbModel
+    {
+         
+    }
+}

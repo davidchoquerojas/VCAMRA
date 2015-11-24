@@ -1,0 +1,7 @@
+﻿namespace Library.Data.Repositories
+{
+    public class DeleteProcResult
+    {
+        public int RowsAffected { get; set; }
+    }
+}

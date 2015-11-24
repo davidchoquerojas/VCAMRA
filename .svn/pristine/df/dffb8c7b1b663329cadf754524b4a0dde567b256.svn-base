@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode title="Inicio">
+    <siteMapNode url="~/Inicio" title="Inicio"  description="Inicio" />
+    <siteMapNode  title="Mantenimiento">
+        <siteMapNode url="~/Parametros" title="Parametros"  description="Parametros" />
+        <siteMapNode url="~/Usuarios" title="Usuario"  description="Usuario" />
+        <siteMapNode url="~/Tablas" title="Tabla"  description="tabla" />
+    </siteMapNode>
+    <siteMapNode title="Operaciones">
+      <siteMapNode url="~/CargaDatos" title="Carga de Datos"  description="Carga de Datos" />
+      <siteMapNode url="~/OperacionManual" title="Operacion Manual"  description="Operacion Manual" />
+      <siteMapNode url="~/CierreOperacion" title="Cierre de Operaciones"  description="Cierre de Operaciones" />
+      <siteMapNode url="~/InterfaceContable" title="Interface Contable"  description="Interface Contable" />
+      <siteMapNode url="~/ProcesoOperacion" title="Proceso de Información"  description="Proceso de Información" />
+      <siteMapNode url="~/RegistroDatos" title="Registro de Datos"  description="Registro de Datos" />
+    </siteMapNode>
+    <siteMapNode title="Consultas">
+      <siteMapNode url="~/Comprobantes" title="Consulta de Comprobantes"  description="Consulta de Comprobantes" />
+      <siteMapNode url="~/Operaciones" title="Consulta de Operaciones"  description="Consulta de Operaciones" />
+      <siteMapNode url="~/Informes" title="Informes"  description="Informes" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

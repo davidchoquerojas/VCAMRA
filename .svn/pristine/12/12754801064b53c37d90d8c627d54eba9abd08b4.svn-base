@@ -1,0 +1,11 @@
+﻿using System;
+
+namespace Library.Data.Repositories
+{
+    public interface IDbTransaction : IDisposable
+    {
+        IRepository Repository { get; }
+
+        void Commit();
+    }
+}

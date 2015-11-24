@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Library.Ioc
+{
+    public class IocConfiguratorFinder : IIocConfiguratorFinder
+    {
+        private readonly IAssemblyIterator _iterator;
+
+        public IocConfiguratorFinder(IAssemblyIterator iterator)
+        {
+            this._iterator = iterator;
+        }
+
+        public List<IIocConfigurator> FindAll()
+        {
+            var configurators = new List<IIocConfigurator>();
+
+            var assembly = this._iterator.GetNextAssembly();
+
+            while (assembly != null)
+            {
+                try
+                {
+                    foreach (var type in assembly.GetTypes())
+                    {
+                        if (type.GetInterface(typeof(IIocConfigurator).Name) != null)
+                        {
+                            var configurator = (IIocConfigurator)type.GetConstructor(Type.EmptyTypes).Invoke(null);
+                            configurators.Add(configurator);
+                        }
+                    }
+                }
+                catch
+                {
+                }
+
+                assembly = _iterator.GetNextAssembly();
+            }
+            return configurators;
+        }
+    }
+}

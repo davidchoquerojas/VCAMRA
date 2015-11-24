@@ -1,0 +1,224 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Reflection;
+using DapperWrapper;
+using Library.Data.Dapper;
+using Library.Data.Exceptions;
+using Library.Data.Models;
+
+namespace Library.Data.Repositories
+{
+    internal class InsertProcQueryResult
+    {
+        public int? Id { get; set; }
+    }
+
+    public class ProcRepository : IProcRepository
+    {
+        private const int MaxRetries = 3;
+        private const int DeadlockExceptionNumber = 1205;
+
+        private readonly IDbExecutorFactory _executorFactory;
+        private readonly IDbSchemaProvider _schemaProvider;
+
+        public ProcRepository(IDbExecutorFactory executorFactory, IDbSchemaProvider schemaProvider)
+        {
+            if (executorFactory == null)
+            {
+                throw new ArgumentException("executorFactory");
+            }
+
+            if (schemaProvider == null)
+            {
+                throw new ArgumentException("schemaProvider");
+            }
+
+            _executorFactory = executorFactory;
+            _schemaProvider = schemaProvider;
+        }
+
+
+        public IEnumerable<TDto> ExecuteStoredProcedure<TDto>(IGetReturn<List<TDto>> request) where TDto : class, new()
+        {
+            var parameters = GetNonNullParameters(request);
+            var procName = GetProcName<TDto>();
+            var sql = procName;
+            return ExecuteQuery<TDto>(sql, parameters);
+        }
+
+        public IEnumerable<TDbModel> ExecuteStoredProcedure<TDbModel>(IGetReturn request) where TDbModel : IDbModel, new()
+        {   
+            var parameters = GetNonNullParameters(request);
+            var procName = GetProcName<TDbModel>();
+            var sql = procName;
+            return ExecuteQuery<TDbModel>(sql, parameters);
+        }
+
+        private string GetProcName<TModel>()
+        {
+            var schema = _schemaProvider.GetSchema();
+            const string SpSelectAcronym = "spDD_{0}_Search";
+            var resourceName = typeof(TModel).Name;
+            var procname = string.Format(SpSelectAcronym, resourceName);
+
+            if (!string.IsNullOrEmpty(schema))
+            {
+                procname = string.Format("{0}.{1}", schema, procname);
+            }
+
+            return procname;
+        }
+
+        private IEnumerable<TReturn> ExecuteQuery<TReturn>(string sql, DynamicParametersWithTVP parameters) 
+        {
+            using (var dbExecutor = _executorFactory.CreateExecutor())
+            {
+                var currentIteration = 0;
+                while (true)
+                {
+                    try
+                    {
+                        return dbExecutor.Query<TReturn>(sql, parameters, commandType: CommandType.StoredProcedure);
+                    }
+                    catch (SqlException ex)
+                    {
+                        currentIteration++;
+                        if (ex.Number != DeadlockExceptionNumber || currentIteration >= MaxRetries)
+                        {
+                            throw;
+                        }
+                    }
+                    finally
+                    {
+                        
+                    }
+                }
+            }
+        }
+
+        private DynamicParametersWithTVP GetNonNullParameters<TRequest>(TRequest request)
+        {
+            var parameters = new DynamicParametersWithTVP();
+            var requestType = request.GetType();
+            var notNullProperties = GetNotNullProperties(request, requestType);
+
+            foreach (var propertyInfo in notNullProperties)
+            {
+                AddParameterValue(parameters, propertyInfo, request);
+            }
+
+            return parameters;
+        }
+
+        private DynamicParametersWithTVP GetAllParameters<TRequest>(TRequest request)
+        {
+            var parameters = new DynamicParametersWithTVP();
+            var requestType = request.GetType();
+            
+            foreach (var propertyInfo in requestType.GetProperties())
+            {
+                AddParameterValue(parameters, propertyInfo, request);
+            }
+
+            return parameters;            
+        }
+
+        private IEnumerable<PropertyInfo> GetNotNullProperties<TRequest>(TRequest searchRequest, Type requestType)
+        {
+            return
+                (from i in requestType.GetProperties() where i.GetValue(searchRequest, null) != null select i).ToArray();
+        }
+
+        private void AddParameterValue<TRequest>(
+            DynamicParametersWithTVP parameters,
+            PropertyInfo propertyInfo,
+            TRequest request)
+        {
+            var value = propertyInfo.GetValue(request, null);
+            var tableValuedParameterFactory = new TableValuedParameterFactory<TRequest>(_schemaProvider);
+            var tvpParam = tableValuedParameterFactory.MakeTableValuedParameter(propertyInfo, request);
+
+            if (tvpParam == TableValuedParameterBase.NULL)
+            {
+                parameters.Add(propertyInfo.Name, value);
+            }
+            else
+            {
+                parameters.AddTvpParam(tvpParam);
+            }
+        }
+
+        public InsertProcResult ExecuteInsertProc<TDto>(TDto request) where TDto : class, new()
+        {
+            var parameters = GetAllParameters(request);
+            var procName = string.Format("spDD_{0}", typeof (TDto).Name);
+            var sql = procName;
+
+            var results = ExecuteQuery<InsertProcQueryResult>(sql, parameters).ToList();
+
+            if (!results.Any() || !results.Single().Id.HasValue)
+            {
+                throw new InsertFailedException("Insert Proc must return a record with the Id of the created resource.");
+            }
+
+            return new InsertProcResult
+            {
+                Id = results.First().Id.GetValueOrDefault()
+            };
+        }
+
+        private int ExecuteNonQuery(string sql, DynamicParametersWithTVP parameters)
+        {
+            using (var dbExecutor = _executorFactory.CreateExecutor())
+            {
+                var currentIteration = 0;
+                while (true)
+                {
+                    try
+                    {
+                        var rowsAffected = dbExecutor.Execute(sql, parameters, commandType: CommandType.StoredProcedure);
+
+                        return rowsAffected;
+                    }
+                    catch (SqlException ex)
+                    {
+                        currentIteration++;
+                        if (ex.Number != DeadlockExceptionNumber || currentIteration >= MaxRetries)
+                        {
+                            throw;
+                        }
+                    }
+                    finally
+                    {
+                        
+                    }
+                }
+            }            
+        }
+
+        public UpdateProcResult ExecuteUpdateProc<TDto>(TDto request) where TDto : class, new()
+        {
+            var parameters = GetAllParameters(request);
+            var procName = string.Format("spDD_{0}", typeof (TDto).Name);
+            var sql = procName;
+
+            var rowsAffected = ExecuteNonQuery(sql, parameters);
+
+            return new UpdateProcResult {RowsAffected = rowsAffected};
+        }
+
+        public DeleteProcResult ExecuteDeleteProc<TDto>(TDto request) where TDto : class, new()
+        {
+            var parameters = GetAllParameters(request);
+            var procName = string.Format("spDD_{0}", typeof (TDto).Name);
+            var sql = procName;
+
+            var rowsAffected = ExecuteNonQuery(sql, parameters);
+
+            return new DeleteProcResult {RowsAffected = rowsAffected};
+        }
+    }
+}

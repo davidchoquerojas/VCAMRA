@@ -1,0 +1,39 @@
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
+using PetaPoco;
+
+namespace Library.Data.Models
+{
+    [ExcludeFromCodeCoverage]
+    public abstract class TableModel : ITableModel
+    {
+        private readonly Dictionary<string, bool> _modifiedColumns = new Dictionary<string, bool>();
+
+        public IEnumerable<string> GetModifiedColumns()
+        {
+            return _modifiedColumns.Keys;
+        }
+
+        public void ClearModifiedColumns()
+        {
+            _modifiedColumns.Clear();
+        }
+
+        protected void MarkColumnModified(string columnName)
+        {
+            _modifiedColumns[columnName] = true;
+        }
+
+        public abstract int Id { get; set; }
+
+        [Ignore]
+        public bool IsNew
+        {
+            get
+            {
+                return Id == default(int);
+            }
+        }
+    }
+}

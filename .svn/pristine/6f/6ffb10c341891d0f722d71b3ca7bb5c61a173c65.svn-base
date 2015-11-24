@@ -1,0 +1,10 @@
+﻿using System;
+
+namespace Library.Data.Repositories
+{
+    public interface IDbContext : IDisposable
+    {
+        IRepository Repository { get; }
+        IDbTransaction GetUnitOfWork();
+    }
+}

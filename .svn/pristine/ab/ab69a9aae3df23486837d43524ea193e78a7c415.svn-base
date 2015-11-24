@@ -1,0 +1,17 @@
+﻿using Entity;
+using System;
+using System.Collections.Generic;
+
+namespace Interface
+{
+
+    public interface IGeneralVC
+    {
+
+        Int32 SetInsertarGeneral(eGeneral o);
+        Int32 SetActualizarGeneral(eGeneral o);
+        List<eGeneral> GetSelecionarGeneral();
+
+    }
+}
+

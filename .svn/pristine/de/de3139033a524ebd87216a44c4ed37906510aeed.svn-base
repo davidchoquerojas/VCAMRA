@@ -1,0 +1,17 @@
+﻿using System.Collections.Generic;
+
+using Library.Data.Models;
+
+namespace Library.Data.BulkOperations
+{
+    public interface IBulkOperationRepository
+    {
+        void BulkAdd<T>(List<T> entities) where T : class, ITableModel;
+        
+        List<int> BulkAddReturnKeys<T>(List<T> entities) where T : class, ITableModel;
+
+        void BulkUpdate<T>(T entity, List<int> idsToUpdate) where T : class, ITableModel;
+
+        void BulkRemove<T>(List<int> ids) where T : class, ITableModel;
+    }
+}

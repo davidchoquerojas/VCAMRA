@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+
+using Library.Data.Models;
+
+using PetaPoco;
+using PetaPoco.Internal;
+
+namespace Library.Data.PetaPoco
+{
+    public static class PetaPocoMapper
+    {
+        private static readonly IMapper _mapper = new StandardMapper();
+
+        public static List<string> GetEntityColumns<T>() where T : class, ITableModel
+        {
+            var pd = PocoData.ForType(typeof(T));
+
+            return pd.Columns.Select(column => column.Value.ColumnName).ToList();
+        }
+
+        public static string GetColumnName<TValue, T>(Expression<Func<T, TValue>> property) where T : class, ITableModel
+        {
+            var propertyBody = property.Body as MemberExpression;
+            var propertyInfo = typeof(T).GetProperty(propertyBody.Member.Name);
+            var columnName = GetColumnName(propertyInfo);
+
+            return columnName;
+        }
+
+        public static string GetTableName<T>() where T : class, ITableModel
+        {
+            return _mapper.GetTableInfo(typeof(T)).TableName;
+        }
+
+        public static Dictionary<string, string> GetPropertyToColumnMapping<T>() where T : class, ITableModel
+        {
+            var properties = GetPropertiesWithColumnAttribute<T>();
+            var result = properties.ToDictionary(property => property.Name, GetColumnName);
+
+            return result;
+        }
+
+        public static Dictionary<string, string> GetColumnToPropertyMapping<T>() where T : class, ITableModel
+        {
+            var properties = GetPropertiesWithColumnAttribute<T>();
+            var result = properties.ToDictionary(GetColumnName, property => property.Name);
+
+            return result;
+        }
+
+        public static string GetPrimaryKey<T>() where T : class, ITableModel
+        {
+            return _mapper.GetTableInfo(typeof(T)).PrimaryKey;
+        }
+
+        public static IEnumerable<PropertyInfo> GetPropertiesWithColumnAttribute<T>()
+        {
+            return typeof(T).GetProperties().Where(prop => Attribute.IsDefined(prop, typeof(ColumnAttribute)) && !Attribute.IsDefined(prop, typeof(ResultColumnAttribute)));
+        }
+
+        private static string GetColumnName(PropertyInfo property)
+        {
+            var columnInfo = _mapper.GetColumnInfo(property);
+            var columnName = columnInfo.ColumnName;
+
+            return columnName;
+        }
+    }
+}

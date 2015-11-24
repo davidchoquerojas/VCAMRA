@@ -1,0 +1,48 @@
+﻿using System;
+
+namespace Library.Ioc
+{
+    public static class IocContainer
+    {
+        private static readonly object SyncRoot = new object();
+
+        private static IIocContainer ContainerInstance;
+
+        public static IIocContainer Instance
+        {
+            get
+            {
+                if (ContainerInstance == null)
+                {
+                    lock (SyncRoot)
+                    {
+                        if (ContainerInstance == null)
+                        {
+                            ContainerInstance = CreateInstance();
+                        }
+                    }
+                }
+
+                return ContainerInstance;
+            }
+        }
+
+        public static IIocContainer CreateInstance()
+        {
+            return CreateInstance(
+                new IocConfiguratorFinder(new AssemblyIterator(AppDomain.CurrentDomain.BaseDirectory)));
+        }
+
+        public static IIocContainer CreateInstance(IIocConfiguratorFinder configuratorFinder)
+        {
+            var instance = new NinjectIocContainer();
+            configuratorFinder.FindAll().ForEach(x => x.Configure(instance));
+            return instance;
+        }
+
+        public static void SetInstance(IIocContainer container)
+        {
+            ContainerInstance = container;
+        }
+    }
+}

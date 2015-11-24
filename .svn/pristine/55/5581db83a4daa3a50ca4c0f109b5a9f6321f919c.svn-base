@@ -1,0 +1,11 @@
+﻿using PetaPoco;
+
+namespace Library.Data.Repositories
+{
+    public interface IRepositoryFactory
+    {
+        IRepository CreateModelRepository(IDatabase database);
+
+        IDbSchemaProvider DbSchemaProvider { set; get; }
+    }
+}

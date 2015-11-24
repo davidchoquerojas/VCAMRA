@@ -1,0 +1,3857 @@
+{
+    "Namespace": "Library.Data.Models",
+    "Prefix": "Core",
+    "ConnectionStrings": [
+        "core"
+    ],
+    "EntityConfigurations": [
+        {
+            "TableName": "cfo_index_commodity_conversion_info",
+            "ModelName": "CommodityConversionInfo",
+            "ColumnAliases": {
+                "ixcc_index_commodity_conversion_info_id": "Id",
+                "ixcc_ixc_index_commodity_id": "IndexCommodityMetaId",
+                "ixcc_rv_commodity_units_of_conversion": "UnitsOfConversion",
+                "ixcc_conversion_factor": "ConversionFactor"
+            }
+        },
+        {
+            "TableName": "cfo_index_commodity",
+            "ModelName": "IndexCommodityMeta",
+            "ColumnAliases": {
+                "ixc_index_commodity_id": "Id",
+                "ixc_ix_index_id": "IndexId",
+                "ixc_rv_commodity_type": "CommodityType",
+                "ixc_rv_commodity_units_of_measure": "CommodityUnitsOfMeasure"
+            }
+        },
+        {
+            "TableName": "cfo_index_exposure",
+            "ModelName": "ExposureMeta",
+            "ColumnAliases": {
+                "chi_index_exposure_id": "Id",
+                "chi_ix_index_id": "IndexId",
+                "chi_constant": "Constant",
+                "chi_start_date": "StartDate",
+                "chi_formula_nt_note_id": "FormulaNoteId",
+                "chi_ate_index_exposure_avg_type_entity_link_id": "IndexExposureAvgTypeEntityLinkId"
+            }
+        },
+        {
+            "TableName": "cfo_index_holiday_city",
+            "ModelName": "IndexHolidayCity",
+            "ColumnAliases": {
+                "ihc_index_holiday_city_id": "Id",
+                "ihc_ix_index_id": "IndexId",
+                "ihc_hc_holiday_city_id": "HolidayCityId",
+                "ihc_rv_holiday_city_type": "HolidayCityType"
+            }
+        },
+        {
+            "TableName": "cfo_index_exposure_proxy",
+            "ModelName": "ExposureProxy",
+            "ColumnAliases": {
+                "chp_exposure_proxy_id": "Id",
+                "chp_chi_index_exposure_id": "IndexExposureMetaId",
+                "chp_ix_index_id": "IndexId",
+                "chp_rv_lookback_length": "LookbackLength",
+                "chp_lookback_value": "LookbackValue",
+                "chp_rv_formula_type": "FormulaType"
+            }
+        },
+        {
+            "TableName": "cfo_index_exposure_params",
+            "ModelName": "ExposureParam",
+            "ColumnAliases": {
+                "chip_index_exposure_params_id": "Id",
+                "chip_ix_index_id": "IndexId",
+                "chip_chi_index_exposure_id": "IndexExposureMetaId",
+                "chip_multiplier": "Multiplier",
+                "chip_rv_market_side": "MarketSide"
+            }
+        },
+        {
+            "TableName": "cfo_index",
+            "ModelName": "Index",
+            "ColumnAliases": {
+                "ix_index_id": "Id",
+                "ix_index_nickname": "Nickname",
+                "ix_index_name": "Name",
+                "ix_rv_maturity_unit": "MaturityUnit",
+                "ix_maturity_amt": "MaturityAmount",
+                "ix_index_defn": "IndexDefinition",
+                "ix_dd_reset_lookback": "ResetLookbackDays",
+                "ix_dd_dropdown_yn": "DropdownYn",
+                "ix_compounding_freq": "CompoundingFrequency1",
+                "ix_compounding_freq2": "CompoundingFrequency2",
+                "ix_rv_currency1_id": "Currency1",
+                "ix_rv_currency2_id": "Currency2",
+                "ix_rateset_multiplier": "RateSetMultiplier",
+                "ix_spread_over_rateset": "SpreadOverRateSet",
+                "ix_rate_cutoff_days": "RateCutoffDays",
+                "ix_rate_release_delay": "RateReleaseDelay",
+                "ix_nominal_name": "NominalName",
+                "ix_rv_index_status": "IndexStatus",
+                "ix_index_defn_short": "ShortIndexDefinition",
+                "ix_rv_governing_defn": "GoverningDefinition",
+                "ix_nonstandard_defn_bit": "IsNonStandardDefinition",
+                "ix_rate_release_time_of_dt": "RateReleaseTimeOfDay",
+                "ix_rate_loading_delay_hours": "RateLoadingDelayHours",
+                "ix_rv_index_source": "IndexSource",
+                "ix_pay_freq": "PayFrequency1",
+                "ix_pay_freq2": "PayFrequency2",
+                "ix_settlement_days": "SettlementDays",
+                "ix_daycount_conv": "DayCountConv1",
+                "ix_daycount_conv2": "DayCountConv2",
+                "ix_rv_index_type": "IndexType",
+                "ix_rv_b_day_floating": "FloatingRateBusinessDayConvention",
+                "ix_common_curve_bit": "IsCommonCurve",
+                "ix_stp_bit": "IsStp",
+                "ix_base_ix_index_id": "BaseIndexId",
+                "ix_fee_liable_bit": "IsFeeLiable",
+                "ix_public_discount_curve_bit": "IsPublicDiscountCurve",
+                "ix_equivalent_pip": "EquivalentPips",
+                "ix_capvol_default_ix_index_id": "CapVolDefaultIndexId",
+                "ix_bd_bond_det_id": "BondDetailId"
+            }
+        },
+        {
+            "TableName": "cfo_index_exposure_workflow",
+            "ModelName": "ExposureIndexWorkflow",
+            "ColumnAliases": {
+                "chiw_index_exposure_workflow_id": "Id",
+                "chiw_chi_index_exposure_id": "IndexExposureMetaId",
+                "chiw_rv_workflow_status": "WorkflowStatus",
+                "chiw_rc_workflow_nm_id": "ChangedById",
+                "chiw_workflow_change_dt": "ChangedDate"
+            }
+        },
+        {
+            "TableName": "cfo_curve",
+            "ModelName": "DiscountCurve",
+            "ColumnAliases": {
+                "crv_curve_id": "Id",
+                "crv_name": "Name",
+                "crv_ix_index_id": "IndexId"
+            }
+        },
+        {
+            "TableName": "lms_report_list",
+            "ModelName": "ReportList",
+            "ColumnAliases": {
+                "rpl_report_list_id": "Id",
+                "rpl_report": "ReportType"
+            }
+        },
+        {
+            "TableName": "cfo_sef_fix_message_alias",
+            "ModelName": "FIXMessageAlias",
+            "ColumnAliases": {
+                "sfma_sef_fix_message_alias_id": "Id",
+                "sfma_sfm_sef_fix_message_id": "FIXMessageId",
+                "sfma_sef_alias": "Alias",
+                "sfma_rv_alias_type": "AliasType"
+            }
+        },
+        {
+            "TableName": "cfo_sef_fix_message",
+            "ModelName": "FIXMessage",
+            "ColumnAliases": {
+                "sfm_sef_fix_message_id": "Id",
+                "sfm_tr_transaction_id": "TransactionId",
+                "sfm_re_entity_id": "EntityId",
+                "sfm_sending_time": "SendingTime",
+                "sfm_original_sending_time": "OriginalSendingTime",
+                "sfm_rv_message_type": "MessageType"
+            }
+        },
+        {
+            "TableName": "cfo_sef_fix_message_correction",
+            "ModelName": "FIXMessageCorrection",
+            "ColumnAliases": {
+                "sfmc_sef_fix_message_correction_id": "Id",
+                "sfmc_sfm_sef_fix_message_id": "FIXMessageId",
+                "sfmc_platform_id": "PlatformId",
+                "sfmc_rv_lifecycle_type": "LifecycleType"
+            }
+        },
+        {
+            "TableName": "cfo_sef_fix_message_detail",
+            "ModelName": "FIXMessageDetail",
+            "ColumnAliases": {
+                "sfmd_sef_fix_message_detail_id": "Id",
+                "sfmd_sfm_sef_fix_message_id": "FIXMessageId",
+                "sfmd_rv_trade_mandate_type": "TradeMandateType"
+            }
+        },
+        {
+            "TableName": "cfo_web_alert",
+            "ModelName": "WebAlert",
+            "ColumnAliases": {
+                "wa_alert_id": "Id",
+                "wa_name": "Name",
+                "wa_short_description": "ShortDescription",
+                "wa_description": "LongDescription",
+                "wa_rv_access_level": "AccessLevel",
+                "wa_rv_type": "Type",
+                "wa_active_bit": "IsActive",
+                "wa_rv_website": "Website",
+                "wa_active_start_dt": "StartDate",
+                "wa_active_end_dt": "EndDate",
+                "wa_visible_start_minutes_past_midnight": "StartMinutesPastMidnight",
+                "wa_visible_end_minutes_past_midnight": "EndMinutesPastMidnight",
+                "wa_all_regions_bit": "IsForAllRegions",
+                "wa_page_urls": "RegionUrls"
+            }
+        },
+        {
+            "TableName": "cfo_index_exposure_avg_type",
+            "ModelName": "ExposureAvgType",
+            "ColumnAliases": {
+                "chat_index_exposure_avg_type_id": "Id",
+                "chat_description": "Description",
+                "chat_start_offset": "StartOffset",
+                "chat_end_offset": "EndOffset",
+                "chat_start_bd_convention": "StartBDConvention",
+                "chat_end_bd_convention": "EndBDConvention",
+                "chat_rv_start_offset_type": "StartOffsetType",
+                "chat_rv_end_offset_type": "EndOffsetType",
+                "chat_rv_commodity_exposure_avg_type": "AveragingType",
+                "chat_avg_type_is_default": "IsDefault"
+            }
+        },
+        {
+            "TableName": "cfo_index_exposure_avg_type_entity_link",
+            "ModelName": "ExposureAvgTypeEntityLink",
+            "ColumnAliases": {
+                "ate_index_exposure_avg_type_entity_link_id": "Id",
+                "ate_chat_index_exposure_avg_type_id": "ExposureAvgTypeId",
+                "ate_re_entity_id": "EntityId"
+            }
+        },
+        {
+            "TableName": "cfo_transaction_clearing",
+            "ModelName": "Clearing",
+            "ColumnAliases": {
+                "trc_transaction_clearing_id": "Id",
+                "trc_tr_transaction_id": "TransactionId",
+                "trc_rv_clearing_category": "ClearingCategory",
+                "trc_rv_clearing_status": "ClearingStatus",
+                "trc_rv_clearing_selection": "ClearingSelection",
+                "trc_cleared_utc": "ClearedDate"
+            }
+        },
+        {
+            "TableName": "cfo_tran_link",
+            "ModelName": "TransactionLink",
+            "ColumnAliases": {
+                "ah_trans_link_id": "Id",
+                "ah_tr_transaction_id": "TransactionId",
+                "ah_tr_trans_link_id": "LinkedTransactionId",
+                "ah_dd_link": "LinkDirection",
+                "ah_rv_link_id": "LinkType"
+            }
+        },
+        {
+            "TableName": "cfo_transaction_platform_history",
+            "ModelName": "PlatformHistory",
+            "ColumnAliases": {
+                "tph_transaction_platform_history_id": "Id",
+                "tph_tr_transaction_id": "TransactionId",
+                "tph_rvpl_vendor_platform_id": "VendorPlatformId",
+                "tph_rv_status": "Status",
+                "tph_entered_by_nm_id": "EnteredBy",
+                "tph_entered_utc": "EnteredTimeUTC",
+                "tph_vendor_platform_reference_number": "PlatformReferenceNumber",
+                "tph_rv_report_type": "ReportType"
+            }
+        },
+        {
+            "TableName": "cfo_trans_closing_info",
+            "ModelName": "TransactionClosingInfo",
+            "ColumnAliases": {
+                "ci_closing_info_id": "Id",
+                "ci_tr_transaction_id": "TransactionId",
+                "ci_closing_spread": "Spread",
+                "ci_key_rate_cls": "KeyRate",
+                "ci_key_swap_rate_cls": "KeySwapRate",
+                "ci_key_swp_sprd_rate_cls": "KeySwapSpreadRate",
+                "ci_bd_bond_det": "BondInformationId",
+                "ci_rv_key_swap_id": "KeySwapId",
+                "ci_rv_key_swp_sprd_id": "KeySwapSpreadId",
+                "ci_mid_mkt_amt": "MidMarketAmount",
+                "ci_mid_mkt_rate": "MidMarketRate",
+                "ci_auction_note": "AuctionNote",
+                "ci_dd_negot_auction": "AuctionType",
+                "ci_bnk_wire_ref": "BankWireReference",
+                "ci_spnsr_wire_ref": "SponsorWireReference",
+                "ci_closing_dt": "ClosingDate",
+                "ci_dd_closing_type": "ClosingType",
+                "ci_elapsed_time_bids": "AuctionElapsedTimeBids",
+                "ci_elapsed_time_total": "AuctionElapsedTimeTotal",
+                "ci_rv_bid_type": "BidType",
+                "ci_authorized_id": "AuthorizedById",
+                "ci_authorized_dt": "AuthorizedDate",
+                "ci_authorized_rcvd_id": "AuthorizationReceivedById",
+                "ci_auction_mgr_rc_contact_id": "AuctionManagerContactId",
+                "ci_mid_mkt_dv01": "Dv01",
+                "ci_rv_mid_market_source": "MidMarketSource"
+            }
+        },
+        {
+            "TableName": "cfo_transaction_active_date",
+            "ModelName": "TransactionActiveDate",
+            "ColumnAliases": {
+                "tad_transaction_active_date_id": "Id",
+                "tad_tr_transaction_id": "TransactionId",
+                "tad_rv_date_type": "DateType",
+                "tad_start_dt": "StartDate",
+                "tad_end_dt": "EndDate",
+                "tad_auto_update_bit": "AutoUpdate"
+            }
+        },
+        {
+            "TableName": "cfo_transaction_fee",
+            "ModelName": "TransactionFee",
+            "ColumnAliases": {
+                "trf_transaction_fee_id": "Id",
+                "trf_fcl_fee_comment_link_id": "FeeCommentLinkId",
+                "trf_rv_fee_type": "FeeType",
+                "trf_fee_amount": "FeeAmount",
+                "trf_create_nm_id": "CreatedBy",
+                "trf_create_dt": "CreatedDate",
+                "trf_modify_nm_id": "ModifiedBy",
+                "trf_modify_dt": "ModifiedDate"
+            }
+        },
+        {
+            "TableName": "cfo_fee_comment_link",
+            "ModelName": "FeeCommentLink",
+            "ColumnAliases": {
+                "fcl_fee_comment_link_id": "Id",
+                "fcl_te_trans_relation_id": "TransactionEntityRelationId"
+            }
+        },
+        {
+            "TableName": "cfo_transaction_termination_workflow",
+            "ModelName": "TransactionTerminationWorkflow",
+            "ColumnAliases": {
+                "ttw_transaction_termination_workflow_id": "Id",
+                "ttw_tr_transaction_id": "TransactionId",
+                "ttw_rv_status": "Status",
+                "ttw_rc_contact_id_assignee": "AssigneeContactId",
+                "ttw_status_dto": "StatusDate",
+                "ttw_create_nm_id": "CreatedById",
+                "ttw_create_dto": "CreatedDate"
+            }
+        },
+        {
+            "TableName": "cfo_transaction_salesforce_link",
+            "ModelName": "SalesforceTransactionJoin",
+            "ColumnAliases": {
+                "tsl_transaction_salesforce_link_id": "Id",
+                "tsl_tr_transaction_id": "TransactionId",
+                "tsl_salesforce_id": "SalesforceId",
+                "tsl_last_sync_dt": "LastSyncDate",
+                "tsl_create_nm_id": "CreatedById",
+                "tsl_create_dto": "CreatedDate"
+            }
+        },
+        {
+            "TableName": "cfo_transaction_version",
+            "ModelName": "TransactionVersion",
+            "ColumnAliases": {
+                "ver_transaction_version_id": "Id",
+                "ver_tr_transaction_id": "TransactionId",
+                "ver_last_updated_dto": "LastUpdatedDate",
+                "ver_create_nm_id": "CreatedBy",
+                "ver_create_dto": "CreatedDate"
+            }
+        },
+        {
+            "TableName": "cfo_transaction_allocation",
+            "ModelName": "TransactionAllocation",
+            "ColumnAliases": {
+                "ta_allocation_id": "Id",
+                "ta_ind_invoice_id": "InvoiceId",
+                "ta_rv_office_id": "OfficeId",
+                "ta_allocation_percent": "AllocationPercent"
+            }
+        },
+        {
+            "TableName": "cfo_transaction",
+            "ModelName": "Transaction",
+            "ColumnAliases": {
+                "tr_transaction_id": "Id",
+                "tr_bank_reference_nbr": "BankReferenceNumber",
+                "tr_client_ref_nbr": "ClientReferenceNumber",
+                "tr_loan_reference_nbr": "LoanReferenceNumber",
+                "tr_borrower": "Borrower",
+                "tr_create_dt": "CreatedDate",
+                "tr_description": "Description",
+                "tr_hedged_item": "HedgedItem",
+                "tr_nickname": "Nickname",
+                "tr_reference_nbr": "CRN",
+                "tr_rv_portfolio1_id": "Portfolio1Id",
+                "tr_rv_portfolio2_id": "Portfolio2Id",
+                "tr_rv_portfolio3_id": "Portfolio3Id",
+                "tr_trade_dt": "TradeDate",
+                "tr_hypothetical_deal_bit": "IsHypo",
+                "tr_dd_ratemgr_deal_yn": "RateManagerDeal",
+                "tr_rv_misys_status": "TradeMatchingStatus",
+                "tr_sent_to_misys_rc_contact_id": "TradeMatchSentTo",
+                "tr_sent_to_misys_dt": "TradeMatchSentToDate",
+                "tr_create_nm_id": "CreatedByUserId",
+                "tr_jurisdiction_country": "JurisdictionCountry",
+                "tr_dd_chatham_deal": "ChathamDeal",
+                "tr_rv_transxn_type": "GreatPlainsTransactionType",
+                "tr_cg_chatham_grp_id": "ChathamGroupId",
+                "tr_show_on_valuation_report_override_start_dt": "LegacyShowOnValuationReportOverrideStartDate",
+                "tr_show_on_valuation_report_override_end_dt": "LegacyShowOnValuationReportOverrideEndDate"
+            },
+            "ResultColumns": [
+                "tr_create_nm_id",
+                "tr_create_dt"
+            ]
+        },
+        {
+            "TableName": "cfo_tran_quote",
+            "ModelName": "TransactionQuote",
+            "ColumnAliases": {
+                "tq_tran_quote_id": "Id",
+                "tq_tr_transaction_id": "TransactionId",
+                "tq_term_trade_dt": "TerminationTradeDate",
+                "tq_premium_pmnt": "PremiumPaymentAmount",
+                "tq_premium_pmnt_dt": "PremiumPaymentDate",
+                "tq_rv_prem_currency": "PremiumPaymentCurrencyRefId",
+                "tq_nominal_strike2": "DescriptiveStrike2",
+                "tq_dd_drilldown_yn": "TransactionDrillDown",
+                "tq_partial_term_notional": "PartialTerminationNotional",
+                "tq_cash_settle_dt": "CashSettlementDate",
+                "tq_xccy_periodic_principal_exchange_bit": "PeriodicNotionalExchange",
+                "tq_dd_buy_sell": "BuyOrSell",
+                "tq_dd_nominal_product": "DescriptiveProduct",
+                "tq_dd_product": "Product",
+                "tq_rv_product": "ProductTypeRefId",
+                "tq_dd_tran_qt_status": "Status",
+                "tq_dd_web_display_yn": "WebDisplay",
+                "tq_expct_cls_dt": "ExpectedClosing",
+                "tq_nominal_index": "DescriptiveIndex",
+                "tq_nominal_notional": "DescriptiveNotional",
+                "tq_nominal_spread": "DescriptiveSpread",
+                "tq_nominal_strike": "DescriptiveStrike",
+                "tq_notional": "Notional",
+                "tq_rv_nominal_curr_id": "NotionalCurrencyId",
+                "tq_rv_valuation_curr": "ValuationCurrencyId",
+                "tq_termination_dt": "TerminationDate",
+                "tq_term_prem_amt": "TerminationPremiumAmount",
+                "tq_rv_term_prem_curr": "TerminationPremiumCurrencyId",
+                "tq_term_prem_pmt_dt": "TerminationPremiumDate",
+                "tq_dd_value_yn": "ValueMethod",
+                "tq_parent_tq_tran_quote_id": "ParentTransactionQuoteId",
+                "tq_termination_spot_rate": "TerminationSpotRate",
+                "tq_dd_mid_bid_ask": "MidBidAsk"
+            }
+        },
+        {
+            "TableName": "com_date_timezone",
+            "ModelName": "DateTimezone",
+            "ColumnAliases": {
+                "dtz_date_timezone_id": "Id",
+                "dtz_tr_transaction_id": "TransactionId",
+                "dtz_rv_timezone": "DateTimeZone",
+                "dtz_rv_date_type": "TimezoneDateType"
+            }
+        },
+        {
+            "TableName": "cfo_end_user_exemption_transaction_link",
+            "ModelName": "EndUserExemptionTransactionLink",
+            "ColumnAliases": {
+                "euet_end_user_exemption_transaction_link_id": "Id",
+                "euet_eue_end_user_exemption_id": "EndUserExemptionId",
+                "euet_tr_transaction_id": "TransactionId"
+            }
+        },
+        {
+            "TableName": "cfo_product_detail",
+            "ModelName": "ProductDetail",
+            "ColumnAliases": {
+                "pmd_product_detail_id": "Id",
+                "pmd_prm_product_main_id": "ProductMainId",
+                "pmd_max_credit_exposure": "MaxCreditExposure",
+                "pmd_rv_initial_rate_settings_default": "InitialRateSettingsDefault"
+            }
+        },
+        {
+            "TableName": "cfo_holiday_transaction",
+            "ModelName": "HolidayTransaction",
+            "ColumnAliases": {
+                "ht_holiday_transaction_id": "Id",
+                "ht_tr_transaction_id": "TransactionId",
+                "ht_hc_holiday_city_id": "HolidayCityId"
+            }
+        },
+        {
+            "TableName": "com_holiday_city",
+            "ModelName": "HolidayCity",
+            "ColumnAliases": {
+                "hc_holiday_city_id": "Id",
+                "hc_city": "HolidayCityName"
+            }
+        },
+        {
+            "TableName": "cfo_quote_udf_field",
+            "ModelName": "UserDefinedField",
+            "ColumnAliases": {
+                "uqc_quote_udf_field_id": "Id",
+                "uqc_tq_tran_quote_id": "TransactionQuoteId",
+                "uqc_field1": "Field1",
+                "uqc_field2": "Field2",
+                "uqc_field3": "Field3",
+                "uqc_field4": "Field4",
+                "uqc_field5": "Field5",
+                "uqc_field6": "Field6",
+                "uqc_field7": "Field7",
+                "uqc_field8": "Field8",
+                "uqc_field9": "Field9",
+                "uqc_field10": "Field10"
+            }
+        },
+        {
+            "TableName": "com_reference_value",
+            "ModelName": "ReferenceValue",
+            "ColumnAliases": {
+                "rv_ref_value_id": "Id",
+                "rv_description": "Description",
+                "rv_rf_reference_id": "GroupId",
+                "rv_note": "Note"
+            }
+        },
+        {
+            "TableName": "com_reference_value_sub",
+            "ModelName": "ReferenceValueSub",
+            "ColumnAliases": {
+                "rvs_ref_value_sub_id": "Id",
+                "rvs_rv_ref_value_id": "ParentReferenceValueId",
+                "rvs_description": "Description",
+                "rvs_note": "Note"
+            }
+        },
+        {
+            "TableName": "com_market_data_agreement",
+            "ModelName": "MarketDataAgreement",
+            "ColumnAliases": {
+                "mda_market_data_agreement_id": "Id",
+                "mda_mdp_market_data_provider_id": "MarketDataProviderId",
+                "mda_description": "AgreementDescription",
+                "mda_start_date": "AgreementStartDate",
+                "mda_end_date": "AgreementEndDate",
+                "mda_rv_licensed_entity": "LicenseEntity",
+                "mda_rv_renewal_cycle": "RenewalCycle",
+                "mda_termination_notice_in_days": "TerminationNoticeInDays",
+                "mda_account_manager_contact_id": "AccountManagerContactId"
+            }
+        },
+        {
+            "TableName": "com_market_data_agreement_user",
+            "ModelName": "MarketDataAgreementUser",
+            "ColumnAliases": {
+                "mdau_market_data_agreement_user_id": "Id",
+                "mdau_mdpa_market_data_package_id": "MarketDataPackageId",
+                "mdau_account_manager_contact_id": "AccountManagerContactId",
+                "mdau_start_date": "LicenseStartDate",
+                "mdau_end_date": "LicenseEndDate",
+                "mdau_rv_license_type": "LicenseType"
+            }
+        },
+        {
+            "TableName": "com_market_data_package",
+            "ModelName": "MarketDataPackage",
+            "ColumnAliases": {
+                "mdpa_market_data_package_id": "Id",
+                "mdpa_mda_market_data_agreement_id": "MarketDataAgreementId",
+                "mdpa_description": "PackageDescription",
+                "mdpa_rv_reporting_requirement": "ReportingRequirement",
+                "mdpa_edad_reporting_code": "EdadReportingCode",
+                "mdpa_external_redistribution_delay_in_hours": "ExternalRedistributionDelayinHours",
+                "mdpa_rv_external_redistribution_raw": "ExternalRedistribution",
+                "mdpa_fee_liable_reporting_bit": "FeeLiableReporting",
+                "mdpa_publish_time": "PackagePublishTime",
+                "mdpa_publish_time_zone_id": "MarketDataPackageTimeZoneId",
+                "mdpa_rv_external_redistribution_derived": "ExternalRedistributionDerived"
+            }
+        },
+        {
+            "TableName": "com_market_data_package_cost",
+            "ModelName": "MarketDataPackageCost",
+            "ColumnAliases": {
+                "mdpc_market_data_package_cost_id": "Id",
+                "mdpc_mdpa_market_data_package_id": "MarketDataPackageId",
+                "mdpc_start_date": "PricingStartDate",
+                "mdpc_end_date": "PricingEndDate",
+                "mdpc_monthly_unit_price": "MonthlyUnitPrice",
+                "mdpc_rv_currency": "PriceCurrency",
+                "mdpc_rv_pricing_unit": "UnitOfPricing"
+            }
+        },
+        {
+            "TableName": "com_market_data_package_index",
+            "ModelName": "MarketDataPackageIndex",
+            "ColumnAliases": {
+                "mdpi_market_data_package_index_id": "Id",
+                "mdpi_mdpa_market_data_package_id": "MarketDataPackageId",
+                "mdpi_ip_provider_index_id": "IndexId"
+            }
+        },
+        {
+            "TableName": "com_market_data_provider",
+            "ModelName": "MarketDataProvider",
+            "ColumnAliases": {
+                "mdp_market_data_provider_id": "Id",
+                "mdp_rv_provider_type": "ProviderType",
+                "mdp_re_entity_id": "EntityId"
+            }
+        },
+        {
+            "TableName": "com_market_data_terminal",
+            "ModelName": "MarketDataTerminal",
+            "ColumnAliases": {
+                "mdtm_market_data_terminal_id": "Id",
+                "mdtm_registrant_rc_contact_id": "RegistrantContactId",
+                "mdtm_serial_number": "SerialNumber",
+                "mdtm_rv_license_type": "LicenseType",
+                "mdtm_sid": "Sid",
+                "mdtm_user_number": "UserNumber",
+                "mdtm_uuid": "Uuid",
+                "mdtm_renewal_date": "LicenseRenewalDate",
+                "mdtm_location": "FloorLocation",
+                "mdtm_rv_office": "Office",
+                "mdtm_contract_date": "ContractDate"
+            }
+        },
+        {
+            "TableName": "com_market_data_terminal_package",
+            "ModelName": "MarketDataTerminalPackage",
+            "ColumnAliases": {
+                "mdtp_market_data_terminal_package_id": "Id",
+                "mdtp_mdtm_market_data_terminal_id": "MarketDataTerminalId",
+                "mdtp_mdpa_market_data_package_id": "MarketDataPackageId"
+            }
+        },
+        {
+            "TableName": "cfo_batch_process",
+            "ModelName": "Process",
+            "ColumnAliases": {
+                "ps_batch_process_id": "Id",
+                "ps_process_type_name": "TypeName",
+                "ps_admin_email": "AdminEmail",
+                "ps_rv_batch_periodicity": "ResetFrequency",
+                "ps_rv_business_day_conv": "BusinessDayConvention",
+                "ps_business_day_bit": "IsBusinessDay",
+                "ps_assembly_path": "AssemblyPath",
+                "ps_process_timeout": "TimeOut"
+            }
+        },
+        {
+            "TableName": "cfo_batch_process_arg",
+            "ModelName": "ProcessArg",
+            "ColumnAliases": {
+                "pa_batch_process_arg_id": "Id",
+                "pa_pr_batch_process_run_id": "ProcessRunId",
+                "pa_pd_arg_def_id": "ProcessArgDefinitionId",
+                "pa_arg_value": "Value"
+            }
+        },
+        {
+            "TableName": "cfo_batch_process_arg_def",
+            "ModelName": "ProcessArgDefinition",
+            "ColumnAliases": {
+                "pd_batch_process_arg_def_id": "Id",
+                "pd_ps_batch_process_id": "ProcessId",
+                "pd_arg_name": "Name",
+                "pd_rv_arg_type": "Type",
+                "pd_required_bit": "IsRequired",
+                "pd_multiple_allowed_bit": "MultipleAllowed"
+            }
+        },
+        {
+            "TableName": "cfo_batch_process_depend",
+            "ModelName": "ProcessDependency",
+            "ColumnAliases": {
+                "pd_process_dep_id": "Id",
+                "pd_parent_pr_batch_process_run_id": "ParentProcessRunId",
+                "pd_child_pr_batch_process_run_id": "ChildProcessRunId"
+            }
+        },
+        {
+            "TableName": "cfo_batch_process_run",
+            "ModelName": "ProcessRun",
+            "ColumnAliases": {
+                "pr_batch_process_run_id": "Id",
+                "pr_ps_batch_process_id": "ProcessId",
+                "pr_batch_bit": "IsBatch",
+                "pr_run_time_dt": "RunTime",
+                "pr_friendly_name": "FriendlyName",
+                "pr_constant_bit": "IsConstant",
+                "pr_cost_sensitive_bit": "IsConstantSensitive",
+                "pr_close_minute": "CloseMinute",
+                "pr_run_on_non_business_days": "RunOnNonBusinessDays"
+            }
+        },
+        {
+            "TableName": "com_time_zone",
+            "ModelName": "MarketDataPackageTimeZone",
+            "ColumnAliases": {
+                "tz_time_zone_id": "Id",
+                "tz_time_zone_desc": "Description",
+                "tz_time_zone_abrv": "Abbreviation",
+                "tz_hrs_from_gmt": "HoursFromGmt"
+            }
+        },
+        {
+            "TableName": "cfo_collateral_posting",
+            "ModelName": "Posting",
+            "ColumnAliases": {
+                "clp_collateral_posting_id": "Id",
+                "clp_mar_marriage_id": "MarriageId",
+                "clp_icd_icad_description_id": "IcadDescriptionId",
+                "clp_value": "Value",
+                "clp_post_dt": "PostDate",
+                "clp_rv_post_type": "Type",
+                "clp_initial_post": "InitialPost",
+                "clp_cusip": "Cusip",
+                "clp_pending_bit": "Pending",
+                "clp_rv_posting_direction": "Direction"
+            }
+        },
+        {
+            "TableName": "cfo_collateral_security",
+            "ModelName": "Security",
+            "ColumnAliases": {
+                "clsc_collateral_security_id": "Id",
+                "clsc_ix_index_id": "IndexId",
+                "clsc_cusip": "Cusip",
+                "clsc_rv_market_sector": "MarketSector",
+                "clsc_issuer": "Issuer",
+                "clsc_security_factorable_bit": "Factorable",
+                "clsc_latest_factor": "Factor",
+                "clsc_maturity_dt": "MaturityDate"
+            }
+        },
+        {
+            "TableName": "cfo_marriage_eligible_collateral",
+            "ModelName": "MarriageEligible",
+            "ColumnAliases": {
+                "mec_marriage_eligible_collateral_id": "Id",
+                "mec_mar_marriage_id": "MarriageId",
+                "mec_icd_icad_description_id": "IcadDescriptionId",
+                "mec_maturity_lower_bound": "MaturityLowerBound",
+                "mec_maturity_upper_bound": "MaturityUpperBound",
+                "mec_haircut_percent": "HaircutPercent",
+                "mec_rv_party": "Party",
+                "mec_me_marriage_entity_id": "MarriageEntityId",
+                "mec_rv_margin_type": "MarginType"
+            }
+        },
+        {
+            "TableName": "com_contact",
+            "ModelName": "Contact",
+            "ColumnAliases": {
+                "rc_contact_id": "Id",
+                "rc_first_name": "ContactFirstName",
+                "rc_last_name": "ContactLastName",
+                "rc_name_full": "ContactFullName",
+                "rc_salesforce_id": "SalesforceId",
+                "rc_rv_status_id": "Status",
+                "rc_email": "ContactEmail",
+                "rc_re_entity_id": "EntityId"
+            },
+            "ResultColumns": [
+                "rc_name_full"
+            ]
+        },
+        {
+            "TableName": "com_phone_nbr",
+            "ModelName": "Phone",
+            "ColumnAliases": {
+                "ph_phone_nbr_id": "Id",
+                "ph_cn_country_id": "CountryId",
+                "ph_area_code": "AreaCode",
+                "ph_nbr": "PhoneNumber",
+                "ph_ext": "Extension",
+                "ph_description": "Description"
+            }
+        },
+        {
+            "TableName": "com_phone_nbr_links",
+            "ModelName": "PhoneLink",
+            "ColumnAliases": {
+                "phl_phone_link_id": "Id",
+                "phl_ph_phone_nbr_id": "PhoneId",
+                "phl_rc_contact_id": "ContactId",
+                "phl_re_entity_id": "EntityId",
+                "phl_rv_type_id": "PhoneType",
+                "phl_description": "Description",
+                "phl_primary_bit": "Primary",
+                "phl_readonly_bit": "Readonly"
+            }
+        },
+        {
+            "TableName": "com_role",
+            "ModelName": "Role",
+            "ColumnAliases": {
+                "cro_role_id": "Id",
+                "cro_re_entity_id": "RoleEntityId",
+                "cro_role_name": "RoleName"
+            }
+        },
+        {
+            "TableName": "cfo_user",
+            "ModelName": "User",
+            "ColumnAliases": {
+                "us_user_id": "Id",
+                "us_rc_contact_id": "ContactId",
+                "us_logon_name": "LogonName",
+                "us_encrypt_pswd": "EncryptedPassword",
+                "us_rs_entity_id": "EntityId",
+                "us_pwd_expiration_dt": "PasswordExpiration",
+                "us_rv_hashing_algorithm": "HashingAlgorithm",
+                "us_rv_homepage_id": "HomePageId",
+                "us_wl_locale_id": "LocaleId",
+                "us_active_user_bit": "Active",
+                "us_locked_bit": "Locked",
+                "us_rc_contact_id_authorized_by": "AuthorizedByContactId",
+                "us_nt_note_id": "NoteId",
+                "us_create_nm_id": "CreatedByContactId"
+            }
+        },
+        {
+            "TableName": "cfo_monitor_users",
+            "ModelName": "MonitorUser",
+            "ColumnAliases": {
+                "mu_user_visit_id": "Id",
+                "mu_us_user_id": "UserId",
+                "mu_user_name": "UserName",
+                "mu_ipaddress": "SourceIpAddress",
+                "mu_logon_datetime": "LogonDate",
+                "mu_rv_login_status": "StatusCode",
+                "mu_rv_website_accessed": "System"
+            }
+        },
+        {
+            "TableName": "cfo_user_password_history",
+            "ModelName": "UserPasswordHistory",
+            "ColumnAliases": {
+                "uph_user_password_history_id": "Id",
+                "uph_us_user_id": "UserId",
+                "uph_encrypt_pswd": "EncryptedPassword",
+                "uph_password_change_utc": "PasswordChangedDateUtc",
+                "uph_rv_hashing_algorithm": "HashingAlgorithm"
+            }
+        },
+        {
+            "TableName": "cfo_permission_user",
+            "ModelName": "UserPermission",
+            "ColumnAliases": {
+                "pu_permission_user_id": "Id",
+                "pu_rc_contact_id": "ContactId",
+                "pu_value": "IsEnabled",
+                "pu_pd_permission_id":  "PermissionId"
+            }
+        },
+        {
+            "TableName": "cfo_permission_defn",
+            "ModelName": "Permission",
+            "ColumnAliases": {
+                "pd_permission_id": "Id",
+                "pd_permission_desc": "Description",
+                "pd_rv_company_pref_dependency": "CompanyPreferenceDependency",
+                "pd_value": "DefaultValue"
+            }
+        },
+        {
+            "TableName": "cfo_trans_contact_rel",
+            "ModelName": "ContactTransactionRelationship",
+            "ColumnAliases": {
+                "tc_contact_rel_id": "Id",
+                "tc_rc_contact_id": "ContactId",
+                "tc_rv_rel_type_id": "ContactRelationship",
+                "tc_te_trans_relation_id": "EntityTransactionRelationship",
+                "tc_rv_notice_delivery_method_id": "NoticeDeliveryMethod",
+                "tc_rv_borrower_report_delivery_method": "BorrowerReportDeliveryMethod"
+            }
+        },
+        {
+            "TableName": "cfo_trans_entity_rel",
+            "ModelName": "EntityTransactionRelationship",
+            "ColumnAliases": {
+                "te_trans_relation_id": "Id",
+                "te_tr_transaction_id": "TransactionId",
+                "te_co_re_entity_id": "EntityId",
+                "te_rv_rel_type_id": "EntityRelationshipRefId"
+            }
+        },
+        {
+            "TableName": "cfo_settings",
+            "ModelName": "Setting",
+            "ColumnAliases": {
+                "set_settings_id": "Id",
+                "set_us_user_id": "UserId",
+                "set_setting_values": "SettingValues",
+                "set_rv_settings_group": "SettingGroup",
+                "set_rv_setting_type": "SettingType",
+                "set_rv_settings_class": "SettingClass"
+            }
+        },
+        {
+            "TableName": "com_user_pref",
+            "ModelName": "UserPreference",
+            "ColumnAliases": {
+                "up_user_pref_id": "Id",
+                "up_us_user_id": "UserId",
+                "up_rv_pref_type_id": "UserPreference",
+                "up_pref_value": "PreferenceValue"
+            }
+        },
+        {
+            "TableName": "com_project",
+            "ModelName": "Project",
+            "ColumnAliases": {
+                "pj_project_id": "Id",
+                "pj_project_name": "Name",
+                "pj_rv_project_type": "Type",
+                "pj_rv_status": "Status"
+            }
+        },
+        {
+            "TableName": "com_project_index_link",
+            "ModelName": "ProjectIndexLink",
+            "ColumnAliases": {
+                "pil_project_index_link_id": "Id",
+                "pil_pj_project_id": "ProjectId",
+                "pil_ix_index_id": "IndexId"
+            }
+        },
+        {
+            "TableName": "com_project_transaction_link",
+            "ModelName": "ProjectTransactionLink",
+            "ColumnAliases": {
+                "pt_project_transaction_link_id": "Id",
+                "pt_tr_transaction_id": "TransactionId",
+                "pt_pj_project_id": "ProjectId"
+            }
+        },
+        {
+            "TableName": "com_project_permission_link",
+            "ModelName": "ProjectPermissionLink",
+            "ColumnAliases": {
+                "pp_project_permission_link_id": "Id",
+                "pp_pj_project_id": "ProjectId",
+                "pp_tr_transaction_id": "TransactionId",
+                "pp_rc_contact_id": "ContactId",
+                "pp_value": "Value"
+            }
+        },
+        {
+            "TableName": "cfo_calc_settle",
+            "ModelName": "CashSettlement",
+            "ColumnAliases": {
+                "cs_calc_settle_id": "Id",
+                "cs_cash_settl_pmnt_dt": "CashSettlementPaymentDate",
+                "cs_chtm_settl_amt": "ChathamSettlementAmount",
+                "cs_cm_component_id": "ComponentId",
+                "cs_dd_cash_settle": "CashSettled",
+                "cs_dd_opt_style": "OptionStyle",
+                "cs_dd_settl_mthd": "SettlementMethod",
+                "cs_dd_settlement_type": "SettlementType",
+                "cs_determination_dt": "DeterminationDate",
+                "cs_float_determ_day": "FloatDeterminationDay",
+                "cs_future_foreign_currency_amt": "FutureForeignCurrencyAmount",
+                "cs_future_home_currency_amt": "FutureHomeCurrencyAmount",
+                "cs_locked_treas_rate": "LockedTreasuryRate",
+                "cs_present_currency_amt": "PresentCurrencyAmount",
+                "cs_present_discount_factor": "PresentDiscountFactor",
+                "cs_present_settlement_dt": "PresentSettlementDate",
+                "cs_rv_buy_curr_id": "BuyCurrency",
+                "cs_rv_future_foreign_currency": "FutureForeignCurrency",
+                "cs_rv_future_home_currency": "FutureHomeCurrency",
+                "cs_rv_present_currency": "PresentCurrency",
+                "cs_rv_sell_curr_id": "SellCurrency",
+                "cs_settlement_amt": "SettlementAmount",
+                "cs_settlement_dt": "SettlementDate",
+                "cs_settlement_rate": "SettlementRate",
+                "cs_swap_settl_rate": "SwapSettlementRate",
+                "cs_swp_sprd_settl_rate": "SwapSpreadSettlementRate",
+                "cs_treas_settl_rate": "TreasureySettlementRate",
+                "cs_buy_currency": "NotionalBuy",
+                "cs_sell_currency": "NotionalSell",
+                "cs_designation_spot_rate": "DesignationSpotRate"
+            }
+        },
+        {
+            "TableName": "cfo_calc_settle_FX",
+            "ModelName": "CashSettlementFx",
+            "ColumnAliases": {
+                "csfx_calc_settle_FX_id": "Id",
+                "csfx_cs_calc_settle_id": "CashSettlementId",
+                "csfx_near_rate": "SpotRate",
+                "csfx_market_points": "MarketPoints",
+                "csfx_credit_points": "CreditChargePoints",
+                "csfx_fixing_dt": "FixingDate"
+            }
+        },
+        {
+            "TableName": "cfo_component",
+            "ModelName": "Component",
+            "ColumnAliases": {
+                "cm_amort_pmnt_amt": "AmortizationPaymentAmount",
+                "cm_component_id": "Id",
+                "cm_dd_amort_method": "AmortizationMethod",
+                "cm_dd_applicable_yn": "Applicable",
+                "cm_dd_bullet_amort_accrete": "ScheduleType",
+                "cm_dd_buy_sell_id": "BuySell",
+                "cm_dd_compnt_type": "ComponentType",
+                "cm_dd_compound_yn": "IsCompounding",
+                "cm_dd_interest_accrual_method": "InterestAccrualMethod",
+                "cm_dd_maturity_b_day_conv": "MaturityDateBusinessDayConvention",
+                "cm_dd_multiple_resets_yn": "MultipleReset",
+                "cm_dd_pay_receive": "PayReceive",
+                "cm_dd_pmt_b_day_conv": "PaymentBusinessDayConvention",
+                "cm_dd_rate_reset_freq": "RateResetFrequency",
+                "cm_dd_reset_b_day_conv": "ResetBusinessDayConvention",
+                "cm_dd_reset_day_of_week": "ResetDayOfWeek",
+                "cm_dd_reset_pattern_start_dt": "ResetPatternStartDate",
+                "cm_dd_reset_spec_method": "ResetSpecMethod",
+                "cm_dd_roll_b_day_conv": "RollBusinessDayConvention",
+                "cm_dd_roll_day": "RollDay",
+                "cm_dd_spread_constant_yn": "IsConstantSpread",
+                "cm_dd_strike_constant_yn": "IsConstantStrike",
+                "cm_discount_curve_ix_index_id": "DiscountCurveIndexId",
+                "cm_effective_dt": "EffectiveDate",
+                "cm_end_dt": "EndDate",
+                "cm_initial_notional": "InitialNotional",
+                "cm_ix_index_id": "IndexId",
+                "cm_maturity_dt": "MaturityDate",
+                "cm_notional": "Notional",
+                "cm_payment_day_reference_day_adjusted": "PaymentDayReferenceDayAdjusted",
+                "cm_rate_float_reset_day": "RateFloatResetDay",
+                "cm_rate_reset_cutoff_days": "RateResetCutoffDays",
+                "cm_rate_reset_day": "RateResetDay",
+                "cm_reset_day_reference_day_adjusted": "ResetDayReferenceDayAdjusted",
+                "cm_reset_pos_relative_to_roll": "ResetPosRelativeToRoll",
+                "cm_reset_relative_to": "ResetRelativeTo",
+                "cm_rv_currency_id": "NotionalCurrency",
+                "cm_rv_rnd_conv_id": "RoundingConvention",
+                "cm_rv_secondary_rnd_conv": "SecondaryRoundingConvention",
+                "cm_rv_wght_ave_mthd_id": "WeightedAveragingMthod",
+                "cm_spread": "Spread",
+                "cm_start_dt": "StartDate",
+                "cm_strike": "Strike",
+                "cm_tq_tran_quote_id": "TransactionQuoteId",
+                "cm_cost_amortization_start_dt": "CostAmortizationStartDate",
+                "cm_dd_pmt_frequency": "PaymentFrequency",
+                "cm_float_pmnt_day": "PaymentDayFloating",
+                "cm_dd_payment_day": "PaymentDay",
+                "cm_dd_pmt_spec_method": "PaymentSpecMethod",
+                "cm_pmt_relative_to": "PaymentRelativeToRoll",
+                "cm_pmt_pos_relative_to_roll": "PaymentPositionRelativeToRoll",
+                "cm_first_roll_dt": "FirstRollDate",
+                "cm_dd_long_first_prd": "LongFirstPeriod",
+                "cm_dd_long_last_prd": "LongLastPeriod"
+            }
+        },
+        {
+            "TableName": "cfo_schedule_detail",
+            "ModelName": "ScheduleDetail",
+            "ColumnAliases": {
+                "fl_ongoing_calc_id": "Id",
+                "fl_se_schedule_id": "ScheduleId",
+                "fl_prnc_notion_amt": "PrincipleNotionalAmount1",
+                "fl_notional2": "PrincipalNotionalAmount2",
+                "fl_payment_amt1": "PaymentAmount1",
+                "fl_payment_amt2": "PaymentAmount2",
+                "fl_payment_amt3": "PaymentAmount3",
+                "fl_net_amt": "NetAmount",
+                "fl_payment_dt": "PaymentDate",
+                "fl_spread": "Spread1",
+                "fl_spread2": "Spread2",
+                "fl_strike_rate1": "StrikeRate1",
+                "fl_strike_rate2": "StrikeRate2",
+                "fl_strike_rate3": "StrikeRate3",
+                "fl_strike_amt1": "StrikeAmount1",
+                "fl_strike_amt2": "StrikeAmount2",
+                "fl_strike_amt3": "StrikeAmount3",
+                "fl_index_rate": "IndexRate1",
+                "fl_index2_rate": "IndexRate2",
+                "fl_index_amt": "IndexAmount",
+                "fl_rate_reset_dt": "RateResetDate",
+                "fl_to_dt": "ToDate",
+                "fl_from_dt": "FromDate",
+                "fl_float_to_dt": "FloatToDate",
+                "fl_float_from_dt": "FloatFromDate",
+                "fl_lt_tranche_id": "TrancheId",
+                "fl_principal_pmt_amt": "PrincipalPaymentAmount",
+                "fl_from_unadjusted_dt": "FromUnadjustedDate",
+                "fl_to_unadjusted_dt": "ToUnadjustedDate",
+                "fl_float_from_unadjusted_dt": "FloatFromUnadjustedDate",
+                "fl_float_to_unadjusted_dt": "FloatToUnadjustedDate",
+                "fl_payment_unadjusted_dt": "PaymentUnadjustedDate",
+                "fl_rate_fixing1_dt": "RateFixingDate1",
+                "fl_rate_fixing_dt2": "RateFixingDate2",
+                "fl_rate_reset1_dt": "RateResetDate1",
+                "fl_rate_reset2_dt": "RateResetDate2",
+                "fl_rate_reset1_unadjusted_dt": "RateResetUnadjustedDate",
+                "fl_rate_reset2_unadjusted_dt": "RateResetUnadjustedDate2",
+                "fl_eff_int_rate": "EffectiveInterestRate",
+                "fl_hedged_int_rate": "HedgedInterestRate",
+                "fl_origination_costs": "OriginationCost",
+                "fl_issuance_costs": "IssuanceCost",
+                "fl_premium_discount": "PremiumDiscount",
+                "fl_purch_acct_adj": "PurchaseAccountAdjustment",
+                "fl_cost_amort_amt": "CostAmortizationAmount"
+            }
+        },
+        {
+            "TableName": "cfo_schedule",
+            "ModelName": "Schedule",
+            "ColumnAliases": {
+                "se_schedule_id": "Id",
+                "se_tq_tran_quote_id": "TranQuoteId",
+                "se_dd_roll_day": "RollDay",
+                "se_dd_schedule": "ScheduleType",
+                "se_dd_long_first_prd": "LongFirstPeriod",
+                "se_dd_long_last_prd": "LongLastPeriod",
+                "se_dd_frequency1": "Frequency1",
+                "se_dd_frequency2": "Frequency2",
+                "se_dd_frequency3": "Frequency3",
+                "se_dd_day_fraction1": "DayFraction1",
+                "se_dd_day_fraction2": "DayFraction2",
+                "se_dd_day_fraction3": "DayFraction3",
+                "se_dd_payment_day": "PaymentDay",
+                "se_float_pmnt_day": "FloatingPaymentDay",
+                "se_next_rate_dt": "NextRateDate",
+                "se_coupon_rate": "CouponRate",
+                "se_amort_term_mnth": "AmortizationTermInMonths",
+                "se_balloon_pmnt": "BallonPayment",
+                "se_amort_pmnt_amt": "AmortizationPeriodAmount",
+                "se_dd_split_sched": "SplitSchedule",
+                "se_rate_reset_day": "RateResetDay",
+                "se_rate_float_reset_day": "RateFloatingResetDay",
+                "se_amort_increment": "AmortizationIncrement",
+                "se_initial_notional": "InitialNotional",
+                "se_dd_amort_type": "AmortizationType",
+                "se_dd_multiple_resets": "MultipleResets",
+                "se_dd_rate_reset_freq": "RateResetFrequency",
+                "se_first_fxd_roll_dt": "FirstFixedRollDate",
+                "se_first_fltg_roll_dt": "FirstFloatingRollDay",
+                "se_ix_index_id": "IndexId",
+                "se_dd_mult_tranches": "MultipleTranches",
+                "se_dd_compound": "IsCompounding",
+                "se_compound_freq": "CompoundingFrequency",
+                "se_compound_method": "CompoundingMethod",
+                "se_compound_start_dt": "CompoundingStartDate",
+                "se_first_float_payment_dt": "FirstFloatingPaymentDate",
+                "se_dd_reset_spec_method": "ResetMethod",
+                "se_dd_pmt_spec_method": "PaymentMethod",
+                "se_reset_pos_relative_to_roll": "ResetPositionRelativeToRollDate",
+                "se_reset_relative_to": "ResetRelativeTo",
+                "se_pmt_pos_relative_to_roll": "PaymentPositionRelativeToRoll",
+                "se_pmt_relative_to": "PaymentRelativeTo",
+                "se_dd_reset_day_of_week": "ResetDayOfWeek",
+                "se_dd_reset_stub_yn": "ResetStub",
+                "se_dd_reset_pattern_start_dt": "ResetPatternStartDate",
+                "se_next_pmt_notice_create_dt": "NextPaymentNoticeCreateDate",
+                "se_next_pmt_notice_pmt_dt": "NextPaymentNoticePaymentDate",
+                "se_next_reset_notice_create_dt": "NextResetNoticeCreateDate",
+                "se_next_reset_notice_pmt_dt": "NextResetNoticePaymentDate",
+                "se_next_combined_notice_create_dt": "NextCombinedNoticeCreateDate",
+                "se_next_combined_notice_pmt_dt": "NextCombinedNoticePaymentDate",
+                "se_rate_cutoff_days": "RateCutoffDays",
+                "se_rate_reset_bus_day_conv": "ResetBusinessDayConvention",
+                "se_notices_reqd_bit": "IsNoticesRequired",
+                "se_compound_bus_day_conv": "CompoundingBusinessDayConvention"
+            }
+        },
+        {
+            "TableName": "cfo_sched_det_resets",
+            "ModelName": "ScheduleDetailMultipleReset",
+            "ColumnAliases": {
+                "sr_sched_det_resets_id": "Id",
+                "sr_fl_ongoing_calc_id": "ScheduleDetailId",
+                "sr_sc_compound_id": "ScheduleDetailCompoundingId",
+                "sr_rate_reset_dt": "RateResetDate",
+                "sr_index_rate": "IndexRate",
+                "sr_days_in_pd": "DaysInPeriod",
+                "sr_rate_fixing_dt": "RateFixingDate",
+                "sr_rate_reset_unadjusted_dt": "RateResetUnadjustedDate"
+            }
+        },
+        {
+            "TableName": "cfo_sched_det_compound",
+            "ModelName": "ScheduleDetailCompounding",
+            "ColumnAliases": {
+                "sc_compound_id": "Id",
+                "sc_fl_ongoing_calc_id": "ScheduleDetailId",
+                "sc_compound_from_dt": "FromDate",
+                "sc_compound_to_dt": "ToDate",
+                "sc_adjusted_calculation_amt": "AdjustedCalculationAmount",
+                "sc_compound_period_amt": "PeriodAmount",
+                "sc_index_rate": "IndexRate",
+                "sc_rate_reset_dt": "RateResetDate",
+                "sc_rate_fixing_dt": "RateFixingDate",
+                "sc_flat_compounding_amt": "FlatCompoundingAmount",
+                "sc_addnl_cmpdg_pd_amt": "AdditionalPeriodAmount",
+                "sc_basic_cmpdg_pd_amt": "BasicPeriodAmount",
+                "sc_compound_from_unadjusted_dt": "FromUnadjustedDate",
+                "sc_compound_to_unadjusted_dt": "ToUnadjustedDate",
+                "sc_rate_reset_unadjusted_dt": "RateResetUnadjustedDate"
+            }
+        },
+        {
+            "TableName": "cfo_change_in_principal",
+            "ModelName": "ChangeInPrincipal",
+            "ColumnAliases": {
+                "cip_change_in_principal_id": "Id",
+                "cip_cm_component_id": "ComponentId",
+                "cip_principal_amount": "PrincipalAmount",
+                "cip_effective_dt": "EffectiveDate",
+                "cip_rate": "Rate",
+                "cip_spread": "Spread",
+                "cip_description": "Description",
+                "cip_rv_change_type": "ChangeType",
+                "cip_deleted_bit": "Deleted",
+                "cip_reset_dt": "ResetDate",
+                "cip_fixing_dt": "FixingDate"
+            }
+        },
+        {
+            "TableName": "com_financial_center_holiday",
+            "ModelName": "FinancialCenterHoliday",
+            "ColumnAliases": {
+                "fch_financial_center_holiday_id": "Id",
+                "fch_fci_financial_center_info_id": "FinancialCenterId",
+                "fch_calendar_dt": "CalendarDate",
+                "fch_calendar_dt_end": "CalendarDateEnd"
+            }
+        },
+        {
+            "TableName": "cfo_schedule_detail_adjustment",
+            "ModelName": "ScheduleRowAdjustment",
+            "ColumnAliases": {
+                "sda_schedule_detail_adjustment_id": "Id",
+                "sda_fl_ongoing_calc_id": "ScheduleDetailId",
+                "sda_interest_adjustment": "InterestAdjustment"
+            }
+        },
+        {
+            "TableName": "cfo_schedule_detail_orig",
+            "ModelName": "ScheduleRowBase",
+            "ColumnAliases": {
+                "sdo_schedule_detail_orig_id": "Id",
+                "sdo_lt_tranche_id": "TrancheId",
+                "sdo_se_schedule_id": "ScheduleId",
+                "sdo_from_dt": "FromDate",
+                "sdo_to_dt": "ToDate",
+                "sdo_principal_payment": "PrincipalPayment",
+                "sdo_spread": "Spread",
+                "sdo_index_rate": "IndexRate",
+                "sdo_floor_rate": "FloorRate",
+                "sdo_strike_rate": "StrikeRate",
+                "sdo_cap_rate": "CapRate",
+                "sdo_payment_dt": "PaymentDate",
+                "sdo_rate_reset_dt": "RateResetDate",
+                "sdo_rate_fixing_date": "RateFixingDate"
+            }
+        },
+        {
+            "TableName": "cfo_schedule_detail_commodity",
+            "ModelName": "ScheduleRowCommodityMeta",
+            "ColumnAliases": {
+                "sdc_schedule_detail_commodity_id": "Id",
+                "sdc_fl_ongoing_calc_id": "ScheduleDetailId",
+                "sdc_volume_amt": "VolumeAmount",
+                "sdc_rv_volume_unit": "VolumeUnit"
+            }
+        },
+        {
+            "TableName": "cfo_loan_tranches",
+            "ModelName": "Tranche",
+            "ColumnAliases": {
+                "lt_tranche_id": "Id",
+                "lt_cm_component_id": "ScheduleDetailId"
+            }
+        },
+        {
+            "TableName": "cfo_option",
+            "ModelName": "Option",
+            "ColumnAliases": {
+                "op_option_id": "Id",
+                "op_pmd_product_detail_id": "ProductDetailId",
+                "op_rv_option_payoff": "OptionPayoff",
+                "op_rv_option_type": "OptionType",
+                "op_notification_days": "NotificationDays",
+                "op_exercise_start_dt": "ExerciseStartDate",
+                "op_exercise_end_dt": "ExerciseEndDate",
+                "op_rv_exercise_freq": "ExerciseFrequency",
+                "op_rv_exercise_business_day_conv": "ExerciseBusinessDayConvention"
+            }
+        },
+        {
+            "TableName": "cfo_option_exercise_schedule",
+            "ModelName": "OptionExerciseSchedule",
+            "ColumnAliases": {
+                "oes_option_schedule_id": "Id",
+                "oes_op_option_id": "OptionId",
+                "oes_exercise_adjusted_dt": "ExerciseAdjustedDate",
+                "oes_exercise_unadjusted_dt": "ExerciseUnadjustedDate",
+                "oes_settlement_adjusted_dt": "SettlementAdjustedDate",
+                "oes_exercise_premium": "ExercisePremium",
+                "oes_notification_dt": "NotificationDate"
+            }
+        },
+        {
+            "TableName": "cfo_bootstrap_methodology",
+            "ModelName": "BootstrapMethodology",
+            "ColumnAliases": {
+                "bm_bootstrap_methodology_id": "Id",
+                "bm_rv_currency": "Currency",
+                "bm_rv_bootstrap_methodology": "BootstrappingMethodology",
+                "bm_start_utc": "StartDate"
+            }
+        },
+        {
+            "TableName": "cfo_capvol_currency_switchover",
+            "ModelName": "CapVolCurrencySwitchover",
+            "ColumnAliases": {
+                "cvcs_capvol_currency_switchover_id": "Id",
+                "cvcs_rv_currency": "Currency",
+                "cvcs_capvol_switchover_dt": "SwitchoverDate"
+            }
+        },
+        {
+            "TableName": "cfo_engine",
+            "ModelName": "Engine",
+            "ColumnAliases": {
+                "en_engine_id": "Id",
+                "en_dd_product_id": "ProductId",
+                "en_engine_name": "EngineName",
+                "en_ix_index_id": "IndexId",
+                "en_start_dt": "StartDate",
+                "en_end_dt": "EndDate"
+            }
+        },
+        {
+            "TableName": "cfo_engine_tran_quote",
+            "ModelName": "EngineTranQuote",
+            "ColumnAliases": {
+                "eq_engine_tran_quote_id": "Id",
+                "eq_tq_tran_quote_id": "TranQuoteId",
+                "eq_engine_name": "EngineName",
+                "eq_effective_dt": "EffectiveDate",
+                "eq_rv_bootstrapping_method" :  "BootstrappingMethod"
+            }
+        },
+        {
+            "TableName": "com_address",
+            "ModelName": "Address",
+            "ColumnAliases": {
+                "ad_address_id": "Id",
+                "ad_address_block": "StreetAddress",
+                "ad_city": "City",
+                "ad_zp_zip_code_desc": "Zip",
+                "ad_cn_country_id": "CountryId",
+                "ad_st_state_id": "StateId"
+            }
+        },
+        {
+            "TableName": "com_address_links",
+            "ModelName": "AddressLink",
+            "ColumnAliases": {
+                "adl_address_links_id": "Id",
+                "adl_ad_address_id": "AddressId",
+                "adl_re_entity_id": "EntityId",
+                "adl_rc_contact_id": "ContactId",
+                "adl_rv_address_type_id": "AddressTypeRefId",
+                "adl_description": "Description",
+                "adl_readonly_bit": "ReadOnly",
+                "adl_primary_bit": "Primary",
+                "adl_as_asset_id": "AssetId"
+            }
+        },
+        {
+            "TableName": "com_country",
+            "ModelName": "Country",
+            "ColumnAliases": {
+                "cn_country_id": "Id",
+                "cn_country_name": "Name",
+                "cn_country_abrv": "CountryAbbreviation"
+            }
+        },
+		{
+            "TableName": "com_country_regulation",
+            "ModelName": "CountryRegulation",
+            "ColumnAliases": {
+                "cnr_country_regulation_id": "Id",
+                "cnr_cn_country_id": "CountryId",
+                "cnr_rv_regulation": "ScopeRefId"
+            }
+        },
+        {
+            "TableName": "com_state",
+            "ModelName": "State",
+            "ColumnAliases": {
+                "st_state_id": "Id",
+                "st_cn_country_id": "CountryId",
+                "st_state_name": "Name",
+                "st_state_abrv": "StateAbbreviation",
+                "st_rv_region": "RegionRefId",
+                "st_rv_division": "DivisionRefId"
+            }
+        },
+        {
+            "TableName": "cfo_lmm_currency_calibration",
+            "ModelName": "LmmCurrencyCalibration",
+            "ColumnAliases": {
+                "lcc_lmm_currency_calibration_id": "Id",
+                "lcc_rv_currency": "Currency",
+                "lcc_calibration_date": "CalibrationDate",
+                "lcc_calibration_param_a": "ParameterA",
+                "lcc_calibration_param_b": "ParameterB",
+                "lcc_calibration_param_c": "ParameterC",
+                "lcc_calibration_param_d": "ParameterD"
+            }
+        },
+        {
+            "TableName": "cfo_fas157_cva_methodology_switchover",
+            "ModelName": "Fas157CvaMethodology",
+            "ColumnAliases": {
+                "fcms_fas157_cva_methodology_switchover_id": "Id",
+                "fcms_rv_methodology_before_switchover": "PreviousMethodology",
+                "fcms_rv_methodology_after_switchover": "NewMethodology",
+                "fcms_methodology_switchover_dt": "SwitchoverDate"
+            }
+        },
+        {
+            "TableName": "cfo_transaction_identifier",
+            "ModelName": "TransactionIdentifier",
+            "ColumnAliases": {
+                "ti_transaction_identifier_id": "Id",
+                "ti_identifier": "Identifier",
+                "ti_cm_component_id": "ComponentId",
+                "ti_rv_transaction_identifier_type_id": "TransactionIdentifierType",
+                "ti_prefix": "Prefix"
+            }
+        },
+        {
+            "TableName": "cfo_component_commodity",
+            "ModelName": "CommodityMeta",
+            "ColumnAliases": {
+                "ccm_component_commodity_id": "Id",
+                "ccm_cm_component_id": "ComponentId",
+                "ccm_settlement_days": "SettlementDays",
+                "ccm_volume_amt": "VolumeAmount",
+                "ccm_rv_volume_unit": "VolumeUnit",
+                "ccm_rv_commodity_type": "CommodityType",
+                "ccm_rv_averaging_period": "AveragingPeriod",
+                "ccm_rv_commodity_reset_type": "CommodityResetType"
+            }
+        },
+        {
+            "TableName": "cfo_component_credit_spread",
+            "ModelName": "ComponentCreditSpread",
+            "ColumnAliases": {
+                "ccs_component_credit_spread_id": "Id",
+                "ccs_cm_component_id": "ComponentId",
+                "ccs_credit_spread": "CreditSpread",
+                "ccs_effective_dt": "EffectiveDate",
+                "ccs_create_dt": "CreateDate"
+            }
+        },
+        {
+            "TableName": "cfo_fas157_valuation",
+            "ModelName": "CreditValuationAdjustment",
+            "ColumnAliases": {
+                "fv_fas157_valuation_id": "Id",
+                "fv_dh_daily_trans_hist_id": "ProductValuationId",
+                "fv_fpv_fas157_project_valuation_id": "Asc820ProjectValuationExtractorId",
+                "fv_unadjusted_sponsor_charge": "UnadjustedSponsorCharge",
+                "fv_adjusted_sponsor_charge": "AdjustedSponsorCharge",
+                "fv_unadjusted_counterparty_charge": "UnadjustedCounterpartyCharge",
+                "fv_adjusted_counterparty_charge": "AdjustedCounterpartyCharge",
+                "fv_valuation_total": "ValuationTotal",
+                "fv_mutual_put": "MutualPut",
+                "fv_sponsor_exposure_avg": "SponsorExposureAverage",
+                "fv_counterparty_exposure_avg": "CounterpartyExposureAverage",
+                "fv_sponsor_spread_avg": "SponsorSpreadAverage",
+                "fv_counterparty_spread_avg": "CounterpartySpreadAverage",
+                "fv_sponsor_exposure_duration": "SponsorExposureDuration",
+                "fv_counterparty_exposure_duration": "CounterpartyExposureDuration",
+                "fv_create_dt": "CreateDate"
+            }
+        },
+        {
+            "TableName": "cfo_fas157_valuation_accounting_aggregate",
+            "ModelName": "CvaShortTerm",
+            "ColumnAliases": {
+                "fvag_fas157_valuation_accounting_aggregate_id": "Id",
+                "fvag_fv_fas157_valuation_id": "CvaId",
+                "fvag_rv_valuation_short_term_length": "ShortTermLength",
+                "fvag_fas_valuation_short_term_counterparty": "ShortTermCounterpartyCharge",
+                "fvag_fas_valuation_short_term_sponsor": "ShortTermSponsorCharge"
+            }
+        },
+        {
+            "TableName": "cfo_hedgelet_values",
+            "ModelName": "Hedgelet",
+            "ColumnAliases": {
+                "hv_hedgelet_value_id": "Id",
+                "hv_dh_daily_trans_hist_id": "ProductValuationId",
+                "hv_total_value": "TotalValue",
+                "hv_fl_ongoing_calc_id": "ScheduleId",
+                "hv_intrinsic_value": "IntrinsicValue",
+                "hv_time_value": "TimeValue",
+                "hv_pvFixed": "PresentValueFixed",
+                "hv_pvFloat": "PresentValueFloating"
+            }
+        },
+        {
+            "TableName": "cfo_fas157_project_valuation",
+            "ModelName": "PortfolioCreditValuationAdjustment",
+            "ColumnAliases": {
+                "fpv_fas157_project_valuation_id": "Id",
+                "fpv_mrpl_marriage_reporting_period_links_id": "MarriageReportingPeriodLinkId",
+                "fpv_unadjusted_sponsor_charge": "UnadjustedSponsorCharge",
+                "fpv_adjusted_sponsor_charge": "AdjustedSponsorCharge",
+                "fpv_unadjusted_counterparty_charge": "UnadjustedCounterpartyCharge",
+                "fpv_adjusted_counterparty_charge": "AdjustedCounterpartyCharge",
+                "fpv_sponsor_threshold": "SponsorThreshold",
+                "fpv_counterparty_threshold": "CounterPartyThreshold",
+                "fpv_status_bit": "Status",
+                "fpv_rv_currency1": "Currency1",
+                "fpv_rv_currency2": "Currency2",
+                "fpv_sponsor_exposure_avg": "SponsorExposureAvg",
+                "fpv_counterparty_exposure_avg": "CounterpartyExposureAvg",
+                "fpv_sponsor_spread_avg": "SponsorSpreadAvg",
+                "fpv_counterparty_spread_avg": "CounterpartySpreadAvg",
+                "fpv_sponsor_exposure_duration": "SponsorExposureDuration",
+                "fpv_counterparty_exposure_duration": "CounterpartyExposureDuration",
+                "fpv_cpc_credit_point_collection_id_sponsor": "SponsorCreditPointCollectionId",
+                "fpv_cpc_credit_point_collection_id_counterparty": "CounterpartyCreditPointCollectionId"
+            }
+        },
+        {
+            "TableName": "cfo_quick_indication_params",
+            "ModelName": "QuickIndicationParam",
+            "ColumnAliases": {
+                "qi_quick_indication_params_id": "Id",
+                "qi_rc_contact_id": "ContactId",
+                "qi_re_entity_id": "EntityId",
+                "qi_nickname": "Nickname",
+                "qi_last_value_timestamp": "LastValueDate",
+                "qi_rv_product_type": "Product",
+                "qi_loan_amount": "LoanAmount",
+                "qi_months_from_today": "MonthsFromToday",
+                "qi_term_years": "TermInYears",
+                "qi_amortization_term_years": "AmortizationTermInYears",
+                "qi_credit_spread": "CreditSpread",
+                "qi_profit": "Profit",
+                "qi_include_fees": "IncludeFees"
+            }
+        },
+        {
+            "TableName": "cfo_scenario",
+            "ModelName": "Scenario",
+            "ColumnAliases": {
+                "sn_scenario_id": "Id",
+                "sn_shock_value": "ShockValue",
+                "sn_rv_shock_value_type": "ShockValueType"
+            }
+        },
+        {
+            "TableName": "cfo_termination_hypo_fee",
+            "ModelName": "TerminationHypoFee",
+            "ColumnAliases": {
+                "thf_termination_hypo_fee_id": "Id",
+                "thf_dh_daily_trans_hist_id": "ProductValuationId",
+                "thf_fee": "Fee",
+                "thf_rv_fee_type": "FeeType"
+            }
+        },
+        {
+            "TableName": "cfo_valuation_process_override",
+            "ModelName": "ProcessOverride",
+            "ColumnAliases": {
+                "vpo_valuation_process_override_id": "Id",
+                "vpo_dh_daily_trans_hist_id": "DailyTransHistId",
+                "vpo_rv_override_type": "OverrideType"
+            }
+        },
+        {
+            "TableName": "cfo_valuation_param",
+            "ModelName": "ValuationParameter",
+            "ColumnAliases": {
+                "vp_valuation_param_id": "Id",
+                "vp_tq_tran_quote_id": "TranQuoteId",
+                "vp_rv_currency": "Currency",
+                "vp_rv_bootstrap_methodology": "Methodology",
+                "vp_rv_market_side": "MidBidAsk",
+                "vp_effective_dto": "EffectiveDate"
+            }
+        },
+        {
+            "TableName": "cfo_accounting_default",
+            "ModelName": "TreatmentTemplate",
+            "ColumnAliases": {
+                "aad_accounting_default_id": "Id",
+                "aad_treatment_name": "Name",
+                "aad_inception_regression_bit": "UsesInceptionRegression"
+            }
+        },
+        {
+            "TableName": "com_accounting",
+            "ModelName": "AccountingRequirement",
+            "ColumnAliases": {
+                "ca_accounting_id": "Id",
+                "ca_re_entity_id": "EntityId",
+                "ca_accrdint_expense_entries_bit": "AccruedInterestExpenseEntriesRequired",
+                "ca_accrual_jes_required_bit": "AccrualJournalEntriesRequired",
+                "ca_acctg_sensitive_bit": "AccountingSensitive",
+                "ca_assessment_test_requires_cva_bit": "AssessmentTestRequiresCVA",
+                "ca_audit_firm_re_entity_id": "AuditFirmId",
+                "ca_audit_ptnr_rc_contact_id": "AuditPartnerContactId",
+                "ca_audit_ptnr2_rc_contact_id": "AuditPartnerSecondContactId",
+                "ca_auto_monthly_cva_bit": "AutoMonthlyCVA",
+                "ca_cash_net_settlement_bit": "CashNetSettlement",
+                "ca_cash_premium_bit": "CashPremium",
+                "ca_chatham_mgr_rc_contact_id": "AccountingManagerId",
+                "ca_chatham_secondary_mgr_rc_contact_id": "SecondaryAccountingManagerId",
+                "ca_combine_asset_liability_bit": "CombineAssetLiability",
+                "ca_combine_offsttng_FV_JEs_bit": "CombineOffsettingFvJe",
+                "ca_dd_governing_acctg_standard": "GoverningAccountingStandard",
+                "ca_disclosures_bit": "DisclosuresRequired",
+                "ca_disclsr_deadline_dt": "DisclosureDeadline",
+                "ca_disclsr_reqd_in_days": "DisclosureDeadlineInDays",
+                "ca_eff_tests_deadline_dt": "EffectivenessTestsDeadline",
+                "ca_eff_tests_reqd_in_days": "EffectivenessTestsRequiredInDays",
+                "ca_eff_tests_required_bit": "EffectivenessTestsRequired",
+                "ca_effective_tax_rate_applies_bit": "EffectiveTaxRateApplies",
+                "ca_fas133_approved_designations_bitmap": "Fas133ApprovedDesignationsMap",
+                "ca_fas133_approved_risk_classes_bitmap": "Fas133ApprovedRiskClassesMap",
+                "ca_fas133_cfc_reviewer_rc_contact_id": "Fas133ReviewerContactId",
+                "ca_fas133_last_approved_dt": "Fas133LastApproved",
+                "ca_fas133_last_review_dt": "Fas133LastReview",
+                "ca_fas133_note": "FAS133Note",
+                "ca_fas157_client_bit": "Fas157Client",
+                "ca_fas157_daily_run_bit": "Fas157DailyRun",
+                "ca_fas157_default_bit": "Fas157Default",
+                "ca_FAS157_priority": "Fas157Priority",
+                "ca_fiscal_year_end_date": "FiscalYearEndDate",
+                "ca_hc_holiday_city_id": "HolidayCityId",
+                "ca_hdm_required_bit": "HedgeDesignationMemoRequired",
+                "ca_ias39_approved_designations_bitmap": "IAS39ApprovedDesignationsMap",
+                "ca_ias39_approved_risk_classes_bitmap": "IAS39ApprovedRiskClassesMap",
+                "ca_ias39_cfc_reviewer_rc_contact_id": "IAS39ReviewerContactId",
+                "ca_ias39_last_approved_dt": "IAS39LastApproved",
+                "ca_ias39_last_review_dt": "IAS39LastReview",
+                "ca_ias39_note": "IAS39Note",
+                "ca_jes_required_bit": "JournalEntriesRequired",
+                "ca_je_deadline_dt": "JournalEntryDeadline",
+                "ca_jes_reqd_in_days": "JournalEntriesRequiredInDays",
+                "ca_materiality_cutoff_amt": "MaterialityCutoffAmmount",
+                "ca_notes": "Notes",
+                "ca_report_at_total_price_bit": "ReportAtTotalPrice",
+                "ca_run_payment_summary_entries_bit": "RunPaymentSummaryEntries",
+                "ca_rv_acctg_concerns_id": "AccountingConcerns",
+                "ca_rv_audit_report_freq_id": "AuditReportFrequency",
+                "ca_rv_eff_tests_freq_id": "EffectivenessTestsFrequency",
+                "ca_rv_fas157_report_frequency": "Fas157ReportFrequency",
+                "ca_rv_functional_currency_id": "FunctionalCurrencyId",
+                "ca_rv_journal_report_freq_id": "JournalEntryReportFrequency",
+                "ca_rv_valn_report_freq_id": "ValuationReportFrequency",
+                "ca_segregate_deriv_into_AL_bit": "SegregateDerivativeIntoAL",
+                "ca_rv_short_term_long_term_method": "ShortTermLongTermMethod",
+                "ca_split_short_term_long_term_bit": "ShortTermLongTermSplit",
+                "ca_tax_designation_statement": "TaxDesignationStatement",
+                "ca_tolerance_accrualjes": "ToleranceAccrualJournalEntries",
+                "ca_tolerance_effscore_div0": "ToleranceEffectivenessScore"
+            }
+        },
+        {
+            "TableName": "cfo_eff_tests",
+            "ModelName": "EffectivenessTest",
+            "ColumnAliases": {
+                "et_test_id": "Id",
+                "et_ac_accounting_id": "AccountingTreatmentId",
+                "tq_tr_transaction_id": "TransactionId",
+                "et_sn_scenario_id": "ScenarioId",
+                "et_test_date": "TestDate",
+                "et_dd_type": "TestType",
+                "et_effectiveness_score": "EffectivenessScore",
+                "et_comparison_amt_hedge": "ComparisonAmountHedge",
+                "et_comparison_amt_hgditm": "ComparisonAmountHedgeItem",
+                "et_rv_currency_id": "CurrencyRefId",
+                "et_note": "TestNote",
+                "et_test_method": "TestMethod",
+                "et_dd_eff_test_scope": "TestScope",
+                "et_test_start_dt": "TestStartDate",
+                "et_test_end_dt": "TestEndDate",
+                "et_ineffect_reason": "IneffectivenessReason",
+                "et_passed_eff_testing_bit": "TestPassed",
+                "et_dd_web_display_yn": "WebDisplay",
+                "et_create_nm_id": "CreatedById",
+                "et_create_dt": "CreatedDate",
+                "rc_name_full": "CreatedBy"
+            },
+            "ResultColumns": [
+                "et_create_dt",
+                "et_create_nm_id"
+            ]
+        },
+        {
+            "TableName": "cfo_eff_test_detail_regression",
+            "ModelName": "EffectivenessTestDetailRegression",
+            "ColumnAliases": {
+                "edr_eff_test_detail_regression_id": "Id",
+                "edr_et_test_id": "EffectivenessTestId",
+                "edr_hedge_change": "HedgeChange",
+                "edr_hedged_item_change": "HedgedItemChange",
+                "edr_hedge_start_case_value": "HedgeStartCaseValue",
+                "edr_hedge_end_case_value": "HedgeEndCaseValue",
+                "edr_hedged_item_start_case_value": "HedgedItemStartCaseValue",
+                "edr_hedged_item_end_case_value": "HedgedItemEndCaseValue",
+                "edr_start_case_valuation_as_of_dt": "StartCaseValuationAsOfDate",
+                "edr_start_case_rates_as_of_dt": "StartCaseRatesAsOfDate",
+                "edr_start_case_rates_shifted_to_dt": "StartCaseRatesShiftedToDate",
+                "edr_end_case_valuation_as_of_dt": "EndCaseValuationAsOfDate",
+                "edr_end_case_rates_as_of_dt": "EndCaseRatesAsOfDate",
+                "edr_end_case_rates_shifted_to_dt": "EndCaseRatesShiftedToDate",
+                "edr_spot_overrride_bit": "SpotOverride"
+            }
+        },
+        {
+            "TableName": "cfo_eff_tests_regression_stats",
+            "ModelName": "EffectivenessTestRegressionStats",
+            "ColumnAliases": {
+                "etr_eff_tests_regression_stats_id": "Id",
+                "etr_et_test_id": "EffectivenessTestId",
+                "etr_count_of_points": "CountOfPoints",
+                "etr_slope": "Slope",
+                "etr_intercept": "Intercept",
+                "etr_rsquared": "RSquared",
+                "etr_rsquared_adjusted": "RSquaredAdjusted",
+                "etr_t_score_slope": "TScoreSlope",
+                "etr_t_score_intercept": "TScoreIntercept",
+                "etr_critical_t_score_slope": "TScoreSlopeCritical",
+                "etr_critical_t_score_intercept": "TScoreInterceptCritical",
+                "etr_degrees_of_freedom": "DegreesOfFredom",
+                "etr_f_score": "FScore",
+                "etr_critical_f_score": "FScoreCritical",
+                "etr_Fsignificance": "FSignificance",
+                "etr_Pvalue_slope": "PValueSlope",
+                "etr_Pvalue_intercept": "PValueIntercept",
+                "etr_sumofsquares_residuals": "SumOfSquaresResiduals",
+                "etr_sumofsquares_regression": "SumOfSquaresRegression",
+                "etr_sumofsquares_total": "SumOfSquaresTotal",
+                "etr_stderror_slope": "StandardErrorSlope",
+                "etr_stderror_intercept": "StandardErrorIntercept",
+                "etr_stderror_of_the_estimate": "StandardErrorOfTheEstimate",
+                "etr_mean_square_regression": "MeanSquareRegression",
+                "etr_mean_square_error": "MeanSquareError",
+                "etr_confidence_level": "ConfidenceLevel",
+                "etr_durbin_watson_score": "DurbinWatsonScore",
+                "etr_durbin_watson_lower_bound": "DurbinWatsonLowerBound",
+                "etr_durbin_watson_upper_bound": "DurbinWatsonUpperBound"
+            },
+            "ResultColumns": [
+                "etr_sumofsquares_total"
+            ]
+        },
+        {
+            "TableName": "cfo_sched_det_hist",
+            "ModelName": "ScheduleDetailHistory",
+            "ColumnAliases": {
+                "sh_sched_det_hist_id": "Id",
+                "sh_et_test_id": "EffectivenessTestId",
+                "sh_tq_tran_quote_id": "TranQuoteId",
+                "sh_fl_ongoing_calc_id": "OngoingCalcId",
+                "sh_fl_prnc_notion_amt": "PrincipalNotionalAmount",
+                "sh_fl_payment_amt1": "PaymentAmount1",
+                "sh_fl_payment_amt2": "PaymentAmount2",
+                "sh_fl_net_amt": "NetAmount",
+                "sh_fl_payment_dt": "PaymentDate",
+                "sh_fl_spread": "Spread",
+                "sh_fl_strike_rate1": "StrikeRate1",
+                "sh_fl_strike_rate2": "StrikeRate2",
+                "sh_fl_index_rate": "IndexRate",
+                "sh_fl_rate_reset_dt": "RateResetDate",
+                "sh_fl_to_dt": "DoDate",
+                "sh_fl_from_dt": "FromDate",
+                "sh_fl_float_to_dt": "FloattoDate",
+                "sh_fl_float_from_dt": "FloatFromDate",
+                "sh_fl_lt_tranche_id": "TrancheId",
+                "sh_fl_notional2": "Notional2",
+                "sh_fl_index2_rate": "IndexRate2",
+                "sh_fl_spread2": "Spread2",
+                "sh_fl_rate_fixing_dt2": "RateFixingDate2"
+
+            }
+        },
+        {
+            "TableName": "com_accounting_fx_default",
+            "ModelName": "FxPolicies",
+            "ColumnAliases": {
+                "cafd_accounting_fx_default_id": "Id",
+                "cafd_ca_accounting_id": "AccountingInformationId",
+                "cafd_aad_accounting_default_id": "HedgeDesignationId",
+                "cafd_accounting_policy": "AccountingPolicy",
+                "cafd_hypo_value_months_adjusted": "HypoMonthAdjusted",
+                "cafd_hypo_value_day_of_month": "HypoDayOfMonth",
+                "cafd_accounting_treatment_months_adjust": "AccountingTreatmentMonthAdjusted",
+                "cafd_accounting_treatment_day_of_month": "AccountingTreatmentDayOfMonth",
+                "cafd_oci_months_adjust": "OciMonthAdjusted",
+                "cafd_oci_day_of_month": "OciDayOfMonth",
+                "cafd_mt_merge_template_id": "HDMTemplateID",
+                "cafd_rv_calendar_type": "CalendarType",
+                "cafd_beg_hypo_value_months_adjusted": "BegHypoMonthAdjusted",
+                "cafd_beg_hypo_value_day_of_month": "BegHypoDayOfMonth",
+                "cafd_end_hypo_value_months_adjusted": "EndHypoMonthAdjusted",
+                "cafd_end_hypo_value_day_of_month": "EndHypoDayOfMonth",
+                "cafd_rv_accounting_regression_type": "AccountingRegressionType",
+                "cafd_rv_regression_data_point_frequency": "RegressionDataPointFrequency",
+                "cafd_regression_data_point_count": "RegressionNumberOfDataPoints",
+                "cafd_rv_entry_account_ineffectiveness": "EntryAccountIneffectiveness",
+                "cafd_rv_entry_account_amortization": "EntryAccountAmortization",
+                "cafd_rv_entry_account_oci": "EntryAccountOci",
+                "cafd_rv_inception_data_point_frequency": "InceptionDataPointFrequency",
+                "cafd_inception_data_point_count": "InceptionDataPointCount"
+            }
+        },
+        {
+            "TableName": "com_accounting_fx_default_poc",
+            "ModelName": "FxDefaultPoc",
+            "ColumnAliases": {
+                "fdpoc_accounting_fx_default_poc_id": "Id",
+                "fdpoc_cafd_accounting_fx_default_id": "FxDefaultId",
+                "fdpoc_rv_remeasurement_deferred": "RemeasurementOfDeferred",
+                "fdpoc_rv_remeasure_unbilled": "RemeasureUnbilled",
+                "fdpoc_rv_rate_for_recognition": "RateForRecognition",
+                "fdpoc_rv_rate_for_cash": "RateForCash",
+                "fdpoc_rv_rate_for_remeasurement": "RateForRemeasurement",
+                "fdpoc_rv_rate_for_final_settlement": "RateForFinalSettlement",
+                "fdpoc_rv_rate_for_dedesignation": "RateForDedesignation",
+                "fdpoc_rv_rate_for_fx_derivative_oci": "RateForFxDerivativeOci",
+                "fdpoc_rv_rate_for_invoice": "RateForInvoice"
+            }
+        },
+        {
+            "TableName": "com_accounting_exposure_link",
+            "ModelName": "FxDefaultExposureLink",
+            "ColumnAliases": {
+                "ael_accounting_exposure_link_id": "Id",
+                "ael_cafd_accounting_fx_default_id": "AccountingFxDefaultId",
+                "ael_pceb_planning_cycle_exposure_buckets_id": "PlanningCycleExposureBucketsId"
+            }
+        },
+        {
+            "TableName": "com_accounting_fx_default_portfolio",
+            "ModelName": "FxDefaultPortfolio",
+            "ColumnAliases": {
+                "cafdp_accounting_fx_default_portfolio_id": "Id",
+                "cafdp_cafd_accounting_fx_default_id": "FxDefaultId",
+                "cafdp_portfolio_name": "Name"
+            }
+        },
+        {
+            "TableName": "cfo_merge_template",
+            "ModelName": "HdmTemplate",
+            "ColumnAliases": {
+                "mt_merge_template_id": "Id",
+                "mt_name": "Name",
+                "mt_description": "Description",
+                "mt_rv_merge_template_type": "TemplateType",
+                "mt_chatham_only_bit": "ChathamOnly",
+                "mt_rvs_document_subtype": "DocumentSubtype"
+            }
+        },
+        {
+            "TableName": "cfo_journal_entries",
+            "ModelName": "JournalEntry",
+            "ColumnAliases": {
+                "je_journal_entry_id": "Id",
+                "je_ac_accounting_id": "AccountingTreatmentId",
+                "je_tq_tran_quote_id": "TranQuoteId",
+                "je_sn_scenario_id": "ScenarioId",
+                "je_rv_gen_ldgr_acct": "GeneralLegerAccount",
+                "je_entry_amt": "EntryAmount",
+                "je_dd_debit_credit": "DebitCredit",
+                "je_rv_entry_type": "EntryType",
+                "je_entry_dt": "EntryDate",
+                "je_entry_note": "EntryNote",
+                "je_dd_show_je_yn": "ShowJournalEntry",
+                "je_entry_pair_id": "EntryPairId",
+                "je_error_notes": "ErrorNotes",
+                "je_error_code_id": "ErrorCodeId",
+                "je_autoprocessed_bit": "Autoprocessed",
+                "je_g20_leaking_entry_bit": "G20LeakingEntry",
+                "je_rv_source":  "Source",
+                "je_create_nm_id": "CreatedById",
+                "je_create_utc": "CreatedUtc"
+            },
+            "ResultColumns": [
+                "je_create_nm_id",
+                "je_create_utc"
+            ]
+        },
+        {
+            "TableName": "cfo_month_end_schedule_params",
+            "ModelName": "MonthEndParameter",
+            "ColumnAliases": {
+                "mesp_month_end_schedule_params_id": "Id",
+                "mesp_re_entity_id": "EntityId",
+                "mesp_rv_roll_day": "RollDay",
+                "mesp_rv_day_of_week": "DayOfWeek",
+                "mesp_rv_frequency": "MonthEndFrequency",
+                "mesp_rv_montly_pattern": "MonthEndMonthlyPattern",
+                "mesp_start_month": "StartMonth",
+                "mesp_start_year": "StartYear",
+                "mesp_end_month": "EndMonth",
+                "mesp_end_year": "EndYear",
+                "mesp_occurence_week": "OccourenceWeek",
+                "mesp_override_priority": "OverridePriority"
+            }
+        },
+        {
+            "TableName": "cfo_month_end_schedule_override",
+            "ModelName": "MonthEndScheduleOverride",
+            "ColumnAliases": {
+                "meso_month_end_schedule_override_id": "Id",
+                "meso_re_entity_id": "EntityId",
+                "meso_schedule_dt": "ScheduleDate",
+                "meso_month_overriding": "MonthOverriding",
+                "meso_year_overriding": "YearOverriding"
+            }
+        },
+        {
+            "TableName": "cfo_month_end_schedule_override",
+            "ModelName": "MonthEndScheduleOverride",
+            "ColumnAliases": {
+                "meso_month_end_schedule_override_id": "Id",
+                "meso_re_entity_id": "EntityId",
+                "meso_schedule_dt": "ScheduleDate",
+                "meso_month_overriding": "MonthOverriding",
+                "meso_year_overriding": "YearOverriding"
+            }
+        },
+        {
+            "TableName": "cfo_acctg_quote_link",
+            "ModelName": "TreatmentLink",
+            "ColumnAliases": {
+                "at_acctg_quote_link_id": "Id",
+                "at_tq_tran_quote_id": "TransactionQuoteId",
+                "at_ac_accounting_id": "TreatmentId",
+                "at_link_type": "LinkType",
+                "at_percent_notional_allocated": "PercentAllocated",
+                "at_treatment_status": "TreatmentStatus"
+            }
+        },
+        {
+            "TableName": "cfo_accounting",
+            "ModelName": "Treatment",
+            "ColumnAliases": {
+                "ac_accounting_id": "Id",
+                "ac_notes": "Notes",
+                "ac_prcnt_item_hdg": "PercentItemHedged",
+                "ac_matur_hdg_port_dt": "MatureHedgedPortDate",
+                "ac_rv_hdg_desig": "HedgeDesignationMethodRefId",
+                "ac_rv_eff_test_methd_retro": "TestMethodRetrospectiveRefId",
+                "ac_hedge_purpose": "HedgePurpose",
+                "ac_ineffect_reason": "IneffectiveReason",
+                "ac_hedged_notional": "HedgedNotional",
+                "ac_carry_amt_at_incp": "CarryAmountAtInception",
+                "ac_eff_ratio_at_incp": "EffectiveRatioAtInception",
+                "ac_next_pd_end_dt": "NextPeriodEndDate",
+                "ac_rv_treatment_status": "TreatmentStatusRefId",
+                "ac_still_eff_bit": "StillGetsHedgeAccounting",
+                "ac_entries_done_bit": "EntriesDone",
+                "ac_show_je_bit": "ShowJournalEntries",
+                "ac_rv_hedged_risk": "HedgedRiskRefId",
+                "ac_start_date": "StartDate",
+                "ac_rv_eff_test_scope": "EffectivenessTestScopeRefId",
+                "ac_eff_test_start_dt": "EffectivenessTestStartDate",
+                "ac_rv_excluded_cmpnt": "ExcludedComponentRefId",
+                "ac_hedged_rate": "HedgedRate",
+                "ac_rv_eff_test_methd_prosp": "TestMethodProspectiveRefId",
+                "ac_test_manually_measure_bit": "TestManuallyMeasure",
+                "ac_eff_test_end_dt": "EffectivenessTestEndDate",
+                "ac_manual_test_reason": "ManualTestReason",
+                "ac_rv_measurement_method": "TestMethodMeasureRefId",
+                "ac_test_manually_retro_bit": "TestManuallyRetrospective",
+                "ac_test_manually_prosp_bit": "TestManuallyProspective",
+                "ac_assumed_eff_ratio": "AssumedEffectiveRatio",
+                "ac_g20_bit": "G20",
+                "ac_end_date": "EndDate",
+                "ac_autogenerate_jes_bit": "AutoGenerateJournalEntries",
+                "ac_jes_not_autogenerated_reason": "JournalEntriesNotAutoGeneratedReason",
+                "ac_rv_acc_int_jes_reqd": "AccruedInterestJournalEntriesRequiredRefId",
+                "ac_rv_accrdint_expense_entries": "AccruedInterestExpenseEntriesRefId",
+                "ac_rv_governing_acctg_standard": "GoverningAccountingStandardRefId",
+                "ac_description": "Description",
+                "ac_g20_leaked_thru_dt": "G20LeakedThroughDate",
+                "ac_data_points": "RegressionNumberOfDataPoints",
+                "ac_rv_data_point_frequency": "RegressionFrequencyOfDataPointsRefId",
+                "ac_oci_release_dt": "OciReleaseDate",
+                "ac_rv_entry_account_payments_accruals": "EntryAccountPaymentsAccrualsRefId",
+                "ac_rv_entry_account_amortization": "EntryAccountAmortizationRefId",
+                "ac_rv_entry_account_ineffectiveness": "EntryAccountIneffectivenessRefId",
+                "ac_rv_entry_account_hedged_item": "EntryAccountHedgedItemRefId",
+                "ac_capital_expenditure_bit": "CapitalExpenditure",
+                "ac_capex_amort_start_date": "CapitalExpenditureAmortStartDate",
+                "ac_capex_amort_end_date": "CapitalExpenditureAmortEndDate",
+                "ac_capex_residual_percent": "CapitalExpenditureAmortResidualPercent",
+                "ac_rv_capex_amort_type": "CapitalExpenditureAmortTypeRefId",
+                "ac_rv_capex_amort_freq": "CapitalExpenditureAmortFrequencyRefId",
+                "ac_capital_expenditure_scrap_dt": "CapitalExpenditureScrapDate",
+                "ac_rv_off_market_oci_reclass_based_on": "OffMarketOciReclassBasedOnRefId",
+                "ac_rv_run_payment_summary_entries": "RunPaymentSummaryEntriesRefId",
+                "ac_confidence_interval": "ConfidenceInterval",
+                "ac_create_dt": "TreatmentCreateDate",
+                "ac_rv_off_market_logic": "OffMarketMethodRefId",
+                "ac_tenor_max": "TenorMax",
+                "ac_tenor_min": "TenorMin",
+                "ac_curve_recycle_date": "CurveRecycleDate",
+                "ac_rv_inception_data_point_frequency": "InceptionDataPointFrequency",
+                "ac_inception_data_point_count": "InceptionDataPointCount"
+            }
+        },
+        {
+            "TableName": "cfo_accounting_poc",
+            "ModelName": "TreatmentPoc",
+            "ColumnAliases": {
+                "acpoc_accounting_poc_id": "Id",
+                "acpoc_ac_accounting_id": "TreatmentId",
+                "acpoc_rv_remeasurement_deferred": "RemeasurementOfDeferred",
+                "acpoc_rv_remeasure_unbilled": "RemeasureUnbilled",
+                "acpoc_rv_rate_for_recognition": "RateForRecognition",
+                "acpoc_rv_rate_for_cash": "RateForCash",
+                "acpoc_rv_rate_for_remeasurement": "RateForRemeasurement",
+                "acpoc_rv_rate_for_final_settlement": "RateForFinalSettlement",
+                "acpoc_rv_rate_for_dedesignation": "RateForDedesignation",
+                "acpoc_rv_rate_for_fx_derivative_oci": "RateForFxDerivativeOci",
+                "acpoc_rv_rate_for_invoice": "RateForInvoice"
+            }
+        },
+        {
+            "TableName": "cfo_index_rate_pull",
+            "ModelName": "IndexRatePull",
+            "ColumnAliases": {
+                "irp_index_rate_pull_id": "Id",
+                "irp_rt_rates_set_id": "RateSetId",
+                "irp_timestamp_dto": "Timestamp",
+                "irp_success": "Success",
+                "irp_count_control_report_processed": "ControlReportProcessedCount",
+                "irp_count_rates_processed": "RatesProcessedCount",
+                "irp_rc_contact_id_signoff": "SignoffContactId",
+                "irp_create_nm_id": "CreatedById",
+                "irp_create_dto": "CreatedDate"
+            },
+            "ResultColumns": [
+                "irp_create_nm_id",
+                "irp_create_dto"
+            ]
+        },
+        {
+            "TableName": "cfo_index_rate_pull_detail",
+            "ModelName": "IndexRatePullDetail",
+            "ColumnAliases": {
+                "irpd_index_rate_pull_detail_id": "Id",
+                "irpd_irp_index_rate_pull_id": "IndexRatePullId",
+                "irpd_ix_index_id": "IndexId",
+                "irpd_rb_rate_id": "RateId",
+                "irpd_rv_status": "Status",
+                "irpd_rc_contact_id_assigned": "AssignedContactId",
+                "irpd_nt_note_id": "NoteId",
+                "irpd_create_dto": "CreatedDate"
+            },
+            "ResultColumns": [
+                "irpd_create_dto"
+            ]
+        },
+        {
+            "TableName": "cfo_index_rates_set",
+            "ModelName": "IndexRateSet",
+            "ColumnAliases": {
+                "ir_index_rates_id": "Id",
+                "ir_ix_index_id": "IndexId",
+                "ir_rt_rates_set_id": "RateSetId",
+                "ir_start_dt": "StartDate",
+                "ir_end_dt": "EndDate",
+                "ir_rv_type_id": "RateSetType",
+                "ir_rv_models_framework": "ModelFramework"
+            }
+        },
+        {
+            "TableName": "cfo_rates_set",
+            "ModelName": "RateSet",
+            "ColumnAliases": {
+                "rt_rates_set_id": "Id",
+                "rt_rates_description": "Description",
+                "rt_rv_type_id": "Type",
+                "rt_status": "Status",
+                "rt_futures_count": "FuturesCount",
+                "rt_shorts_count": "ShortsCount",
+                "rt_rv_bootstrapping_type": "BootstrappingType",
+                "rt_benchmark_ix_index_id": "BenchmarkIndexId"
+            }
+        },
+        {
+            "TableName": "cfo_index_rate_pull_cap_vol",
+            "ModelName": "RatePullCapVol",
+            "ColumnAliases": {
+                "irpcv_index_rate_pull_cap_vol_id": "Id",
+                "irpcv_irp_index_rate_pull_id": "RatePullId",
+                "irpcv_rv_currency": "Currency",
+                "irpcv_ix_index_id": "BaseIndexId",
+                "irpcv_rv_discount_type": "DiscountType"
+            }
+        },
+        {
+            "TableName": "cfo_rates_set_detail",
+            "ModelName": "RateSetDetail",
+            "ColumnAliases": {
+                "sd_setdetail_id": "Id",
+                "sd_rt_rates_set_id": "RateSetId",
+                "sd_ix_index_id": "IndexId"
+            }
+        },
+        {
+            "TableName": "cfo_regulation_position",
+            "ModelName": "RegulationPosition",
+            "ColumnAliases": {
+                "rgp_regulation_position_id": "Id",
+                "rgp_identifier": "Identifier",
+                "rgp_rv_transaction_identifier_type": "IdentifierType",
+                "rgp_prefix": "Prefix",
+                "rgp_rv_status": "Status",
+                "rgp_create_dto": "CreatedDate"
+            },
+            "ResultColumns": [
+                "rgp_create_dto"
+            ]
+        },
+        {
+            "TableName": "cfo_regulation_position_transaction_link",
+            "ModelName": "RegulationPositionTransaction",
+            "ColumnAliases": {
+                "rgpl_regulation_position_transaction_link_id": "Id",
+                "rgpl_rgp_regulation_position_id": "PositionId",
+                "rgpl_tr_transaction_id": "TransactionId",
+                "rgpl_rv_link_reason": "LinkReason",
+                "rgpl_rv_link_type": "LinkType",
+                "rgpl_create_dto": "CreatedDate"
+            },
+            "ResultColumns": [
+                "rgpl_create_dto"
+            ]
+        },
+        {
+            "TableName": "cfo_position_reports",
+            "ModelName": "PositionReport",
+            "ColumnAliases": {
+                "rpr_position_reports_id": "Id",
+                "rpr_rgpl_regulation_position_transaction_link_id": "RegulationPositionTransactionLinkId",
+                "rpr_rv_report_status": "ReportStatus",
+                "rpr_rv_report_type": "ReportType",
+                "rpr_status_date": "StatusDate",
+                "rpr_rv_send_method": "SendMethod",
+                "rpr_repository_identifier_long": "RepositoryIdentifier",
+                "rpr_valuation_date": "ValuationDate",
+                "rpr_create_dto": "CreatedDate",
+                "rpr_rv_reporting_jurisdiction": "ReportingJurisdiction",
+                "rpr_rvs_reporting_event_type": "ReportingEventType",
+                "rpr_do_document_id": "DocumentId",
+                "rpr_rv_reporting_reason": "ReportingReason"
+            },
+            "ResultColumns": [
+                "rpr_create_dto"
+            ]
+        },
+        {
+            "TableName": "cfo_debt_covenant",
+            "ModelName": "DebtCovenant",
+            "ColumnAliases": {
+                "dc_debt_covenant_id": "Id",
+                "dc_dcd_debt_covenant_definition_id": "DebtCovenantDefinitionId",
+                "dc_nt_note_id": "NoteId",
+                "dc_effective_dt": "EffectiveDate",
+                "dc_rv_currency": "Currency"
+            }
+        },
+        {
+            "TableName": "cfo_debt_covenant_definition",
+            "ModelName": "DebtCovenantDefinition",
+            "ColumnAliases": {
+                "dcd_debt_covenant_definition_id": "Id",
+                "dcd_rul_report_udf_list_id": "ReportUdfListId",
+                "dcd_re_entity_id": "EntityId",
+                "dcd_name": "Name",
+                "dcd_rv_type": "FormatType",
+                "dcd_description": "Description",
+                "dcd_effective_dt_needed_bit": "EffectiveDateNeeded"
+            }
+        },
+        {
+            "TableName": "cfo_debt_covenant_link",
+            "ModelName": "DebtCovenantLink",
+            "ColumnAliases": {
+                "dcl_debt_covenant_link_id": "Id",
+                "dcl_qd_quote_debt_id": "QuoteDebtId",
+                "dcl_dc_debt_covenant_id": "DebtCovenantId"
+            }
+        },
+        {
+            "TableName": "cfo_quote_debt",
+            "ModelName": "QuoteDebt",
+            "ColumnAliases": {
+                "qd_quote_debt_id": "Id",
+                "qd_tq_tran_quote_id": "TranQuoteId"
+            }
+        },
+        {
+            "TableName": "cfo_allocation",
+            "ModelName": "DebtAllocation",
+            "ColumnAliases": {
+                "alc_allocation_id": "Id",
+                "alc_al_asset_link_id": "AssetLinkId",
+                "alc_te_trans_relation_id": "TransRelationId",
+                "alc_allocation_percent": "AllocationPercent",
+                "alc_start_dt": "StartDate"
+            }
+        },
+        {
+            "TableName": "cfo_debt_descriptors",
+            "ModelName": "DebtDescriptor",
+            "ColumnAliases": {
+                "dds_debt_descriptors_id": "Id",
+                "dds_qd_quote_debt_id": "QuoteDebtId",
+                "dds_rv_debt_type": "DebtType",
+                "dds_debt_description": "DebtDescription",
+                "dds_rv_debt_purpose": "DebtPurpose",
+                "dds_rv_debt_seniority": "DebtSeniority",
+                "dds_rv_debt_group": "DebtGroup",
+                "dds_editable_bit": "EditDrawsAndPayDowns",
+                "dds_rv_debt_stabilization": "DebtStabilization",
+                "dds_lien_number": "LeinPosition",
+                "dds_rv_debt_lender_type": "LenderType"
+            }
+        },
+        {
+            "TableName": "cfo_debt_ownership",
+            "ModelName": "DebtOwnership",
+            "ColumnAliases": {
+                "dop_debt_ownership": "Id",
+                "dop_dds_debt_descriptors_id": "DebtDescriptorsId",
+                "dop_ownership_prcnt": "OwnershipPercent",
+                "dop_rv_ownership_structure": "OwnershipStructure",
+                "dop_start_dt": "StartDate",
+                "dop_end_dt": "EndDate"
+            }
+        },
+        {
+            "TableName": "cfo_debt_terms",
+            "ModelName": "DebtTerms",
+            "ColumnAliases": {
+                "lts_debt_terms_id": "Id",
+                "lts_qd_quote_debt_id": "QuoteDebtId",
+                "lts_commitment_fee_prcnt": "CommitmentFeePercent",
+                "lts_pooled_loan": "PooledLoan",
+                "lts_mult_pricing_options": "MultiplePricingOptions"
+            }
+        },
+        {
+            "TableName": "cfo_lms",
+            "ModelName": "LoanDetail",
+            "ColumnAliases": {
+                "lms_lms_id": "Id",
+                "lms_qd_quote_debt_id": "QuoteDebtId",
+                "lms_loan_identification": "LoanId",
+                "lms_corporate_nbr": "CorporateNumber",
+                "lms_secured_bit": "Secured",
+                "lms_securitized_bit": "Securitized",
+                "lms_collateral_asset": "CollateralAsset",
+                "lms_cross_collat_bit": "CrossCollateral",
+                "lms_rv_cross_collat_instrmnt": "CrossCollateralInstrument",
+                "lms_cross_default_bit": "CrossDefault",
+                "lms_rv_cross_default_instrmnt": "CrossDefaultInstrument",
+                "lms_guarantee_bit": "Guaranteed",
+                "lms_guarant_prcnt": "GuaranteedPercent",
+                "lms_rv_guarant_type": "GuaranteedType",
+                "lms_guarant_obligation": "GuaranteedObligation",
+                "lms_report_footnote1": "Footnote1",
+                "lms_report_footnote2": "Footnote2",
+                "lms_report_footnote3": "Footnote3",
+                "lms_report_footnote4": "Footnote4",
+                "lms_purchase_price": "PurchasePrice",
+                "lms_benefitiary": "Beneficiary",
+                "lms_rv_finance_stmnt_code": "FinanceStatmentCode",
+                "lms_rv_payment_method": "PaymentMethod",
+                "lms_payment_desc": "PaymentDescription",
+                "lms_grace_period": "GracePeriod",
+                "lms_convertible_bit": "Convertible",
+                "lms_rv_conversion_feature": "ConversionFeature",
+                "lms_conversion_dt": "ConversionDate",
+                "lms_rv_loan_type": "LoanType"
+            }
+        },
+        {
+            "TableName": "cfo_product_debt_main",
+            "ModelName": "ProductDebt",
+            "ColumnAliases": {
+                "plm_product_debt_main_id": "Id",
+                "plm_prm_product_main_id": "ProductMainId",
+                "plm_anticipated_maturity_dt": "AnticipatedMaturityDate",
+                "plm_extension_bit": "Extension",
+                "plm_extension_dt": "ExtensionDate",
+                "plm_extention_period": "ExtensionPeriod",
+                "plm_nbr_of_extension_options": "NumberOfExtensionOptions",
+                "plm_prepayment_lockout_term": "PrepaymentLockoutTerm",
+                "plm_prepayment_dt": "PrepaymentDate",
+                "plm_prepayment_no_penalty_dt": "PrepaymentNoPenaltyDate",
+                "plm_defeasance_no_penalty_dt": "DefeasanceNoPenaltyDate",
+                "plm_defeasance_option_bit": "DefeasanceOption",
+                "plm_defeasance_lockout_term": "DefeasanceLockoutTerm",
+                "plm_defeasance_dt": "DefeasanceDate",
+                "plm_prepayment_other_fee_desc": "OtherFeePrepaymentDescription",
+                "plm_rv_late_penalty_type": "LatePenaltyType",
+                "plm_total_debt_facility": "TotalCommitment",
+                "plm_unused_facility_fee": "UnusedFacilityFee",
+                "plm_orig_origination_costs": "OriginationCosts",
+                "plm_orig_issuance_costs": "OriginalIssuanceCosts",
+                "plm_orig_premium_discount": "OriginalPremiumDiscount",
+                "plm_orig_purch_acct_adj": "OriginalPurchaseAccountAdustment",
+                "plm_report_maturity_dt": "ReportMaturityDate",
+                "plm_instmnt_redemption_dt": "RedemptionDate",
+                "plm_instmnt_redemption_amt": "RedemptionPrice",
+                "plm_instmnt_redemption_bit": "Redeemable",
+                "plm_rv_prepayment_option": "PrepaymentOption",
+                "plm_prepayment_notification_dt": "PrepaymentNotificationDate"
+            }
+        },
+        {
+            "TableName": "cfo_product_main",
+            "ModelName": "ProductMain",
+            "ColumnAliases": {
+                "prm_product_main_id": "Id",
+                "pm_tq_tran_quote_id": "TranQuoteId"
+            }
+        },
+        {
+            "TableName": "com_notes",
+            "ModelName": "Note",
+            "ColumnAliases": {
+                "nt_note_id": "Id",
+                "nt_notes": "Text"
+            }
+        },
+        {
+            "TableName": "com_reminder",
+            "ModelName": "Reminder",
+            "ColumnAliases": {
+                "rem_reminder_id": "Id",
+                "rem_reference_dt": "ReferenceDate",
+                "rem_rv_date_type": "DateType",
+                "rem_subject": "Subject",
+                "rem_body": "Body"
+            }
+        },
+        {
+            "TableName": "com_reminder_link",
+            "ModelName": "ReminderLink",
+            "ColumnAliases": {
+                "rml_reminder_link_id": "Id",
+                "rml_rem_reminder_id": "ReminderId",
+                "rml_re_entity_id": "EntityId",
+                "rml_tr_transaction_id": "TransactionId"
+            }
+        },
+        {
+            "TableName": "com_reminder_date",
+            "ModelName": "ReminderDate",
+            "ColumnAliases": {
+                "rmd_reminder_date_id": "Id",
+                "rmd_rem_reminder_id": "ReminderId",
+                "rmd_days_back": "DaysBack"
+            }
+        },
+        {
+            "TableName": "com_reminder_recipient",
+            "ModelName": "ReminderRecipient",
+            "ColumnAliases": {
+                "rmr_reminder_recipient_id": "Id",
+                "rmr_rem_reminder_id": "ReminderId",
+                "rmr_rc_contact_id": "ContactId",
+                "rmr_rv_type": "Type"
+            }
+        },
+        {
+            "TableName": "cfo_import_job",
+            "ModelName": "ImportJob",
+            "ColumnAliases": {
+                "ij_import_job_id": "Id",
+                "ij_rv_job_type": "JobType",
+                "ij_re_entity_id": "EntityId",
+                "ij_rv_status": "Status",
+                "ij_job_guid": "JobGuid",
+                "ij_records_success": "RecordsSuccess",
+                "ij_records_error": "RecordsError",
+                "ij_deleted_bit": "IsDeleted",
+                "ij_filename": "Filename",
+                "ij_original_file_do_document_id": "OriginalFileDocumentId",
+                "ij_success_file_do_document_id": "SuccessFileDocumentId",
+                "ij_reject_file_do_document_id": "RejectFileDocumentId",
+                "ij_rv_job_source": "JobSource",
+                "ij_records_total": "TotalRecords",
+                "ij_create_nm_id": "ContactId",
+                "ij_create_utc": "SubmittedOnUtc"
+            }
+        },
+        {
+            "TableName": "cfo_import_job_detail",
+            "ModelName": "ImportJobDetail",
+            "ColumnAliases": {
+                "ijd_import_job_detail_id": "Id",
+                "ijd_ij_import_job_id": "ImportJobId",
+                "ijd_tr_transaction_id": "TransactionId",
+                "ijd_rowid": "RowId",
+                "ijd_message": "Message"
+            }
+        },
+        {
+            "TableName": "cfo_accounting_batch_process_run",
+            "ModelName": "AccountingProcessRun",
+            "ColumnAliases": {
+                "abpr_accounting_batch_process_run_id": "Id",
+                "abpr_rv_status": "Status",
+                "abpr_run_dt": "RunDate",
+                "abpr_rv_process_type": "ProcessType",
+                "abpr_rc_contact_id": "ContactId",
+                "abpr_re_entity_id": "EntityId",
+                "abpr_nt_note_id": "NoteId",
+                "abpr_create_utc": "CreatedOn",
+                "abpr_start_dt_utc": "StartDateUtc",
+                "abpr_end_dt_utc": "EndDateUtc"
+            },
+            "ResultColumns": [
+                "abpr_create_utc"
+            ]
+        },
+        {
+            "TableName": "cfo_accounting_batch_process_transaction",
+            "ModelName": "AccountingProcessTransaction",
+            "ColumnAliases": {
+                "abpt_accounting_batch_process_transaction_id": "Id",
+                "abpt_abpr_accounting_batch_process_run_id": "AccountingProcessRunId",
+                "abpt_tr_transaction_id": "TransactionId",
+                "abpt_rv_status": "Status",
+                "abpt_run_dt": "RunDate",
+                "abpt_delete_existing_entries_bit": "DeleteExistingEntries",
+                "abpt_run_as_perfectly_effective": "RunAsPerfectlyEffective",
+                "abpt_run_autolink_regression_report": "RunAutolinkRegressionReport",
+                "abpt_use_termination_value": "UseTerminationValue",
+                "abpt_use_existing_regression_datapoints": "UseExistingRegressionDatapoints",
+                "abpt_start_dt_utc": "StartDateUtc",
+                "abpt_end_dt_utc": "EndDateUtc"
+            }
+        },
+        {
+            "TableName": "cfo_accounting_batch_process_date",
+            "ModelName": "AccountingProcessDate",
+            "ColumnAliases": {
+                "abpd_accounting_batch_process_date_id": "Id",
+                "abpd_abpt_accounting_batch_process_transaction_id": "AccountingProcessTransactionId",
+                "abpd_group_guid": "GroupGuid",
+                "abpd_rv_category": "Category",
+                "abpd_value_dt": "ValueDate"
+            }
+        },
+        {
+            "TableName": "cfo_accounting_batch_process_transaction_error",
+            "ModelName": "AccountingProcessTransactionError",
+            "ColumnAliases": {
+                "abpte_accounting_batch_process_transaction_error_id": "Id",
+                "abpte_abpt_accounting_batch_process_transaction_id": "AccountingProcessTransactionId",
+                "abpte_error_detail": "ErrorDetail",
+                "abpte_ac_accounting_id": "TreatmentId",
+                "abpte_rv_status": "BatchItemStatus",
+                "abpte_start_dt_utc": "StartDateUtc",
+                "abpte_end_dt_utc": "EndDateUtc"
+            }
+        },
+        {
+            "TableName": "cfo_index_option",
+            "ModelName": "IndexOption",
+            "ColumnAliases": {
+                "ixop_index_option_id": "Id",
+                "ixop_cm_component_id": "ComponentId",
+                "ixop_multiplier": "Multiplier",
+                "ixop_holiday_city_1": "HolidayCityId1",
+                "ixop_holiday_city_2": "HolidayCityId2",
+                "ixop_lookback_days": "Lookbackdays"
+            }
+        },
+        {
+            "TableName": "cfo_loan_servicer",
+            "ModelName": "LoanServicer",
+            "ColumnAliases": {
+                "ls_loan_servicer_id": "Id",
+                "ls_servicer_name": "Name"
+            }
+        },
+        {
+            "TableName": "cfo_loan_servicer_fee_link",
+            "ModelName": "LoanServicerFee",
+            "ColumnAliases": {
+                "lsf_loan_servicer_fee_link_id": "Id",
+                "lsf_ls_loan_servicer_id": "LoanServicerId",
+                "lsf_tv_tier_value_id": "LoanServicerFeeValueId"
+            }
+        },
+        {
+            "TableName": "cfo_tier_value",
+            "ModelName": "LoanServicerFeeValue",
+            "ColumnAliases": {
+                "tv_tier_value_id": "Id",
+                "tv_rvs_tier_name": "FeeName",
+                "rv_tier_min": "Min",
+                "rv_tier_max": "Max",
+                "rv_tier_value": "FeeValue"
+            }
+        },
+        {
+            "TableName": "cfo_bond_detail",
+            "ModelName": "BondDetail",
+            "ColumnAliases": {
+                "bd_bond_det_id": "Id",
+                "bd_bond_name": "Name",
+                "bd_bond_coupon": "Coupon",
+                "bd_maturity_dt": "Maturity",
+                "bd_dd_callable": "Callable",
+                "bd_call_price": "CallPrice",
+                "bd_earliest_call_dt": "EarliestCallDate",
+                "bd_bond_issuer": "BondIssuer",
+                "bd_value_at_par": "ValueAtPar",
+                "bd_dd_coupon_freq": "CouponFrequency",
+                "bd_dd_day_fraction": "DayCountFraction",
+                "bd_rv_currency_id": "Currency",
+                "bd_issue_dt": "IssueDate",
+                "bd_tenor": "Tenor",
+                "bd_cusip": "Cusip",
+                "bd_isin_nbr": "IssuanceNumber",
+                "bd_issue_amt": "IssuanceAmount",
+                "bd_nominal_spread": "NominalSpread",
+                "bd_nominal_coupon": "NominalCoupon",
+                "bd_spread": "Spread",
+                "bd_dd_spread_const_yn": "SpreadIsConstant",
+                "bd_dd_coupon_const_yn": "CouponIsConstant",
+                "bd_ix_index_id": "IndexId",
+                "bd_coupon_type": "CouponType",
+                "bd_secured": "Secured",
+                "bd_bbg_code": "BloombergCode",
+                "bd_eff_dt": "EffectiveDate"
+            }
+        },
+        {
+            "TableName": "cfo_daily_trans_hist",
+            "ModelName": "ProductValuation",
+            "ColumnAliases": {
+                "dh_daily_trans_hist_id": "Id",
+                "dh_tq_tran_quote_id": "TransactionQuoteId",
+                "dh_accrued_interest": "AccruedInterest",
+                "dh_dd_type_id": "ProductValuationType",
+                "dh_dd_value_source": "ValueSource",
+                "dh_delta": "Delta",
+                "dh_dv01_dvtick": "DV01DVTick",
+                "dh_pv01": "PV01",
+                "dh_end_of_day_bit": "EndOfDay",
+                "dh_inception_bit": "InceptionValue",
+                "dh_key_rate": "KeyRate",
+                "dh_modify_dt": "ModifyDate",
+                "dh_modify_nm_id": "ModifyByID",
+                "dh_sn_scenario_id": "ScenarioId",
+                "dh_val_time_stamp": "ValuationTimeStamp",
+                "dh_val_time_val": "ValuationTimeValue",
+                "dh_valuation_intrinsic": "ValuationIntrinsic",
+                "dh_valuation_total": "ValuationTotal",
+                "dh_valuation_utc": "ValuationTimeStampUTC",
+                "dh_value_curr": "ValuationCurrency",
+                "dh_vega": "Vega",
+                "dh_discount_ix_index_id": "DiscountIndexId",
+                "dh_key_swap": "KeySwap",
+                "dh_key_fx_rate": "KeyFxRate",
+                "dh_key_swp_sprd": "KeySwapSpread",
+                "dh_impl_fwrd_prem": "ImpliedForwardPremium",
+                "dh_impl_repo": "ImpliedReposition",
+                "dh_modify_duration": "ModifyDuration",
+                "dh_implied_vol": "ImpliedVolatility",
+                "dh_val_open_amt": "ValuationOpenAmount",
+                "dh_val_open_rate": "ValuationOpenRate",
+                "dh_quote_amt": "QuoteAmount",
+                "dh_quote_rate": "QuoteRate",
+                "dh_spot": "Spot",
+                "dh_gamma": "Gamma",
+                "dh_theta": "Theta",
+                "dh_quote_time": "QuoteTime",
+                "dh_spread_over_benchmark": "SpreadOverBenchmark",
+                "dh_yield": "Yield",
+                "dh_explanation": "Explanation",
+                "dh_value_target_dt": "ValueTargetDate",
+                "dh_control_report_run_bit": "ControlReportRun"
+            }
+        },
+        {
+            "TableName": "com_asset",
+            "ModelName": "Asset",
+            "ColumnAliases": {
+                "as_asset_id": "Id",
+                "as_name": "Name",
+                "as_description": "Description",
+                "as_rv_type_id": "TypeRefId",
+                "as_url": "URL",
+                "as_note": "Note",
+                "as_rv_class": "ClassRefId",
+                "as_year_built": "YearBuilt",
+                "as_assessment_dt": "AssessmentDate"
+            }
+        },
+        {
+            "TableName": "com_asset_info",
+            "ModelName": "AssetInfo",
+            "ColumnAliases": {
+                "ai_asset_info_id": "Id",
+                "ai_as_asset_id": "AssetId",
+                "ai_rv_type": "TypeRefId",
+                "ai_value": "Amount",
+                "ai_rv_currency_id": "CurrencyRefId",
+                "ai_effective_dt": "EffecitveDate"
+            }
+        },
+        {
+            "TableName": "com_asset_links",
+            "ModelName": "AssetLink",
+            "ColumnAliases": {
+                "al_asset_link_id": "Id",
+                "al_as_asset_id": "AssetId",
+                "al_tr_transaction_id": "TransactionId",
+                "al_re_entity_id": "EntityId"
+            }
+        },
+        {
+            "TableName": "com_asset_links_real_estate_credit_spread",
+            "ModelName": "AssetLinkRealEstateCreditSpread",
+            "ColumnAliases": {
+                "alcs_asset_links_real_estate_credit_spread_id": "Id",
+                "alcs_al_asset_link_id": "AssetLinkId"
+            }
+        },
+        {
+            "TableName": "com_asset_real_estate",
+            "ModelName": "RealEstateMeta",
+            "ColumnAliases": {
+                "asr_asset_real_estate_id": "Id",
+                "asr_as_asset_id": "AssetId",
+                "asr_description": "Description",
+                "asr_rv_type": "TypeRefId",
+                "asr_url": "URL",
+                "asr_note": "Note",
+                "asr_rv_class": "ClassRefId",
+                "asr_year_built": "YearBuilt",
+                "asr_client_property_key": "ClientPropertyKey",
+                "asr_rv_source": "SourceDescriptionRefId",
+                "asr_rv_ncreif_type": "NcreifTypeRefId",
+                "asr_rvs_ncreif_type_sub": "NcreifSubtypeRefId"
+            }
+        },
+        {
+            "TableName": "cfo_journal_entries_scheduled",
+            "ModelName": "ScheduledJournalEntry",
+            "ColumnAliases": {
+                "jes_scheduled_entry_id": "Id",
+                "jes_ac_accounting_id": "AccountingId",
+                "jes_entry_dt": "EntryDate",
+                "jes_entry_amt": "EntryAmount",
+                "jes_rv_credit_account": "CreditAccount",
+                "jes_rv_debit_account": "DebitAccount",
+                "jes_g20_leaking_entry_bit": "G20LeakingEntry"
+            }
+        },
+        {
+            "TableName": "com_entity",
+            "ModelName": "Entity",
+            "ColumnAliases": {
+                "re_entity_id": "Id",
+                "re_company_name": "CompanyName",
+                "re_friendly_name": "FriendlyName",
+                "re_fictitious_bit": "Fictitious",
+                "re_dd_entity_type": "EntityType",
+                "re_salesforce_id": "SalesforceId",
+                "re_rvs_greatplains_cust_class": "GreatPlainsCustomerClass",
+                "re_data_owner_re_entity_id": "DataOwnerEntityId",
+                "re_rv_status_id": "CompanyStatus",
+                "re_allowed_to_hedge_bit": "AllowedToHedge"
+            }
+        },
+        {
+            "TableName": "com_entity_email_delivery_config",
+            "ModelName": "EmailDeliveryConfiguration",
+            "ColumnAliases": {
+                "edc_entity_email_delivery_config_id": "Id",
+                "edc_re_entity_id": "EntityId",
+                "edc_rv_email_delivery_config": "EmailDeliveryConfigType"
+            }
+        },
+        {
+            "TableName": "com_entity_email_delivery_whitelabel_config",
+            "ModelName": "EmailDeliveryWhitelabelConfiguration",
+            "ColumnAliases": {
+                "edwc_entity_email_delivery_whitelabel_config_id": "Id",
+                "edwc_re_entity_id": "EntityId",
+                "edwc_username": "Username",
+                "edwc_password": "Password",
+                "edwc_ip_address": "IpAddress",
+                "edwc_cname": "CName",
+                "edwc_domain": "Domain"
+            }
+        },
+        {
+            "TableName": "com_entity_email_delivery_whitelabel_workflow",
+            "ModelName": "EmailDeliveryWhitelabelWorkflow",
+            "ColumnAliases": {
+                "edww_entity_email_delivery_whitelabel_workflow_id": "Id",
+                "edww_re_entity_id": "EntityId",
+                "edww_rv_whitelabel_config": "WhitelabelConfiguration",
+                "edww_whitelabel_workflow_dto": "WhitelabelWorkflowDate"
+            }
+        },
+        {
+            "TableName": "cfo_contact_rel_default",
+            "ModelName": "ContactRelationship",
+            "ColumnAliases": {
+                "crd_contact_rel_default_id": "Id",
+                "crd_re_entity_id": "EntityId",
+                "crd_rc_contact_id":  "ContactId",
+                "crd_rv_relationship_type": "RelationshipType",
+                "crd_rv_role_type": "RoleType"
+            }
+        },
+        {
+            "TableName": "cfo_end_user_exemption",
+            "ModelName": "EndUserExemption",
+            "ColumnAliases": {
+                "eue_end_user_exemption_id": "Id",
+                "eue_re_entity_id": "EntityId",
+                "eue_nr_relationship_id": "RelationshipId",
+                "eue_name": "Name",
+                "eue_has_credit_support_agreement": "HasCreditSupportAgreement",
+                "eue_payments_secured_by_collateral": "PaymentsSecuredByCollateral",
+                "eue_payments_secured_by_guarantee": "PaymentsSecuredByGuarantee",
+                "eue_obligs_met_with_available_resources": "ObligsMetWithAvailableResources",
+                "eue_obligs_met_with_other_resources": "ObligsMetWithOtherResources",
+                "eue_end_user_is_financial_entity": "EndUserIsFinancialEntity",
+                "eue_end_user_is_captive_affiliate": "EndUserIsCaptiveAffiliate",
+                "eue_instrument_hedges_commercial_risk": "InstrumentHedgesCommercialRisk",
+                "eue_counter_party_registered": "CounterPartyRegistered",
+                "eue_counter_party_approved": "CounterPartyApproved",
+                "eue_counter_party_central_index_key": "CounterPartyCentralIndexKey",
+                "eue_CreditSupportAgreementDetails": "CreditSupportAgreementDetails",
+                "eue_PaymentsSecuredByCollateralDetails": "PaymentsSecuredByCollateralDetails",
+                "eue_PaymentsSecuredByGuarantyDetails": "PaymentsSecuredByGuarantyDetails",
+                "eue_ObligationMetWithAvailResourcesDetails": "ObligationMetWithAvailResourcesDetails",
+                "eue_ObligationsMetWthOtherResourcesDetials": "ObligationsMetWthOtherResourcesDetials",
+                "eue_create_nm_id": "CreatedByContactId",
+                "eue_create_utc": "CreatedByDateUtc",
+                "eue_DateSubmittedSwapDataRepository": "DateSubmittedSwapDataRepository"
+            }
+        },
+        {
+            "TableName": "com_entity_relationships",
+            "ModelName": "EntityRelationship",
+            "ColumnAliases": {
+                "nr_relationship_id": "Id",
+                "nr_parent_re_entity_id": "ParentEntityId",
+                "nr_child_re_entity_id": "ChildEntityId",
+                "nr_relnship_type": "RelationshipType",
+                "nr_description": "Description",
+                "nr_create_dt": "CreateDate",
+                "nr_create_nm_id": "CreateContactId"
+            }
+        },
+        {
+            "TableName": "com_financials",
+            "ModelName": "Financial",
+            "ColumnAliases": {
+                "fn_financials_id": "Id",
+                "fn_re_entity_id": "EntityId",
+                "fn_rv_home_currency_id": "FunctionalCurrencyId",
+                "fn_notes": "Notes",
+                "fn_tax_id": "TaxId"
+            }
+        },
+        {
+            "TableName": "com_legal_entity",
+            "ModelName": "LegalEntity",
+            "ColumnAliases": {
+                "rl_legal_entity_id": "Id",
+                "rl_re_entity_id": "EntityId",
+                "rl_borrower_bit": "IsBorrower",
+                "rl_small_bank_bit": "IsSmallBank",
+                "rl_rv_eue_election": "EUEElection",
+                "rl_rv_default_valuation_currency": "DefaultValuationCurrency"
+            }
+        },
+        {
+            "TableName": "cfo_entity_rate_overwrite",
+            "ModelName": "EntityRateOverwrite",
+            "ColumnAliases": {
+                "eso_entity_rate_overwrite_id": "Id",
+                "eso_re_entity_id": "EntityId",
+                "eso_ix_index_id": "IndexId",
+                "eso_rate": "Rate",
+                "eso_rate_from_date": "RateFromDate",
+                "eso_rate_to_date": "RateToDate",
+                "eso_rv_status": "RateOverwriteStatus",
+                "eso_rc_last_status_contact_id": "ContactId",
+                "eso_last_status_dt": "LastStatusDt",
+                "eso_last_status_dto": "LastStatusDate",
+                "eso_rv_rate_type": "RateType"
+            }
+        },
+        {
+            "TableName": "poc_booked_accounting_event",
+            "ModelName": "BookedRevenue",
+            "ColumnAliases": {
+                "bae_booked_accounting_event_id": "Id",
+                "bae_ac_accounting_id": "TreatmentId",
+                "bae_rv_event_type": "EventType",
+                "bae_amount": "Amount",
+                "bae_date": "Date",
+                "bae_period_end_date": "PeriodEndDate"
+            }
+        },
+        {
+            "TableName": "poc_booked_accounting_event_link",
+            "ModelName": "BookedRevenueLink",
+            "ColumnAliases": {
+                "bael_booked_accounting_event_link_id": "Id",
+                "bael_invoice_bae_booked_accounting_event_id": "InvoiceId",
+                "bael_bookedaccountingevent_bae_booked_accounting_event_id": "RevenueId"
+            }
+        },
+        {
+            "TableName": "cfo_daily_component_hist",
+            "ModelName": "ComponentValuation",
+            "ColumnAliases": {
+                "ch_component_hist_id": "Id",
+                "ch_cm_component_id": "ComponentId",
+                "ch_dd_type_id": "TypeId",
+                "ch_key_rate": "KeyRate",
+                "ch_key_swap": "KeySwap",
+                "ch_key_fx_rate": "KeyFxRate",
+                "ch_key_swp_sprd": "KeySwpSprd",
+                "ch_impl_fwrd_prem": "ImplFwrdPrem",
+                "ch_dv01_dvtick": "Dv01DvTick",
+                "ch_impl_repo": "ImplRepo",
+                "ch_modify_duration": "ModifyDuration",
+                "ch_implied_vol": "ImpliedVol",
+                "ch_valuation_total": "ValuationTotal",
+                "ch_val_open_amt": "ValOpenAmt",
+                "ch_val_open_rate": "ValOpenRate",
+                "ch_quote_amt": "QuoteAmt",
+                "ch_quote_rate": "QuoteRate",
+                "ch_valuation_intrinsic": "ValuationIntrinsic",
+                "ch_val_time_val": "ValTimeVal",
+                "ch_val_time_stamp": "ValTimestamp",
+                "ch_spot": "Spot",
+                "ch_delta": "Delta",
+                "ch_gamma": "Gamma",
+                "ch_theta": "Theta",
+                "ch_vega": "Vega",
+                "ch_quote_time": "QuoteTime",
+                "ch_modify_dt": "ModifyDt",
+                "ch_modify_nm_id": "ModifyNmId",
+                "ch_create_dt": "CreateDt",
+                "ch_create_nm_id": "CreateNmId",
+                "ch_sn_scenario_id": "ScenarioId",
+                "ch_dd_value_source": "ValueSource",
+                "ch_value_curr": "ValueCurr",
+                "ch_spread_over_benchmark": "SpreadOverBenchmark",
+                "ch_accrued_interest": "AccruedInterest",
+                "ch_yield": "Yield",
+                "ch_explanation": "Explanation",
+                "ch_rv_application": "Application",
+                "ch_mid_market_total_val": "MidMarketTotalVal"
+            }
+        },
+        {
+            "TableName": "com_entity_regulation",
+            "ModelName": "EntityRegulation",
+            "ColumnAliases": {
+                "rer_entity_regulation_id": "Id",
+                "rer_re_entity_id": "EntityId",
+                "rer_cn_country_id": "CountryId",
+                "rer_lei": "Lei"
+            }
+        },
+        {
+            "TableName": "lms_report_udf_link",
+            "ModelName": "CustomizableReportUDFLink",
+            "ColumnAliases": {
+                "rlnk_report_udf_link_id": "Id",
+                "rlnk_rep_report_id": "ReportId",
+                "rlnk_rul_report_udf_list_id": "ReportUdfListId",
+                "rlnk_select_bit": "Selected",
+                "rlnk_select_order": "SelectOrder",
+                "rlnk_groupby_bit": "Grouped",
+                "rlnk_groupby_order": "GroupedOrder",
+                "rlnk_orderby_bit": "Sorted",
+                "rlnk_orderby_order": "SortedOrder"
+            }
+        },
+        {
+            "TableName": "lms_report_function_params",
+            "ModelName": "CustomizableReportReportParams",
+            "ColumnAliases": {
+                "rfp_param_id": "Id",
+                "rfp_rlnk_report_udf_link_id": "ReportUdfLinkId",
+                "rfp_function_label_name": "FunctionLabelName",
+                "rfp_from_dt": "FromDate",
+                "rfp_to_dt": "ToDate",
+                "rfp_shock": "ShockAmount",
+                "rfp_rv_percent_allocation": "AllocationType",
+                "rfp_fx_bit": "Fx",
+                "rfp_delta_bit": "Delta",
+                "rfp_rv_reporting_currency": "Currency"
+            }
+        },
+        {
+            "TableName": "lms_report_user_specified_link",
+            "ModelName": "CustomizableReportUserSpecifiedLink",
+            "ColumnAliases": {
+                "rusl_report_user_specified_link_id": "Id",
+                "rusl_rep_report_id": "ReportId",
+                "rusl_dcd_debt_covenant_definition_id": "CovenantDefinitionId",
+                "rusl_column_label_name": "ColumnLabelName",
+                "rusl_select_bit": "Selected",
+                "rusl_select_order": "SelectOrder",
+                "rusl_groupby_bit": "Grouped",
+                "rusl_groupby_order": "GroupedOrder",
+                "rusl_orderby_bit": "Sorted",
+                "rusl_orderby_order": "SortedOrder",
+                "rusl_from_dt": "FromDate",
+                "rusl_to_dt": "ToDate"
+            }
+        },
+        {
+            "TableName": "lms_template_contact_link",
+            "ModelName": "FavoriteReportLink",
+            "ColumnAliases": {
+                "tcl_template_contact_link_id": "Id",
+                "tcl_tpl_template_id": "TemplateId",
+                "tcl_ec_entity_contact_link_id": "EntityContactLinkId"
+            }
+        },
+        {
+            "TableName": "cfo_accounting_period",
+            "ModelName": "TreatmentPeriodEndDate",
+            "ColumnAliases": {
+                "acp_accounting_period_id": "Id",
+                "acp_ac_accounting_id": "TreatmentId",
+                "acp_period_end_date": "PeriodEndDate"
+            }
+        },
+        {
+            "TableName": "cfo_quote_udf_field_link",
+            "ModelName": "EntityCustomizableColumnLink",
+            "ColumnAliases": {
+                "ufn_quote_udf_field_link_id": "Id",
+                "ufn_re_entity_id": "EntityId",
+                "ufn_field": "CustomizableColumnName",
+                "ufn_field_name": "OverriddenColumnDisplayName"
+            }
+        },
+        {
+            "TableName": "cfo_user_entity_link",
+            "ModelName": "UserEntityLink",
+            "ColumnAliases": {
+                "uel_user_entity_link_id": "Id",
+                "uel_us_user_id": "UserId",
+                "uel_re_entity_id": "EntityId"
+            }
+        },
+        {
+            "TableName": "cfo_index_rate_pull_detail_cap_vol",
+            "ModelName": "IndexRatePullDetailCapVol",
+            "ColumnAliases": {
+                "irpdcv_index_rate_pull_detail_cap_vol_id": "Id",
+                "irpdcv_irpd_index_rate_pull_detail_id": "IndexRatePullDetailId",
+                "irpdcv_shift_factor": "ShiftFactor",
+                "irpdcv_shifted_lognormal_vol": "ShiftedLogNormalVol",
+                "irpdcv_normal_vol": "NormalVol"
+            }
+        },
+        {
+            "TableName": "com_provider_fieldsets",
+            "ModelName": "ProviderFieldSet",
+            "ColumnAliases": {
+                "fs_provider_fieldset_id": "Id",
+                "fs_description": "Description",
+                "fs_rv_provider_name_id": "Provider"
+            }
+        },
+        {
+            "TableName": "cfo_index_provider_fieldsets",
+            "ModelName": "RateProviderMapping",
+            "ColumnAliases": {
+                "ip_provider_index_id": "Id",
+                "ip_ix_index_id": "IndexId",
+                "ip_provider_code": "InstrumentCode",
+                "ip_scale_factor": "ScaleFactor",
+                "ip_fs_provider_fieldset_id": "ProviderFieldSetId",
+                "ip_rv_provider_name_id": "RatesProvider"
+            }
+        },
+        {
+            "TableName": "cfo_invoice_detail",
+            "ModelName": "Invoice",
+            "ColumnAliases": {
+                "ind_invoice_id": "Id",
+                "ind_tr_transaction_id": "TransactionId",
+                "ind_greatplains_id": "GreatPlainsId",
+                "ind_base_fee": "BaseFee",
+                "ind_rv_currency": "CurrencyId",
+                "ind_discount_amt": "DiscountAmount",
+                "ind_paid_in_full_bit": "PaidInFull",
+                "ind_tax_rate": "TaxRate",
+                "ind_tax_amt": "TaxAmount",
+                "ind_net_fee": "NetFee",
+                "ind_bank_gross_fee": "BankGrossFee",
+                "ind_invoice_dt": "InvoiceDate",
+                "ind_rv_invoice_type": "InvoiceType",
+                "ind_description": "Description",
+                "ind_note": "Note",
+                "ind_rv_billing_office": "BillingOffice",
+                "ind_allocation_note": "AllocationNote",
+                "ind_bank_gross_fee_overwrite_bit": "BankGrossFeeOverwrite",
+                "ind_rv_billing_entity": "BillingEntityId"
+            }
+        },
+        {
+            "TableName": "cfo_deal_process",
+            "ModelName": "DealProcess",
+            "ColumnAliases": {
+                "dp_process_task_id": "Id",
+                "dp_tr_transaction_id": "TransactionId",
+                "dp_rv_action": "Action",
+                "dp_rc_contact_id": "ContactId",
+                "dp_completion_dt": "CompletionDateUtc",
+                "dp_complete_bit": "IsComplete"
+            }
+        },        
+        {
+            "TableName": "cfo_position_reports",
+            "ModelName": "PositionReport",
+            "ColumnAliases": {
+                "rpr_position_reports_id": "Id",
+                "rpr_rv_report_status": "ReportStatus",
+                "rpr_status_date": "ReportStatusDate",
+                "rpr_rv_send_method": "SendMethod",
+                "rpr_repository_identifier_long": "RepositoryIdentifier",
+                "rpr_valuation_date": "ValuationDate",
+                "rpr_create_dto": "CreateDateUtc",
+                "rpr_rv_reporting_jurisdiction": "ReportingJurisdiction",
+                "rpr_rvs_reporting_event_type": "ReportingEventType",
+                "rpr_do_document_id": "DocumentId",
+                "rpr_rv_reporting_reason": "ReportingReason"
+            }
+        },
+        {
+            "TableName": "com_regulation_detail_dodd_frank",
+            "ModelName": "RegulationDetailDoddFrank",
+            "ColumnAliases": {
+                "redf_regulation_detail_dodd_frank_id": "Id",
+                "redf_rer_entity_regulation_id": "EntityRegulationId",
+                "redf_asset_class_ir_bit": "IRAssetClass",
+                "redf_asset_class_fx_bit": "FXAssetClass",
+                "redf_asset_class_commodity_bit": "CommodityAssetClass",
+                "redf_is_us_person_bit": "IsUsPerson",
+                "redf_rv_status": "RegulationStatus",
+                "redf_rv_sec_filer": "SecFiler",
+                "redf_is_board_approved_bit": "BoardApproved",
+                "redf_suitability_policies_sent_dt": "SuitabilityPoliciesSentDate",
+                "redf_suitability_policies_adopted_bit": "SuitabilityPoliciesAdopted",
+                "redf_eue_selected": "EueSelected",
+                "redf_cpo_name": "CpoName",
+				"redf_rv_pool_exemptions" : "CpoExemption"
+            }
+        },
+        {
+            "TableName": "com_regulation_nfa_registration_status",
+            "ModelName": "RegulationDetailDoddFrankNfaRegistrationStatus",
+            "ColumnAliases": {
+                "rnfa_regulation_nfa_registration_status_id": "Id",
+                "rnfa_redf_regulation_detail_dodd_frank_id": "RegulationDetailDoddFrankId",
+                "rnfa_status": "Status"
+            }
+        },
+        {
+            "TableName": "com_regulation_detail_emir",
+            "ModelName": "RegulationDetailEmir",
+            "ColumnAliases": {
+                "reem_regulation_detail_emir_id": "Id",
+                "reem_rer_entity_regulation_id": "EntityRegulationId",
+                "reem_rv_regulatory_status": "RegulationStatus",
+                "reem_emir_policies_sent_dt": "PoliciesSentDate",
+                "reem_emir_policies_adopted_bit": "PoliciesAdopted",
+                "reem_is_authorized_credit_institution_bit": "IsAuthorizedCreditInstitution",
+                "reem_subject_to_aifmd_bit": "SubjectToAIFMD",
+                "reem_rv_scope": "InScopeForEMIR",
+                "reem_rv_clearing_category": "EMIRClearingCategory"
+            }
+        },
+		{
+			"TableName": "cfo_marriage_regulation",
+            "ModelName": "MarriageRegulation",
+            "ColumnAliases": {
+				"mrg_marriage_regulation_id" : "Id",
+				"mrg_mar_marriage_id": "MarriageId",
+				"mrg_has_external_bca": "HasExternalBca",
+				"mrg_has_swap_trading_relationship": "HasSwapTradingRelationship",
+				"mrg_has_portfolio_reconciliation": "HasPortfolioReconciliation",
+				"mrg_portfolio_reconciliation_provider_for_dodd_frank": "PortfolioReconciliationProviderForDoddFrank",
+				"mrg_portfolio_reconciliation_provider_for_emir": "PortfolioReconciliationProviderForEmir",
+				"mrg_reporting_provider_for_dodd_frank": "ReportingProviderForDoddFrank",
+				"mrg_reporting_provider_for_emir": "ReportingProviderForEmir",
+				"mrg_rv_dodd_frank_adherence": "DoddFrankAdherence"
+            }
+		},
+		{
+			"TableName": "cfo_marriage_regulation_jurisdiction",
+            "ModelName": "MarriageRegulationJurisdiction",
+            "ColumnAliases": {
+				"mrj_marriage_regulation_jurisdiction_id" : "Id",
+				"mrj_mar_marriage_id": "MarriageId",
+				"mrj_is_reconciliation_provider": "IsReconciliationProvider",
+				"mrj_is_reporting_provider": "IsReportingProvider",
+				"mrj_rvs_sponsor_le_reporting_type": "SponsorLeReportingType"
+            }
+		},
+        {
+            "TableName": "cfo_regulation_report_link",
+            "ModelName": "RegulationReportLink",
+            "ColumnAliases": {
+                "rgcl_regulation_report_link_id": "Id",
+                "rgcl_orginal_rgr_regulation_report_id": "OriginalReportId",
+                "rgcl_updating_rgr_regulation_report_id": "UpdatingReportId",
+                "rgcl_rv_update_reason": "UpdateReason"
+            }
+        },
+        {
+            "TableName": "cfo_regulation_report",
+            "ModelName": "RegulatoryReport",
+            "ColumnAliases": {
+                "rgr_regulation_report_id": "Id",
+                "rgr_rv_report_file_type": "ReportFileType",
+                "rgr_rv_send_method": "SendMethod",
+                "rgr_cm_component_id": "ComponentId",
+                "rgr_do_document_id": "DocumentId",
+                "rgr_unique_report_identifier": "UniqueReportIdentifier",
+                "rgr_rv_status": "Status",
+                "rgr_authorized_by_rc_contact_id": "AuthorizedByContactId",
+                "rgr_authorization_dt": "AuthorizationDate",
+                "rgr_status_dt": "StatusDate",
+                "rgr_dh_daily_trans_hist_id": "DailyTransactionHistoryId"
+            },
+            "ResultColumns": [
+                "rgr_create_nm_id",
+                "rgr_create_utc"
+            ]
+        },
+        {
+            "TableName": "cfo_transaction_regulation_detail",
+            "ModelName": "TransactionRegulationDetail",
+            "ColumnAliases": {
+                "trd_transaction_regulation_detail_id": "Id",
+                "trd_tr_transaction_id": "TransactionId",
+                "trd_eue_link_exempt_bit": "IsEUELinkExempt",
+                "trd_confirmation_report_exempt_bit": "IsComfirmationReportExempt",
+                "trd_report_exempt_bit": "IsReportingSuppressed",
+                "trd_manual_initial_report_bit": "IsInitialReportingManual"
+            }
+        },
+        {
+            "TableName": "cfo_report_default_recipient",
+            "ModelName": "ReportDefaultRecipient",
+            "ColumnAliases": {
+                "rdr_report_default_recipient_id": "Id",
+                "rdr_re_entity_id": "EntityId",
+                "rdr_rv_distribution_method": "DistributionMethod",
+                "rdr_rc_contact_id": "ContactId",
+                "rdr_rv_role_type": "RoleType",
+                "rdr_rv_report_type": "ReportType",
+                "rdr_rv_recipient_type": "RecipientType",
+                "rdr_rvs_report_frequency": "ReportFrequency",
+                "rdr_deleted_bit": "IsDeleted"
+            },
+            "ResultColumns": [
+                "rdr_deleted_bit"
+            ]
+        },
+        {
+            "TableName": "cfo_integration_user",
+            "ModelName": "EntityIntegrationSetting",
+            "ColumnAliases": {
+                "iu_integration_user_id": "Id",
+                "iu_logon_name": "LogonName",
+                "iu_encrypt_pswd": "Password",
+                "iu_rvpl_vendor_platform_id": "VendorPlatformId",
+                "iu_rc_contact_id_default_contact": "DefaultContactId",
+                "iu_re_entity_id_default_entity": "EntityId"
+            }
+        },
+        {
+            "TableName": "cfo_entity_vendor_platform",
+            "ModelName": "EntityVendorPlatform",
+            "ColumnAliases": {
+                "rep_entity_vendor_platform_id": "Id",
+                "rep_re_entity_id": "EntityId",
+                "rep_rvpl_vendor_platform_id": "VendorPlatformId"
+            }
+        },
+        {
+            "TableName": "cfo_entity_vendor_platform_code",
+            "ModelName": "EntityVendorPlatformCode",
+            "ColumnAliases": {
+                "repc_entity_vendor_platform_code_id": "Id",
+                "repc_rep_entity_vendor_platform_id": "EntityVendorPlatformId",
+                "repc_platform_code": "PlatformCode",
+                "repc_rv_code_type": "PlatformCodeType"
+            }
+        },
+        {
+            "TableName": "cfo_marriage_vendor_platform",
+            "ModelName": "MarriageVendorPlatform",
+            "ColumnAliases": {
+                "marp_marriage_vendor_platform_id": "Id",
+                "marp_mar_marriage_id": "MarriageId",
+                "marp_rvpl_vendor_platform_id": "VendorPlatformId"
+            }
+        },
+        {
+            "TableName": "com_document",
+            "ModelName": "Document",
+            "ColumnAliases": {
+                "do_document_id": "Id",
+                "do_filename": "FileName",
+                "do_actual_filename": "ActualFileName",
+                "do_rv_doc_type": "DocumentType",
+                "do_rvs_doc_subtype": "DocumentSubType",
+                "do_rv_doc_status": "DocumentStatus",
+                "do_status_dt": "StatusDate",
+                "do_rv_show_on_web": "ShowOnWeb",
+                "do_track_history_bit": "TrackHistory",
+                "do_modify_dt": "ModifiedDate"
+            },
+            "ResultColumns": [
+                "do_create_dt"
+            ]
+        },
+        {
+            "TableName": "com_document_links",
+            "ModelName": "DocumentLink",
+            "ColumnAliases": {
+                "dol_document_link_id": "Id",
+                "dol_do_document_id": "DocumentId",
+                "dol_re_entity_id": "EntityId",
+                "dol_rc_contact_id": "ContactId",
+                "dol_tr_transaction_id": "TransactionId",
+                "dol_le_legal_entity_id": "LegalEntityId",
+                "dol_primary_link_bit": "PrimaryLink",
+                "dol_fl_ongoing_calc_id": "OngoingCalcId",
+                "dol_dl_document_link_id": "DealTicketDocumentLinkId",
+                "dol_rep_report_id": "ReportId",
+                "dol_tkm_ticket_message_id": "TicketMessageId",
+                "dol_cafd_accounting_fx_default_id": "AccountingFxDefaultId",
+                "dol_eue_end_user_exemption_id": "EndUserExemptionId",
+                "dol_ecp_eligible_contract_participant_id": "EligibleContractParticipantId",
+                "dol_achf_file_id": "FileId",
+                "dol_achpr_ach_prenote_file_id": "AchPrenoteFileId"
+            }
+        },
+        {
+            "TableName": "com_document_note_link",
+            "ModelName": "DocumentNoteLink",
+            "ColumnAliases": {
+                "dnl_document_note_link_id": "Id",
+                "dnl_do_document_id": "DocumentId",
+                "dnl_nt_note_id": "NoteId"
+            }
+        },
+        {
+            "TableName": "cfo_marriage_transaction_raw",
+            "ModelName": "MarriageTransactionLink",
+            "ColumnAliases": {
+                "mtr_marriage_transaction_id": "Id",
+                "mtr_mar_marriage_id": "MarriageId",
+                "mtr_tr_transaction_id": "TransactionId",
+                "mtr_effective_dt": "EffectiveDate",
+                "mtr_deleted_bit": "Deleted",
+                "mtr_marriage_transaction_id_old":  "OldMarriageTransactionLinkId"
+            }
+        },
+        {
+            "TableName": "exp_transaction_exposure_buckets_link",
+            "ModelName": "TransactionExposureBucketsLink",
+            "ColumnAliases": {
+                "tebl_transaction_exposure_buckets_link_id": "Id",
+                "tebl_tr_transaction_id": "TransactionId",
+                "tebl_pceb_planning_cycle_exposure_buckets_id": "PlanningCycleExposureBucketsId",
+                "tebl_subtype": "SubType"
+            }
+        },
+        {
+            "TableName": "exp_planning_cycle_exposure_buckets",
+            "ModelName": "PlanningCycleExposureBuckets",
+            "ColumnAliases": {
+                "pceb_planning_cycle_exposure_buckets_id": "Id",
+                "pceb_pcs_planning_cycle_settings_id": "PlanningCycleSettingsId",
+                "pceb_name": "Name",
+                "pceb_rv_type": "Type",
+                "pceb_default_trading_bucket_bit": "DefaultTradingBucket",
+                "pceb_use_hedging_bit": "UseHedging"
+            }
+        },
+        {
+            "TableName": "poc_contract",
+            "ModelName": "Contract",
+            "ColumnAliases": {
+                "ctr_contract_id": "Id",
+                "ctr_re_entity_id": "EntityId",
+                "ctr_contract_name": "ClientIdentifier",
+                "ctr_rv_contract_type": "ContractType",
+                "ctr_rv_currency": "Currency",
+                "ctr_rl_legal_entity_id": "LegalEntityId",
+                "ctr_rv_classification": "Classification"
+            }
+        },
+        {
+            "TableName": "poc_contract_event",
+            "ModelName": "ContractEvent",
+            "ColumnAliases": {
+                "cte_contract_event_id": "Id",
+                "cte_ctr_contract_id": "ContractId",
+                "cte_rv_contract_event_type": "Type",
+                "cte_event_date": "Date",
+                "cte_amount": "Amount",
+                "cte_as_of_date": "AsOfDate"
+            }
+        },
+        {
+            "TableName": "poc_contract_transaction_link",
+            "ModelName": "ContractTransactionLink",
+            "ColumnAliases": {
+                "ctl_contract_transaction_link_id": "Id",
+                "ctl_ctr_contract_id": "ContractId",
+                "ctl_tr_transaction_id": "TransactionId"
+            }
+        },
+        {
+            "TableName": "exp_entity_planning_cycle_link",
+            "ModelName": "EntityPlanningCycleLink",
+            "ColumnAliases": {
+                "epcl_entity_planning_cycle_link_id": "Id",
+                "epcl_rl_legal_entity_id": "LegalEntityId",
+                "epcl_expc_planning_cycle_id": "PlanningCycleId",
+                "exps_rc_contact_id_exposure_submitter": "SubmitterContactId",
+                "exps_rc_contact_id_exposure_approver": "ApproverContactId"
+            }
+        },
+        {
+            "TableName": "exp_entity_planning_cycle_status",
+            "ModelName": "EntityPlanningCycleStatus",
+            "ColumnAliases": {
+                "epcs_entity_planning_cycle_status_id": "Id",
+                "epcs_epcl_entity_planning_cycle_link_id": "EntityPlanningCycleLinkId",
+                "epcs_responsible_re_entity_id": "EntityId",
+                "epcs_rv_status": "Status"
+            }
+        },
+        {
+            "TableName": "exp_exposure",
+            "ModelName": "Exposure",
+            "ColumnAliases": {
+                "exp_exposure_id": "Id",
+                "exp_epcl_entity_planning_cycle_link_id": "EntityPlanningCycleLinkId",
+                "exp_rv_currency": "Currency",
+                "exp_amount": "Amount",
+                "exp_tag": "Tag",
+                "exp_pceb_planning_cycle_exposure_buckets_id": "PlanningCycleBucketId",
+                "exp_pcps_planning_cycle_period_settings_id": "PlanningCyclePeriodSettingId"
+            }
+        },
+        {
+            "TableName": "exp_planning_cycle",
+            "ModelName": "PlanningCycle",
+            "ColumnAliases": {
+                "expc_planning_cycle_id": "Id",
+                "expc_name": "Name",
+                "expc_effective_dt": "EffectiveDate",
+                "expc_note": "Note",
+                "expc_due_date": "DueDate",
+                "expc_pcs_planning_cycle_settings_id": "PlanningCycleSettingsId"
+            }
+        },
+        {
+            "TableName": "exp_planning_cycle_period_settings",
+            "ModelName": "PlanningCyclePeriodSettings",
+            "ColumnAliases": {
+                "pcps_planning_cycle_period_settings_id": "Id",
+                "pcps_pcs_planning_cycle_settings_id": "PlanningCycleSettingId",
+                "pcps_period": "Period",
+                "pcps_amount": "Amount",
+                "pcps_max_amount": "MaxAmount",
+                "pcps_min_amount": "MinAmount"
+            }
+        },
+        {
+            "TableName": "exp_planning_cycle_settings",
+            "ModelName": "PlanningCycleSettings",
+            "ColumnAliases": {
+                "pcs_planning_cycle_settings_id": "Id",
+                "pcs_re_entity_id": "EntityId",
+                "pcs_rv_cycle_frequency": "CycleFrequency",
+                "pcs_number_of_cycle_frequencies": "NumberOfCycles",
+                "pcs_cycle_roll_day": "CycleRollDay",
+                "pcs_cfar_tolerance": "CfarTolerance",
+                "pcs_worst_case_risk_percentile": "WorstCaseRiskPercentile",
+                "pcs_effective_dt": "EffectiveDate",
+                "pcs_rv_setting_type": "SettingType",
+                "pcs_spillover_period": "SpillOverPeriod",
+                "pcs_rv_trade_rounding_convention": "TradeRoundingConvention",
+                "pcs_trade_maturity_roll_day": "TradeMaturityRollDay",
+                "pcs_global_hedging_bit": "GlobalHedging",
+                "pcs_rv_program_setting": "ProgramSettingType"
+            }
+        },
+        {
+            "TableName": "cfo_marriage_workflow_status",
+            "ModelName": "MarriageWorkflowStatus",
+            "ColumnAliases": {
+                "mws_marriage_workflow_status_id": "Id",
+                "mws_rv_workflow_status": "Status",
+                "mws_comment": "Comment",
+                "mws_modify_by": "ModifiedById",
+                "mws_status_utc": "StatusDate",
+                "mws_mrpl_marriage_reporting_period_links_id": "ReportingPeriodLinkId"
+            }
+        },
+        {
+            "TableName": "cfo_marriage_reporting_period_links",
+            "ModelName": "MarriageReportingLink",
+            "ColumnAliases": {
+                "mrpl_marriage_reporting_period_links_id": "Id",
+                "mrpl_frp_fas157_reporting_period_id": "ReportingPeriodId",
+                "mrpl_mar_marriage_id": "MarriageId"
+            }
+        },
+        {
+            "TableName": "cfo_merge_template_entity_link",
+            "ModelName": "TemplateEntityLink",
+            "ColumnAliases": {
+                "mte_template_entity_id": "Id",
+                "mte_re_entity_id": "EntityId",
+                "mte_mt_merge_template_id": "TemplateId",
+                "mte_rv_rel_type_id": "EntityRelationshipType",
+                "mte_create_dt": "CreatedBy",
+                "mte_create_nm_id": "CreatedDate",
+                "mte_modify_nm_id": "ModifiedBy",
+                "mte_modify_dt": "ModifiedDate",
+                "mte_deleted_bit": "Deleted"
+            },
+            "ResultColumns": [
+                "mte_create_dt",
+                "mte_create_nm_id"
+            ]
+        },
+        {
+            "TableName": "cfo_merge_template_product_link",
+            "ModelName": "TemplateProductLink",
+            "ColumnAliases": {
+                "mtprl_merge_template_product_link_id": "Id",
+                "mtprl_mt_merge_template_id": "TemplateId",
+                "mtprl_create_nm_id": "CreatedBy",
+                "mtprl_create_dt": "CreatedDate",
+                "mtprl_modify_nm_id": "ModifiedBy",
+                "mtprl_modify_dt": "ModifiedDate",
+                "mtprl_rv_product": "ProductType"
+            },
+            "ResultColumns": [
+                "mtprl_create_nm_id",
+                "mtprl_create_dt"
+            ]
+        },
+        {
+            "TableName": "cfo_eff_test_det_hist",
+            "ModelName": "EffectivenessTestHistory",
+            "ColumnAliases": {
+                "eh_eff_test_det_hist_id": "Id",
+                "eh_et_test_id": "EffectivenessTestId",
+                "eh_fl_ongoing_calc_id": "ScheduleDetailId",
+                "eh_lt_tranche_id": "TrancheId",
+                "eh_my_tq_tran_quote_id": "TransactionQuoteId",
+                "eh_hedge_tq_tran_quote_id": "HedgeTransactionQuoteId",
+                "eh_loan_tq_tran_quote_id": "LoanTransactionQuoteId",
+                "eh_hedged_notional": "HedgedNotional",
+                "eh_start_date": "StartDate",
+                "eh_end_date": "EndDate",
+                "eh_hedged_rate_setting": "HedgedRateSetting",
+                "eh_strike1": "Strike1",
+                "eh_strike2": "Strike2",
+                "eh_payment_amt": "PaymentAmount",
+                "eh_rate_fixing_dt": "RateFixingDate",
+                "eh_hedged_rate_setting2": "HedgedRateSetting2",
+                "eh_payment_amt2": "PaymentAmount2",
+                "eh_create_utc": "CreateUtc"
+            }
+        },
+        {
+            "TableName": "dtcc_request_response",
+            "ModelName": "DtccRequestResponse",
+            "ColumnAliases": {
+                "drr_request_response_id": "Id",
+                "drr_message_dto": "MessageTime",
+                "drr_rv_type": "DtccRequestResponseType",
+                "drr_url": "Url",
+                "drr_message": "Message",
+                "drr_create_nm_id": "CreatedBy",
+                "drr_create_dto": "CreatedDate"
+            }
+        },
+        {
+            "TableName": "dtcc_request_response_sdr",
+            "ModelName": "DtccRequestResponseSdr",
+            "ColumnAliases": {
+                "drrs_request_response_sdr_id": "Id",
+                "drrs_drr_request_response_id": "DtccRequestResponseId",
+                "drrs_tr_transaction_id": "TransactionId",
+                "drrs_record_id": "RecordId",
+                "drrs_sdr": "SdrId",
+                "drrs_create_nm_id": "CreatedBy",
+                "drrs_create_dto": "CreatedDate"
+            }
+        },
+        {
+            "TableName": "dtcc_request_response_transaction",
+            "ModelName": "DtccRequestResponseTransaction",
+            "ColumnAliases": {
+                "drrt_request_response_transaction_id": "Id",
+                "drrt_drr_request_response_id": "DtccRequestResponseId",
+                "drrt_tr_transaction_id": "TransactionId",
+                "drrt_create_nm_id": "CreatedBy",
+                "drrt_create_dto": "CreatedDate"
+            }
+        },
+        {
+            "TableName": "cfo_credit_point_entity_vendor_map",
+            "ModelName": "CreditPointEntityVendorMap",
+            "ColumnAliases": {
+                "cpm_credit_point_mapping_id": "Id",
+                "cpm_re_entity_id": "EntityId",
+                "cpm_rv_vendor": "Vendor",
+                "cpm_vendor_code": "VendorCode",
+                "cpm_valid_to_dt": "ValidUpToButNotIncluding"
+            }
+        },
+        {
+            "TableName": "cfo_marriage_exchange_rate",
+            "ModelName": "MarriageExchangeRate",
+            "ColumnAliases": {
+                "maer_marriage_exchange_rate_id": "Id",
+                "maer_mar_marriage_id": "MarriageId",
+                "maer_rv_currency1": "Currency1",
+                "maer_rv_currency2": "Currency2",
+                "maer_exchange_rate_dt": "EffectiveDate",
+                "maer_exchange_rate": "SpotRate",
+                "maer_rv_status": "Status",
+                "maer_note": "Note"
+            }
+        },
+        {
+            "TableName": "cfo_control_report",
+            "ModelName": "ControlReport",
+            "ColumnAliases": {
+                "crpt_control_report_id": "Id",
+                "crpt_rv_control_report_detail": "Type",
+                "crpt_run_utc": "Timestamp",
+                "crpt_rvs_control_report_error": "ErrorType",
+                "crpt_error_detail": "ErrorDetail"
+            }
+        },
+        {
+            "TableName": "cfo_control_report_approval",
+            "ModelName": "ControlReportApproval",
+            "ColumnAliases": {
+                "crpa_control_report_approval_id": "Id",
+                "crpa_crpt_control_report_id": "ControlReportId",
+                "crpa_resolved_utc": "UtcTimestamp",
+                "crpa_resolved_rc_contact_id": "ResolvedByContactId",
+                "crpa_approval_detail": "Detail",
+                "crpa_rv_approval_type": "Type"
+            }
+        },
+        {
+            "TableName": "cfo_control_report_approval_signoff",
+            "ModelName": "ControlReportApprovalSignoff",
+            "ColumnAliases": {
+                "cras_control_report_approval_signoff_id": "Id",
+                "cras_crpa_control_report_approval_id": "ControlReportApprovalId",
+                "cras_signoff_nm_id": "SignoffContactId",
+                "cras_signoff_utc": "UtcTimestamp",
+                "cras_notes": "Notes",
+                "cras_rv_signoff_type": "Type"
+            }
+        },
+        {
+            "TableName": "cfo_control_report_index_detail",
+            "ModelName": "IndexControlReportDetail",
+            "ColumnAliases": {
+                "crid_control_report_index_detail_id": "Id",
+                "crid_crpt_control_report_id": "ControlReportId",
+                "crid_ix_index_id": "IndexId"
+            }
+        },
+        {
+            "TableName": "cfo_control_report_rate_detail",
+            "ModelName": "RateControlReportDetail",
+            "ColumnAliases": {
+                "crrd_control_report_rate_detail_id": "Id",
+                "crrd_crpt_control_report_id": "ControlReportId",
+                "crrd_rb_rate_id": "RateId"
+            }
+        },
+        {
+            "TableName": "cfo_control_report_valuation_detail",
+            "ModelName": "ValuationControlReportDetail",
+            "ColumnAliases": {
+                "crpv_control_report_valuation_detail_id": "Id",
+                "crpv_crpt_control_report_id": "ControlReportId",
+                "crpv_dh_daily_trans_hist_id": "DailyTransactionHistoryId",
+                "crpv_tq_tran_quote_id": "TransactionQuoteId"
+            }
+        },
+        {
+            "TableName": "cfo_bank_pay_grid",
+            "ModelName": "WiringInformation",
+            "ColumnAliases": {
+                "bp_bnk_pmnt_grid_id": "Id",
+                "bp_nickname": "NickName",
+                "bp_acct_description": "AccountDescription",
+                "bp_sponsor_re_entity_id": "HeldForCompanyID",
+                "bp_re_entity_id": "SponsorOrBankLegalEntityID",
+                "bp_rv_currency_id": "CurrencyID",
+                "bp_bank_acct_nbr": "BankAccountNumber",
+                "bp_receiving_agent": "ReceivingAgent",
+                "bp_global_use_bit": "GlobalUse",
+                "bp_bnk_fbo_nbr": "ForBenefitOf",
+                "bp_wire_attn": "WireAttention",
+                "bp_dd_product": "ProductType"
+            }
+        },
+        {
+            "TableName": "cfo_trans_payment",
+            "ModelName": "TransactionPayment",
+            "ColumnAliases": {
+                "tp_trans_payment_id": "Id",
+                "tp_tr_transaction_id": "TransactionId",
+                "tp_bp_bnk_pmnt_grid_id": "BankPaymentGridId",
+                "tp_dd_sp_bnk": "PaymentType"
+            }
+        },
+        {
+            "TableName": "lms_report_udf_list",
+            "ModelName": "AvailableColumn",
+            "ColumnAliases": {
+                "rul_report_udf_list_id": "Id",
+                "rul_column_display_name": "Name",
+                "rul_column_name": "Formula",
+                "rul_rv_formatting": "ColumnFormat",
+				"rul_ruca_report_udf_list_cat_id": "CategoryId",
+                "rul_always_select_bit": "AlwaysSelected",
+                "rul_always_select_order": "AlwaysSelectOrder",
+                "rul_allow_groupby_bit": "AllowGroupBy",
+                "rul_allow_orderby_bit": "AllowSortBy",
+                "rul_column_help_text": "HelpText",
+                "rul_currency_column_list_id_pointer": "CurrencyColumnId",
+                "rul_default_report_column_width": "DefaultColumnWidth",
+                "rul_rv_subtotal_type": "SubTotalType",
+                "rul_rv_gui_function_option": "FunctionOption"
+            }
+        },
+        {
+            "TableName": "cfo_borrower_report_valuation",
+            "ModelName": "BorrowerReportValuation",
+            "ColumnAliases": {
+                "brv_borrower_report_valuation_id": "Id",
+                "brv_br_borrower_report_id": "BorrowerReportId",
+                "brv_total_value": "TotalValue",
+                "brv_valuation_dt": "ValuationDate",
+                "brv_deleted_bit": "IsDeleted"
+            }
+        },
+        {
+            "TableName": "cfo_borrower_report",
+            "ModelName": "BorrowerReport",
+            "ColumnAliases": {
+                "br_borrower_report_id": "Id",
+                "br_generation_dt": "GenerationDate",
+                "br_authorized_by_rc_contact_id": "AuthorizationContactId",
+                "br_authorization_dt": "AuthorizationDate",
+                "br_rv_status": "Status",
+                "br_status_dt": "StatusDate",
+                "br_sponsor_re_entity_id": "SponsorId",
+                "br_tr_transaction_id": "TransactionId",
+                "br_do_document_id": "DocumentId",
+                "br_subject": "Subject",
+                "br_first_notice_for_transaction": "FirstNoticeForTransaction",
+                "br_addl_text": "Body",
+                "br_deleted_bit": "IsDeleted",
+                "br_is_batch_bit": "IsBatch",
+                "br_rv_report_type": "ReportType",
+                "br_create_nm_id": "CreatedBy"
+            },
+            "ResultColumns": [
+                "br_create_nm_id"
+            ]
+        },
+        {
+            "TableName": "cfo_fas157_reporting_period",
+            "ModelName": "CvaReportingPeriod",
+            "ColumnAliases": {
+                "frp_fas157_reporting_period_id": "Id",
+                "frp_report_utc": "ReportDate",
+                "frp_rv_report_period_type": "ReportType"
+            }
+        },
+        {
+            "TableName": "cfo_payment_notice",
+            "ModelName": "PaymentNotice",
+            "ColumnAliases": {
+                "pn_payment_notice_id": "Id",
+                "pn_br_borrower_report_id": "BorrowerReportId",
+                "pn_fl_ongoing_calc_id": "ScheduleDetailId",
+                "pn_fl_net_amt": "Payment",
+                "pn_fl_payment_dt": "PaymentDate",
+                "pn_se_schedule_id": "ScheduleId",
+                "pn_rowversion": "RowVersion"
+            },
+            "ResultColumns": [
+                "pn_rowversion"
+            ]
+        },
+        {
+            "TableName": "lms_report_arg_value",
+            "ModelName": "ReportArgumentValue",
+            "ColumnAliases": {
+                "rav_report_arg_value_id": "Id",
+                "rav_rep_report_id": "ReportId",
+                "rav_ral_report_arg_list_id": "ArgumentId",
+                "rav_argument_value": "ArgumentValue"
+            }
+        },
+        {
+            "TableName": "lms_report",
+            "ModelName": "Report",
+            "ColumnAliases": {
+                "rep_report_id": "Id",
+                "rep_report_name": "ReportName",
+                "rep_create_dt": "CreatedOn",
+                "rep_rv_report_status": "ReportStatus",
+                "rep_rpl_report_list_id": "ReportTypeId",
+                "rep_create_nm_id": "CreatedBy" 
+            }
+        },
+        {
+            "TableName": "lms_report_udf_list_cat",
+            "ModelName": "ReportCategory",
+            "ColumnAliases": {
+                "ruca_report_udf_list_cat_id": "Id",
+                "ruca_category_name": "Name",
+                "ruca_ui_sort_order": "SortOrder",
+                "ruca_rpl_report_list_id": "ReportListId" 
+            }
+        },
+        {
+            "TableName": "lms_report_entity",
+            "ModelName": "ReportEntity",
+            "ColumnAliases": {
+                "lre_report_entity_id": "Id",
+                "lre_rep_report_id": "ReportId",
+                "lre_re_entity_id": "EntityId",
+                "lre_rc_contact_id": "ContactId",
+                "lre_is_favorite_bit": "IsFavorite"
+            }
+        },
+        {
+            "TableName": "lms_report_list",
+            "ModelName": "ReportList",
+            "ColumnAliases": {
+                "rpl_report_list_id": "Id",
+                "rpl_report": "ReportType"
+            }
+        },
+        {
+            "TableName": "lms_template",
+            "ModelName": "ReportTemplate",
+            "ColumnAliases": {
+                "tpl_template_id": "Id",
+                "tpl_rep_report_id": "ReportId",
+                "tpl_private_bit": "IsPrivate",
+                "tpl_generated_name": "GeneratedName",
+            }
+        },
+        {
+            "TableName": "cfo_merge_template_part",
+            "ModelName": "TemplatePart",
+            "ColumnAliases": {
+                "mtp_template_part_id": "Id",
+                "mtp_name": "Name",
+                "mtp_description": "Description",
+                "mtp_do_document_id": "DocumentId",
+                "mtp_rv_template_part_type": "TemplatePartType"
+            }
+        },
+        {
+            "TableName": "cfo_merge_template_part_link",
+            "ModelName": "TemplatePartLink",
+            "ColumnAliases": {
+                "mtl_merge_template_part_link_id": "Id",
+                "mtl_mt_merge_template_id": "TemplateId",
+                "mtl_mtp_template_part_id": "TemplatePartId",
+                "mtl_order": "TemplatePartOrder",
+                "mtl_include_pg_break_before": "IncludePageBreakBefore"
+            }
+        },
+        {
+            "TableName": "cfo_je_schedule_detail_link",
+            "ModelName": "JournalEntryScheduleDetailLink",
+            "ColumnAliases": {
+                "jesl_je_schedule_detail_link_id": "Id",
+                "jesl_fl_ongoing_calc_id": "ScheduleDetailId",
+                "jesl_je_journal_entry_id": "JournalEntryId",
+                "jesl_create_nm_id": "CreatedBy",
+                "jesl_create_utc": "CreateUtc"
+            },
+            "ResultColumns": [
+                "jesl_create_nm_id",
+                "jesl_create_utc"
+            ]
+        }
+    ]
+}

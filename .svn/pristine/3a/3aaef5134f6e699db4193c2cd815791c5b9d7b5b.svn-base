@@ -1,0 +1,7 @@
+﻿namespace Library.Data.Repositories
+{
+    public class InsertProcResult
+    {
+        public int Id { get; set; }
+    }
+}

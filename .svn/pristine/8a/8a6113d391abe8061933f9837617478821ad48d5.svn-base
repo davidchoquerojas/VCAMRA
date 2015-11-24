@@ -1,0 +1,6 @@
+{
+    "Namespace": "Library.Data.Models",
+    "Prefix": "Audit",
+    "ConnectionStrings": [ "audit" ],
+    "EntityConfigurations": []
+}

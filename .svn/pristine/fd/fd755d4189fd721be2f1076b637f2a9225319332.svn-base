@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+
+namespace Library.Ioc
+{
+    public class AssemblyIterator : IAssemblyIterator
+    {
+        private readonly List<Assembly> _assemblies;
+
+        private readonly IAssemblyManager _assemblyManager;
+
+        private int _counter;
+
+        public AssemblyIterator(string directory)
+        {
+            if (directory == null)
+            {
+                throw new ArgumentNullException("directory");
+            }
+
+            _assemblyManager = new AssemblyManager();
+            _assemblies = _assemblyManager.GetAssembliesFromDomain();
+            GetAssembliesFromDirectory(directory);
+        }
+
+        /*
+         *  Constructor for unit testing purposes
+         */
+        public AssemblyIterator(string directory, IAssemblyManager manager)
+        {
+            if (string.IsNullOrEmpty(directory))
+            {
+                throw new ArgumentNullException("directory");
+            }
+
+            if (manager == null)
+            {
+                throw new ArgumentNullException("manager");
+            }
+
+            _assemblyManager = manager;
+            _assemblies = _assemblyManager.GetAssembliesFromDomain();
+            GetAssembliesFromDirectory(directory);
+        }
+
+        public Assembly GetNextAssembly()
+        {
+            if (_counter >= _assemblies.Count)
+            {
+                return null;
+            }
+
+            return _assemblies[_counter++];
+        }
+
+        private void GetAssembliesFromDirectory(string directory)
+        {
+            var fileNames = _assemblyManager.GetFilesNamesFromDirectory(directory);
+
+            if (fileNames != null)
+            {
+                foreach (var file in fileNames)
+                {
+                    try
+                    {
+                        if (
+                            !_assemblies.Exists(
+                                x => !x.IsDynamic &&
+                                string.Compare(
+                                    Path.GetFileName(x.Location), 
+                                    Path.GetFileName(file), 
+                                    StringComparison.CurrentCultureIgnoreCase) == 0))
+                        {
+                            _assemblies.Add(_assemblyManager.LoadFile(file));
+                        }
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+        }
+    }
+}

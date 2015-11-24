@@ -1,0 +1,13 @@
+﻿using System.Collections.Generic;
+
+namespace Library.Data.Models
+{
+    public interface ITableModel : IDbModel
+    {
+        int Id { get; }
+
+        bool IsNew { get; }
+
+        IEnumerable<string> GetModifiedColumns();
+    }
+}

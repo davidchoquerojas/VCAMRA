@@ -1,0 +1,18 @@
+﻿namespace Library.Data
+{
+    public interface IReturn
+    {
+    }
+
+    public interface IReturn<T> : IReturn
+    {
+    }
+
+    public interface IGetReturn : IReturn
+    {
+    }
+
+    public interface IGetReturn<TResponse> : IReturn<TResponse>, IGetReturn
+    {
+    }
+}

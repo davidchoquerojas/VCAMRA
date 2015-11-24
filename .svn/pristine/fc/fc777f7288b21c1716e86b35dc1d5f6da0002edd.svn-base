@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9604D587-9AB2-4473-9616-9852BCBFFBAD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VidaCamaraData</RootNamespace>
+    <AssemblyName>VidaCamaraData</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dao\dbConexion.cs" />
+    <Compile Include="Dao\dSqlCierreProcesoVC.cs" />
+    <Compile Include="Dao\dSqlComprobanteVC.cs" />
+    <Compile Include="Dao\dSqlContratoDetalleVC.cs" />
+    <Compile Include="Dao\dSqlContratoVC.cs" />
+    <Compile Include="Dao\dSqlDatoAVC.cs" />
+    <Compile Include="Dao\dSqlExportarData.cs" />
+    <Compile Include="Dao\dSqlGeneralVC.cs" />
+    <Compile Include="Dao\dSqlInterfaceContable.cs" />
+    <Compile Include="Dao\dSqlInterfaceContableVC.cs" />
+    <Compile Include="Dao\dSqlOperacionSelectVC.cs" />
+    <Compile Include="Dao\dSqlOperacionVC.cs" />
+    <Compile Include="Dao\dSqlRegistroDatoVC.cs" />
+    <Compile Include="Dao\dSqlTablaVC.cs" />
+    <Compile Include="Dao\dSqlUsuarioVC.cs" />
+    <Compile Include="Dao\dSqlValidarCierreVC.cs" />
+    <Compile Include="Entity\eCierreProceso.cs" />
+    <Compile Include="Entity\eComprobanteVC.cs" />
+    <Compile Include="Entity\eContratoDetalleVC.cs" />
+    <Compile Include="Entity\eContratoVC.cs" />
+    <Compile Include="Entity\eDatoA.cs" />
+    <Compile Include="Entity\eDatoM.cs" />
+    <Compile Include="Entity\eGeneral.cs" />
+    <Compile Include="Entity\eInterfaceContableVC.cs" />
+    <Compile Include="Entity\eOperacionVC.cs" />
+    <Compile Include="Entity\eTabla.cs" />
+    <Compile Include="Entity\eUsuarioVC.cs" />
+    <Compile Include="Dao\Interface\IContratoDetalleVC.cs" />
+    <Compile Include="Dao\Interface\IContratoVC.cs" />
+    <Compile Include="Dao\Interface\IDatoAVC.cs" />
+    <Compile Include="Dao\Interface\IGeneralVC.cs" />
+    <Compile Include="Dao\Interface\IRegistroDatosVC.cs" />
+    <Compile Include="Dao\Interface\ITablaVC.cs" />
+    <Compile Include="Dao\Interface\IUsuarioVC.cs" />
+    <Compile Include="IocInitializer.cs" />
+    <Compile Include="Model\Generated\CierreProcesoModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\Classes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\ComprobanteModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\ConceptoModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\ContratoDetalleModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\ContratoModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\DatoAModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\DatoMModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\ExactusCabeceraModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\ExactusDetalleModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\GeneralModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\OperacionModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\SysdiagramModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generated\UsuarioModel.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\UsuarioDao.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Model\Generated\Classes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Classes.cs</LastGenOutput>
+    </None>
+    <None Include="Model\T4\OutputHelper.ttinclude" />
+    <None Include="Model\T4\Settings.ttinclude" />
+    <None Include="Model\T4\SQLServer.ttinclude" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library.Data\Library.Data.csproj">
+      <Project>{97035b6d-a260-4857-b61e-450f8a600d8c}</Project>
+      <Name>Library.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Ioc\Library.Ioc.csproj">
+      <Project>{bf9fa3a9-5ac5-4440-8b0f-cfb367996ce2}</Project>
+      <Name>Library.Ioc</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

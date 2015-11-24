@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+
+namespace Library.Ioc
+{
+    public class AssemblyManager : IAssemblyManager
+    {
+        public List<Assembly> GetAssembliesFromDomain()
+        {
+            return AppDomain.CurrentDomain.GetAssemblies().ToList();
+        }
+
+        public IEnumerable<string> GetFilesNamesFromDirectory(string directory)
+        {
+            return Directory.GetFiles(directory, "Chatham.*.dll");
+        }
+
+        public Assembly LoadFile(string path)
+        {
+            return Assembly.LoadFile(path);
+        }
+    }
+}

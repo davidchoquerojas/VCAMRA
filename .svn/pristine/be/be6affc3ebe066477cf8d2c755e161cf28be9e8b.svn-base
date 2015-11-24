@@ -1,0 +1,9 @@
+﻿using System.Reflection;
+
+namespace Library.Ioc
+{
+    public interface IAssemblyIterator
+    {
+        Assembly GetNextAssembly();
+    }
+}

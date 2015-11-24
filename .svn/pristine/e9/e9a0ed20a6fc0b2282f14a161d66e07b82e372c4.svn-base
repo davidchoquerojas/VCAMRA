@@ -1,0 +1,38 @@
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
+namespace Library.Data.SqlBuilder
+{
+    [ExcludeFromCodeCoverage]
+    public static class SqlConditionExtension
+    {
+        public static string GetString(this SqlCondition e)
+        {
+            switch (e)
+            {
+                case SqlCondition.IsNull:
+                    return "IS NULL";
+                case SqlCondition.IsNotNull:
+                    return "IS NOT NULL";
+                case SqlCondition.Equal:
+                    return "=";
+                case SqlCondition.NotEqual:
+                    return "<>";
+                case SqlCondition.Less:
+                    return "<";
+                case SqlCondition.Greater:
+                    return ">";
+                case SqlCondition.LessEqual:
+                    return "<=";
+                case SqlCondition.GreaterEqual:
+                    return ">=";
+                case SqlCondition.Between:
+                    return "BETWEEN";
+                case SqlCondition.Like:
+                    return "LIKE";
+                default:
+                    throw new ArgumentOutOfRangeException("e");
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+﻿using System.Diagnostics.CodeAnalysis;
+using PetaPoco;
+
+namespace Library.Data.Repositories
+{
+    [ExcludeFromCodeCoverage]
+    public class TransactionFactory : ITransactionFactory
+    {
+        public ITransaction Create(IDatabase db)
+        {
+            return new Transaction(db);
+        }
+    }
+}

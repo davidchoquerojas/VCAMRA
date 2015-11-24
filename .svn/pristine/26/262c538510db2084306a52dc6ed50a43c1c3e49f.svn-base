@@ -1,0 +1,22 @@
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using Library.Data.TypeSafeEnums;
+
+using Microsoft.SqlServer.Server;
+
+namespace Library.Data.Dapper
+{
+    public sealed class TvpNumberList : TableValuedParameterBase
+    {
+        public TvpNumberList(string name, IEnumerable<int> values)
+            : base(
+                values.Distinct(),
+                new[] { new SqlMetaData("n", SqlDbType.Int) },
+                name,
+                TableValuedParameterType.Id.Value,
+                (rec, s) => rec.SetInt32(0, (int)s))
+        {
+        }
+    }
+}

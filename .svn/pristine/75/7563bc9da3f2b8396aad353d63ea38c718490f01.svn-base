@@ -1,0 +1,31 @@
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
+namespace Library.Data.Models.Audit
+{
+    [ExcludeFromCodeCoverage]
+    public class HistoryProcModel : IProcModel
+    {
+        public object Id { get; set; } // guid in the db
+
+        public int SuperParentPkId { get; set; }
+
+        public int ObjectPkId { get; set; }
+
+        public int ColumnDomainId { get; set; }
+
+        public string OldValue { get; set; }
+
+        public string NewValue { get; set; }
+
+        public int UserId { get; set; }
+
+        public DateTime ChangeDate { get; set; }
+
+        public bool? IncludeBcp { get; set; }
+
+        public string TableName { get; set; }
+
+        public string ColumnName { get; set; }
+    }
+}

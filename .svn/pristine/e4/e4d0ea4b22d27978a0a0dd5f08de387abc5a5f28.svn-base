@@ -1,0 +1,3320 @@
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
+using PetaPoco;
+using System.Collections.Generic;
+
+namespace Library.Data.Models.Core
+{
+    [ExcludeFromCodeCoverage]
+    public class IndexProcModel : IProcModel
+    {
+        public int? BaseIndexId { get; set; }
+
+        public int? BondDetailId { get; set; }
+
+        public int? CapVolDefaultIndexId { get; set; }
+
+        public decimal? CompoundingFrequency1 { get; set; }
+
+        public decimal? CompoundingFrequency2 { get; set; }
+
+        public int Currency1 { get; set; }
+
+        public int Currency2 { get; set; }
+
+        public string DayCountConv1 { get; set; }
+
+        public string DayCountConv2 { get; set; }
+
+        public string DropdownYn { get; set; }
+
+        public decimal? EquivalentPips { get; set; }
+
+        public int? FloatingRateBusinessDayConvention { get; set; }
+
+        public int? GoverningDefinition { get; set; }
+
+        public int Id { get; set; }
+
+        public string IndexDefinition { get; set; }
+
+        public int? IndexSource { get; set; }
+
+        public int? IndexStatus { get; set; }
+
+        public int IndexType { get; set; }
+
+        public bool IsCommonCurve { get; set; }
+
+        public bool IsFeeLiable { get; set; }
+
+        public bool? IsNonStandardDefinition { get; set; }
+
+        public bool IsPublicDiscountCurve { get; set; }
+
+        public bool IsStp { get; set; }
+
+        public int? MaturityAmount { get; set; }
+
+        public string MaturityUnit { get; set; }
+
+        public string Name { get; set; }
+
+        public string Nickname { get; set; }
+
+        public string NominalName { get; set; }
+
+        public decimal? PayFrequency1 { get; set; }
+
+        public decimal? PayFrequency2 { get; set; }
+
+        public int? RateCutoffDays { get; set; }
+
+        public int? RateLoadingDelayHours { get; set; }
+
+        public int? RateReleaseDelay { get; set; }
+
+        public DateTime? RateReleaseTimeOfDay { get; set; }
+
+        public decimal? RateSetMultiplier { get; set; }
+
+        public int? ResetLookbackDays { get; set; }
+
+        public int? SettlementDays { get; set; }
+
+        public string ShortIndexDefinition { get; set; }
+
+        public decimal? SpreadOverRateSet { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class CommodityIndexProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public string Nickname { get; set; }
+
+        public string Name { get; set; }
+
+        public int IndexType { get; set; }
+
+        public int? Currency { get; set; }
+
+        public string NominalName { get; set; }
+
+        public string IndexDefinition { get; set; }
+
+        public int CommodityType { get; set; }
+
+        public int CommodityUnitsOfMeasure { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class CommodityExposureIndexProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public double Constant { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public int? FormulaNoteId { get; set; }
+
+        public int EntityId { get; set; }
+
+        public int CommodityIndexId { get; set; }
+
+        public string Nickname { get; set; }
+
+        public string Name { get; set; }
+
+        public int IndexType { get; set; }
+
+        public int? Currency { get; set; }
+
+        public string NominalName { get; set; }
+
+        public string IndexDefinition { get; set; }
+
+        public int CommodityType { get; set; }
+
+        public int CommodityUnitsOfMeasure { get; set; }
+
+        public int ExposureAvgTypeId { get; set; }
+
+        public string Description { get; set; }
+
+        public int StartOffset { get; set; }
+
+        public int EndOffset { get; set; }
+
+        public int StartBDConvention { get; set; }
+
+        public int EndBDConvention { get; set; }
+
+        public int StartOffsetType { get; set; }
+
+        public int EndOffsetType { get; set; }
+
+        public int AveragingType { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ReferenceValueHierarchyProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int? ParentHierarchyId { get; set; }
+
+        public int? ParentRefValueId { get; set; }
+
+        public int RefValueId { get; set; }
+
+        public int GroupId { get; set; }
+
+        public int NestLevel { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class TransactionProcModel : IProcModel
+    {
+        public int? Id { get; set; }
+
+        public string BankReferenceNumber { get; set; }
+
+        public string ClientReferenceNumber { get; set; }
+
+        public string LoanReferenceNumber { get; set; }
+
+        public string Borrower { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        public string Description { get; set; }
+
+        public string HedgedItem { get; set; }
+
+        public string Nickname { get; set; }
+
+        public string Crn { get; set; }
+
+        public int? Portfolio1 { get; set; }
+
+        public int? Portfolio2 { get; set; }
+
+        public int? Portfolio3 { get; set; }
+
+        public DateTime? TradeDate { get; set; }
+
+        public bool? IsHypo { get; set; }
+
+        public bool? RateManagerDeal { get; set; }
+
+        public int TradeMatchingStatus { get; set; }
+
+        public int? TradeMatchSentTo { get; set; }
+
+        public DateTime? TradeMatchSentToDate { get; set; }
+
+        public int? CreatedByUserId { get; set; }
+
+        public int? JurisdictionCountry { get; set; }
+
+        public string ChathamDeal { get; set; }
+
+        public int? GreatPlainsTransactionType { get; set; }
+
+        public int? ChathamGroupId { get; set; }
+
+        public string BuyOrSell { get; set; }
+
+        public string DescriptiveProduct { get; set; }
+
+        public int? ProductType { get; set; }
+
+        public string Status { get; set; }
+
+        public string WebDisplay { get; set; }
+
+        public DateTime? ExpectedClosing { get; set; }
+
+        public string DescriptiveIndex { get; set; }
+
+        public string DescriptiveNotional { get; set; }
+
+        public string DescriptiveSpread { get; set; }
+
+        public string DescriptiveStrike { get; set; }
+
+        public decimal? Notional { get; set; }
+
+        public int? NotionalCurrency { get; set; }
+
+        public int? ValuationCurrency { get; set; }
+
+        public DateTime? TerminationDate { get; set; }
+
+        public int TransactionQuoteId { get; set; }
+
+        public string MidBidAsk { get; set; }
+
+        public decimal? TerminationPremiumAmount { get; set; }
+
+        public int? TerminationPremiumCurrency { get; set; }
+
+        public DateTime? TerminationPremiumDate { get; set; }
+
+        public string ValueMethod { get; set; }
+
+        public int? ParentTransactionQuoteId { get; set; }
+
+        public int? ParentTransactionID { get; set; }
+
+        public DateTime? ActiveStartDate { get; set; }
+
+        public DateTime? ActiveEndDate { get; set; }
+
+        public bool? ActiveDateAutoUpdate { get; set; }
+
+        public DateTime? ShowOnValuationReportStartDate { get; set; }
+
+        public DateTime? ShowOnValuationReportEndDate { get; set; }
+
+        public bool? ShowOnValuationReportDateAutoUpdate { get; set; }
+
+        public DateTime? ShowOnPaymentReportStartDate { get; set; }
+
+        public DateTime? ShowOnPaymentReportEndDate { get; set; }
+
+        public bool? ShowOnPaymentReportDateAutoUpdate { get; set; }
+
+        public DateTime? TerminationTradeDate { get; set; }
+
+        public decimal? PremiumPaymentAmount { get; set; }
+
+        public DateTime? PremiumPaymentDate { get; set; }
+
+        public int? PremiumPaymentCurrency { get; set; }
+
+        public string DescriptiveStrike2 { get; set; }
+
+        public string TransactionDrillDown { get; set; }
+
+        public int? TradeDateTimeZone { get; set; }
+
+        public int? TimezoneDateType { get; set; }
+
+        public decimal? PartialTerminationNotional { get; set; }
+
+        public DateTime? CashSettlementDate { get; set; }
+
+        public bool? PeriodicNotionalExchange { get; set; }
+
+        public decimal? TerminationSpotRate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class FIXMessageProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int EntityId { get; set; }
+
+        public DateTime SendingTime { get; set; }
+
+        public DateTime? OriginalSendingTime { get; set; }
+
+        public int? MessageType { get; set; }
+
+        public int FIXMessageAliasId { get; set; }
+
+        public string Alias { get; set; }
+
+        public int AliasType { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class UserPermissionProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int ContactId { get; set; }
+
+        public bool? IsEnabled { get; set; }
+
+        public int PermissionId { get; set; }
+
+        public string PermissionDescription { get; set; }
+
+        public int? CompanyPreferenceDependency { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ContactProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public string ContactFirstName { get; set; }
+
+        public string ContactLastName { get; set; }
+
+        public string ContactFullName { get; set; }
+
+        public string ContactPhone { get; set; }
+
+        public string ContactFax { get; set; }
+
+        public string ContactEmail { get; set; }
+
+        public int? EntityId { get; set; }
+
+        public int RoleId { get; set; }
+
+        public int RoleEntityId { get; set; }
+
+        public string RoleName { get; set; }
+
+        public string SalesforceId { get; set; }
+
+        public int Status { get; set; }
+    }
+
+    public class FxForwardTransactionProcModel : IProcModel
+    {
+        public int TransactionId { get; set; }
+
+        public int? BuyCurrency { get; set; }
+
+        public decimal? BuyCurrencyNotional { get; set; }
+
+        public int? SellCurrency { get; set; }
+
+        public decimal? SellCurrencyNotional { get; set; }
+
+        public DateTime? SettlementDate { get; set; }
+
+        public string IsNonDeliverableYn { get; set; }
+
+        public DateTime? MaturityDate { get; set; }
+
+        public int? NotionalCurrency { get; set; }
+
+        public DateTime? FixingDate { get; set; }
+
+        public decimal? SpotRate { get; set; }
+
+        public decimal? MarketPoints { get; set; }
+
+        public decimal? CreditPoints { get; set; }
+
+        public decimal? Strike { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ContactTransactionRelationshipProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int ContactId { get; set; }
+
+        public int EntityId { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int? ContactRelationship { get; set; }
+
+        public int? EntityRelationship { get; set; }
+
+        public int? NoticeDeliveryMethod { get; set; }
+
+        public int? BorrowerReportDeliveryMethod { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class FinancialCenterHolidayProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int FinancialCenterId { get; set; }
+
+        public DateTime CalendarDate { get; set; }
+
+        public DateTime CalendarDateEnd { get; set; }
+
+        public int HolidayCityId { get; set; }
+
+        public string City { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ScheduleProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int? IndexId { get; set; }
+
+        public int? PaymentDay { get; set; }
+
+        public string PaymentFrequency1 { get; set; }
+
+        public string PaymentFrequency2 { get; set; }
+
+        public string PaymentRelativeTo { get; set; }
+
+        public int? PaymentSpecifiedMethod { get; set; }
+
+        public string PaymentCalculationPeriodsToOffset { get; set; }
+
+        public int? PaymentBusinessDaysToOffset { get; set; }
+
+        public string DayCountConvention1 { get; set; }
+
+        public string DayCountConvention2 { get; set; }
+
+        public string ResetBusinessDayConvention { get; set; }
+
+        public int? ResetDayOfMonth { get; set; }
+
+        public int? ResetBusinessDaysToOffset { get; set; }
+
+        public int? ResetSpecifiedMethod { get; set; }
+
+        public string ResetCalculationPeriodsToOffset { get; set; }
+
+        public string ResetRelativeToBaseDate { get; set; }
+
+        public int? RollDay { get; set; }
+
+        public string LongFirstPeriod { get; set; }
+
+        public DateTime? FirstFixedRollDate { get; set; }
+
+        public DateTime? FirstFloatingRollDate { get; set; }
+
+        public string LongLastPeriod { get; set; }
+
+        public string ScheduleType { get; set; }
+
+        public string Compound { get; set; }
+
+        public string MultipleResets { get; set; }
+
+        public string SplitScheduleIndicator { get; set; }
+
+        public string RateResetFreq { get; set; }
+
+        public string ResetDayOfWeek { get; set; }
+
+        public DateTime? ResetPatternStartDate { get; set; }
+
+        public int? RateCutoffDays { get; set; }
+
+        public bool? NoticesRequired { get; set; }
+
+        public string CompoundingFrequency { get; set; }
+
+        public string CompoundingMethod { get; set; }
+
+        public string CompoundingBusinessDayConvention { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ScheduleRowProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int ScheduleId { get; set; }
+
+        public decimal? PrincipalNotionalAmount { get; set; }
+
+        public decimal? PaymentAmount1 { get; set; }
+
+        public decimal? PaymentAmount2 { get; set; }
+
+        public decimal? NetAmount { get; set; }
+
+        public DateTime? PaymentDate { get; set; }
+
+        public decimal? Spread { get; set; }
+
+        public decimal? StrikeRate1 { get; set; }
+
+        public decimal? IndexRate { get; set; }
+
+        public DateTime? FromDate { get; set; }
+
+        public DateTime? ToDate { get; set; }
+
+        public DateTime? FloatingFromDate { get; set; }
+
+        public DateTime? FloatingToDate { get; set; }
+
+        public DateTime? UnadjustedFromDate { get; set; }
+
+        public DateTime? UnadjustedToDate { get; set; }
+
+        public DateTime? FloatingUnadjustedFromDate { get; set; }
+
+        public DateTime? FloatingUnadjustedToDate { get; set; }
+
+        public DateTime? UnadjustedPaymentDate { get; set; }
+
+        public DateTime? RateFixingDate1 { get; set; }
+
+        public DateTime? RateResetDate1 { get; set; }
+
+        public DateTime? UnadjustedRateResetDate1 { get; set; }
+
+        public decimal? PaymentAmount3 { get; set; }
+
+        public decimal? AmortizationCostAmount { get; set; }
+
+        public decimal? EffectiveInterestRate { get; set; }
+
+        public decimal? HedgedInterestRate { get; set; }
+
+        public decimal? IndexAmount { get; set; }
+
+        public decimal? IndexRate2 { get; set; }
+
+        public decimal? IssuanceCosts { get; set; }
+
+        public int? TrancheId { get; set; }
+
+        public decimal? Notional2 { get; set; }
+
+        public decimal? OriginationCosts { get; set; }
+
+        public decimal? PremiumDiscount { get; set; }
+
+        public decimal? PrincipalPaymentAmount { get; set; }
+
+        public decimal? PurchasingAccoutingAdjustment { get; set; }
+
+        public DateTime? RateResetDate { get; set; }
+
+        public DateTime? RateFixingDate2 { get; set; }
+
+        public DateTime? UnadjustedRateResetDate2 { get; set; }
+
+        public DateTime? RateResetDate2 { get; set; }
+
+        public decimal? Spread2 { get; set; }
+
+        public decimal? StrikeRate2 { get; set; }
+
+        public decimal? StrikeRate3 { get; set; }
+
+        public decimal? StrikeAmount1 { get; set; }
+
+        public decimal? StrikeAmount2 { get; set; }
+
+        public decimal? StrikeAmount3 { get; set; }
+
+        public DateTime? CreateDate { get; set; }
+
+        public DateTime? ModifyDate { get; set; }
+
+        public int? ModifiedByContactId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ValuationReportTransactionProcModel : IProcModel
+    {
+        public int? Id { get; set; }
+
+        public string BankReferenceNumber { get; set; }
+
+        public string ClientReferenceNumber { get; set; }
+
+        public string LoanReferenceNumber { get; set; }
+
+        public string Borrower { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        public string Description { get; set; }
+
+        public string HedgedItem { get; set; }
+
+        public string Nickname { get; set; }
+
+        public string Crn { get; set; }
+
+        public int? Portfolio1 { get; set; }
+
+        public int? Portfolio2 { get; set; }
+
+        public int? Portfolio3 { get; set; }
+
+        public DateTime? TradeDate { get; set; }
+
+        public bool? IsHypo { get; set; }
+
+        public bool? RateManagerDeal { get; set; }
+
+        public int TradeMatchingStatus { get; set; }
+
+        public int? TradeMatchSentTo { get; set; }
+
+        public DateTime? TradeMatchSentToDate { get; set; }
+
+        public int? CreatedByUserId { get; set; }
+
+        public int? JurisdictionCountry { get; set; }
+
+        public string ChathamDeal { get; set; }
+
+        public int? GreatPlainsTransactionType { get; set; }
+
+        public int? ChathamGroupId { get; set; }
+
+        public string BuyOrSell { get; set; }
+
+        public string DescriptiveProduct { get; set; }
+
+        public int? ProductType { get; set; }
+
+        public string Status { get; set; }
+
+        public string WebDisplay { get; set; }
+
+        public DateTime? ExpectedClosing { get; set; }
+
+        public string DescriptiveIndex { get; set; }
+
+        public string DescriptiveNotional { get; set; }
+
+        public string DescriptiveSpread { get; set; }
+
+        public string DescriptiveStrike { get; set; }
+
+        public decimal? Notional { get; set; }
+
+        public int? NotionalCurrency { get; set; }
+
+        public int? ValuationCurrency { get; set; }
+
+        public DateTime? TerminationDate { get; set; }
+
+        public int TransactionQuoteId { get; set; }
+
+        public string MidBidAsk { get; set; }
+
+        public decimal? TerminationPremiumAmount { get; set; }
+
+        public int? TerminationPremiumCurrency { get; set; }
+
+        public DateTime? TerminationPremiumDate { get; set; }
+
+        public string ValueMethod { get; set; }
+
+        public int? ParentTransactionQuoteId { get; set; }
+
+        public int? ParentTransactionID { get; set; }
+
+        public DateTime? ActiveStartDate { get; set; }
+
+        public DateTime? ActiveEndDate { get; set; }
+
+        public bool? ActiveDateAutoUpdate { get; set; }
+
+        public DateTime? ShowOnValuationReportStartDate { get; set; }
+
+        public DateTime? ShowOnValuationReportEndDate { get; set; }
+
+        public bool? ShowOnValuationReportDateAutoUpdate { get; set; }
+
+        public DateTime? ShowOnPaymentReportStartDate { get; set; }
+
+        public DateTime? ShowOnPaymentReportEndDate { get; set; }
+
+        public bool? ShowOnPaymentReportDateAutoUpdate { get; set; }
+
+        public DateTime? TerminationTradeDate { get; set; }
+
+        public decimal? PremiumPaymentAmount { get; set; }
+
+        public DateTime? PremiumPaymentDate { get; set; }
+
+        public int? PremiumPaymentCurrency { get; set; }
+
+        public string DescriptiveStrike2 { get; set; }
+
+        public string TransactionDrillDown { get; set; }
+
+        public int? TradeDateTimeZone { get; set; }
+
+        public int? TimezoneDateType { get; set; }
+
+        public decimal? PartialTerminationNotional { get; set; }
+
+        public DateTime? CashSettlementDate { get; set; }
+
+        public bool? PeriodicNotionalExchange { get; set; }
+
+        public decimal? TerminationSpotRate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ComponentProcModel : IProcModel
+    {
+        public int? Id { get; set; }
+
+        public string BuySell { get; set; }
+
+        public string ComponentType { get; set; }
+
+        public int? IndexId { get; set; }
+
+        public int? DiscountCurveIndexId { get; set; }
+
+        public DateTime? EffectiveDate { get; set; }
+
+        public decimal? InitialNotional { get; set; }
+
+        public string MaturityDateBusinessDayConvention { get; set; }
+
+        public DateTime? MaturityDate { get; set; }
+
+        public int? NotionalCurrency { get; set; }
+
+        public bool? PaymentDayReferenceDayAdjusted { get; set; }
+
+        public string PayReceive { get; set; }
+
+        public bool? ResetDayReferenceDayAdjusted { get; set; }
+
+        public string RollBusinessDayConvention { get; set; }
+
+        public int? RoundingConvention { get; set; }
+
+        public int? SecondaryRoundingConvention { get; set; }
+
+        public decimal? Spread { get; set; }
+
+        public bool? SpreadIsConstant { get; set; }
+
+        public decimal? Strike { get; set; }
+
+        public bool? StrikeConstant { get; set; }
+
+        public int? TransactionId { get; set; }
+
+        public string Compounding { get; set; }
+
+        public bool? MultipleReset { get; set; }
+
+        public decimal? AmortizationPaymentAmount { get; set; }
+
+        public string AmortizationMethod { get; set; }
+
+        public string ScheduleType { get; set; }
+
+        public string InterestAccrualMethod { get; set; }
+
+        public string PaymentBusinessDayConvention { get; set; }
+
+        public string PaymentFrequency { get; set; }
+
+        public string RateResetFrequency { get; set; }
+
+        public string ResetBusinessDayConvention { get; set; }
+
+        public int? RollDay { get; set; }
+
+        public int? ComponentDebtId { get; set; }
+
+        public decimal? TresuryRate { get; set; }
+
+        public int? TreasuryRateMidBidAsk { get; set; }
+
+        public decimal? SwapRate { get; set; }
+
+        public int? SwapRateMidBidAsk { get; set; }
+
+        public decimal? SwapSpread { get; set; }
+
+        public int? SwapSpreadMidBidAsk { get; set; }
+
+        public decimal? ExtensionFeePercent { get; set; }
+
+        public decimal? ExtensionFee { get; set; }
+
+        public bool? ExtensionAvailableOnMaterialConditions { get; set; }
+
+        public int? AmortizationMethodCarryCost { get; set; }
+
+        public decimal? Notional { get; set; }
+
+        public int? RateFloatResetDay { get; set; }
+
+        public int? RateResetDay { get; set; }
+
+        public int? ResetSpecMethod { get; set; }
+
+        public string ResetRelativeTo { get; set; }
+
+        public string ResetPosRelativeToRoll { get; set; }
+
+        public string ResetDayOfWeek { get; set; }
+
+        public DateTime? ResetPatternStartDate { get; set; }
+
+        public int? RateResetCutoffDays { get; set; }
+
+        public int? WghtAveMthdId { get; set; }
+
+        public DateTime? StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
+
+        public bool? HasInterestOnlyPeriod { get; set; }
+
+        public int? InterestOnlyTermMonths { get; set; }
+
+        public DateTime? AmortizationStartDate { get; set; }
+
+        public bool? Applicable { get; set; }
+
+        public int? PaymentDayFloating { get; set; }
+
+        public int? PaymentDay { get; set; }
+
+        public int? PaymentSpecMethod { get; set; }
+
+        public string PaymentRelativeToRoll { get; set; }
+
+        public string PaymentPositionRelativeToRoll { get; set; }
+
+        public DateTime? CostAmortizationStartDate { get; set; }
+
+        public string LongFirstPeriod { get; set; }
+
+        public DateTime? FirstRollDate { get; set; }
+
+        public string LongLastPeriod { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ProductValuationProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public decimal? AccruedInterest { get; set; }
+
+        public decimal? Delta { get; set; }
+
+        public decimal? DV01DVTick { get; set; }
+
+        public decimal? PV01 { get; set; }
+
+        public bool? EndOfDay { get; set; }
+
+        public bool? InceptionValue { get; set; }
+
+        public decimal? KeyRate { get; set; }
+
+        public int? ScenarioId { get; set; }
+
+        public decimal? ValuationIntrinsic { get; set; }
+
+        public decimal? ValuationTimeValue { get; set; }
+
+        public DateTime? ValuationTimeStamp { get; set; }
+
+        public decimal? ValuationTotal { get; set; }
+
+        public string ValuationCurrency { get; set; }
+
+        public decimal? Vega { get; set; }
+
+        public string ProductValuationType { get; set; }
+
+        public string ValueSource { get; set; }
+
+        public DateTime? ValuationTimeStampUTC { get; set; }
+
+        public int? ModifyById { get; set; }
+
+        public DateTime? ModifyDate { get; set; }
+
+        public int? DiscountIndexId { get; set; }
+
+        public decimal? KeySwap { get; set; }
+
+        public decimal? KeyFxRate { get; set; }
+
+        public decimal? KeySwapSpread { get; set; }
+
+        public decimal? ImpliedForwardPremium { get; set; }
+
+        public decimal? ImpliedReposition { get; set; }
+
+        public decimal? ModifyDuration { get; set; }
+
+        public decimal? ImpliedVolatility { get; set; }
+
+        public decimal? ValuationOpenAmount { get; set; }
+
+        public decimal? ValuationOpenRate { get; set; }
+
+        public decimal? QuoteAmount { get; set; }
+
+        public decimal? QuoteRate { get; set; }
+
+        public decimal? Spot { get; set; }
+
+        public decimal? Gamma { get; set; }
+
+        public decimal? Theta { get; set; }
+
+        public DateTime? QuoteTime { get; set; }
+
+        public decimal? SpreadOverBenchmark { get; set; }
+
+        public decimal? Yield { get; set; }
+
+        public string Explanation { get; set; }
+
+        public DateTime? ValueTargetDate { get; set; }
+
+        public bool? ControlReportRun { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ProductValuationByDatesProcModel : ProductValuationProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EffectivenessTestProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int AccountingTreatmentId { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int? ScenarioId { get; set; }
+
+        public DateTime? TestDate { get; set; }
+
+        public string TestType { get; set; }
+
+        public decimal? EffectivenessScore { get; set; }
+
+        public decimal? ComparisonAmountHedge { get; set; }
+
+        public decimal? ComparisonAmountHedgeItem { get; set; }
+
+        public int? CurrencyRefId { get; set; }
+
+        public string TestNote { get; set; }
+
+        public string TestMethod { get; set; }
+
+        public string TestScope { get; set; }
+
+        public DateTime? TestStartDate { get; set; }
+
+        public DateTime? TestEndDate { get; set; }
+
+        public string IneffectivenessReason { get; set; }
+
+        public bool? TestPassed { get; set; }
+
+        public string WebDisplay { get; set; }
+
+        public int? CreatedById { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        public string CreatedBy { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EffectivenessTestStatsProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int EffectivenessTestId { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int? CountOfPoints { get; set; }
+
+        public decimal? Slope { get; set; }
+
+        public decimal? Intercept { get; set; }
+
+        public decimal? RSquared { get; set; }
+
+        public decimal? RSquaredAdjusted { get; set; }
+
+        public decimal? TScoreSlope { get; set; }
+
+        public decimal? TScoreIntercept { get; set; }
+
+        public decimal? TScoreSlopeCritical { get; set; }
+
+        public decimal? TScoreInterceptCritical { get; set; }
+
+        public int? DegreesOfFredom { get; set; }
+
+        public decimal? FScore { get; set; }
+
+        public decimal? FScoreCritical { get; set; }
+
+        public decimal? FSignificance { get; set; }
+
+        public decimal? PValueSlope { get; set; }
+
+        public decimal? PValueIntercept { get; set; }
+
+        public decimal? SumOfSquaresResiduals { get; set; }
+
+        public decimal? SumOfSquaresRegression { get; set; }
+
+        public decimal? SumOfSquaresTotal { get; set; }
+
+        public decimal? StandardErrorSlope { get; set; }
+
+        public decimal? StandardErrorIntercept { get; set; }
+
+        public decimal? StandardErrorOfTheEstimate { get; set; }
+
+        public decimal? MeanSquareRegression { get; set; }
+
+        public decimal? MeanSquareError { get; set; }
+
+        public decimal? ConfidenceLevel { get; set; }
+
+        public decimal? DurbinWatsonScore { get; set; }
+
+        public decimal? DurbinWatsonLowerBound { get; set; }
+
+        public decimal? DurbinWatsonUpperBound { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class FxPoliciesProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int AccountingInformationId { get; set; }
+
+        public int HedgeDesignationId { get; set; }
+
+        public string HedgeDesignationTreatmentName { get; set; }
+
+        public int? HedgeDesignationMethod { get; set; }
+
+        public bool UsesInceptionRegression { get; set; }
+
+        public bool G20 { get; set; }
+
+        public int? EffectivenessTestScope { get; set; }
+
+        public bool MeasurementTestManual { get; set; }
+
+        public bool ProspectiveTestManual { get; set; }
+
+        public bool RetrospectiveTestManual { get; set; }
+
+        public int? ExcludedComponent { get; set; }
+
+        public string IneffectiveReason { get; set; }
+
+        public int? HedgedRisk { get; set; }
+
+        public decimal? AssumedEffectiveRatio { get; set; }
+
+        public string ManualTestReason { get; set; }
+
+        public int? MeasurementTestMethod { get; set; }
+
+        public int? ProspectiveTestMethod { get; set; }
+
+        public int? RetrospectiveTestMethod { get; set; }
+
+        public string ExposureBucket { get; set; }
+
+        public int? HypoMonthAdjusted { get; set; }
+
+        public int? HypoDayOfMonth { get; set; }
+
+        public int? AccountingTreatmentMonthAdjusted { get; set; }
+
+        public int? AccountingTreatmentDayOfMonth { get; set; }
+
+        public int? OciMonthAdjusted { get; set; }
+
+        public int? OciDayOfMonth { get; set; }
+
+        public int? HDMTemplateID { get; set; }
+
+        public string HDMTemplateName { get; set; }
+
+        public string HDMDescription { get; set; }
+
+        public int? TemplateType { get; set; }
+
+        public bool? ChathamOnly { get; set; }
+
+        public int? CalendarType { get; set; }
+
+        public int? BegHypoMonthAdjusted { get; set; }
+
+        public int? BegHypoDayOfMonth { get; set; }
+
+        public int? EndHypoMonthAdjusted { get; set; }
+
+        public int? EndHypoDayOfMonth { get; set; }
+
+        public int? AccountingRegressionType { get; set; }
+
+        public int? RegressionDataPointFrequency { get; set; }
+
+        public int? RegressionNumberOfDataPoints { get; set; }
+
+        public int? EntryAccountIneffectiveness { get; set; }
+
+        public int? EntryAccountAmortization { get; set; }
+
+        public int? EntryAccountOci { get; set; }
+
+        public int? PortfolioId { get; set; }
+
+        public string PortfolioName { get; set; }
+
+        public int? InceptionDataPointFrequency { get; set; }
+
+        public int? InceptionDataPointCount { get; set; }
+
+        public int? FxDefaultPocId { get; set; }
+
+        public int? RemeasurementOfDeferred { get; set; }
+
+        public int? RemeasureUnbilled { get; set; }
+
+        public int? RateForRecognition { get; set; }
+
+        public int? RateForCash { get; set; }
+
+        public int? RateForRemeasurement { get; set; }
+
+        public int? RateForFinalSettlement { get; set; }
+
+        public int? RateForDedesignation { get; set; }
+
+        public int? RateForFxDerivativeOci { get; set; }
+
+        public int? RateForInvoice { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class FxDefaultPocProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int FxDefaultId { get; set; }
+
+        public int? RemeasurementOfDeferred { get; set; }
+
+        public int? RemeasureUnbilled { get; set; }
+
+        public int? RatesForRecognition { get; set; }
+
+        public int? RatesForCash { get; set; }
+
+        public int? RatesForRemeasurement { get; set; }
+
+        public int? RatesForTermination { get; set; }
+
+        public int? RatesForDedesignation { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class FxDefaultExposureLinkProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int AccountingFxDefaultId { get; set; }
+
+        public int PlanningCycleExposureBucketsId { get; set; }
+
+        public int PlanningCycleSettingsId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class HDMTemplateProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public int? TemplateType { get; set; }
+
+        public bool ChathamOnly { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class HDMTemplateDetailProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int HdmTemplateId { get; set; }
+
+        public int? Order { get; set; }
+
+        public bool? IncludePageBreakBefore { get; set; }
+
+        public int PartId { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public string File { get; set; }
+
+        public int PartType { get; set; }
+
+        public int? DocumentId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class HypotheticalTransactionProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int HypoTransactionId { get; set; }
+
+        public int AccountingTreatmentId { get; set; }
+
+        public DateTime? StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class JournalEntryProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int AccountingTreatmentId { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int? ScenarioId { get; set; }
+
+        public int? GeneralLegerAccount { get; set; }
+
+        public decimal? EntryAmount { get; set; }
+
+        public string DebitCredit { get; set; }
+
+        public int? EntryType { get; set; }
+
+        public DateTime? EntryDate { get; set; }
+
+        public string EntryNote { get; set; }
+
+        public string ShowJournalEntry { get; set; }
+
+        public int? EntryPairId { get; set; }
+
+        public string ErrorNotes { get; set; }
+
+        public int? ErrorCodeId { get; set; }
+
+        public bool? Autoprocessed { get; set; }
+
+        public bool G20LeakingEntry { get; set; }
+
+        public int? Source { get; set; }
+
+        public int? CreatedById { get; set; }
+
+        public DateTime? CreatedUtc { get; set; }
+
+        public string CreatedBy { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class TreatmentLinkProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int TreatmentId { get; set; }
+
+        public string LinkType { get; set; }
+
+        public decimal? PercentAllocated { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class CashSettlementProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int ComponentId { get; set; }
+
+        public string SettlementType { get; set; }
+
+        public decimal? SettlementAmount { get; set; }
+
+        public decimal? ChathamSettlementAmount { get; set; }
+
+        public DateTime? DeterminationDate { get; set; }
+
+        public string SettlementMethod { get; set; }
+
+        public DateTime? CashSettlementPaymentDate { get; set; }
+
+        public decimal? SettlementRate { get; set; }
+
+        public decimal? TreasureySettlementRate { get; set; }
+
+        public decimal? SwapSettlementRate { get; set; }
+
+        public decimal? SwapSpreadSettlementRate { get; set; }
+
+        public string OptionStyle { get; set; }
+
+        public decimal? LockedTreasuryRate { get; set; }
+
+        public int? BuyCurrency { get; set; }
+
+        public decimal? NotionalBuy { get; set; }
+
+        public int? SellCurrency { get; set; }
+
+        public decimal? NotionalSell { get; set; }
+
+        public string CashSettled { get; set; }
+
+        public int? FloatDeterminationDay { get; set; }
+
+        public DateTime? SettlementDate { get; set; }
+
+        public int? FutureHomeCurrency { get; set; }
+
+        public decimal? FutureHomeCurrencyAmount { get; set; }
+
+        public int? FutureForeignCurrency { get; set; }
+
+        public decimal? FutureForeignCurrencyAmount { get; set; }
+
+        public decimal? PresentDiscountFactor { get; set; }
+
+        public int? PresentCurrency { get; set; }
+
+        public decimal? PresentCurrencyAmount { get; set; }
+
+        public DateTime? PresentSettlementDate { get; set; }
+
+        public decimal? FxNearRate { get; set; }
+
+        public decimal? FxMarketPoints { get; set; }
+
+        public decimal? FxCreditPoints { get; set; }
+
+        public DateTime? FxFixingDate { get; set; }
+
+        public decimal? DesignationSpotRate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DebtAllocationProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int? AssetLinkId { get; set; }
+
+        public int? EntityTransactionRelationshipId { get; set; }
+
+        public decimal? Percent { get; set; }
+
+        public DateTime? Date { get; set; }
+
+        public int? RelationShipType { get; set; }
+
+        public int? TransactionId { get; set; }
+
+        public int? EntityId { get; set; }
+
+        public int? AssetId { get; set; }
+
+        public string Name { get; set; }
+
+        public int? Type { get; set; }
+
+        public int? Class { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DebtCovenantProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public string Name { get; set; }
+
+        public int? DefinitionId { get; set; }
+
+        public int DefinitionReportUdfListId { get; set; }
+
+        public int DefinitionEntityId { get; set; }
+
+        public string DefinitionName { get; set; }
+
+        public int DefinitionType { get; set; }
+
+        public string DefinitionDescription { get; set; }
+
+        public bool EffectiveDateNeeded { get; set; }
+
+        public int? NoteId { get; set; }
+
+        public string Note { get; set; }
+
+        public DateTime EffectiveDate { get; set; }
+
+        public int? Currency { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DebtDescriptorProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int? DebtType { get; set; }
+
+        public int? DebtPurpose { get; set; }
+
+        public int? DebtSeniority { get; set; }
+
+        public int? DebtStabilization { get; set; }
+
+        public int? DebtGroup { get; set; }
+
+        public bool EditDrawsAndPayDowns { get; set; }
+
+        public string DebtDescription { get; set; }
+
+        public int? LenderType { get; set; }
+
+        public int? LeinPosition { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class CreditSpreadEventProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public DateTimeOffset CreatedDate { get; set; }
+
+        public int CreatedByUserId { get; set; }
+
+        public decimal? CreditSpreadValue { get; set; }
+
+        public DateTime? CreditSpreadEffectiveDate { get; set; }
+
+        public string CreatedByName { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DiscountRateEventProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public DateTimeOffset CreatedDate { get; set; }
+
+        public int CreatedByUserId { get; set; }
+
+        public decimal? Rate { get; set; }
+
+        public DateTime? RateEffectiveDate { get; set; }
+
+        public string CreatedByName { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class MarketRateEventProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public DateTimeOffset CreatedDate { get; set; }
+
+        public int CreatedByUserId { get; set; }
+
+        public decimal? Rate { get; set; }
+
+        public DateTime? RateEffectiveDate { get; set; }
+
+        public string CreatedByName { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class StabilizedCapRateEventProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public DateTimeOffset CreatedDate { get; set; }
+
+        public int CreatedByUserId { get; set; }
+
+        public decimal? Rate { get; set; }
+
+        public DateTime? RateEffectiveDate { get; set; }
+
+        public string CreatedByName { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class UnleveredPropDiscRateEventProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public DateTimeOffset CreatedDate { get; set; }
+
+        public int CreatedByUserId { get; set; }
+
+        public decimal? Rate { get; set; }
+
+        public DateTime? RateEffectiveDate { get; set; }
+
+        public string CreatedByName { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DebtOwnershipProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public decimal? OwnershipPercent { get; set; }
+
+        public int? OwnershipStructure { get; set; }
+
+        public DateTime? StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DebtTermProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public decimal? CommitmentFeePercent { get; set; }
+
+        public bool? PooledLoan { get; set; }
+
+        public bool? MultiplePricingOptions { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class LoanDetailProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public string LoanId { get; set; }
+
+        public string CorporateNumber { get; set; }
+
+        public bool? Secured { get; set; }
+
+        public bool? Securitized { get; set; }
+
+        public string CollateralAsset { get; set; }
+
+        public bool? CrossCollateral { get; set; }
+
+        public int? CrossCollateralInstrument { get; set; }
+
+        public bool? CrossDefault { get; set; }
+
+        public int? CrossDefaultInstrument { get; set; }
+
+        public bool? Guaranteed { get; set; }
+
+        public decimal? GuaranteedPercent { get; set; }
+
+        public int? GuaranteedType { get; set; }
+
+        public string GuaranteedOblication { get; set; }
+
+        public string Footnote1 { get; set; }
+
+        public string Footnote2 { get; set; }
+
+        public string Footnote3 { get; set; }
+
+        public string Footnote4 { get; set; }
+
+        public decimal? PurchasePrice { get; set; }
+
+        public string Beneficiary { get; set; }
+
+        public int? FinanceStatementCode { get; set; }
+
+        public int? PaymentMethod { get; set; }
+
+        public string PaymentDescription { get; set; }
+
+        public int? GracePeriod { get; set; }
+
+        public bool? Convertable { get; set; }
+
+        public int? ConversionFeature { get; set; }
+
+        public DateTime? ConversionDate { get; set; }
+
+        public int? LoanType { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ProductDebtProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public DateTime? AnticipatedMaturityDate { get; set; }
+
+        public bool? Extension { get; set; }
+
+        public int? NumberOfExtensionOptions { get; set; }
+
+        public int? ExtensionPeriod { get; set; }
+
+        public DateTime? ExtensionDate { get; set; }
+
+        public int? PrepaymentOption { get; set; }
+
+        public int? PrepaymentLockoutTerm { get; set; }
+
+        public DateTime? PrepaymentDate { get; set; }
+
+        public DateTime? PrepaymentNoPenaltyDate { get; set; }
+
+        public bool? DefeasanceOption { get; set; }
+
+        public int? DefeasanceLockoutTerm { get; set; }
+
+        public DateTime? DefeasanceDate { get; set; }
+
+        public DateTime? DefeasanceNoPenaltyDate { get; set; }
+
+        public string OtherFeePrepaymentDescription { get; set; }
+
+        public int? LatePenaltyType { get; set; }
+
+        public decimal? UnusedFacilityFee { get; set; }
+
+        public decimal? OriginationCosts { get; set; }
+
+        public decimal? OriginalIssuanceCosts { get; set; }
+
+        public decimal? OriginalPremiumDiscount { get; set; }
+
+        public decimal? TotalCommitment { get; set; }
+
+        public decimal? OriginalPurchaseAccountAdjustment { get; set; }
+
+        public DateTime? ReportMaturityDate { get; set; }
+
+        public decimal? RedemptionPrice { get; set; }
+
+        public DateTime? RedemptionDate { get; set; }
+
+        public bool? Redeemable { get; set; }
+
+        public DateTime? PrepaymentNotificationDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ReminderProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public DateTime? ReferenceDate { get; set; }
+
+        public int DateType { get; set; }
+
+        public string Subject { get; set; }
+
+        public string Body { get; set; }
+
+        public int? EntityId { get; set; }
+
+        public int? TransactionId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class TreatmentProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public string Notes { get; set; }
+
+        public decimal? PercentItemHedged { get; set; }
+
+        public DateTime? MatureHedgedPortDate { get; set; }
+
+        public int? HedgeDesignationMethod { get; set; }
+
+        public int? TestMethodRetrospective { get; set; }
+
+        public string HedgePurpose { get; set; }
+
+        public string IneffectiveReason { get; set; }
+
+        public decimal? HedgedNotional { get; set; }
+
+        public decimal? CarryAmountAtInception { get; set; }
+
+        public decimal? EffectiveRatioAtInception { get; set; }
+
+        public DateTime? NextPeriodEndDate { get; set; }
+
+        public int? TreatmentStatus { get; set; }
+
+        public bool? StillGetsHedgeAccounting { get; set; }
+
+        public bool? EntriesDone { get; set; }
+
+        public bool? ShowJournalEntries { get; set; }
+
+        public int? HedgedRisk { get; set; }
+
+        public DateTime? StartDate { get; set; }
+
+        public int? EffectivenessTestScope { get; set; }
+
+        public DateTime? EffectivenessTestStartDate { get; set; }
+
+        public int? ExcludedComponent { get; set; }
+
+        public decimal? HedgedRate { get; set; }
+
+        public int? TestMethodProspective { get; set; }
+
+        public bool? TestManuallyMeasure { get; set; }
+
+        public DateTime? EffectivenessTestEndDate { get; set; }
+
+        public string ManualTestReason { get; set; }
+
+        public int? TestMethodMeasure { get; set; }
+
+        public bool? TestManuallyRetrospective { get; set; }
+
+        public bool? TestManuallyProspective { get; set; }
+
+        public decimal? AssumedEffectiveRatio { get; set; }
+
+        public bool? G20 { get; set; }
+
+        public DateTime? EndDate { get; set; }
+
+        public bool? AutoGenerateJournalEntries { get; set; }
+
+        public string JournalEntriesNotAutoGeneratedReason { get; set; }
+
+        public int? AccruedInterestJournalEntriesRequired { get; set; }
+
+        public int? AccruedInterestExpenseEntries { get; set; }
+
+        public int? GoverningAccountingStandard { get; set; }
+
+        public string Description { get; set; }
+
+        public DateTime? G20LeakedThroughDate { get; set; }
+
+        public int? RegressionNumberOfDataPoints { get; set; }
+
+        public int? RegressionFrequencyOfDataPoints { get; set; }
+
+        public DateTime? OciReleaseDate { get; set; }
+
+        public int? EntryAccountPaymentsAccruals { get; set; }
+
+        public int? EntryAccountAmortization { get; set; }
+
+        public int? EntryAccountIneffectiveness { get; set; }
+
+        public int? EntryAccountHedgedItem { get; set; }
+
+        public bool? CapitalExpenditure { get; set; }
+
+        public DateTime? CapitalExpenditureAmortStartDate { get; set; }
+
+        public DateTime? CapitalExpenditureAmortEndDate { get; set; }
+
+        public decimal? CapitalExpenditureAmortResidualPercent { get; set; }
+
+        public int? CapitalExpenditureAmortType { get; set; }
+
+        public int? CapitalExpenditureAmortFrequency { get; set; }
+
+        public DateTime? CapitalExpenditureScrapDate { get; set; }
+
+        public int? OffMarketOciReclassBasedOn { get; set; }
+
+        public int? RunPaymentSummaryEntries { get; set; }
+
+        public decimal? ConfidenceInterval { get; set; }
+
+        public DateTime? TreatmentCreateDate { get; set; }
+
+        public int? OffMarketMethod { get; set; }
+
+        public int? TenorMax { get; set; }
+
+        public int? TenorMin { get; set; }
+
+        public DateTime? CurveRecycleDate { get; set; }
+
+        public int? InceptionDataPointFrequency { get; set; }
+
+        public int? InceptionDataPointCount { get; set; }
+
+        public int? EntryAccountOci { get; set; }
+
+        public int? TreatmentPocId { get; set; }
+
+        public int? RemeasurementOfDeferred { get; set; }
+
+        public int? RemeasureUnbilled { get; set; }
+
+        public int? RatesForRecognition { get; set; }
+
+        public int? RatesForCash { get; set; }
+
+        public int? RatesForRemeasurement { get; set; }
+
+        public int? RatesForFinalSettlement { get; set; }
+
+        public int? RatesForDedesignation { get; set; }
+
+        public int? RatesForFxDerivativeOci { get; set; }
+
+        public int? RatesForInvoice { get; set; }
+
+        public int? TransactionId { get; set; }
+
+        public string LinkType { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EntityHierarchyRelationshipProcModel : IProcModel
+    {
+        public string ChildCompanyName { get; set; }
+
+        public int ChildEntityId { get; set; }
+
+        public int ChildLegalEntityId { get; set; }
+
+        public int ParentEntityId { get; set; }
+
+        public int? ChildFunctionalCurrency { get; set; }
+
+        public int? ParentLegalEntityId { get; set; }
+
+        public int ChildCompanyStatus { get; set; }
+
+        public bool? ChildCompanyAllowedToHedge { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EntityRateOverwriteProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int EntityId { get; set; }
+
+        public decimal Rate { get; set; }
+
+        public DateTime FromDate { get; set; }
+
+        public DateTime ToDate { get; set; }
+
+        public int RateOverwriteStatus { get; set; }
+
+        public int ContactId { get; set; }
+
+        public DateTimeOffset LastStatusDate { get; set; }
+
+        public int? IndexId { get; set; }
+
+        public int? FromCurrency { get; set; }
+
+        public int? ToCurrency { get; set; }
+
+        public int RateType { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class BookedRevenueProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TreatmentId { get; set; }
+
+        public long InvoiceAmount { get; set; }
+
+        public DateTime InvoiceDate { get; set; }
+
+        public DateTime PeriodEndDate { get; set; }
+
+        public int? RevenueType { get; set; }
+
+        public long? RevenueAmount { get; set; }
+
+        public DateTime? RevenueDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class RatePullCapVolProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int RatePullId { get; set; }
+
+        public int Currency { get; set; }
+
+        public int BaseIndexId { get; set; }
+
+        public int DiscountType { get; set; }
+
+        public DateTimeOffset Timestamp { get; set; }
+
+        public bool Success { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class AssetInfoProcModel : IProcModel
+    {
+        public decimal Amount { get; set; }
+
+        public int AssetId { get; set; }
+
+        public int? Currency { get; set; }
+
+        public DateTime? EffectiveDate { get; set; }
+
+        public int Id { get; set; }
+
+        public int Type { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    [TableName("dbo.cfo_rates")]
+    [PrimaryKey("rb_rate_id")]
+    [ExplicitColumns]
+    public class RateTableModel : TableModel
+    {
+        public const string ColumnNameId = "rb_rate_id";
+
+        [Column(ColumnNameId)]
+        public override int Id { get; set; }
+
+        public const string ColumnNameIndexId = "rb_ix_index_id";
+
+        private int? _indexId;
+
+        [Column(ColumnNameIndexId)]
+        public int? IndexId
+        {
+            get
+            {
+                return _indexId;
+            }
+            set
+            {
+                _indexId = value;
+                MarkColumnModified(ColumnNameIndexId);
+            }
+        }
+
+        public const string ColumnNameBid = "rb_rate_bid";
+
+        private double? _bid;
+
+        [Column(ColumnNameBid)]
+        public double? Bid
+        {
+            get
+            {
+                return _bid;
+            }
+            set
+            {
+                _bid = value;
+                MarkColumnModified(ColumnNameBid);
+            }
+        }
+
+        public const string ColumnNameAsk = "rb_rate_ask";
+
+        private double? _ask;
+
+        [Column(ColumnNameAsk)]
+        public double? Ask
+        {
+            get
+            {
+                return _ask;
+            }
+            set
+            {
+                _ask = value;
+                MarkColumnModified(ColumnNameAsk);
+            }
+        }
+
+        public const string ColumnNameMid = "rb_rate_mid";
+
+        private double? _mid;
+
+        [Column(ColumnNameMid)]
+        public double? Mid
+        {
+            get
+            {
+                return _mid;
+            }
+            set
+            {
+                _mid = value;
+                MarkColumnModified(ColumnNameMid);
+            }
+        }
+
+        public const string ColumnNameLast = "rb_rate_last";
+
+        private double? _last;
+
+        [Column(ColumnNameLast)]
+        public double? Last
+        {
+            get
+            {
+                return _last;
+            }
+            set
+            {
+                _last = value;
+                MarkColumnModified(ColumnNameLast);
+            }
+        }
+
+        public const string ColumnNameYieldBid = "rb_yield_bid";
+
+        private double? _yieldBid;
+
+        [Column(ColumnNameYieldBid)]
+        public double? YieldBid
+        {
+            get
+            {
+                return _yieldBid;
+            }
+            set
+            {
+                _yieldBid = value;
+                MarkColumnModified(ColumnNameYieldBid);
+            }
+        }
+
+        public const string ColumnNameYieldAsk = "rb_yield_ask";
+
+        private double? _yieldAsk;
+
+        [Column(ColumnNameYieldAsk)]
+        public double? YieldAsk
+        {
+            get
+            {
+                return _yieldAsk;
+            }
+            set
+            {
+                _yieldAsk = value;
+                MarkColumnModified(ColumnNameYieldAsk);
+            }
+        }
+
+        public const string ColumnNameFutureDate = "rb_future_dt";
+
+        private DateTime? _futureDate;
+
+        [Column(ColumnNameFutureDate)]
+        public DateTime? FutureDate
+        {
+            get
+            {
+                return _futureDate;
+            }
+            set
+            {
+                _futureDate = value;
+                MarkColumnModified(ColumnNameFutureDate);
+            }
+        }
+
+        public const string ColumnNameSource = "rb_rate_source";
+
+        private string _source;
+
+        [Column(ColumnNameSource)]
+        public string Source
+        {
+            get
+            {
+                return _source;
+            }
+            set
+            {
+                _source = value;
+                MarkColumnModified(ColumnNameSource);
+            }
+        }
+
+        public const string ColumnNameMaturityLength = "rb_maturity_length";
+
+        private int? _maturityLength;
+
+        [Column(ColumnNameMaturityLength)]
+        public int? MaturityLength
+        {
+            get
+            {
+                return _maturityLength;
+            }
+            set
+            {
+                _maturityLength = value;
+                MarkColumnModified(ColumnNameMaturityLength);
+            }
+        }
+
+        public const string ColumnNameStrike = "rb_strike";
+
+        private double? _strike;
+
+        [Column(ColumnNameStrike)]
+        public double? Strike
+        {
+            get
+            {
+                return _strike;
+            }
+            set
+            {
+                _strike = value;
+                MarkColumnModified(ColumnNameStrike);
+            }
+        }
+
+        public const string ColumnNameUtcTimestamp = "rb_rate_utc";
+
+        private DateTime? _utcTimestamp;
+
+        [Column(ColumnNameUtcTimestamp)]
+        public DateTime? UtcTimestamp
+        {
+            get
+            {
+                return _utcTimestamp;
+            }
+            set
+            {
+                _utcTimestamp = value;
+                MarkColumnModified(ColumnNameUtcTimestamp);
+            }
+        }
+
+        public const string ColumnNameUtcSourceTimestamp = "rb_source_utc";
+
+        private DateTime? _utcSourceTimestamp;
+
+        [Column(ColumnNameUtcSourceTimestamp)]
+        public DateTime? UtcSourceTimestamp
+        {
+            get
+            {
+                return _utcSourceTimestamp;
+            }
+            set
+            {
+                _utcSourceTimestamp = value;
+                MarkColumnModified(ColumnNameUtcSourceTimestamp);
+            }
+        }
+
+        public const string ColumnNameEndOfDayBit = "rb_end_of_day_bit";
+
+        private bool _endOfDayBit;
+
+        [Column(ColumnNameEndOfDayBit)]
+        public bool EndOfDayBit
+        {
+            get
+            {
+                return _endOfDayBit;
+            }
+            set
+            {
+                _endOfDayBit = value;
+                MarkColumnModified(ColumnNameEndOfDayBit);
+            }
+        }
+
+        public const string ColumnNameControlReportStatus = "rb_rv_control_report_status";
+
+        private int? _controlReportStatus;
+
+        [Column(ColumnNameControlReportStatus)]
+        public int? ControlReportStatus
+        {
+            get
+            {
+                return _controlReportStatus;
+            }
+            set
+            {
+                _controlReportStatus = value;
+                MarkColumnModified(ColumnNameControlReportStatus);
+            }
+        }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class RateProcModel : RateTableModel, IProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class LatestRateProcModel : RateProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EarliestRateProcModel : RateProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EarliestRatesProcModel : RateProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class RateInBetweenTimestampProcModel : RateProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class TreatmentPeriodEndDateProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TreatmentId { get; set; }
+
+        public DateTime PeriodEndDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class UserDetailProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public string Username { get; set; }
+
+        public string Password { get; set; }
+
+        public DateTime PasswordExpirationDate { get; set; }
+
+        public int HashingAlgorithm { get; set; }
+
+        public int? HomepageId { get; set; }
+
+        public int? LocaleId { get; set; }
+
+        public bool? IsActive { get; set; }
+
+        public bool IsLocked { get; set; }
+
+        public int? CreatedByContactId { get; set; }
+
+        public int? AuthorizedByContactId { get; set; }
+
+        public int? NoteId { get; set; }
+
+        public int ContactId { get; set; }
+
+        public string ContactFirstName { get; set; }
+
+        public string ContactLastName { get; set; }
+
+        public string ContactFullName { get; set; }
+
+        public string SalesforceId { get; set; }
+
+        public int Status { get; set; }
+
+        public string ContactPhone { get; set; }
+
+        public string ContactFax { get; set; }
+
+        public string ContactEmail { get; set; }
+
+        public int? EntityId { get; set; }
+
+        public string CompanyName { get; set; }
+
+        public string FriendlyName { get; set; }
+
+        public bool Fictitious { get; set; }
+
+        public string EntityType { get; set; }
+
+        public int GreatPlainsCustomerClass { get; set; }
+    }
+
+    public class UserProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int? ContactId { get; set; }
+
+        public string Username { get; set; }
+
+        public string Password { get; set; }
+
+        public int SponsorId { get; set; }
+
+        public DateTime PasswordExpirationDate { get; set; }
+
+        public int HashingAlgorithm { get; set; }
+
+        public int? HomepageName { get; set; }
+
+        public int? LocaleId { get; set; }
+
+        public bool? IsActive { get; set; }
+
+        public bool IsLocked { get; set; }
+
+        public int? AuthorizedByContactId { get; set; }
+
+        public int? NoteId { get; set; }
+
+        public int? CreatedByContactId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class LegalEntityProcModel : IProcModel
+    {
+        public int DefaultValuationCurrency { get; set; }
+
+        public int EntityId { get; set; }
+
+        public int EUEElection { get; set; }
+
+        public int Id { get; set; }
+
+        public bool IsBorrower { get; set; }
+
+        public bool? IsSmallBank { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IndexRatePullDetailProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int IndexRatePullId { get; set; }
+
+        public int IndexId { get; set; }
+
+        public int? RateId { get; set; }
+
+        public int Status { get; set; }
+
+        public int? AssignedContactId { get; set; }
+
+        public int? NoteId { get; set; }
+
+        public DateTimeOffset? CreatedDate { get; set; }
+
+        public int? IndexRatePullDetailCapVolId { get; set; }
+
+        public double? ShiftFactor { get; set; }
+
+        public double? ShiftedLogNormalVol { get; set; }
+
+        public double? NormalVol { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ProviderFieldsetDetailProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int ProviderFieldsetId { get; set; }
+
+        public string ProviderFieldName { get; set; }
+
+        public int ProviderFieldsetDetailMappingId { get; set; }
+
+        public string DataType { get; set; }
+
+        public string DbField { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EntityRegulationProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int EntityId { get; set; }
+
+        public int? CountryId { get; set; }
+
+        public string Lei { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class InvoiceProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public string GreatPlainsId { get; set; }
+
+        public decimal? BaseFee { get; set; }
+
+        public decimal? DiscountAmount { get; set; }
+
+        public decimal? TaxRate { get; set; }
+
+        public decimal? TaxAmount { get; set; }
+
+        public decimal? NetFee { get; set; }
+
+        public decimal? BankGrossFee { get; set; }
+
+        public DateTime? InvoiceDate { get; set; }
+
+        public int? InvoiceType { get; set; }
+
+        public int? BillingOffice { get; set; }
+
+        public string AllocationNote { get; set; }
+
+        public string Description { get; set; }
+
+        public string Note { get; set; }
+
+        public int? CurrencyId { get; set; }
+
+        public bool? PaidInFull { get; set; }
+
+        public bool BankGrossFeeOverwrite { get; set; }
+
+        public int? BillingEntityId { get; set; }
+
+        public int? BillingFormulaHeaderId { get; set; }
+
+        public string BillingFormulaHeaderName { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class PositionReportProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int ReportStatus { get; set; }
+
+        public DateTime ReportStatusDate { get; set; }
+
+        public int SendMethod { get; set; }
+
+        public int? RepositoryIdentifier { get; set; }
+
+        public DateTime? ValuationDate { get; set; }
+
+        public int ReportingJurisdiction { get; set; }
+
+        public int ReportingEventType { get; set; }
+
+        public int DocumentId { get; set; }
+
+        public int ReportingReason { get; set; }
+
+        public DateTimeOffset? CreatedDateUtc { get; set; }
+
+        public int RegulationPositionTransactionId { get; set; }
+
+        public int PositionId { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public int? LinkReason { get; set; }
+
+        public int? LinkType { get; set; }
+
+        public DateTimeOffset? LinkCreatedDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class RegulationDetailDoddFrankProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public bool IRAssetClass { get; set; }
+
+        public bool FXAssetClass { get; set; }
+
+        public bool CommodityAssetClass { get; set; }
+
+        public bool IsUsPerson { get; set; }
+
+        public int RegulationStatus { get; set; }
+
+        public List<int> NfaRegistrationStatuses { get; set; }
+
+        public int? Filer { get; set; }
+
+        public bool? BoardApproved { get; set; }
+
+        public DateTime? SuitabilityPoliciesSentDate { get; set; }
+
+        public bool? SuitabilityPoliciesAdopted { get; set; }
+
+        public int EntityRegulationId { get; set; }
+
+        public int EntityId { get; set; }
+
+        public string Domicile { get; set; }
+
+        public string Lei { get; set; }
+
+        public bool? EueSelected { get; set; }
+
+        public string CpoName { get; set; }
+
+        public int CpoExemption { get; set; }
+
+        public int? CountryId { get; set; }
+    }
+
+    public class RegulationDetailEmirProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int? RegulationStatus { get; set; }
+
+        public DateTime? PoliciesSentDate { get; set; }
+
+        public bool? PoliciesAdopted { get; set; }
+
+        public bool? IsAuthorizedCreditInstitution { get; set; }
+
+        public int EntityRegulationId { get; set; }
+
+        public int EntityId { get; set; }
+
+        public string Domicile { get; set; }
+
+        public string Lei { get; set; }
+
+        public bool? SubjectToAIFMD { get; set; }
+
+        public int? InScopeForEMIR { get; set; }
+
+        public int? EMIRClearingCategory { get; set; }
+
+        public int? CountryId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class CountryRegulationProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int CountryId { get; set; }
+
+        public int ScopeRefId { get; set; }
+
+        public string Name { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class RegulationPositionProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public string Identifier { get; set; }
+
+        public int? IdentifierType { get; set; }
+
+        public string Prefix { get; set; }
+
+        public int? Status { get; set; }
+
+        public DateTimeOffset? CreatedDate { get; set; }
+
+        public int? TransactionLinkId { get; set; }
+
+        public int? RegulationPositionId { get; set; }
+
+        public int? TransactionId { get; set; }
+
+        public int? LinkReason { get; set; }
+
+        public int? LinkType { get; set; }
+
+        public DateTimeOffset? LinkCreateDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class RegulatoryReportProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int? ReportFileType { get; set; }
+
+        public int? SendMethod { get; set; }
+
+        public int? CreatedById { get; set; }
+
+        public DateTime? CreatedDateUtc { get; set; }
+
+        public int? ComponentId { get; set; }
+
+        public int? DocumentId { get; set; }
+
+        public Int64? UniqueReportIdentifier { get; set; }
+
+        public int? Status { get; set; }
+
+        public int? AuthorizedByContactId { get; set; }
+
+        public DateTime? AuthorizationDate { get; set; }
+
+        public DateTime? StatusDate { get; set; }
+
+        public int? DailyTransactionHistoryId { get; set; }
+
+        public int TransactionId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ValuationRegulationReportProcModel : IProcModel
+    {
+        public int TransactionId { get; set; }
+
+        public DateTimeOffset? TradeDateTimeOffset { get; set; }
+
+        public DateTime? TradeDate { get; set; }
+
+        public int? GroupId { get; set; }
+
+        public int EntityId { get; set; }
+
+        public int? ChathamOfficeId { get; set; }
+
+        public int ReportId { get; set; }
+
+        public int? ReportTypeId { get; set; }
+
+        public int? SendMethodId { get; set; }
+
+        public int? ComponentId { get; set; }
+
+        public int? DocumentId { get; set; }
+
+        public Int64? UniqueReportIdentifier { get; set; }
+
+        public int? AuthorizedByContactId { get; set; }
+
+        public DateTime? AuthorizedDate { get; set; }
+
+        public int? ReportStatusId { get; set; }
+
+        public DateTime? ReportStatusDate { get; set; }
+
+        public int? ValuationId { get; set; }
+
+        public DateTime? ValuationDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class LatestValuationRegulationReportProcModel : ValuationRegulationReportProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class TransactionPendingInputCheckProcModel : IProcModel
+    {
+        public int TransactionId { get; set; }
+
+        public DateTimeOffset? TradeDateTimeOffset { get; set; }
+
+        public DateTime? TradeDate { get; set; }
+
+        public int? GroupId { get; set; }
+
+        public int ProductId { get; set; }
+
+        public int EntityId { get; set; }
+
+        public int? ChathamOfficeId { get; set; }
+
+        public int SponsorLeId { get; set; }
+
+        public int BankLeId { get; set; }
+
+        public int ReportTypeId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class USTransactionPendingInputCheckProcModel : TransactionPendingInputCheckProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EUTransactionPendingInputCheckProcModel : TransactionPendingInputCheckProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DocumentProcModel : IProcModel
+    {
+        public int DocumentId { get; set; }
+
+        public int? FileFolderId { get; set; }
+
+        public string FolderRelativePath { get; set; }
+
+        public string FileName { get; set; }
+
+        public string ActualFileName { get; set; }
+
+        public int? NoteId { get; set; }
+
+        public string NoteText { get; set; }
+
+        public int? DocumentType { get; set; }
+
+        public int? DocumentSubType { get; set; }
+
+        public int? DocumentStatus { get; set; }
+
+        public DateTime? StatusDate { get; set; }
+
+        public int? ShowOnWeb { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        public bool TrackHistory { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        public int? CreatedById { get; set; }
+
+        public int? ModifiedById { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DocumentPathProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public string CurrentPath { get; set; }
+
+        public string NextPath { get; set; }
+
+        public int? FileFolderId { get; set; }
+
+        public string FolderRelativePath { get; set; }
+
+        public int? DocumentCount { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DocumentStatusHistoryProcModel : IProcModel
+    {
+        public int DocumentId { get; set; }
+
+        public int? StatusId { get; set; }
+
+        public DateTime? StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class FinalExchangeRatesProcModel : IProcModel
+    {
+        public string SponsorLE { get; set; }
+
+        public string BankLE { get; set; }
+
+        public int? MarriageExchangeRateID { get; set; }
+
+        public int MarriageID { get; set; }
+
+        public DateTime? SettlementDate { get; set; }
+
+        public decimal? SpotRate { get; set; }
+
+        public int FromCurrency { get; set; }
+
+        public int ToCurrency { get; set; }
+
+        public int MarketFromCurrency { get; set; }
+
+        public int MarketToCurrency { get; set; }
+
+        public int? Status { get; set; }
+
+        public string Note { get; set; }
+
+        public decimal? SavedReferenceSpotRate { get; set; }
+
+        public int TransactionCount { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ContractProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int EntityId { get; set; }
+
+        public string ClientIdentifier { get; set; }
+
+        public int ContractType { get; set; }
+
+        public int LegalEntityId { get; set; }
+
+        public int Currency { get; set; }
+
+        public int Classification { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ContractExposureProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int ContractId { get; set; }
+
+        public int Type { get; set; }
+
+        public long Amount { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public DateTime AsOfDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class PlanningCycleExposureBucketsProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int PlanningCycleSettingsId { get; set; }
+
+        public string Name { get; set; }
+
+        public int BucketType { get; set; }
+
+        public bool DefaultBucket { get; set; }
+
+        public bool UseHedging { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public string TransactionSubType { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class MarriageWorkflowStatusProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int ReportingPeriodLinkId { get; set; }
+
+        public int Status { get; set; }
+
+        public string Comment { get; set; }
+
+        public int ModifiedById { get; set; }
+
+        public DateTime? StatusDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ExposureProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int EntityPlanningCycleLinkId { get; set; }
+
+        public int Currency { get; set; }
+
+        public decimal Amount { get; set; }
+
+        public string Tag { get; set; }
+
+        public int PlanningCycleBucketId { get; set; }
+
+        public int PlanningCyclePeriodSettingId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class MarriageProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int? MarriageScopeRefId { get; set; }
+
+        public int? GovernDocRefId { get; set; }
+
+        public DateTime? GovernDocDate { get; set; }
+
+        public bool? Fas157Valuation { get; set; }
+
+        public int? CdiStatusRefId { get; set; }
+
+        public int? Fas157ReportFrequencyRefId { get; set; }
+
+        public bool Cleared { get; set; }
+
+        public int StatusRefId { get; set; }
+
+        public int? ClearingJurisdictionRefId { get; set; }
+
+        public int? EuropeanRegReporting { get; set; }
+
+        public int MarriageEntityId { get; set; }
+
+        public int MarriageId { get; set; }
+
+        public int EntityId { get; set; }
+
+        public int MarriageEntityType { get; set; }
+
+        public bool? CreditProvider { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class DtccRequestResponseProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int DtccRequestResponseType { get; set; }
+
+        public string Url { get; set; }
+
+        public string Message { get; set; }
+
+        public DateTime MessageTime { get; set; }
+
+        public int? TransactionId { get; set; }
+
+        public int SdrRecordSdrId { get; set; }
+
+        public int SdrRecordRecordId { get; set; }
+
+        public int? SdrRecordTransactionId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class MarriageEntityEconomicCriteriaProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int MarriageEntityId { get; set; }
+
+        public int? NavCalculation { get; set; }
+
+        public int? CreditRatingLogic { get; set; }
+
+        public int? MarriageFinancialRefreshFrequency { get; set; }
+
+        public int CreateNameId { get; set; }
+
+        public decimal? NavOverrideValue { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class MarriageThresholdProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int MarriageEntityId { get; set; }
+
+        public int? Currency { get; set; }
+
+        public int? ThresholdType { get; set; }
+
+        public decimal? ShareholdersEquityPercentage { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class MarriageExchangeRateProcModel : IProcModel
+    {
+        public int Id { get; set; }
+
+        public int MarriageId { get; set; }
+
+        public int Currency1 { get; set; }
+
+        public int Currency2 { get; set; }
+
+        public DateTime EffectiveDate { get; set; }
+
+        public decimal SpotRate { get; set; }
+
+        public int Status { get; set; }
+
+        public string Note { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class ControlReportProcModel : ControlReportTableModel, IProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class
+    ControlReportApprovalProcModel : ControlReportApprovalTableModel, IProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class
+    ControlReportApprovalSignoffProcModel : ControlReportApprovalSignoffTableModel, IProcModel
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class AverageRateOptionProcModel : IProcModel
+    {
+        public string CRN { get; set; }
+
+        public string Product { get; set; }
+
+        public DateTime? TradeDate { get; set; }
+
+        public string BuysOrSells { get; set; }
+
+        public DateTime? MaturityDate { get; set; }
+
+        public DateTime? SettlementDate { get; set; }
+
+        public int? ValuationCurrency { get; set; }
+
+        public string CurrencyPair { get; set; }
+
+        public decimal? Strike { get; set; }
+
+        public decimal? CalculatedStrike { get; set; }
+
+        public int? BuyCurrency { get; set; }
+
+        public decimal BuyAmt { get; set; }
+
+        public int? SellCurrency { get; set; }
+
+        public decimal SellAmt { get; set; }
+
+        public DateTime? AveragingStartDate { get; set; }
+
+        public DateTime? AveragingEndDate { get; set; }
+
+        public int? AveragingFrequency { get; set; }
+
+        public int? AveragingMethod { get; set; }
+
+        public int? WeightedAveragingMethod { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class AvailableColumnProcModel : IProcModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Formula { get; set; }
+        public int ColumnFormat { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public int? CategoryOrder { get; set; }
+        public int ReportTypeId { get; set; }
+        public string ReportType { get; set; }
+        public bool AlwaysSelected { get; set; }
+        public int? AlwaysSelectOrder { get; set; }
+        public bool AllowGroupBy { get; set; }
+        public bool AllowSortBy { get; set; }
+        public string HelpText { get; set; }
+        public int? CurrencyColumnId { get; set; }
+        public decimal? DefaultColumnWidth { get; set; }
+        public int? SubTotalType { get; set; }
+        public int? FunctionOption { get; set; }
+    }
+
+
+    [ExcludeFromCodeCoverage]
+    public class PaymentNoticeProcModel : IProcModel
+    {
+        public int Id { get; set; }
+        public int BorrowerReportId { get; set; }
+        public int? ScheduleDetailId { get; set; }
+        public decimal? Payment { get; set; }
+        public DateTime? PaymentDate { get; set; }
+        public int? ScheduleId { get; set; }
+        public byte[] RowVersion { get; set; }
+        public DateTime? BorrowerReportGenerationDate { get; set; }
+        public int? BorrowerReportAuthorizationContactId { get; set; }
+        public DateTime? BorrowerReportAuthorizationDate { get; set; }
+        public int? BorrowerReportStatus { get; set; }
+        public DateTime? BorrowerReportStatusDate { get; set; }
+        public int? BorrowerReportSponsorId { get; set; }
+        public int? BorrowerReportTransactionId { get; set; }
+        public int? BorrowerReportDocumentId { get; set; }
+        public string BorrowerReportSubject { get; set; }
+        public bool? BorrowerReportFirstNoticeForTransaction { get; set; }
+        public string BorrowerReportBody { get; set; }
+    }
+
+    public class ReportTemplateProcModel : IProcModel
+    {
+        public int Id { get; set; }
+        public bool IsPrivate { get; set; }
+        public string GeneratedName { get; set; }
+        public string TemplateName { get; set; }
+        public int ReportTypeId { get; set; }
+        public string ReportTypeName { get; set; }
+    }
+
+    public class DataIntegrationJobProcModel : IProcModel
+    {
+        public int Id { get; set; }
+        public string EntityName { get; set; }
+        public string JobStatus { get; set; }
+        public DateTime? RequestCreatedDate { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+        public DateTime? AsOfDate { get; set; }
+        public string DataGroupings { get; set; }
+        public bool? PortfolioRequest { get; set; }
+        public DateTime? RequestModifiedDate { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class TreasuryRateSetDetailProcModel : IProcModel
+    {
+        public int RateSetId { get; set; }
+        public int RateSetDetailId { get; set; }
+        public int IndexId { get; set; }
+        public string CountryCode { get; set; }
+        public int CurrencyId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+    }
+
+    public class PortfolioProcModel : IProcModel
+    {
+        public int? Portfolio1 { get; set; }
+        public int? Portfolio2 { get; set; }
+        public int? Portfolio3 { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class MarriageRegulationJurisdictionProcModel : IProcModel
+    {
+        public int Id { get; set; }
+        public int MarriageId { get; set; }
+        public bool IsReconciliationProvider { get; set; }
+        public bool IsReportingProvider { get; set; }
+        public int SponsorLeReportingType { get; set; }
+    }
+
+    public class TransactionDescriptorsSearchFieldsProcModel : IProcModel
+    {
+        public int TransactionId { get; set; }
+        public string BankReferenceNumber { get; set; }
+        public string ClientReferenceNumber { get; set; }
+        public string LoanReferenceNumber { get; set; }
+        public string Borrower { get; set; }
+        public string Description { get; set; }
+        public string HedgedItem { get; set; }
+        public string Nickname { get; set; }
+        public string CRN { get; set; }
+        public int? Portfolio1 { get; set; }
+        public int? Portfolio2 { get; set; }
+        public int? Portfolio3 { get; set; }
+        public DateTime? TradeDate { get; set; }
+        public int Product { get; set; }
+        public string Status { get; set; }
+        public string Index { get; set; }
+        public decimal? Notional { get; set; }
+        public int? NotionalCurrency { get; set; }
+        public DateTime? TerminationTradeDate { get; set; }
+        public string DescriptiveStrike { get; set; }
+        public string TransactionDrillDown { get; set; }
+        public string Counterparty { get; set; }
+        public string LegalEntity { get; set; }
+        public string ClearingMember { get; set; }
+        public string ClearingHouse { get; set; }
+        public DateTime? EffectiveDate { get; set; }
+        public DateTime? MaturityDate { get; set; }
+        public decimal? MaxCreditExposure { get; set; }
+        public int? ExposureType { get; set; }
+        public string ExposureSubType { get; set; }
+        public string ExposureBucketName { get; set; }
+    }
+}

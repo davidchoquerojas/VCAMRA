@@ -1,0 +1,28 @@
+﻿using System.Diagnostics.CodeAnalysis;
+using Library.Data.BulkOperations;
+using Library.Data.Repositories;
+using Library.Ioc;
+
+namespace Library.Data
+{
+    [ExcludeFromCodeCoverage]
+    public class IocConfigurator : IIocConfigurator
+    {
+        public void Configure(IIocContainer container)
+        {
+            container.Bind<IDbContext>().To<DbContext>();
+            container.Bind<IDbTransaction>().To<DbTransaction>();
+            container.Bind<IRepository>().To<Repository>();
+            
+            container.Bind<IDatabaseFactory>().To<DatabaseFactory>();
+            container.Bind<IRepositoryFactory>().To<RepositoryFactory>();
+            container.Bind<ITransactionFactory>().To<TransactionFactory>();
+            
+            container.Bind<IModelRepository>().To<ModelRepository>();
+            container.Bind<IProcRepository>().To<ProcRepository>();
+            container.Bind<ISqlBulkCopyOperation>().To<SqlBulkCopyOperation>();
+            container.Bind<IBulkOperationRepository>().To<BulkOperationRepository>();
+            //container.Bind<IDbExecutorFactory>().To<ContextSqlExecutorFactory>();
+        }
+    }
+}

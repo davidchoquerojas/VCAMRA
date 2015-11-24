@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using Library.Data;
+using Library.Data.Repositories;
+using VidaCamaraData.Model.Generated;
+
+namespace VidaCamaraData.Repository
+{
+    public interface IUsuarioDao
+    {
+        IDbContext DbContext { get; }
+        UsuarioModel Get(int id);
+        UsuarioModel Insert(UsuarioModel dto);
+        UsuarioModel Update(UsuarioModel dto);
+        void Delete(int id);
+        List<UsuarioModel> Get(IGetReturn<List<UsuarioModel>> request);
+    }
+
+    public class UsuarioDao : IUsuarioDao
+    {
+        private readonly IDbContext _dbContext;
+        
+        public UsuarioDao(IDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public IDbContext DbContext
+        {
+            get
+            {
+                return _dbContext;
+            }
+        }
+
+        public UsuarioModel Get(int id)
+        {
+            return _dbContext.Repository.FindById<UsuarioModel>(id);
+        }
+
+        public UsuarioModel Insert(UsuarioModel dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UsuarioModel Update(UsuarioModel dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UsuarioModel> Get(IGetReturn<List<UsuarioModel>> request)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

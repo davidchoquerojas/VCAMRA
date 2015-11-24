@@ -1,0 +1,23 @@
+﻿using System;
+using Controller;
+using Library.Data.Repositories;
+using VidaCamaraData.Model.Generated;
+using VidaCamaraData.Repository;
+
+namespace VidaCamaraWeb.WebPage.Inicio
+{
+    public partial class frmInicio : System.Web.UI.Page
+    {
+        bGeneralVC bg = new bGeneralVC();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Session["pagina"] = "OTROS";
+            if (Session["username"] == null)
+                Response.Redirect("Login?go=0");
+            else
+            {
+                bg.ParametroListSession();
+            }
+        }
+    }
+}

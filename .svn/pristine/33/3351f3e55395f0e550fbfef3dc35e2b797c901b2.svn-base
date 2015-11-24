@@ -1,0 +1,143 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+
+using Library.Data.ExtensionMethods;
+using Library.Data.Models;
+using Library.Data.PetaPoco;
+
+using PetaPoco;
+
+namespace Library.Data.BulkOperations
+{
+    public class BulkOperationRepository : IBulkOperationRepository
+    {
+        private readonly IDatabase _context;
+
+        private readonly ISqlBulkCopyOperation _sqlBulkCopyOperation;
+
+        public BulkOperationRepository(IDatabase context, ISqlBulkCopyOperation sqlBulkCopyOperation)
+        {
+            _context = context;
+            _sqlBulkCopyOperation = sqlBulkCopyOperation;
+        }
+
+        public void BulkAdd<T>(List<T> entities) where T : class, ITableModel
+        {
+            ValidateAddParameters(entities);
+
+            var modelTable = CreateModelTable(entities);
+
+            _sqlBulkCopyOperation.PerformCopy(modelTable);
+        }
+
+        public List<int> BulkAddReturnKeys<T>(List<T> entities) where T : class, ITableModel
+        {
+            return _context.BulkInsert(entities);
+        }
+
+        public void BulkUpdate<T>(T entity, List<int> idsToUpdate) where T : class, ITableModel
+        {
+            ValidateUpdateParameters(entity, idsToUpdate);
+            var propertiesToUpdate = entity.GetModifiedColumns().ToList();
+            var sqlString = CreateUpdateSetSql<T>(propertiesToUpdate.ToList());
+
+            var sql = new Sql(sqlString, new { ids = idsToUpdate }, entity);
+
+            _context.Update<T>(sql);
+        }
+
+        public void BulkRemove<T>(List<int> ids) where T : class, ITableModel
+        {
+            ValidateDeleteParameters(ids);
+
+            _context.Delete<T>(
+                new Sql(string.Format("WHERE {0} IN (@ids)", PetaPocoMapper.GetPrimaryKey<T>()), new { ids }));
+        }
+
+        private static void ValidateAddParameters<T>(IEnumerable<T> entities) where T : class, ITableModel
+        {
+            if (entities.IsNullOrEmpty())
+            {
+                throw new ArgumentException(CommonResources.BulkRepo_InsertParamsException);
+            }
+        }
+
+        private static void ValidateUpdateParameters<T>(T entity, IEnumerable<int> idsToUpdate)
+            where T : class, ITableModel
+        {
+            if (entity == null || entity.GetModifiedColumns().IsNullOrEmpty() || idsToUpdate.IsNullOrEmpty())
+            {
+                throw new ArgumentException(CommonResources.BulkRepo_UpdateParamsException);
+            }
+        }
+
+        private static void ValidateDeleteParameters(IEnumerable<int> ids)
+        {
+            if (ids.IsNullOrEmpty())
+            {
+                throw new ArgumentException(CommonResources.BulkRepo_DeleteParamsException);
+            }
+        }
+
+        private static DataTable CreateModelTable<T>(IEnumerable<T> entities) where T : class, ITableModel
+        {
+            var modelType = typeof(T);
+
+            var modelTable = new DataTable(PetaPocoMapper.GetTableName<T>());
+
+            var propertyToColumnMapping = PetaPocoMapper.GetPropertyToColumnMapping<T>();
+
+            foreach (var propertyToColumn in propertyToColumnMapping)
+            {
+                var propertyType = modelType.GetProperty(propertyToColumn.Key).GetType();
+
+                modelTable.Columns.Add(
+                    propertyType == typeof(Guid)
+                        ? new DataColumn(propertyToColumn.Value, typeof(Guid))
+                        : new DataColumn(propertyToColumn.Value));
+            }
+
+            foreach (var entity in entities)
+            {
+                var row = modelTable.NewRow();
+
+                foreach (var propertyToColumn in propertyToColumnMapping)
+                {
+                    row[propertyToColumn.Value] = modelType.GetProperty(propertyToColumn.Key).GetValue(entity, null);
+                }
+
+                modelTable.Rows.Add(row);
+            }
+
+            return modelTable;
+        }
+
+        private static string CreateUpdateSetSql<T>(IList<string> propertiesToUpdate) where T : class, ITableModel
+        {
+            var columnToPropertyMapping = PetaPocoMapper.GetColumnToPropertyMapping<T>();
+
+            var updateSetStatement = string.Format(
+                "SET {0} = @{1}",
+                propertiesToUpdate[0],
+                columnToPropertyMapping[propertiesToUpdate[0]]);
+
+            for (var i = 1; i < propertiesToUpdate.Count; i++)
+            {
+                updateSetStatement = updateSetStatement
+                                     + string.Format(
+                                         ", {0} = @{1}",
+                                         propertiesToUpdate[i],
+                                         columnToPropertyMapping[propertiesToUpdate[i]]);
+            }
+
+            var sqlString = string.Format(
+                "{0} WHERE {1} IN (@ids)",
+                updateSetStatement,
+                PetaPocoMapper.GetPrimaryKey<T>());
+
+            return sqlString;
+        }
+    }
+}

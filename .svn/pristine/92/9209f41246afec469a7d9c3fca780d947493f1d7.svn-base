@@ -1,0 +1,31 @@
+using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
+
+using PetaPoco;
+
+namespace Library.Data.BulkOperations
+{
+    [ExcludeFromCodeCoverage]
+    public class BulkCopyFactory
+    {
+        private readonly IDatabase _database;
+
+        public BulkCopyFactory(IDatabase database)
+        {
+            _database = database;
+        }
+
+        public SqlBulkCopy CreateBulkCopy()
+        {
+            var sqlconnection = (SqlConnection)_database.Connection;
+            var sqlTransaction = _database.Transaction == null ? null : (SqlTransaction)_database.Transaction;
+
+            var sqlBulkCopy = new SqlBulkCopy(
+                sqlconnection,
+                SqlBulkCopyOptions.FireTriggers | SqlBulkCopyOptions.CheckConstraints,
+                sqlTransaction);
+
+            return sqlBulkCopy;
+        }
+    }
+}

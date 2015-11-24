@@ -1,0 +1,9 @@
+﻿using System.Data;
+
+namespace Library.Data.BulkOperations
+{
+    public interface ISqlBulkCopyOperation
+    {
+        void PerformCopy(DataTable data);
+    }
+}

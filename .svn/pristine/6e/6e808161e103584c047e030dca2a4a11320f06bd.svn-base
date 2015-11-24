@@ -1,0 +1,192 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using Library.Data.Exceptions;
+using Library.Data.ExtensionMethods;
+using Library.Data.Models;
+using Library.Data.PetaPoco;
+using Library.Data.SqlBuilder;
+
+using PetaPoco;
+using PetaPoco.Internal;
+
+namespace Library.Data.Repositories
+{
+    public class ModelRepository : IModelRepository
+    {
+        private readonly IDatabase _context;
+
+        public ModelRepository(IDatabase context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+            
+            _context = context;
+        }
+
+        public T Add<T>(T newEntity) where T : class, ITableModel
+        {
+            var pk = ExecuteSqlCommandWithDeadlockRetry(() => _context.Insert(newEntity));
+
+            if (pk == null)
+            {
+                throw new InsertFailedException();
+            }
+
+            return newEntity;
+        }
+
+        public void Update<T>(T entity) where T : class, ITableModel
+        {
+            var modifiedColumns = entity.GetModifiedColumns();
+            if (!modifiedColumns.Any())
+            {
+                return;
+            }
+            var rowsAffected =
+                ExecuteSqlCommandWithDeadlockRetry(() => _context.Update(entity, entity.GetModifiedColumns()));
+
+            if (rowsAffected == 0)
+            {
+                throw new UpdateFailedException();
+            }
+        }
+
+        public void Remove<T>(int id) where T : class, ITableModel
+        {
+            var rowsAffected = ExecuteSqlCommandWithDeadlockRetry(() => _context.Delete<T>(id));
+
+            if (rowsAffected == 0)
+            {
+                throw new DeleteFailedException();
+            }
+        }
+
+        public void Remove<T>(Func<ISqlBuilder<T>, ISqlDeleteStatement> sqlStatementFactory) where T : class, ITableModel
+        {
+            var builder = new SqlBuilder<T>();
+            var sqlStatement = sqlStatementFactory(builder);
+
+            if (sqlStatement.Arguments.IsNullOrEmpty())
+            {
+                throw new DeleteFailedException();
+            }
+
+            var rowsAffected =
+                ExecuteSqlCommandWithDeadlockRetry(() => _context.Delete<T>(sqlStatement.Sql, sqlStatement.Arguments));
+
+            if (rowsAffected == 0)
+            {
+                throw new DeleteFailedException();
+            }
+        }
+
+        public void Remove<T>(ISqlDeleteStatement sqlStatement) where T : class, ITableModel
+        {
+            if (sqlStatement.Arguments.IsNullOrEmpty())
+            {
+                throw new DeleteFailedException();
+            }
+
+            var rowsAffected =
+                ExecuteSqlCommandWithDeadlockRetry(() => _context.Delete<T>(sqlStatement.Sql, sqlStatement.Arguments));
+
+            if (rowsAffected == 0)
+            {
+                throw new DeleteFailedException();
+            }
+        }
+
+        public T FindById<T>(int id) where T : class, ITableModel
+        {
+            var escapedSqlIdentifier = string.Format("[{0}]", PocoData.ForType(typeof(T)).TableInfo.PrimaryKey);
+            var result =
+                ExecuteSqlCommandWithDeadlockRetry(
+                    () => _context.Query<T>(string.Format("WHERE {0}=@0", escapedSqlIdentifier), id));
+
+            if (result.Any())
+            {
+                return result.Single();
+            }
+
+            throw new NotFoundException();
+        }
+
+        public IEnumerable<T> FindByIds<T>(IEnumerable<int> ids) where T : class, ITableModel
+        {
+            var primaryKeyList = new StringBuilder();
+            var enumerable = ids as int[] ?? ids.ToArray();
+
+            if (enumerable.Any() == false)
+            {
+                throw new ArgumentNullException("ids");
+            }
+
+            foreach (var id in enumerable)
+            {
+                primaryKeyList.Append(id);
+                primaryKeyList.Append(",");
+            }
+
+            primaryKeyList.Remove(primaryKeyList.Length - 1, 1);
+
+            var primaryKeyColumnName = PocoData.ForType(typeof(T)).TableInfo.PrimaryKey;
+            const string sqlWhere = "WHERE {0} in ({1})";
+            var sql = string.Format(sqlWhere, primaryKeyColumnName, primaryKeyList);
+
+            return ExecuteSqlCommandWithDeadlockRetry(() => _context.Query<T>(sql));
+        }
+
+        public IEnumerable<T> FindAll<T>() where T : class, ITableModel
+        {
+            return ExecuteSqlCommandWithDeadlockRetry(() => _context.Query<T>(string.Empty)).ToList();
+        }
+
+        public List<T> Query<T>(Func<ISqlBuilder<T>, ISqlStatement> sqlStatementFactory) where T : class, ITableModel
+        {
+            var builder = new SqlBuilder<T>();
+            var sqlStatement = sqlStatementFactory(builder);
+
+            var result =
+                ExecuteSqlCommandWithDeadlockRetry(() => _context.Query<T>(sqlStatement.Sql, sqlStatement.Arguments));
+
+            return result.ToList();
+        }
+
+        public List<T> Query<T>(ISqlStatement sqlStatement) where T : class, ITableModel
+        {
+            var result =
+                ExecuteSqlCommandWithDeadlockRetry(() => _context.Query<T>(sqlStatement.Sql, sqlStatement.Arguments));
+
+            return result.ToList();
+        }
+
+        internal const int MaxRetries = 3;
+
+        internal const int DeadlockExceptionNumber = 1205;
+
+        internal T ExecuteSqlCommandWithDeadlockRetry<T>(Func<T> command)
+        {
+            var currentIteration = 0;
+            while (true)
+            {
+                try
+                {
+                    return command();
+                }
+                catch (SqlException ex)
+                {
+                    currentIteration++;
+                    if (ex.Number != DeadlockExceptionNumber || currentIteration >= MaxRetries)
+                    {
+                        throw;
+                    }
+                }
+            }
+        }
+    }
+}

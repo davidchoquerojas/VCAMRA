@@ -1,0 +1,52 @@
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using DapperWrapper;
+using Library.Data.BulkOperations;
+using PetaPoco;
+
+namespace Library.Data.Repositories
+{
+    [ExcludeFromCodeCoverage]
+    public class RepositoryFactory : IRepositoryFactory
+    {
+        private readonly IDbExecutorFactory _dbExecutorFactory;
+
+        private IDbSchemaProvider _schemaProvider;
+
+        public RepositoryFactory(IDbExecutorFactory dbExecutorFactory)
+        {
+            if (dbExecutorFactory == null)
+            {
+                throw new ArgumentException("dbExecutorFactory");
+            }
+
+            _dbExecutorFactory = dbExecutorFactory;
+        }
+
+        // Optional setter injection
+        public IDbSchemaProvider DbSchemaProvider
+        {
+            get
+            {
+                return _schemaProvider;
+            }
+            set
+            {
+                _schemaProvider = value ?? new NullDbSchemaProvider();
+            }
+        }
+
+        public IRepository CreateModelRepository(IDatabase database)
+        {
+            var modelRepo = new ModelRepository(database);
+            var procRepo = new ProcRepository(_dbExecutorFactory, DbSchemaProvider);
+
+            var bulkOperation = new SqlBulkCopyOperation(database);
+            var bulkRepo = new BulkOperationRepository(database, bulkOperation);
+
+            var repo = new Repository(modelRepo, procRepo, bulkRepo);
+
+            return repo;
+        }
+    }
+}

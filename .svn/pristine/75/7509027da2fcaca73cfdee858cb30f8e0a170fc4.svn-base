@@ -1,0 +1,39 @@
+﻿using System;
+using Ninject;
+
+namespace Library.Ioc
+{
+    public class NinjectTypeBinder<TSource> : ITypeBinder<TSource>
+        where TSource : class
+    {
+        private readonly IKernel _kernel;
+
+        public NinjectTypeBinder(IKernel kernel)
+        {
+            if (kernel == null)
+            {
+                throw new ArgumentNullException("kernel");
+            }
+
+            this._kernel = kernel;
+        }
+
+        public void To<TTarget>(ObjectReuseScope scope = ObjectReuseScope.None) where TTarget : TSource
+        {
+            try
+            {
+                var binding = this._kernel.Rebind<TSource>().To<TTarget>();
+                ScopeTranslator.BindScope(binding, scope);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("The following binding failed: .Bind<{0}>().To<{1}>(ObjectReuseScope.{2})", typeof(TSource).FullName, typeof(TTarget).FullName, scope), ex);
+            }
+        }
+
+        public void ToFactory()
+        {
+            //this._kernel.Rebind<TSource>().ToFactory();
+        }
+    }
+}

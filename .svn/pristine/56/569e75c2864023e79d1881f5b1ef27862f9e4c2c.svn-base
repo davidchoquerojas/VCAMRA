@@ -1,0 +1,9 @@
+﻿using PetaPoco;
+
+namespace Library.Data.Repositories
+{
+    public interface ITransactionFactory
+    {
+        ITransaction Create(IDatabase db);
+    }
+}

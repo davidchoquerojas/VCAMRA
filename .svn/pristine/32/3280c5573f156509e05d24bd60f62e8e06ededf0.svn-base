@@ -1,0 +1,14 @@
+﻿using System.Collections.Generic;
+using Entity;
+using Dao;
+
+namespace Controller
+{
+    public class bValidarCierreVC
+    {
+        public List<eValidarCierreVC> GetSelecionarValidarCierre(eValidarCierreVC o) { 
+            dSqlValidarCierreVC dv = new dSqlValidarCierreVC();
+            return dv.GetSelectValidarCierre(o);
+        }
+    }
+}

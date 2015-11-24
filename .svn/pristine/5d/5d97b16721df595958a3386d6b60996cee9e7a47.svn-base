@@ -1,0 +1,84 @@
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
+using Dapper;
+using Microsoft.SqlServer.Server;
+
+namespace Library.Data.Dapper
+{
+    [ExcludeFromCodeCoverage]
+    public class DynamicParametersWithTVP : SqlMapper.IDynamicParameters
+    {
+        private readonly Dictionary<string, TableValuedParameterBase> _tvpParams;
+
+        private readonly DynamicParameters _params;
+
+        public IDbCommand Command { get; set; }
+
+        public DynamicParametersWithTVP()
+        {
+            _tvpParams = new Dictionary<string, TableValuedParameterBase>();
+            _params = new DynamicParameters();
+            Command = new SqlCommand();
+        }
+
+        public void Add(
+            string name,
+            object value = null,
+            DbType? dbType = null,
+            ParameterDirection? direction = null,
+            int? size = null)
+        {
+            _params.Add(name, value, dbType, direction, size);
+        }
+
+        public void AddTvpParam(TableValuedParameterBase param)
+        {
+            _tvpParams.Add(param.Name, param);
+        }
+
+        public void AddParameters(IDbCommand command, SqlMapper.Identity identity)
+        {
+            // Adds the regular parameters, then adds any tvp parameters
+            ((SqlMapper.IDynamicParameters)_params).AddParameters(command, identity);
+            Command = command;
+            AddTVPCommands(command);
+        }
+
+        private void AddTVPCommands(IDbCommand command)
+        {
+            foreach (var o in _tvpParams)
+            {
+                AddTVPParam(command, o.Key, o.Value);
+            }
+        }
+
+        private void AddTVPParam(IDbCommand command, string name, TableValuedParameterBase value)
+        {
+            var dataList = new List<SqlDataRecord>();
+
+            if (value.Data != null)
+            {
+                foreach (var d in value.Data)
+                {
+                    var rec = new SqlDataRecord(value.MetaData);
+                    value.SetData(rec, d); // note: this only works for a one-column TVP
+                    dataList.Add(rec);
+                }
+            }
+
+            if (dataList.Count == 0)
+            {
+                // gotta make the value null if there isn't any data.
+                dataList = null;
+            }
+
+            var parameter = new SqlParameter(name, SqlDbType.Structured);
+            parameter.Direction = ParameterDirection.Input;
+            parameter.TypeName = value.Type;
+            parameter.Value = dataList;
+            command.Parameters.Add(parameter);
+        }
+    }
+}

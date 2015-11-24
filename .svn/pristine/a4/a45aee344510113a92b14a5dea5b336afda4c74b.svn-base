@@ -1,0 +1,233 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using Library.Data.ExtensionMethods;
+using Library.Data.Models;
+using Library.Data.SqlBuilder;
+using PetaPoco;
+
+using SqlBuildHelper = Library.Data.PetaPoco.PetaPocoSqlBuilderHelper;
+
+namespace Library.Data.PetaPoco
+{
+    public class SqlBuilder<T> : ISqlBuilder<T>
+        where T : class, ITableModel
+    {
+        private readonly List<Sql> _whereSqls = new List<Sql>();
+
+        public ISqlBuilder<T> WhereEqual<TValue>(Expression<Func<T, TValue?>> property, TValue value)
+            where TValue : struct
+        {
+            return WhereEqual<TValue?>(property, value);
+        }
+
+        public ISqlBuilder<T> WhereEqual<TValue>(Expression<Func<T, TValue>> property, TValue? searchValue)
+            where TValue : struct
+        {
+            AppendEqualityPart(property, SqlCondition.Equal, searchValue);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereEqual<TValue>(Expression<Func<T, TValue>> property, TValue searchValue)
+        {
+            AppendEqualityPart(property, SqlCondition.Equal, searchValue);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereNotEqual<TValue>(Expression<Func<T, TValue?>> property, TValue value)
+            where TValue : struct
+        {
+            return WhereNotEqual<TValue?>(property, value);
+        }
+
+        public ISqlBuilder<T> WhereNotEqual<TValue>(Expression<Func<T, TValue>> property, TValue? value)
+            where TValue : struct
+        {
+            AppendEqualityPart(property, SqlCondition.NotEqual, value);
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereNotEqual<TValue>(Expression<Func<T, TValue>> property, TValue value)
+        {
+            AppendEqualityPart(property, SqlCondition.NotEqual, value);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereIn<TValue>(Expression<Func<T, TValue>> property, IList<TValue> values)
+        {
+            var propertyName = PetaPocoMapper.GetColumnName(property);
+            AppendWhereInPart(propertyName, values);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereIn<TValue>(Expression<Func<T, TValue?>> property, IList<TValue> values)
+            where TValue : struct
+        {
+            var propertyName = PetaPocoMapper.GetColumnName(property);
+            AppendWhereInPart(propertyName, values);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereGreater<TValue>(Expression<Func<T, TValue>> property, TValue value)
+        {
+            AppendEqualityPart(property, SqlCondition.Greater, value);
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereGreater<TValue>(Expression<Func<T, TValue?>> property, TValue value)
+            where TValue : struct
+        {
+            return WhereGreater<TValue?>(property, value);
+        }
+
+        public ISqlBuilder<T> WhereGreater<TValue>(Expression<Func<T, TValue>> property, TValue? value)
+            where TValue : struct
+        {
+            AppendEqualityPart(property, SqlCondition.Greater, value);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereLess<TValue>(Expression<Func<T, TValue>> property, TValue value)
+        {
+            AppendEqualityPart(property, SqlCondition.Less, value);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereLess<TValue>(Expression<Func<T, TValue?>> property, TValue value) where TValue : struct
+        {
+            return WhereLess<TValue?>(property, value);
+        }
+
+        public ISqlBuilder<T> WhereLess<TValue>(Expression<Func<T, TValue>> property, TValue? value) where TValue : struct
+        {
+            AppendEqualityPart(property, SqlCondition.Less, value);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereGreaterEqual<TValue>(Expression<Func<T, TValue>> property, TValue value)
+        {
+            AppendEqualityPart(property, SqlCondition.GreaterEqual, value);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereGreaterEqual<TValue>(Expression<Func<T, TValue?>> property, TValue value)
+            where TValue : struct
+        {
+            return WhereGreaterEqual<TValue?>(property, value);
+        }
+
+        public ISqlBuilder<T> WhereGreaterEqual<TValue>(Expression<Func<T, TValue>> property, TValue? value)
+            where TValue : struct
+        {
+            AppendEqualityPart(property, SqlCondition.GreaterEqual, value);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereLessEqual<TValue>(Expression<Func<T, TValue>> property, TValue value)
+        {
+            AppendEqualityPart(property, SqlCondition.LessEqual, value);
+
+            return this;
+        }
+
+        public ISqlBuilder<T> WhereLessEqual<TValue>(Expression<Func<T, TValue?>> property, TValue value)
+            where TValue : struct
+        {
+            return WhereLessEqual<TValue?>(property, value);
+        }
+
+        public ISqlBuilder<T> WhereLessEqual<TValue>(Expression<Func<T, TValue>> property, TValue? value)
+            where TValue : struct
+        {
+            AppendEqualityPart(property, SqlCondition.LessEqual, value);
+
+            return this;
+        }
+
+        private void AppendWhereInPart<TValue>(string propertyName, IEnumerable<TValue> values)
+        {
+            if (values == null)
+            {
+                return;
+            }
+
+            //TODO
+            /*
+            _whereSqls.Add(
+                _whereSqls.IsNullOrEmpty()
+                    ? SqlBuildHelper.CreateWhereInClause(propertyName, values.ConvertAll(value => value.ToString()))
+                    : SqlBuildHelper.CreateAndInClause(propertyName, values.ConvertAll(value => value.ToString())));
+             * */
+        }
+
+        private void AppendEqualityPart<TValue>(
+            Expression<Func<T, TValue>> property,
+            SqlCondition sqlCondition,
+            TValue value)
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            var propertyName = PetaPocoMapper.GetColumnName(property);
+            _whereSqls.Add(
+                _whereSqls.IsNullOrEmpty()
+                    ? SqlBuildHelper.CreateWhereClause(propertyName, sqlCondition, value.ToString())
+                    : SqlBuildHelper.CreateAndClause(propertyName, sqlCondition, value.ToString()));
+        }
+
+        private void AppendEqualityPart<TValue>(
+            Expression<Func<T, TValue>> property,
+            SqlCondition sqlCondition,
+            TValue? value) where TValue : struct
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            AppendEqualityPart(property, sqlCondition, value.Value);
+        }
+
+        public ISqlStatement Select()
+        {
+            var entityColumns = PetaPocoMapper.GetEntityColumns<T>();
+            var entityColumnsDelimited = string.Join(", ", entityColumns);
+
+            var sql = new Sql();
+
+            sql.Select(entityColumnsDelimited);
+            sql.From(PetaPocoMapper.GetTableName<T>());
+
+            foreach (var whereSql in _whereSqls)
+            {
+                sql.Append(whereSql);
+            }
+
+            return new SqlStatement { Sql = sql.SQL, Arguments = sql.Arguments };
+        }
+
+        public ISqlDeleteStatement Delete()
+        {
+            var sql = new Sql();
+
+            foreach (var whereSql in _whereSqls)
+            {
+                sql.Append(whereSql);
+            }
+
+            return new SqlDeleteStatement { Sql = sql.SQL, Arguments = sql.Arguments };
+        }
+    }
+}

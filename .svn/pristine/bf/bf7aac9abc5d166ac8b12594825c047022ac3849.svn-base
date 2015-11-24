@@ -1,0 +1,51 @@
+﻿using System.Collections.Generic;
+
+using Library.Data.SqlBuilder;
+
+using PetaPoco;
+
+namespace Library.Data.PetaPoco
+{
+    public static class PetaPocoSqlBuilderHelper
+    {
+        private const string Where = "WHERE";
+
+        private const string And = "AND";
+
+        private const string Or = "OR";
+
+        private const string Statement = "{0} {1}{2}@0";
+
+        private const string InStatement = "{0} {1} IN (@values)";
+
+        public static Sql CreateWhereClause(string property, SqlCondition sqlOperator, string value)
+        {
+            return new Sql(string.Format(Statement, Where, property, sqlOperator.GetString()), value);
+        }
+
+        public static Sql CreateWhereInClause(string property, IList<string> values)
+        {
+            return new Sql(string.Format(InStatement, Where, property), new { values });
+        }
+
+        public static Sql CreateAndClause(string property, SqlCondition sqlOperator, string value)
+        {
+            return new Sql(string.Format(Statement, And, property, sqlOperator.GetString()), value);
+        }
+
+        public static Sql CreateAndInClause(string property, IList<string> values)
+        {
+            return new Sql(string.Format(InStatement, And, property), new { values });
+        }
+
+        public static Sql CreateOrClause(string property, SqlCondition sqlOperator, string value)
+        {
+            return new Sql(string.Format(Statement, Or, property, sqlOperator.GetString()), value);
+        }
+
+        public static Sql CreateOrInClause(string property, IList<string> values)
+        {
+            return new Sql(string.Format(InStatement, Or, property), new { values });
+        }
+    }
+}

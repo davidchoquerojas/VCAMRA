@@ -1,0 +1,8 @@
+﻿namespace Library.Data.SqlBuilder
+{
+    public interface ISqlDeleteStatement
+    {
+        string Sql { get; }
+        object[] Arguments { get; }
+    }
+}

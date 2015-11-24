@@ -1,0 +1,149 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using Library.Data.BulkOperations;
+using Library.Data.Models;
+using Library.Data.SqlBuilder;
+
+namespace Library.Data.Repositories
+{
+    public class Repository : IRepository
+    {
+        private readonly IModelRepository _modelRepository;
+
+        private readonly IProcRepository _procRepository;
+
+        private readonly IBulkOperationRepository _bulkRepository;
+
+        public Repository(
+            IModelRepository modelRepository,
+            IProcRepository procRepository,
+            IBulkOperationRepository bulkRepository)
+        {
+            if (modelRepository == null)
+            {
+                throw new ArgumentNullException("modelRepository");
+            }
+
+            if (procRepository == null)
+            {
+                throw new ArgumentNullException("procRepository");
+            }
+
+            if (bulkRepository == null)
+            {
+                throw new ArgumentNullException("bulkRepository");
+            }
+
+            _modelRepository = modelRepository;
+            _procRepository = procRepository;
+            _bulkRepository = bulkRepository;
+        }
+
+        public T Add<T>(T newEntity) where T : class, ITableModel
+        {
+            return _modelRepository.Add(newEntity);
+        }
+
+        public void Update<T>(T entity) where T : class, ITableModel
+        {
+            _modelRepository.Update(entity);
+        }
+
+        public void Remove<T>(int id) where T : class, ITableModel
+        {
+            _modelRepository.Remove<T>(id);
+        }
+
+        public void Remove<T>(Func<ISqlBuilder<T>, ISqlDeleteStatement> sqlStatementFactory) where T : class, ITableModel
+        {
+            _modelRepository.Remove(sqlStatementFactory);
+        }
+
+        public void Remove<T>(ISqlDeleteStatement sqlStatement) where T : class, ITableModel
+        {
+            _modelRepository.Remove<T>(sqlStatement);
+        }
+
+        public T FindById<T>(int id) where T : class, ITableModel
+        {
+            return _modelRepository.FindById<T>(id);
+        }
+
+        public IEnumerable<T> FindByIds<T>(IEnumerable<int> ids) where T : class, ITableModel
+        {
+            return _modelRepository.FindByIds<T>(ids);
+        }
+
+        public IEnumerable<T> FindAll<T>() where T : class, ITableModel
+        {
+            return _modelRepository.FindAll<T>();
+        }
+
+        public List<T> Query<T>(Func<ISqlBuilder<T>, ISqlStatement> sqlStatementFactory) where T : class, ITableModel
+        {
+            return _modelRepository.Query(sqlStatementFactory);
+        }
+
+        public List<T> Query<T>(ISqlStatement sqlStatement) where T : class, ITableModel
+        {
+            return _modelRepository.Query<T>(sqlStatement);
+        }
+
+        public IEnumerable<TDto> ExecuteStoredProcedure<TDto>(IGetReturn<List<TDto>> request) where TDto : class, new()
+        {
+            return _procRepository.ExecuteStoredProcedure(request);
+        }
+
+        public IEnumerable<TDbModel> ExecuteStoredProcedure<TDbModel>(IGetReturn request)
+            where TDbModel : IDbModel, new()
+        {
+            return _procRepository.ExecuteStoredProcedure<TDbModel>(request);
+        }
+
+        public InsertProcResult ExecuteInsertProc<TDto>(TDto request) where TDto : class, new()
+        {
+            return _procRepository.ExecuteInsertProc(request);
+        }
+
+        public UpdateProcResult ExecuteUpdateProc<TDto>(TDto request) where TDto : class, new()
+        {
+            return _procRepository.ExecuteUpdateProc(request);
+        }
+
+        public DeleteProcResult ExecuteDeleteProc<TDto>(TDto request) where TDto : class, new()
+        {
+            return _procRepository.ExecuteDeleteProc(request);
+        }
+
+        public void BulkAdd<T>(List<T> entities) where T : class, ITableModel
+        {
+            _bulkRepository.BulkAdd(entities);
+        }
+
+        public List<int> BulkAddReturnKeys<T>(List<T> entities) where T : class, ITableModel
+        {
+            return _bulkRepository.BulkAddReturnKeys(entities);
+        }
+
+        public List<T> BulkAddReturnObjects<T>(List<T> entities) where T : class, ITableModel
+        {
+            var ids = _bulkRepository.BulkAddReturnKeys(entities);
+            var objs = _modelRepository.FindByIds<T>(ids);
+
+            return objs.ToList();
+        }
+
+        public void BulkUpdate<T>(T entity, List<int> idsToUpdate)
+            where T : class, ITableModel
+        {
+            _bulkRepository.BulkUpdate(entity, idsToUpdate);
+        }
+
+        public void BulkRemove<T>(List<int> ids) where T : class, ITableModel
+        {
+            _bulkRepository.BulkRemove<T>(ids);
+        }
+    }
+}

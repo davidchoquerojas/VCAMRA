@@ -1,0 +1,14 @@
+﻿using System.Collections.Generic;
+using Library.Data.Models;
+
+namespace Library.Data.Repositories
+{
+    public interface IProcRepository
+    {
+        IEnumerable<TDto> ExecuteStoredProcedure<TDto>(IGetReturn<List<TDto>> request) where TDto : class, new();
+        IEnumerable<TDbModel> ExecuteStoredProcedure<TDbModel>(IGetReturn request) where TDbModel : IDbModel, new();
+        InsertProcResult ExecuteInsertProc<TDto>(TDto request) where TDto : class, new();
+        UpdateProcResult ExecuteUpdateProc<TDto>(TDto request) where TDto : class, new();
+        DeleteProcResult ExecuteDeleteProc<TDto>(TDto request) where TDto : class, new();
+    }
+}

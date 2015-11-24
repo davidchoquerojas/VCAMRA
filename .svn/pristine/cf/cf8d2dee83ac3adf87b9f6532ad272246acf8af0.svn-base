@@ -1,0 +1,12 @@
+﻿using System.Collections.Generic;
+
+using Library.Data.BulkOperations;
+using Library.Data.Models;
+
+namespace Library.Data.Repositories
+{
+    public interface IRepository : IProcRepository, IModelRepository, IBulkOperationRepository
+    {
+        List<T> BulkAddReturnObjects<T>(List<T> entities) where T : class, ITableModel;
+    }
+}

@@ -1,0 +1,95 @@
+﻿using System;
+using System.Threading;
+using PetaPoco;
+
+namespace Library.Data.Repositories
+{
+    public class DbContext : IDbContext
+    {
+        private bool _initializedOrDisposed;
+        private object _lock = new object();
+        private IRepository _repository;
+        private IDatabase _db;
+
+        private IDatabaseFactory _databaseFactory;
+        private IRepositoryFactory _repositoryFactory;
+        private ITransactionFactory _transactionFactory;
+
+        public DbContext(IDatabaseFactory databaseFactory, IRepositoryFactory repositoryFactory, ITransactionFactory transactionFactory)
+        {
+            if (databaseFactory == null)
+            {
+                throw new ArgumentNullException("databaseFactory");
+            }
+            if (repositoryFactory == null)
+            {
+                throw new ArgumentNullException("repositoryFactory");
+            }
+            if (transactionFactory == null)
+            {
+                throw new ArgumentNullException("transactionFactory");
+            }
+
+            _databaseFactory = databaseFactory;
+            _repositoryFactory = repositoryFactory;
+            _transactionFactory = transactionFactory;
+        }
+
+        private void EnsureInitialized()
+        {
+            LazyInitializer.EnsureInitialized(ref _repository, ref _initializedOrDisposed, ref _lock, () =>
+            {
+                _db = _databaseFactory.Create();
+                return _repositoryFactory.CreateModelRepository(_db);
+            });
+        }
+
+        public void Dispose()
+        {
+            if (_db != null)
+            {
+                lock (_lock)
+                {
+                    if (_db != null)
+                    {
+                        _initializedOrDisposed = true;
+                        _db.Dispose();
+                        _db = null;
+                        _repository = null;
+                        _databaseFactory = null;
+                        _repositoryFactory = null;
+                        _transactionFactory = null;
+                    }
+                }
+            }
+        }
+
+        public IRepository Repository
+        {
+            get
+            {
+                EnsureInitialized();
+                lock (_lock)
+                {
+                    if (_repository == null)
+                    {
+                        throw new ObjectDisposedException(GetType().FullName);
+                    }
+                    return _repository;
+                }
+            }
+        }
+
+        public IDbTransaction GetUnitOfWork()
+        {
+            lock (_lock)
+            {
+                if (_databaseFactory == null || _repositoryFactory == null)
+                {
+                    throw new ObjectDisposedException(GetType().FullName);
+                }
+                return new DbTransaction(_databaseFactory, _repositoryFactory, _transactionFactory);    
+            }
+        }
+    }
+}
