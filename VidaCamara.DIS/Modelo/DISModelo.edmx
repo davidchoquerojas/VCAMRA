@@ -1,0 +1,2525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DISModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'vcamara.dbo.Consulta' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Consulta">
+          <Key>
+            <PropertyRef Name="IdReglaArchivo" />
+            <PropertyRef Name="Archivo" />
+          </Key>
+          <Property Name="IdReglaArchivo" Type="int" Nullable="false" />
+          <Property Name="Archivo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TipoLinea" Type="varchar" MaxLength="10" />
+          <Property Name="CaracterInicial" Type="int" />
+          <Property Name="LargoCampo" Type="int" />
+          <Property Name="TipoCampo" Type="varchar" MaxLength="20" />
+          <Property Name="InformacionCampo" Type="varchar" MaxLength="3000" />
+          <Property Name="FormatoContenido" Type="varchar" MaxLength="3000" />
+          <Property Name="TipoValidacion" Type="varchar" MaxLength="30" />
+          <Property Name="ReglaValidacion" Type="varchar" MaxLength="3000" />
+          <Property Name="ReglaValidacionInterna" Type="varchar" MaxLength="3000" />
+          <Property Name="TablaDestino" Type="varchar" MaxLength="1000" />
+          <Property Name="vigente" Type="smallint" />
+          <Property Name="CampoNegocio" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Exactus">
+          <Key>
+            <PropertyRef Name="RowNumber" />
+          </Key>
+          <Property Name="RowNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventClass" Type="int" />
+          <Property Name="TextData" Type="ntext" />
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="128" />
+          <Property Name="NTUserName" Type="nvarchar" MaxLength="128" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="128" />
+          <Property Name="CPU" Type="int" />
+          <Property Name="Reads" Type="bigint" />
+          <Property Name="Writes" Type="bigint" />
+          <Property Name="Duration" Type="bigint" />
+          <Property Name="ClientProcessID" Type="int" />
+          <Property Name="SPID" Type="int" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="BinaryData" Type="image" />
+          <Property Name="DatabaseName" Type="nvarchar" MaxLength="128" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="128" />
+          <Property Name="NTDomainName" Type="nvarchar" MaxLength="128" />
+          <Property Name="RowCounts" Type="bigint" />
+        </EntityType>       
+        <EntityType Name="HistorialCargaArchivo">
+          <Key>
+            <PropertyRef Name="IdHistorialCargaArchivo" />
+          </Key>
+          <Property Name="IdHistorialCargaArchivo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdArchivo" Type="int" Nullable="false" />
+          <Property Name="FechaInsert" Type="datetime" />
+          <Property Name="IdReglaArchivo" Type="int" />
+          <Property Name="TipoLinea" Type="varchar" MaxLength="10" />
+          <Property Name="NumeroLinea" Type="int" />
+          <Property Name="CampoInicial" Type="int" />
+          <Property Name="LargoCampo" Type="int" />
+          <Property Name="ValorCampo" Type="varchar" MaxLength="500" />
+          <Property Name="CumpleValidacion" Type="int" />
+          <Property Name="EsVC" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReglaArchivo">
+          <Key>
+            <PropertyRef Name="IdReglaArchivo" />
+          </Key>
+          <Property Name="IdReglaArchivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Archivo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TipoLinea" Type="varchar" MaxLength="10" />
+          <Property Name="CaracterInicial" Type="int" />
+          <Property Name="LargoCampo" Type="int" />
+          <Property Name="TipoCampo" Type="varchar" MaxLength="20" />
+          <Property Name="InformacionCampo" Type="varchar" MaxLength="3000" />
+          <Property Name="FormatoContenido" Type="varchar" MaxLength="3000" />
+          <Property Name="TipoValidacion" Type="varchar" MaxLength="30" />
+          <Property Name="ReglaValidacion" Type="varchar" MaxLength="3000" />
+          <Property Name="ReglaValidacionInterna" Type="varchar" MaxLength="3000" />
+          <Property Name="TablaDestino" Type="varchar" MaxLength="1000" />
+          <Property Name="vigente" Type="smallint" />
+          <Property Name="CampoNegocio" Type="varchar" MaxLength="30" />
+          <Property Name="VigenciaReglaDesde" Type="datetime" />
+          <Property Name="VigenciaReglaHasta" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AFPs">
+          <Key>
+            <PropertyRef Name="AFPId" />
+          </Key>
+          <Property Name="AFPId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Abreviatura" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nit" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Archivo">
+          <Key>
+            <PropertyRef Name="ArchivoId" />
+          </Key>
+          <Property Name="ArchivoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstadoArchivoId" Type="int" Nullable="false" />
+          <Property Name="TipoArchivoId" Type="int" Nullable="false" />
+          <Property Name="NombreArchivo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="Vigente" Type="bit" />
+        </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="IdBitacora" />
+          </Key>
+          <Property Name="IdBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdArchivo" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="4000" />
+          <Property Name="Comando" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Checkeados">
+          <Key>
+            <PropertyRef Name="CheckeadoId" />
+          </Key>
+          <Property Name="CheckeadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Visto" Type="bit" Nullable="false" />
+          <Property Name="CheckListId" Type="int" Nullable="false" />
+          <Property Name="DocumentoId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="Vigente" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'vcamara.Negocio.CheckLists' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CheckLists">
+          <Key>
+            <PropertyRef Name="CheckListId" />
+            <PropertyRef Name="CUSPP" />
+            <PropertyRef Name="TipoMovimientoId" />
+          </Key>
+          <Property Name="CheckListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUSPP" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TipoMovimientoId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="Vigente" Type="bit" />
+          <Property Name="TipoSolicitudId" Type="int" />
+          <Property Name="Estado" Type="int" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="ContratoCSVs">
+          <Key>
+            <PropertyRef Name="ContratoCSVId" />
+          </Key>
+          <Property Name="ContratoCSVId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Partes" Type="int" Nullable="false" />
+          <Property Name="CSVId" Type="int" Nullable="false" />
+          <Property Name="ContratoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contratos">
+          <Key>
+            <PropertyRef Name="ContratoId" />
+          </Key>
+          <Property Name="ContratoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identificador" Type="int" Nullable="false" />
+          <Property Name="Periodo_FechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="Periodo_FechaTermino" Type="datetime" Nullable="false" />
+          <Property Name="TotalPartes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Correlativos">
+          <Key>
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="Tipo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Correlativo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CSVs">
+          <Key>
+            <PropertyRef Name="CSVId" />
+          </Key>
+          <Property Name="CSVId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Abreviatura" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VidaCamara" Type="bit" Nullable="false" />
+          <Property Name="CodigoDIS" Type="nvarchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documentos">
+          <Key>
+            <PropertyRef Name="DocumentoId" />
+          </Key>
+          <Property Name="DocumentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentoSolicitados">
+          <Key>
+            <PropertyRef Name="DocumentoSolicitadoId" />
+          </Key>
+          <Property Name="DocumentoSolicitadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoMovimientoId" Type="int" Nullable="false" />
+          <Property Name="DocumentoId" Type="int" Nullable="false" />
+          <Property Name="TipoSolicitudId" Type="int" />
+        </EntityType>
+        <EntityType Name="EstadoArchivo">
+          <Key>
+            <PropertyRef Name="EstadoArchivoId" />
+          </Key>
+          <Property Name="EstadoArchivoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoPago">
+          <Key>
+            <PropertyRef Name="EstadoId" />
+          </Key>
+          <Property Name="EstadoId" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vigente" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Imputacion">
+          <Key>
+            <PropertyRef Name="ImputacionId" />
+          </Key>
+          <Property Name="ImputacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Linea" Type="int" Nullable="false" />
+          <Property Name="Correlativo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CentroCosto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CuentaContable" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MonedaId" Type="int" Nullable="false" />
+          <Property Name="Debe_Soles" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="Haber_soles" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="Debe_Dolares" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="Haber_Dolares" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="Fuente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Referencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="Vigente" Type="bit" Nullable="false" />
+          <Property Name="ArchivoId" Type="int" />
+        </EntityType>
+        <EntityType Name="Moneda">
+          <Key>
+            <PropertyRef Name="MonedaId" />
+          </Key>
+          <Property Name="MonedaId" Type="int" Nullable="false" />
+          <Property Name="NombreMoneda" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MontoAlto">
+          <Key>
+            <PropertyRef Name="MontoAltoId" />
+          </Key>
+          <Property Name="MontoAltoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoParametro" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Valor" Type="int" Nullable="false" />
+          <Property Name="Observacion" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Pagos">
+          <Key>
+            <PropertyRef Name="PagoId" />
+          </Key>
+          <Property Name="PagoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArchivoId" Type="int" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="FechaPago" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="SiniestroId" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="PagoVC" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="FechaTransferencia" Type="datetime" Nullable="false" />
+          <Property Name="MonedaId" Type="int" Nullable="false" />
+          <Property Name="NominaId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="Vigente" Type="bit" />
+        </EntityType>
+        <EntityType Name="Parametros">
+          <Key>
+            <PropertyRef Name="ParametroId" />
+          </Key>
+          <Property Name="ParametroId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoMovimientoId" Type="int" Nullable="false" />
+          <Property Name="TipoSolicitudId" Type="int" Nullable="false" />
+          <Property Name="TipoOperacion" Type="int" Nullable="false" />
+          <Property Name="CentroCosto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CuentaContable" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SignoCuenta" Type="varchar" MaxLength="50" />
+          <Property Name="Vigente" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parentesco">
+          <Key>
+            <PropertyRef Name="ParentescoId" />
+          </Key>
+          <Property Name="ParentescoId" Type="int" Nullable="false" />
+          <Property Name="DescripcionParentesco" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="CodBeneficiario" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PorcentajeBeneficiario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personas">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrimerNombre" Type="nvarchar" MaxLength="20" />
+          <Property Name="SegundoNombre" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApellidoPaterno" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="TipoIdentificacion" Type="int" Nullable="false" />
+          <Property Name="NumeroIdentificador" Type="varchar" MaxLength="14" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroMontoAlto">
+          <Key>
+            <PropertyRef Name="IdRegistroMontoAlto" />
+          </Key>
+          <Property Name="IdRegistroMontoAlto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Resultado" Type="varchar" MaxLength="1" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdArchivo" Type="int" />
+          <Property Name="Cuspp" Type="varchar" MaxLength="12" />
+          <Property Name="Valor" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolesId" />
+          </Key>
+          <Property Name="RolesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescripcionRol" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Siniestros">
+          <Key>
+            <PropertyRef Name="SiniestroId" />
+          </Key>
+          <Property Name="SiniestroId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUSPP" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="TipoMovimientoId" Type="int" Nullable="false" />
+          <Property Name="AFPId" Type="int" Nullable="false" />
+          <Property Name="ContratoId" Type="int" Nullable="false" />
+          <Property Name="TipoSolicitudId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="CodTransferencia" Type="varchar" MaxLength="25" />
+          <Property Name="Vigente" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoArchivo">
+          <Key>
+            <PropertyRef Name="TipoArchivoId" />
+          </Key>
+          <Property Name="TipoArchivoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreTipoArchivo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreClase" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EsEntrada" Type="tinyint" Nullable="false" />
+          <Property Name="CabeceraLargo" Type="int" Nullable="false" />
+          <Property Name="DetalleLargo" Type="int" Nullable="false" />
+          <Property Name="TotalLargo" Type="int" Nullable="false" />
+          <Property Name="ReglaPrevia" Type="varchar" MaxLength="1000" />
+          <Property Name="ReglaPosterior" Type="varchar" MaxLength="1000" />
+          <Property Name="TipoInformeId" Type="int" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="Vigente" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoCambio">
+          <Key>
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="Periodo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Vigente" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoDocumentoIdentificacion">
+          <Key>
+            <PropertyRef Name="TipoDocumentoIdentificacionId" />
+          </Key>
+          <Property Name="TipoDocumentoIdentificacionId" Type="int" Nullable="false" />
+          <Property Name="NombreTipoDocumentoIdentificacion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoInforme">
+          <Key>
+            <PropertyRef Name="TipoInformeId" />
+          </Key>
+          <Property Name="TipoInformeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoMoneda">
+          <Key>
+            <PropertyRef Name="TipoMonedaId" />
+          </Key>
+          <Property Name="TipoMonedaId" Type="int" Nullable="false" />
+          <Property Name="NombreMoneda" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MonedaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMovimientos">
+          <Key>
+            <PropertyRef Name="TipoMovimientoId" />
+          </Key>
+          <Property Name="TipoMovimientoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Abreviatura" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoPension">
+          <Key>
+            <PropertyRef Name="TipoPensionId" />
+          </Key>
+          <Property Name="TipoPensionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoPension" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="NombreTipoPension" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoRegistro">
+          <Key>
+            <PropertyRef Name="TipoRegistroId" />
+          </Key>
+          <Property Name="TipoRegistroId" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoSolicitudes">
+          <Key>
+            <PropertyRef Name="TipoSolicitudId" />
+          </Key>
+          <Property Name="TipoSolicitudId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Clasificacion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AFPSiniestro">
+          <End Role="AFPs" Type="Self.AFPs" Multiplicity="1" />
+          <End Role="Siniestros" Type="Self.Siniestros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AFPs">
+              <PropertyRef Name="AFPId" />
+            </Principal>
+            <Dependent Role="Siniestros">
+              <PropertyRef Name="AFPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentoCheckeado">
+          <End Role="Documentos" Type="Self.Documentos" Multiplicity="1" />
+          <End Role="Checkeados" Type="Self.Checkeados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documentos">
+              <PropertyRef Name="DocumentoId" />
+            </Principal>
+            <Dependent Role="Checkeados">
+              <PropertyRef Name="DocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentoDocumentoSolicitado">
+          <End Role="Documentos" Type="Self.Documentos" Multiplicity="1" />
+          <End Role="DocumentoSolicitados" Type="Self.DocumentoSolicitados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documentos">
+              <PropertyRef Name="DocumentoId" />
+            </Principal>
+            <Dependent Role="DocumentoSolicitados">
+              <PropertyRef Name="DocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoArchivoArchivo">
+          <End Role="EstadoArchivo" Type="Self.EstadoArchivo" Multiplicity="1" />
+          <End Role="Archivo" Type="Self.Archivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoArchivo">
+              <PropertyRef Name="EstadoArchivoId" />
+            </Principal>
+            <Dependent Role="Archivo">
+              <PropertyRef Name="EstadoArchivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialCargaArchivo_Archivo">
+          <End Role="Archivo" Type="Self.Archivo" Multiplicity="1" />
+          <End Role="HistorialCargaArchivo" Type="Self.HistorialCargaArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archivo">
+              <PropertyRef Name="ArchivoId" />
+            </Principal>
+            <Dependent Role="HistorialCargaArchivo">
+              <PropertyRef Name="IdArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialCargaArchivo_ReglaArchivo">
+          <End Role="ReglaArchivo" Type="Self.ReglaArchivo" Multiplicity="0..1" />
+          <End Role="HistorialCargaArchivo" Type="Self.HistorialCargaArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReglaArchivo">
+              <PropertyRef Name="IdReglaArchivo" />
+            </Principal>
+            <Dependent Role="HistorialCargaArchivo">
+              <PropertyRef Name="IdReglaArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MonedaTipoMoneda">
+          <End Role="Moneda" Type="Self.Moneda" Multiplicity="1" />
+          <End Role="TipoMoneda" Type="Self.TipoMoneda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moneda">
+              <PropertyRef Name="MonedaId" />
+            </Principal>
+            <Dependent Role="TipoMoneda">
+              <PropertyRef Name="MonedaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagos_Moneda">
+          <End Role="Moneda" Type="Self.Moneda" Multiplicity="1" />
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moneda">
+              <PropertyRef Name="MonedaId" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="MonedaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiniestroContrato">
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="1" />
+          <End Role="Siniestros" Type="Self.Siniestros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratos">
+              <PropertyRef Name="ContratoId" />
+            </Principal>
+            <Dependent Role="Siniestros">
+              <PropertyRef Name="ContratoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiniestroPago">
+          <End Role="Siniestros" Type="Self.Siniestros" Multiplicity="1" />
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siniestros">
+              <PropertyRef Name="SiniestroId" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="SiniestroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoArchivo_TipoInforme">
+          <End Role="TipoInforme" Type="Self.TipoInforme" Multiplicity="0..1" />
+          <End Role="TipoArchivo" Type="Self.TipoArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoInforme">
+              <PropertyRef Name="TipoInformeId" />
+            </Principal>
+            <Dependent Role="TipoArchivo">
+              <PropertyRef Name="TipoInformeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoArchivoArchivo">
+          <End Role="TipoArchivo" Type="Self.TipoArchivo" Multiplicity="1" />
+          <End Role="Archivo" Type="Self.Archivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoArchivo">
+              <PropertyRef Name="TipoArchivoId" />
+            </Principal>
+            <Dependent Role="Archivo">
+              <PropertyRef Name="TipoArchivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoMovimientoDocumentoSolicitado">
+          <End Role="TipoMovimientos" Type="Self.TipoMovimientos" Multiplicity="1" />
+          <End Role="DocumentoSolicitados" Type="Self.DocumentoSolicitados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimientos">
+              <PropertyRef Name="TipoMovimientoId" />
+            </Principal>
+            <Dependent Role="DocumentoSolicitados">
+              <PropertyRef Name="TipoMovimientoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoMovimientoSiniestro">
+          <End Role="TipoMovimientos" Type="Self.TipoMovimientos" Multiplicity="1" />
+          <End Role="Siniestros" Type="Self.Siniestros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimientos">
+              <PropertyRef Name="TipoMovimientoId" />
+            </Principal>
+            <Dependent Role="Siniestros">
+              <PropertyRef Name="TipoMovimientoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoSolicitudSiniestro">
+          <End Role="TipoSolicitudes" Type="Self.TipoSolicitudes" Multiplicity="1" />
+          <End Role="Siniestros" Type="Self.Siniestros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoSolicitudes">
+              <PropertyRef Name="TipoSolicitudId" />
+            </Principal>
+            <Dependent Role="Siniestros">
+              <PropertyRef Name="TipoSolicitudId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="fn_SoloLetras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="texto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_SoloNumeros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="texto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_ValidaFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+          <Parameter Name="fecha" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_ValidaPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+          <Parameter Name="periodo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_audit_InsertaBitacora" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param_IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="Param_Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Param_Comando" Type="varchar" Mode="In" />
+          <Parameter Name="Param_Idarchivo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_devuelveresultado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idarchivo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_envioCorreo_Procesos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Para" Type="varchar(max)" Mode="In" />
+          <Parameter Name="CC" Type="varchar(max)" Mode="In" />
+          <Parameter Name="CCO" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Asunto" Type="varchar" Mode="In" />
+          <Parameter Name="Cuerpo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="FormatoCuerpo" Type="varchar" Mode="In" />
+          <Parameter Name="Archivos" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pa_file_AgregaReferenciaTablaArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreArchivo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_file_ArchivoValido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdArchivo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_file_CantidadRegistroArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdArchivo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_file_CierreCarga" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCarga" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_file_ConsultaEstadoArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreArchivo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_file_Imputa_Nomina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idarchivo" Type="int" Mode="In" />
+          <Parameter Name="idusuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_file_InsertaHistorialCarga" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Aux_IdArchivo" Type="int" Mode="In" />
+          <Parameter Name="Aux_IdReglaArchivo" Type="int" Mode="In" />
+          <Parameter Name="Aux_TipoLinea" Type="varchar" Mode="In" />
+          <Parameter Name="Aux_NumeroLinea" Type="int" Mode="In" />
+          <Parameter Name="Aux_CampoInicial" Type="int" Mode="In" />
+          <Parameter Name="Aux_LargoCampo" Type="int" Mode="In" />
+          <Parameter Name="Aux_ValorCampo" Type="varchar" Mode="In" />
+          <Parameter Name="Aux_CumpleValidacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_file_InsertaReferenciaArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreArchivo" Type="varchar" Mode="In" />
+          <Parameter Name="usuarioModificacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_file_ObtieneErrorArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdArchivo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_file_ObtienePrimerCaracterLineaPorTipoArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param_TipoArchivo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_file_ObtieneReglasArchivoPorLinea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param_TipoArchivo" Type="varchar" Mode="In" />
+          <Parameter Name="Param_TipoLinea" Type="char" Mode="In" />
+        </Function>
+        <Function Name="pa_file_ObtieneReglavalidacionArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Archivo" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_file_ObtieneTipoArchivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="pa_impactanegocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idarchivo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_impactanomina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idnomina" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_imputa_aad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idnomina" Type="int" Mode="In" />
+          <Parameter Name="idusuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_imputa_ppp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idnomina" Type="int" Mode="In" />
+          <Parameter Name="idusuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_imputa_ppr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idnomina" Type="int" Mode="In" />
+          <Parameter Name="idusuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_imputa_prp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idnomina" Type="int" Mode="In" />
+          <Parameter Name="idusuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_imputa_rgs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idnomina" Type="int" Mode="In" />
+          <Parameter Name="idusuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_ReporteArchivo_CUSPP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CUSPP" Type="varchar" Mode="In" />
+          <Parameter Name="ArchivoId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_rpt_archivocarga_fecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo" Type="int" Mode="In" />
+          <Parameter Name="fechainicio" Type="date" Mode="In" />
+          <Parameter Name="fechatermino" Type="date" Mode="In" />
+        </Function>
+        <Function Name="pa_rptNominas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="pa_rptPrimas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="periodo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_CodigoTransferenciaNomina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+          <Parameter Name="IdArchivo" Type="int" Mode="In" />
+          <Parameter Name="LargoCampo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_CUSPP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_EjecutaProcedimientoAlmacenado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_EjecutaQuery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_Fecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+          <Parameter Name="Inicio" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_MontoAlto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idarchivo" Type="int" Mode="In" />
+          <Parameter Name="idusuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_NoEspacios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_Numero12x2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_Numero2x2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_Numero4x7" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_Numero7x2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_Numero8x2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_ObtieneValor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdArchivo" Type="int" Mode="In" />
+          <Parameter Name="NumeroLinea" Type="int" Mode="In" />
+          <Parameter Name="CampoInicial" Type="int" Mode="In" />
+          <Parameter Name="LargoCampo" Type="int" Mode="In" />
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_Periodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_Periodo_PrimaPag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrimerNombre" Type="varchar" Mode="In" />
+          <Parameter Name="SegundoNombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+          <Parameter Name="CUSPP" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_RetornaTrue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="pa_valida_SoloNumeros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_SumaDetalleEnTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+          <Parameter Name="IdArchivo" Type="int" Mode="In" />
+          <Parameter Name="NumeroLinea" Type="int" Mode="In" />
+          <Parameter Name="CampoInicial" Type="int" Mode="In" />
+          <Parameter Name="LargoCampo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_valida_TotalNominaEnLiquidacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+          <Parameter Name="IdArchivo" Type="int" Mode="In" />
+          <Parameter Name="NumeroLinea" Type="int" Mode="In" />
+          <Parameter Name="CampoInicial" Type="int" Mode="In" />
+          <Parameter Name="LargoCampo" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DISModeloStoreContainer">
+          <EntitySet Name="Exactus" EntityType="Self.Exactus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistorialCargaArchivo" EntityType="Self.HistorialCargaArchivo" Schema="Importacion" store:Type="Tables" />
+          <EntitySet Name="ReglaArchivo" EntityType="Self.ReglaArchivo" Schema="Importacion" store:Type="Tables" />
+          <EntitySet Name="AFPs" EntityType="Self.AFPs" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Archivo" EntityType="Self.Archivo" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Checkeados" EntityType="Self.Checkeados" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="ContratoCSVs" EntityType="Self.ContratoCSVs" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Contratos" EntityType="Self.Contratos" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Correlativos" EntityType="Self.Correlativos" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="CSVs" EntityType="Self.CSVs" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Documentos" EntityType="Self.Documentos" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="DocumentoSolicitados" EntityType="Self.DocumentoSolicitados" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="EstadoArchivo" EntityType="Self.EstadoArchivo" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="EstadoPago" EntityType="Self.EstadoPago" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Imputacion" EntityType="Self.Imputacion" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Moneda" EntityType="Self.Moneda" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="MontoAlto" EntityType="Self.MontoAlto" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Parametros" EntityType="Self.Parametros" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Parentesco" EntityType="Self.Parentesco" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Personas" EntityType="Self.Personas" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="RegistroMontoAlto" EntityType="Self.RegistroMontoAlto" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Siniestros" EntityType="Self.Siniestros" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="TipoArchivo" EntityType="Self.TipoArchivo" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="TipoCambio" EntityType="Self.TipoCambio" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="TipoDocumentoIdentificacion" EntityType="Self.TipoDocumentoIdentificacion" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="TipoInforme" EntityType="Self.TipoInforme" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="TipoMoneda" EntityType="Self.TipoMoneda" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="TipoMovimientos" EntityType="Self.TipoMovimientos" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="TipoPension" EntityType="Self.TipoPension" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="TipoRegistro" EntityType="Self.TipoRegistro" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="TipoSolicitudes" EntityType="Self.TipoSolicitudes" Schema="Negocio" store:Type="Tables" />
+          <EntitySet Name="Consulta" EntityType="Self.Consulta" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Consulta].[IdReglaArchivo] AS [IdReglaArchivo], 
+    [Consulta].[Archivo] AS [Archivo], 
+    [Consulta].[TipoLinea] AS [TipoLinea], 
+    [Consulta].[CaracterInicial] AS [CaracterInicial], 
+    [Consulta].[LargoCampo] AS [LargoCampo], 
+    [Consulta].[TipoCampo] AS [TipoCampo], 
+    [Consulta].[InformacionCampo] AS [InformacionCampo], 
+    [Consulta].[FormatoContenido] AS [FormatoContenido], 
+    [Consulta].[TipoValidacion] AS [TipoValidacion], 
+    [Consulta].[ReglaValidacion] AS [ReglaValidacion], 
+    [Consulta].[ReglaValidacionInterna] AS [ReglaValidacionInterna], 
+    [Consulta].[TablaDestino] AS [TablaDestino], 
+    [Consulta].[vigente] AS [vigente], 
+    [Consulta].[CampoNegocio] AS [CampoNegocio]
+    FROM [dbo].[Consulta] AS [Consulta]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CheckLists" EntityType="Self.CheckLists" store:Type="Tables" store:Schema="Negocio">
+            <DefiningQuery>SELECT 
+    [CheckLists].[CheckListId] AS [CheckListId], 
+    [CheckLists].[CUSPP] AS [CUSPP], 
+    [CheckLists].[TipoMovimientoId] AS [TipoMovimientoId], 
+    [CheckLists].[FechaModificacion] AS [FechaModificacion], 
+    [CheckLists].[UsuarioModificacion] AS [UsuarioModificacion], 
+    [CheckLists].[Vigente] AS [Vigente], 
+    [CheckLists].[TipoSolicitudId] AS [TipoSolicitudId], 
+    [CheckLists].[Estado] AS [Estado], 
+    [CheckLists].[Observaciones] AS [Observaciones]
+    FROM [Negocio].[CheckLists] AS [CheckLists]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AFPSiniestro" Association="Self.FK_AFPSiniestro">
+            <End Role="AFPs" EntitySet="AFPs" />
+            <End Role="Siniestros" EntitySet="Siniestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentoCheckeado" Association="Self.FK_DocumentoCheckeado">
+            <End Role="Documentos" EntitySet="Documentos" />
+            <End Role="Checkeados" EntitySet="Checkeados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentoDocumentoSolicitado" Association="Self.FK_DocumentoDocumentoSolicitado">
+            <End Role="Documentos" EntitySet="Documentos" />
+            <End Role="DocumentoSolicitados" EntitySet="DocumentoSolicitados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoArchivoArchivo" Association="Self.FK_EstadoArchivoArchivo">
+            <End Role="EstadoArchivo" EntitySet="EstadoArchivo" />
+            <End Role="Archivo" EntitySet="Archivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialCargaArchivo_Archivo" Association="Self.FK_HistorialCargaArchivo_Archivo">
+            <End Role="Archivo" EntitySet="Archivo" />
+            <End Role="HistorialCargaArchivo" EntitySet="HistorialCargaArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialCargaArchivo_ReglaArchivo" Association="Self.FK_HistorialCargaArchivo_ReglaArchivo">
+            <End Role="ReglaArchivo" EntitySet="ReglaArchivo" />
+            <End Role="HistorialCargaArchivo" EntitySet="HistorialCargaArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonedaTipoMoneda" Association="Self.FK_MonedaTipoMoneda">
+            <End Role="Moneda" EntitySet="Moneda" />
+            <End Role="TipoMoneda" EntitySet="TipoMoneda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagos_Moneda" Association="Self.FK_Pagos_Moneda">
+            <End Role="Moneda" EntitySet="Moneda" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiniestroContrato" Association="Self.FK_SiniestroContrato">
+            <End Role="Contratos" EntitySet="Contratos" />
+            <End Role="Siniestros" EntitySet="Siniestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiniestroPago" Association="Self.FK_SiniestroPago">
+            <End Role="Siniestros" EntitySet="Siniestros" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoArchivo_TipoInforme" Association="Self.FK_TipoArchivo_TipoInforme">
+            <End Role="TipoInforme" EntitySet="TipoInforme" />
+            <End Role="TipoArchivo" EntitySet="TipoArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoArchivoArchivo" Association="Self.FK_TipoArchivoArchivo">
+            <End Role="TipoArchivo" EntitySet="TipoArchivo" />
+            <End Role="Archivo" EntitySet="Archivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoMovimientoDocumentoSolicitado" Association="Self.FK_TipoMovimientoDocumentoSolicitado">
+            <End Role="TipoMovimientos" EntitySet="TipoMovimientos" />
+            <End Role="DocumentoSolicitados" EntitySet="DocumentoSolicitados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoMovimientoSiniestro" Association="Self.FK_TipoMovimientoSiniestro">
+            <End Role="TipoMovimientos" EntitySet="TipoMovimientos" />
+            <End Role="Siniestros" EntitySet="Siniestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoSolicitudSiniestro" Association="Self.FK_TipoSolicitudSiniestro">
+            <End Role="TipoSolicitudes" EntitySet="TipoSolicitudes" />
+            <End Role="Siniestros" EntitySet="Siniestros" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DISModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Exactu">
+          <Key>
+            <PropertyRef Name="RowNumber" />
+          </Key>
+          <Property Name="RowNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventClass" Type="Int32" />
+          <Property Name="TextData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="NTUserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LoginName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CPU" Type="Int32" />
+          <Property Name="Reads" Type="Int64" />
+          <Property Name="Writes" Type="Int64" />
+          <Property Name="Duration" Type="Int64" />
+          <Property Name="ClientProcessID" Type="Int32" />
+          <Property Name="SPID" Type="Int32" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="BinaryData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DatabaseName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="HostName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="NTDomainName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowCounts" Type="Int64" />
+        </EntityType>
+        <EntityType Name="HistorialCargaArchivo">
+          <Key>
+            <PropertyRef Name="IdHistorialCargaArchivo" />
+          </Key>
+          <Property Name="IdHistorialCargaArchivo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdArchivo" Type="Int32" Nullable="false" />
+          <Property Name="FechaInsert" Type="DateTime" Precision="3" />
+          <Property Name="IdReglaArchivo" Type="Int32" />
+          <Property Name="TipoLinea" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroLinea" Type="Int32" />
+          <Property Name="CampoInicial" Type="Int32" />
+          <Property Name="LargoCampo" Type="Int32" />
+          <Property Name="ValorCampo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CumpleValidacion" Type="Int32" />
+          <Property Name="EsVC" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Archivo" Relationship="Self.FK_HistorialCargaArchivo_Archivo" FromRole="HistorialCargaArchivo" ToRole="Archivo" />
+          <NavigationProperty Name="ReglaArchivo" Relationship="Self.FK_HistorialCargaArchivo_ReglaArchivo" FromRole="HistorialCargaArchivo" ToRole="ReglaArchivo" />
+        </EntityType>
+        <EntityType Name="ReglaArchivo">
+          <Key>
+            <PropertyRef Name="IdReglaArchivo" />
+          </Key>
+          <Property Name="IdReglaArchivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Archivo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoLinea" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CaracterInicial" Type="Int32" />
+          <Property Name="LargoCampo" Type="Int32" />
+          <Property Name="TipoCampo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InformacionCampo" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="FormatoContenido" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="TipoValidacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ReglaValidacion" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="ReglaValidacionInterna" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="TablaDestino" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="vigente" Type="Int16" />
+          <Property Name="CampoNegocio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="VigenciaReglaDesde" Type="DateTime" Precision="3" />
+          <Property Name="VigenciaReglaHasta" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HistorialCargaArchivoes" Relationship="Self.FK_HistorialCargaArchivo_ReglaArchivo" FromRole="ReglaArchivo" ToRole="HistorialCargaArchivo" />
+        </EntityType>
+        <EntityType Name="AFP">
+          <Key>
+            <PropertyRef Name="AFPId" />
+          </Key>
+          <Property Name="AFPId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Abreviatura" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Siniestros" Relationship="Self.FK_AFPSiniestro" FromRole="AFPs" ToRole="Siniestros" />
+        </EntityType>
+        <EntityType Name="Archivo">
+          <Key>
+            <PropertyRef Name="ArchivoId" />
+          </Key>
+          <Property Name="ArchivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoArchivoId" Type="Int32" Nullable="false" />
+          <Property Name="TipoArchivoId" Type="Int32" Nullable="false" />
+          <Property Name="NombreArchivo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vigente" Type="Boolean" />
+          <NavigationProperty Name="HistorialCargaArchivoes" Relationship="Self.FK_HistorialCargaArchivo_Archivo" FromRole="Archivo" ToRole="HistorialCargaArchivo" />
+          <NavigationProperty Name="EstadoArchivo" Relationship="Self.FK_EstadoArchivoArchivo" FromRole="Archivo" ToRole="EstadoArchivo" />
+          <NavigationProperty Name="TipoArchivo" Relationship="Self.FK_TipoArchivoArchivo" FromRole="Archivo" ToRole="TipoArchivo" />
+        </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="IdBitacora" />
+          </Key>
+          <Property Name="IdBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdArchivo" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="Comando" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Checkeado">
+          <Key>
+            <PropertyRef Name="CheckeadoId" />
+          </Key>
+          <Property Name="CheckeadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Visto" Type="Boolean" Nullable="false" />
+          <Property Name="CheckListId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentoId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vigente" Type="Boolean" />
+          <NavigationProperty Name="Documento" Relationship="Self.FK_DocumentoCheckeado" FromRole="Checkeados" ToRole="Documentos" />
+        </EntityType>
+        <EntityType Name="ContratoCSV">
+          <Key>
+            <PropertyRef Name="ContratoCSVId" />
+          </Key>
+          <Property Name="ContratoCSVId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Partes" Type="Int32" Nullable="false" />
+          <Property Name="CSVId" Type="Int32" Nullable="false" />
+          <Property Name="ContratoId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="ContratoId" />
+          </Key>
+          <Property Name="ContratoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identificador" Type="Int32" Nullable="false" />
+          <Property Name="Periodo_FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Periodo_FechaTermino" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TotalPartes" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Siniestros" Relationship="Self.FK_SiniestroContrato" FromRole="Contratos" ToRole="Siniestros" />
+        </EntityType>
+        <EntityType Name="Correlativo">
+          <Key>
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correlativo1" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CSV">
+          <Key>
+            <PropertyRef Name="CSVId" />
+          </Key>
+          <Property Name="CSVId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Abreviatura" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VidaCamara" Type="Boolean" Nullable="false" />
+          <Property Name="CodigoDIS" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documento">
+          <Key>
+            <PropertyRef Name="DocumentoId" />
+          </Key>
+          <Property Name="DocumentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Checkeados" Relationship="Self.FK_DocumentoCheckeado" FromRole="Documentos" ToRole="Checkeados" />
+          <NavigationProperty Name="DocumentoSolicitados" Relationship="Self.FK_DocumentoDocumentoSolicitado" FromRole="Documentos" ToRole="DocumentoSolicitados" />
+        </EntityType>
+        <EntityType Name="DocumentoSolicitado">
+          <Key>
+            <PropertyRef Name="DocumentoSolicitadoId" />
+          </Key>
+          <Property Name="DocumentoSolicitadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoMovimientoId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentoId" Type="Int32" Nullable="false" />
+          <Property Name="TipoSolicitudId" Type="Int32" />
+          <NavigationProperty Name="Documento" Relationship="Self.FK_DocumentoDocumentoSolicitado" FromRole="DocumentoSolicitados" ToRole="Documentos" />
+          <NavigationProperty Name="TipoMovimiento" Relationship="Self.FK_TipoMovimientoDocumentoSolicitado" FromRole="DocumentoSolicitados" ToRole="TipoMovimientos" />
+        </EntityType>
+        <EntityType Name="EstadoArchivo">
+          <Key>
+            <PropertyRef Name="EstadoArchivoId" />
+          </Key>
+          <Property Name="EstadoArchivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Archivoes" Relationship="Self.FK_EstadoArchivoArchivo" FromRole="EstadoArchivo" ToRole="Archivo" />
+        </EntityType>
+        <EntityType Name="EstadoPago">
+          <Key>
+            <PropertyRef Name="EstadoId" />
+          </Key>
+          <Property Name="EstadoId" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vigente" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Imputacion">
+          <Key>
+            <PropertyRef Name="ImputacionId" />
+          </Key>
+          <Property Name="ImputacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Linea" Type="Int32" Nullable="false" />
+          <Property Name="Correlativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CentroCosto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CuentaContable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MonedaId" Type="Int32" Nullable="false" />
+          <Property Name="Debe_Soles" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="Haber_soles" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="Debe_Dolares" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="Haber_Dolares" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="Fuente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Vigente" Type="Boolean" Nullable="false" />
+          <Property Name="ArchivoId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Moneda">
+          <Key>
+            <PropertyRef Name="MonedaId" />
+          </Key>
+          <Property Name="MonedaId" Type="Int32" Nullable="false" />
+          <Property Name="NombreMoneda" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TipoMonedas" Relationship="Self.FK_MonedaTipoMoneda" FromRole="Moneda" ToRole="TipoMoneda" />
+          <NavigationProperty Name="Pagos" Relationship="Self.FK_Pagos_Moneda" FromRole="Moneda" ToRole="Pagos" />
+        </EntityType>
+        <EntityType Name="MontoAlto">
+          <Key>
+            <PropertyRef Name="MontoAltoId" />
+          </Key>
+          <Property Name="MontoAltoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoParametro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Valor" Type="Int32" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="PagoId" />
+          </Key>
+          <Property Name="PagoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArchivoId" Type="Int32" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaPago" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="SiniestroId" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="PagoVC" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="FechaTransferencia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MonedaId" Type="Int32" Nullable="false" />
+          <Property Name="NominaId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vigente" Type="Boolean" />
+          <NavigationProperty Name="Moneda" Relationship="Self.FK_Pagos_Moneda" FromRole="Pagos" ToRole="Moneda" />
+          <NavigationProperty Name="Siniestro" Relationship="Self.FK_SiniestroPago" FromRole="Pagos" ToRole="Siniestros" />
+        </EntityType>
+        <EntityType Name="Parametro">
+          <Key>
+            <PropertyRef Name="ParametroId" />
+          </Key>
+          <Property Name="ParametroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoMovimientoId" Type="Int32" Nullable="false" />
+          <Property Name="TipoSolicitudId" Type="Int32" Nullable="false" />
+          <Property Name="TipoOperacion" Type="Int32" Nullable="false" />
+          <Property Name="CentroCosto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CuentaContable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SignoCuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vigente" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parentesco">
+          <Key>
+            <PropertyRef Name="ParentescoId" />
+          </Key>
+          <Property Name="ParentescoId" Type="Int32" Nullable="false" />
+          <Property Name="DescripcionParentesco" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodBeneficiario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PorcentajeBeneficiario" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrimerNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SegundoNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TipoIdentificacion" Type="Int32" Nullable="false" />
+          <Property Name="NumeroIdentificador" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroMontoAlto">
+          <Key>
+            <PropertyRef Name="IdRegistroMontoAlto" />
+          </Key>
+          <Property Name="IdRegistroMontoAlto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Resultado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdArchivo" Type="Int32" />
+          <Property Name="Cuspp" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RolesId" />
+          </Key>
+          <Property Name="RolesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescripcionRol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Siniestro">
+          <Key>
+            <PropertyRef Name="SiniestroId" />
+          </Key>
+          <Property Name="SiniestroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUSPP" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TipoMovimientoId" Type="Int32" Nullable="false" />
+          <Property Name="AFPId" Type="Int32" Nullable="false" />
+          <Property Name="ContratoId" Type="Int32" Nullable="false" />
+          <Property Name="TipoSolicitudId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodTransferencia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Vigente" Type="Boolean" />
+          <NavigationProperty Name="AFP" Relationship="Self.FK_AFPSiniestro" FromRole="Siniestros" ToRole="AFPs" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK_SiniestroContrato" FromRole="Siniestros" ToRole="Contratos" />
+          <NavigationProperty Name="Pagos" Relationship="Self.FK_SiniestroPago" FromRole="Siniestros" ToRole="Pagos" />
+          <NavigationProperty Name="TipoMovimiento" Relationship="Self.FK_TipoMovimientoSiniestro" FromRole="Siniestros" ToRole="TipoMovimientos" />
+          <NavigationProperty Name="TipoSolicitude" Relationship="Self.FK_TipoSolicitudSiniestro" FromRole="Siniestros" ToRole="TipoSolicitudes" />
+        </EntityType>
+        <EntityType Name="TipoArchivo">
+          <Key>
+            <PropertyRef Name="TipoArchivoId" />
+          </Key>
+          <Property Name="TipoArchivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreTipoArchivo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreClase" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EsEntrada" Type="Byte" Nullable="false" />
+          <Property Name="CabeceraLargo" Type="Int32" Nullable="false" />
+          <Property Name="DetalleLargo" Type="Int32" Nullable="false" />
+          <Property Name="TotalLargo" Type="Int32" Nullable="false" />
+          <Property Name="ReglaPrevia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ReglaPosterior" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="TipoInformeId" Type="Int32" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vigente" Type="Boolean" />
+          <NavigationProperty Name="Archivoes" Relationship="Self.FK_TipoArchivoArchivo" FromRole="TipoArchivo" ToRole="Archivo" />
+          <NavigationProperty Name="TipoInforme" Relationship="Self.FK_TipoArchivo_TipoInforme" FromRole="TipoArchivo" ToRole="TipoInforme" />
+        </EntityType>
+        <EntityType Name="TipoCambio">
+          <Key>
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="Periodo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Vigente" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TipoDocumentoIdentificacion">
+          <Key>
+            <PropertyRef Name="TipoDocumentoIdentificacionId" />
+          </Key>
+          <Property Name="TipoDocumentoIdentificacionId" Type="Int32" Nullable="false" />
+          <Property Name="NombreTipoDocumentoIdentificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoInforme">
+          <Key>
+            <PropertyRef Name="TipoInformeId" />
+          </Key>
+          <Property Name="TipoInformeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TipoArchivoes" Relationship="Self.FK_TipoArchivo_TipoInforme" FromRole="TipoInforme" ToRole="TipoArchivo" />
+        </EntityType>
+        <EntityType Name="TipoMoneda">
+          <Key>
+            <PropertyRef Name="TipoMonedaId" />
+          </Key>
+          <Property Name="TipoMonedaId" Type="Int32" Nullable="false" />
+          <Property Name="NombreMoneda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MonedaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Moneda" Relationship="Self.FK_MonedaTipoMoneda" FromRole="TipoMoneda" ToRole="Moneda" />
+        </EntityType>
+        <EntityType Name="TipoMovimiento">
+          <Key>
+            <PropertyRef Name="TipoMovimientoId" />
+          </Key>
+          <Property Name="TipoMovimientoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Abreviatura" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DocumentoSolicitados" Relationship="Self.FK_TipoMovimientoDocumentoSolicitado" FromRole="TipoMovimientos" ToRole="DocumentoSolicitados" />
+          <NavigationProperty Name="Siniestros" Relationship="Self.FK_TipoMovimientoSiniestro" FromRole="TipoMovimientos" ToRole="Siniestros" />
+        </EntityType>
+        <EntityType Name="TipoPension">
+          <Key>
+            <PropertyRef Name="TipoPensionId" />
+          </Key>
+          <Property Name="TipoPensionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoPension" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreTipoPension" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoRegistro">
+          <Key>
+            <PropertyRef Name="TipoRegistroId" />
+          </Key>
+          <Property Name="TipoRegistroId" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoSolicitude">
+          <Key>
+            <PropertyRef Name="TipoSolicitudId" />
+          </Key>
+          <Property Name="TipoSolicitudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Clasificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Siniestros" Relationship="Self.FK_TipoSolicitudSiniestro" FromRole="TipoSolicitudes" ToRole="Siniestros" />
+        </EntityType>
+        <EntityType Name="Consulta">
+          <Key>
+            <PropertyRef Name="IdReglaArchivo" />
+            <PropertyRef Name="Archivo" />
+          </Key>
+          <Property Name="IdReglaArchivo" Type="Int32" Nullable="false" />
+          <Property Name="Archivo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoLinea" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CaracterInicial" Type="Int32" />
+          <Property Name="LargoCampo" Type="Int32" />
+          <Property Name="TipoCampo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InformacionCampo" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="FormatoContenido" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="TipoValidacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ReglaValidacion" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="ReglaValidacionInterna" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="TablaDestino" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="vigente" Type="Int16" />
+          <Property Name="CampoNegocio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CheckList">
+          <Key>
+            <PropertyRef Name="CheckListId" />
+            <PropertyRef Name="CUSPP" />
+            <PropertyRef Name="TipoMovimientoId" />
+          </Key>
+          <Property Name="CheckListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUSPP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoMovimientoId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vigente" Type="Boolean" />
+          <Property Name="TipoSolicitudId" Type="Int32" />
+          <Property Name="Estado" Type="Int32" />
+          <Property Name="Observaciones" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_HistorialCargaArchivo_Archivo">
+          <End Role="Archivo" Type="Self.Archivo" Multiplicity="1" />
+          <End Role="HistorialCargaArchivo" Type="Self.HistorialCargaArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archivo">
+              <PropertyRef Name="ArchivoId" />
+            </Principal>
+            <Dependent Role="HistorialCargaArchivo">
+              <PropertyRef Name="IdArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialCargaArchivo_ReglaArchivo">
+          <End Role="ReglaArchivo" Type="Self.ReglaArchivo" Multiplicity="0..1" />
+          <End Role="HistorialCargaArchivo" Type="Self.HistorialCargaArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReglaArchivo">
+              <PropertyRef Name="IdReglaArchivo" />
+            </Principal>
+            <Dependent Role="HistorialCargaArchivo">
+              <PropertyRef Name="IdReglaArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AFPSiniestro">
+          <End Role="AFPs" Type="Self.AFP" Multiplicity="1" />
+          <End Role="Siniestros" Type="Self.Siniestro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AFPs">
+              <PropertyRef Name="AFPId" />
+            </Principal>
+            <Dependent Role="Siniestros">
+              <PropertyRef Name="AFPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoArchivoArchivo">
+          <End Role="EstadoArchivo" Type="Self.EstadoArchivo" Multiplicity="1" />
+          <End Role="Archivo" Type="Self.Archivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoArchivo">
+              <PropertyRef Name="EstadoArchivoId" />
+            </Principal>
+            <Dependent Role="Archivo">
+              <PropertyRef Name="EstadoArchivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoArchivoArchivo">
+          <End Role="TipoArchivo" Type="Self.TipoArchivo" Multiplicity="1" />
+          <End Role="Archivo" Type="Self.Archivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoArchivo">
+              <PropertyRef Name="TipoArchivoId" />
+            </Principal>
+            <Dependent Role="Archivo">
+              <PropertyRef Name="TipoArchivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentoCheckeado">
+          <End Role="Documentos" Type="Self.Documento" Multiplicity="1" />
+          <End Role="Checkeados" Type="Self.Checkeado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documentos">
+              <PropertyRef Name="DocumentoId" />
+            </Principal>
+            <Dependent Role="Checkeados">
+              <PropertyRef Name="DocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiniestroContrato">
+          <End Role="Contratos" Type="Self.Contrato" Multiplicity="1" />
+          <End Role="Siniestros" Type="Self.Siniestro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratos">
+              <PropertyRef Name="ContratoId" />
+            </Principal>
+            <Dependent Role="Siniestros">
+              <PropertyRef Name="ContratoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentoDocumentoSolicitado">
+          <End Role="Documentos" Type="Self.Documento" Multiplicity="1" />
+          <End Role="DocumentoSolicitados" Type="Self.DocumentoSolicitado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documentos">
+              <PropertyRef Name="DocumentoId" />
+            </Principal>
+            <Dependent Role="DocumentoSolicitados">
+              <PropertyRef Name="DocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoMovimientoDocumentoSolicitado">
+          <End Role="TipoMovimientos" Type="Self.TipoMovimiento" Multiplicity="1" />
+          <End Role="DocumentoSolicitados" Type="Self.DocumentoSolicitado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimientos">
+              <PropertyRef Name="TipoMovimientoId" />
+            </Principal>
+            <Dependent Role="DocumentoSolicitados">
+              <PropertyRef Name="TipoMovimientoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MonedaTipoMoneda">
+          <End Role="Moneda" Type="Self.Moneda" Multiplicity="1" />
+          <End Role="TipoMoneda" Type="Self.TipoMoneda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moneda">
+              <PropertyRef Name="MonedaId" />
+            </Principal>
+            <Dependent Role="TipoMoneda">
+              <PropertyRef Name="MonedaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagos_Moneda">
+          <End Role="Moneda" Type="Self.Moneda" Multiplicity="1" />
+          <End Role="Pagos" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moneda">
+              <PropertyRef Name="MonedaId" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="MonedaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiniestroPago">
+          <End Role="Siniestros" Type="Self.Siniestro" Multiplicity="1" />
+          <End Role="Pagos" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siniestros">
+              <PropertyRef Name="SiniestroId" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="SiniestroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoMovimientoSiniestro">
+          <End Role="TipoMovimientos" Type="Self.TipoMovimiento" Multiplicity="1" />
+          <End Role="Siniestros" Type="Self.Siniestro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimientos">
+              <PropertyRef Name="TipoMovimientoId" />
+            </Principal>
+            <Dependent Role="Siniestros">
+              <PropertyRef Name="TipoMovimientoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoSolicitudSiniestro">
+          <End Role="TipoSolicitudes" Type="Self.TipoSolicitude" Multiplicity="1" />
+          <End Role="Siniestros" Type="Self.Siniestro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoSolicitudes">
+              <PropertyRef Name="TipoSolicitudId" />
+            </Principal>
+            <Dependent Role="Siniestros">
+              <PropertyRef Name="TipoSolicitudId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoArchivo_TipoInforme">
+          <End Role="TipoInforme" Type="Self.TipoInforme" Multiplicity="0..1" />
+          <End Role="TipoArchivo" Type="Self.TipoArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoInforme">
+              <PropertyRef Name="TipoInformeId" />
+            </Principal>
+            <Dependent Role="TipoArchivo">
+              <PropertyRef Name="TipoInformeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DISEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Exactus" EntityType="Self.Exactu" />
+          <EntitySet Name="HistorialCargaArchivoes" EntityType="Self.HistorialCargaArchivo" />
+          <EntitySet Name="ReglaArchivoes" EntityType="Self.ReglaArchivo" />
+          <EntitySet Name="AFPs" EntityType="Self.AFP" />
+          <EntitySet Name="Archivoes" EntityType="Self.Archivo" />
+          <EntitySet Name="Bitacoras" EntityType="Self.Bitacora" />
+          <EntitySet Name="Checkeados" EntityType="Self.Checkeado" />
+          <EntitySet Name="ContratoCSVs" EntityType="Self.ContratoCSV" />
+          <EntitySet Name="Contratos" EntityType="Self.Contrato" />
+          <EntitySet Name="Correlativos" EntityType="Self.Correlativo" />
+          <EntitySet Name="CSVs" EntityType="Self.CSV" />
+          <EntitySet Name="Documentos" EntityType="Self.Documento" />
+          <EntitySet Name="DocumentoSolicitados" EntityType="Self.DocumentoSolicitado" />
+          <EntitySet Name="EstadoArchivoes" EntityType="Self.EstadoArchivo" />
+          <EntitySet Name="EstadoPagoes" EntityType="Self.EstadoPago" />
+          <EntitySet Name="Imputacions" EntityType="Self.Imputacion" />
+          <EntitySet Name="Monedas" EntityType="Self.Moneda" />
+          <EntitySet Name="MontoAltoes" EntityType="Self.MontoAlto" />
+          <EntitySet Name="Pagos" EntityType="Self.Pago" />
+          <EntitySet Name="Parametros" EntityType="Self.Parametro" />
+          <EntitySet Name="Parentescoes" EntityType="Self.Parentesco" />
+          <EntitySet Name="Personas" EntityType="Self.Persona" />
+          <EntitySet Name="RegistroMontoAltoes" EntityType="Self.RegistroMontoAlto" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Siniestros" EntityType="Self.Siniestro" />
+          <EntitySet Name="TipoArchivoes" EntityType="Self.TipoArchivo" />
+          <EntitySet Name="TipoCambios" EntityType="Self.TipoCambio" />
+          <EntitySet Name="TipoDocumentoIdentificacions" EntityType="Self.TipoDocumentoIdentificacion" />
+          <EntitySet Name="TipoInformes" EntityType="Self.TipoInforme" />
+          <EntitySet Name="TipoMonedas" EntityType="Self.TipoMoneda" />
+          <EntitySet Name="TipoMovimientos" EntityType="Self.TipoMovimiento" />
+          <EntitySet Name="TipoPensions" EntityType="Self.TipoPension" />
+          <EntitySet Name="TipoRegistroes" EntityType="Self.TipoRegistro" />
+          <EntitySet Name="TipoSolicitudes" EntityType="Self.TipoSolicitude" />
+          <EntitySet Name="Consultas" EntityType="Self.Consulta" />
+          <EntitySet Name="CheckLists" EntityType="Self.CheckList" />
+          <AssociationSet Name="FK_HistorialCargaArchivo_Archivo" Association="Self.FK_HistorialCargaArchivo_Archivo">
+            <End Role="Archivo" EntitySet="Archivoes" />
+            <End Role="HistorialCargaArchivo" EntitySet="HistorialCargaArchivoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialCargaArchivo_ReglaArchivo" Association="Self.FK_HistorialCargaArchivo_ReglaArchivo">
+            <End Role="ReglaArchivo" EntitySet="ReglaArchivoes" />
+            <End Role="HistorialCargaArchivo" EntitySet="HistorialCargaArchivoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AFPSiniestro" Association="Self.FK_AFPSiniestro">
+            <End Role="AFPs" EntitySet="AFPs" />
+            <End Role="Siniestros" EntitySet="Siniestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoArchivoArchivo" Association="Self.FK_EstadoArchivoArchivo">
+            <End Role="EstadoArchivo" EntitySet="EstadoArchivoes" />
+            <End Role="Archivo" EntitySet="Archivoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoArchivoArchivo" Association="Self.FK_TipoArchivoArchivo">
+            <End Role="TipoArchivo" EntitySet="TipoArchivoes" />
+            <End Role="Archivo" EntitySet="Archivoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentoCheckeado" Association="Self.FK_DocumentoCheckeado">
+            <End Role="Documentos" EntitySet="Documentos" />
+            <End Role="Checkeados" EntitySet="Checkeados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiniestroContrato" Association="Self.FK_SiniestroContrato">
+            <End Role="Contratos" EntitySet="Contratos" />
+            <End Role="Siniestros" EntitySet="Siniestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentoDocumentoSolicitado" Association="Self.FK_DocumentoDocumentoSolicitado">
+            <End Role="Documentos" EntitySet="Documentos" />
+            <End Role="DocumentoSolicitados" EntitySet="DocumentoSolicitados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoMovimientoDocumentoSolicitado" Association="Self.FK_TipoMovimientoDocumentoSolicitado">
+            <End Role="TipoMovimientos" EntitySet="TipoMovimientos" />
+            <End Role="DocumentoSolicitados" EntitySet="DocumentoSolicitados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonedaTipoMoneda" Association="Self.FK_MonedaTipoMoneda">
+            <End Role="Moneda" EntitySet="Monedas" />
+            <End Role="TipoMoneda" EntitySet="TipoMonedas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagos_Moneda" Association="Self.FK_Pagos_Moneda">
+            <End Role="Moneda" EntitySet="Monedas" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiniestroPago" Association="Self.FK_SiniestroPago">
+            <End Role="Siniestros" EntitySet="Siniestros" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoMovimientoSiniestro" Association="Self.FK_TipoMovimientoSiniestro">
+            <End Role="TipoMovimientos" EntitySet="TipoMovimientos" />
+            <End Role="Siniestros" EntitySet="Siniestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoSolicitudSiniestro" Association="Self.FK_TipoSolicitudSiniestro">
+            <End Role="TipoSolicitudes" EntitySet="TipoSolicitudes" />
+            <End Role="Siniestros" EntitySet="Siniestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoArchivo_TipoInforme" Association="Self.FK_TipoArchivo_TipoInforme">
+            <End Role="TipoInforme" EntitySet="TipoInformes" />
+            <End Role="TipoArchivo" EntitySet="TipoArchivoes" />
+          </AssociationSet>
+          <FunctionImport Name="pa_audit_InsertaBitacora">
+            <Parameter Name="Param_IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="Param_Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Param_Comando" Mode="In" Type="String" />
+            <Parameter Name="Param_Idarchivo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_devuelveresultado" ReturnType="Collection(DISModelo.pa_devuelveresultado_Result)">
+            <Parameter Name="idarchivo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_envioCorreo_Procesos">
+            <Parameter Name="Para" Mode="In" Type="String" />
+            <Parameter Name="CC" Mode="In" Type="String" />
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="Asunto" Mode="In" Type="String" />
+            <Parameter Name="Cuerpo" Mode="In" Type="String" />
+            <Parameter Name="FormatoCuerpo" Mode="In" Type="String" />
+            <Parameter Name="Archivos" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_AgregaReferenciaTablaArchivo">
+            <Parameter Name="NombreArchivo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_ArchivoValido">
+            <Parameter Name="IdArchivo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_CantidadRegistroArchivo" ReturnType="Collection(Int32)">
+            <Parameter Name="IdArchivo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_CierreCarga">
+            <Parameter Name="IdCarga" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_ConsultaEstadoArchivo" ReturnType="Collection(Int32)">
+            <Parameter Name="NombreArchivo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_Imputa_Nomina">
+            <Parameter Name="idarchivo" Mode="In" Type="Int32" />
+            <Parameter Name="idusuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_InsertaHistorialCarga">
+            <Parameter Name="Aux_IdArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="Aux_IdReglaArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="Aux_TipoLinea" Mode="In" Type="String" />
+            <Parameter Name="Aux_NumeroLinea" Mode="In" Type="Int32" />
+            <Parameter Name="Aux_CampoInicial" Mode="In" Type="Int32" />
+            <Parameter Name="Aux_LargoCampo" Mode="In" Type="Int32" />
+            <Parameter Name="Aux_ValorCampo" Mode="In" Type="String" />
+            <Parameter Name="Aux_CumpleValidacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_InsertaReferenciaArchivo" ReturnType="Collection(Int32)">
+            <Parameter Name="NombreArchivo" Mode="In" Type="String" />
+            <Parameter Name="usuarioModificacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_ObtieneErrorArchivo" ReturnType="Collection(DISModelo.pa_file_ObtieneErrorArchivo_Result)">
+            <Parameter Name="IdArchivo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_ObtienePrimerCaracterLineaPorTipoArchivo" ReturnType="Collection(String)">
+            <Parameter Name="Param_TipoArchivo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_ObtieneReglasArchivoPorLinea" ReturnType="Collection(DISModelo.pa_file_ObtieneReglasArchivoPorLinea_Result)">
+            <Parameter Name="Param_TipoArchivo" Mode="In" Type="String" />
+            <Parameter Name="Param_TipoLinea" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_ObtieneReglavalidacionArchivo" ReturnType="Collection(String)">
+            <Parameter Name="Archivo" Mode="In" Type="String" />
+            <Parameter Name="Tipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_file_ObtieneTipoArchivos" ReturnType="Collection(String)" />
+          <FunctionImport Name="pa_impactanegocio" ReturnType="Collection(DISModelo.pa_impactanegocio_Result)">
+            <Parameter Name="idarchivo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_impactanomina" ReturnType="Collection(Int32)">
+            <Parameter Name="idnomina" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_imputa_aad">
+            <Parameter Name="idnomina" Mode="In" Type="Int32" />
+            <Parameter Name="idusuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_imputa_ppp">
+            <Parameter Name="idnomina" Mode="In" Type="Int32" />
+            <Parameter Name="idusuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_imputa_ppr">
+            <Parameter Name="idnomina" Mode="In" Type="Int32" />
+            <Parameter Name="idusuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_imputa_prp">
+            <Parameter Name="idnomina" Mode="In" Type="Int32" />
+            <Parameter Name="idusuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_imputa_rgs">
+            <Parameter Name="idnomina" Mode="In" Type="Int32" />
+            <Parameter Name="idusuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_ReporteArchivo_CUSPP" ReturnType="Collection(DISModelo.pa_ReporteArchivo_CUSPP_Result)">
+            <Parameter Name="CUSPP" Mode="In" Type="String" />
+            <Parameter Name="ArchivoId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_rpt_archivocarga_fecha" ReturnType="Collection(DISModelo.pa_rpt_archivocarga_fecha_Result)">
+            <Parameter Name="tipo" Mode="In" Type="Int32" />
+            <Parameter Name="fechainicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fechatermino" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="pa_rptNominas" ReturnType="Collection(DISModelo.pa_rptNominas_Result)" />
+          <FunctionImport Name="pa_rptPrimas">
+            <Parameter Name="periodo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_CodigoTransferenciaNomina" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+            <Parameter Name="IdArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="LargoCampo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_CUSPP" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_EjecutaProcedimientoAlmacenado" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_EjecutaQuery" ReturnType="Collection(String)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_Fecha" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+            <Parameter Name="Inicio" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_MontoAlto" ReturnType="Collection(Int32)">
+            <Parameter Name="idarchivo" Mode="In" Type="Int32" />
+            <Parameter Name="idusuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_NoEspacios" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_Numero12x2" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_Numero2x2" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_Numero4x7" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_Numero7x2" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_Numero8x2" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_ObtieneValor" ReturnType="Collection(Int32)">
+            <Parameter Name="IdArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="NumeroLinea" Mode="In" Type="Int32" />
+            <Parameter Name="CampoInicial" Mode="In" Type="Int32" />
+            <Parameter Name="LargoCampo" Mode="In" Type="Int32" />
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_Periodo" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_Periodo_PrimaPag" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_persona" ReturnType="Collection(Int32)">
+            <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+            <Parameter Name="SegundoNombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="CUSPP" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_RetornaTrue" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="pa_valida_SoloNumeros" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_SumaDetalleEnTotal" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+            <Parameter Name="IdArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="NumeroLinea" Mode="In" Type="Int32" />
+            <Parameter Name="CampoInicial" Mode="In" Type="Int32" />
+            <Parameter Name="LargoCampo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_valida_TotalNominaEnLiquidacion" ReturnType="Collection(Int32)">
+            <Parameter Name="valor" Mode="In" Type="String" />
+            <Parameter Name="IdArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="NumeroLinea" Mode="In" Type="Int32" />
+            <Parameter Name="CampoInicial" Mode="In" Type="Int32" />
+            <Parameter Name="LargoCampo" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="pa_devuelveresultado_Result">
+          <Property Type="Int32" Name="IdRegistroMontoAlto" Nullable="false" />
+          <Property Type="String" Name="Resultado" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdUsuario" Nullable="true" />
+          <Property Type="Int32" Name="IdArchivo" Nullable="true" />
+          <Property Type="String" Name="Cuspp" Nullable="true" MaxLength="12" />
+          <Property Type="Int32" Name="Valor" Nullable="true" />
+          <Property Type="String" Name="correo" Nullable="false" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="pa_file_ObtieneErrorArchivo_Result">
+          <Property Type="String" Name="NombreArchivo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="TipoLinea" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroLinea" Nullable="true" />
+          <Property Type="Int32" Name="CampoInicial" Nullable="true" />
+          <Property Type="Int32" Name="LargoCampo" Nullable="true" />
+          <Property Type="String" Name="ValorCampo" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="InformacionCampo" Nullable="true" MaxLength="3000" />
+          <Property Type="String" Name="FormatoContenido" Nullable="true" MaxLength="3000" />
+        </ComplexType>
+        <ComplexType Name="pa_file_ObtieneReglasArchivoPorLinea_Result">
+          <Property Type="Int32" Name="IdReglaArchivo" Nullable="false" />
+          <Property Type="String" Name="InformacionCampo" Nullable="true" MaxLength="3000" />
+          <Property Type="Int32" Name="CaracterInicial" Nullable="true" />
+          <Property Type="Int32" Name="LargoCampo" Nullable="true" />
+          <Property Type="String" Name="TipoCampo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TipoValidacion" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ReglaValidacion" Nullable="true" MaxLength="3000" />
+          <Property Type="String" Name="TablaDestino" Nullable="true" MaxLength="1000" />
+        </ComplexType>
+        <ComplexType Name="pa_impactanegocio_Result">
+          <Property Type="Int32" Name="Linea" Nullable="true" />
+          <Property Type="DateTime" Name="FechaEnvio" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ContratoId" Nullable="true" />
+          <Property Type="Int32" Name="TipoMovimientoId" Nullable="true" />
+          <Property Type="Int32" Name="AfpId" Nullable="true" />
+          <Property Type="String" Name="Cuspp" Nullable="true" MaxLength="12" />
+          <Property Type="Int32" Name="SolicitudId" Nullable="true" />
+          <Property Type="Int32" Name="Monedaid" Nullable="true" />
+          <Property Type="Decimal" Name="Monto" Nullable="true" Precision="11" Scale="2" />
+          <Property Type="Decimal" Name="Pago" Nullable="true" Precision="11" Scale="2" />
+          <Property Type="String" Name="usuariomodificacion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CodTransferencia" Nullable="true" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="pa_ReporteArchivo_CUSPP_Result">
+          <Property Type="String" Name="informacioncampo" Nullable="true" MaxLength="3007" />
+          <Property Type="Int32" Name="NumeroLinea" Nullable="true" />
+          <Property Type="String" Name="ValorCampo" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="CaracterInicial" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="pa_rpt_archivocarga_fecha_Result">
+          <Property Type="String" Name="Código" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ArchivoId" Nullable="false" />
+          <Property Type="String" Name="Archivo" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="pa_rptNominas_Result">
+          <Property Type="String" Name="Código" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="AFP" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Moneda" Nullable="false" />
+          <Property Type="String" Name="Código_Transferencia" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="Monto" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DISModeloStoreContainer" CdmEntityContainer="DISEntities">
+          <EntitySetMapping Name="Exactus">
+            <EntityTypeMapping TypeName="DISModelo.Exactu">
+              <MappingFragment StoreEntitySet="Exactus">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="EventClass" ColumnName="EventClass" />
+                <ScalarProperty Name="TextData" ColumnName="TextData" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="NTUserName" ColumnName="NTUserName" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="Reads" ColumnName="Reads" />
+                <ScalarProperty Name="Writes" ColumnName="Writes" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="ClientProcessID" ColumnName="ClientProcessID" />
+                <ScalarProperty Name="SPID" ColumnName="SPID" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BinaryData" ColumnName="BinaryData" />
+                <ScalarProperty Name="DatabaseName" ColumnName="DatabaseName" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="NTDomainName" ColumnName="NTDomainName" />
+                <ScalarProperty Name="RowCounts" ColumnName="RowCounts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialCargaArchivoes">
+            <EntityTypeMapping TypeName="DISModelo.HistorialCargaArchivo">
+              <MappingFragment StoreEntitySet="HistorialCargaArchivo">
+                <ScalarProperty Name="IdHistorialCargaArchivo" ColumnName="IdHistorialCargaArchivo" />
+                <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+                <ScalarProperty Name="FechaInsert" ColumnName="FechaInsert" />
+                <ScalarProperty Name="IdReglaArchivo" ColumnName="IdReglaArchivo" />
+                <ScalarProperty Name="TipoLinea" ColumnName="TipoLinea" />
+                <ScalarProperty Name="NumeroLinea" ColumnName="NumeroLinea" />
+                <ScalarProperty Name="CampoInicial" ColumnName="CampoInicial" />
+                <ScalarProperty Name="LargoCampo" ColumnName="LargoCampo" />
+                <ScalarProperty Name="ValorCampo" ColumnName="ValorCampo" />
+                <ScalarProperty Name="CumpleValidacion" ColumnName="CumpleValidacion" />
+                <ScalarProperty Name="EsVC" ColumnName="EsVC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReglaArchivoes">
+            <EntityTypeMapping TypeName="DISModelo.ReglaArchivo">
+              <MappingFragment StoreEntitySet="ReglaArchivo">
+                <ScalarProperty Name="IdReglaArchivo" ColumnName="IdReglaArchivo" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="TipoLinea" ColumnName="TipoLinea" />
+                <ScalarProperty Name="CaracterInicial" ColumnName="CaracterInicial" />
+                <ScalarProperty Name="LargoCampo" ColumnName="LargoCampo" />
+                <ScalarProperty Name="TipoCampo" ColumnName="TipoCampo" />
+                <ScalarProperty Name="InformacionCampo" ColumnName="InformacionCampo" />
+                <ScalarProperty Name="FormatoContenido" ColumnName="FormatoContenido" />
+                <ScalarProperty Name="TipoValidacion" ColumnName="TipoValidacion" />
+                <ScalarProperty Name="ReglaValidacion" ColumnName="ReglaValidacion" />
+                <ScalarProperty Name="ReglaValidacionInterna" ColumnName="ReglaValidacionInterna" />
+                <ScalarProperty Name="TablaDestino" ColumnName="TablaDestino" />
+                <ScalarProperty Name="vigente" ColumnName="vigente" />
+                <ScalarProperty Name="CampoNegocio" ColumnName="CampoNegocio" />
+                <ScalarProperty Name="VigenciaReglaDesde" ColumnName="VigenciaReglaDesde" />
+                <ScalarProperty Name="VigenciaReglaHasta" ColumnName="VigenciaReglaHasta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AFPs">
+            <EntityTypeMapping TypeName="DISModelo.AFP">
+              <MappingFragment StoreEntitySet="AFPs">
+                <ScalarProperty Name="AFPId" ColumnName="AFPId" />
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Archivoes">
+            <EntityTypeMapping TypeName="DISModelo.Archivo">
+              <MappingFragment StoreEntitySet="Archivo">
+                <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+                <ScalarProperty Name="EstadoArchivoId" ColumnName="EstadoArchivoId" />
+                <ScalarProperty Name="TipoArchivoId" ColumnName="TipoArchivoId" />
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bitacoras">
+            <EntityTypeMapping TypeName="DISModelo.Bitacora">
+              <MappingFragment StoreEntitySet="Bitacora">
+                <ScalarProperty Name="IdBitacora" ColumnName="IdBitacora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Comando" ColumnName="Comando" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Checkeados">
+            <EntityTypeMapping TypeName="DISModelo.Checkeado">
+              <MappingFragment StoreEntitySet="Checkeados">
+                <ScalarProperty Name="CheckeadoId" ColumnName="CheckeadoId" />
+                <ScalarProperty Name="Visto" ColumnName="Visto" />
+                <ScalarProperty Name="CheckListId" ColumnName="CheckListId" />
+                <ScalarProperty Name="DocumentoId" ColumnName="DocumentoId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContratoCSVs">
+            <EntityTypeMapping TypeName="DISModelo.ContratoCSV">
+              <MappingFragment StoreEntitySet="ContratoCSVs">
+                <ScalarProperty Name="ContratoCSVId" ColumnName="ContratoCSVId" />
+                <ScalarProperty Name="Partes" ColumnName="Partes" />
+                <ScalarProperty Name="CSVId" ColumnName="CSVId" />
+                <ScalarProperty Name="ContratoId" ColumnName="ContratoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contratos">
+            <EntityTypeMapping TypeName="DISModelo.Contrato">
+              <MappingFragment StoreEntitySet="Contratos">
+                <ScalarProperty Name="ContratoId" ColumnName="ContratoId" />
+                <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+                <ScalarProperty Name="Periodo_FechaInicio" ColumnName="Periodo_FechaInicio" />
+                <ScalarProperty Name="Periodo_FechaTermino" ColumnName="Periodo_FechaTermino" />
+                <ScalarProperty Name="TotalPartes" ColumnName="TotalPartes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Correlativos">
+            <EntityTypeMapping TypeName="DISModelo.Correlativo">
+              <MappingFragment StoreEntitySet="Correlativos">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Correlativo1" ColumnName="Correlativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CSVs">
+            <EntityTypeMapping TypeName="DISModelo.CSV">
+              <MappingFragment StoreEntitySet="CSVs">
+                <ScalarProperty Name="CSVId" ColumnName="CSVId" />
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="VidaCamara" ColumnName="VidaCamara" />
+                <ScalarProperty Name="CodigoDIS" ColumnName="CodigoDIS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documentos">
+            <EntityTypeMapping TypeName="DISModelo.Documento">
+              <MappingFragment StoreEntitySet="Documentos">
+                <ScalarProperty Name="DocumentoId" ColumnName="DocumentoId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentoSolicitados">
+            <EntityTypeMapping TypeName="DISModelo.DocumentoSolicitado">
+              <MappingFragment StoreEntitySet="DocumentoSolicitados">
+                <ScalarProperty Name="DocumentoSolicitadoId" ColumnName="DocumentoSolicitadoId" />
+                <ScalarProperty Name="TipoMovimientoId" ColumnName="TipoMovimientoId" />
+                <ScalarProperty Name="DocumentoId" ColumnName="DocumentoId" />
+                <ScalarProperty Name="TipoSolicitudId" ColumnName="TipoSolicitudId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoArchivoes">
+            <EntityTypeMapping TypeName="DISModelo.EstadoArchivo">
+              <MappingFragment StoreEntitySet="EstadoArchivo">
+                <ScalarProperty Name="EstadoArchivoId" ColumnName="EstadoArchivoId" />
+                <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoPagoes">
+            <EntityTypeMapping TypeName="DISModelo.EstadoPago">
+              <MappingFragment StoreEntitySet="EstadoPago">
+                <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Imputacions">
+            <EntityTypeMapping TypeName="DISModelo.Imputacion">
+              <MappingFragment StoreEntitySet="Imputacion">
+                <ScalarProperty Name="ImputacionId" ColumnName="ImputacionId" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Correlativo" ColumnName="Correlativo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CentroCosto" ColumnName="CentroCosto" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="MonedaId" ColumnName="MonedaId" />
+                <ScalarProperty Name="Debe_Soles" ColumnName="Debe_Soles" />
+                <ScalarProperty Name="Haber_soles" ColumnName="Haber_soles" />
+                <ScalarProperty Name="Debe_Dolares" ColumnName="Debe_Dolares" />
+                <ScalarProperty Name="Haber_Dolares" ColumnName="Haber_Dolares" />
+                <ScalarProperty Name="Fuente" ColumnName="Fuente" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+                <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monedas">
+            <EntityTypeMapping TypeName="DISModelo.Moneda">
+              <MappingFragment StoreEntitySet="Moneda">
+                <ScalarProperty Name="MonedaId" ColumnName="MonedaId" />
+                <ScalarProperty Name="NombreMoneda" ColumnName="NombreMoneda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MontoAltoes">
+            <EntityTypeMapping TypeName="DISModelo.MontoAlto">
+              <MappingFragment StoreEntitySet="MontoAlto">
+                <ScalarProperty Name="MontoAltoId" ColumnName="MontoAltoId" />
+                <ScalarProperty Name="TipoParametro" ColumnName="TipoParametro" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagos">
+            <EntityTypeMapping TypeName="DISModelo.Pago">
+              <MappingFragment StoreEntitySet="Pagos">
+                <ScalarProperty Name="PagoId" ColumnName="PagoId" />
+                <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="SiniestroId" ColumnName="SiniestroId" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="PagoVC" ColumnName="PagoVC" />
+                <ScalarProperty Name="FechaTransferencia" ColumnName="FechaTransferencia" />
+                <ScalarProperty Name="MonedaId" ColumnName="MonedaId" />
+                <ScalarProperty Name="NominaId" ColumnName="NominaId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parametros">
+            <EntityTypeMapping TypeName="DISModelo.Parametro">
+              <MappingFragment StoreEntitySet="Parametros">
+                <ScalarProperty Name="ParametroId" ColumnName="ParametroId" />
+                <ScalarProperty Name="TipoMovimientoId" ColumnName="TipoMovimientoId" />
+                <ScalarProperty Name="TipoSolicitudId" ColumnName="TipoSolicitudId" />
+                <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
+                <ScalarProperty Name="CentroCosto" ColumnName="CentroCosto" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="SignoCuenta" ColumnName="SignoCuenta" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parentescoes">
+            <EntityTypeMapping TypeName="DISModelo.Parentesco">
+              <MappingFragment StoreEntitySet="Parentesco">
+                <ScalarProperty Name="ParentescoId" ColumnName="ParentescoId" />
+                <ScalarProperty Name="DescripcionParentesco" ColumnName="DescripcionParentesco" />
+                <ScalarProperty Name="CodBeneficiario" ColumnName="CodBeneficiario" />
+                <ScalarProperty Name="PorcentajeBeneficiario" ColumnName="PorcentajeBeneficiario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="DISModelo.Persona">
+              <MappingFragment StoreEntitySet="Personas">
+                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+                <ScalarProperty Name="NumeroIdentificador" ColumnName="NumeroIdentificador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroMontoAltoes">
+            <EntityTypeMapping TypeName="DISModelo.RegistroMontoAlto">
+              <MappingFragment StoreEntitySet="RegistroMontoAlto">
+                <ScalarProperty Name="IdRegistroMontoAlto" ColumnName="IdRegistroMontoAlto" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+                <ScalarProperty Name="Cuspp" ColumnName="Cuspp" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DISModelo.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RolesId" ColumnName="RolesId" />
+                <ScalarProperty Name="DescripcionRol" ColumnName="DescripcionRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siniestros">
+            <EntityTypeMapping TypeName="DISModelo.Siniestro">
+              <MappingFragment StoreEntitySet="Siniestros">
+                <ScalarProperty Name="SiniestroId" ColumnName="SiniestroId" />
+                <ScalarProperty Name="CUSPP" ColumnName="CUSPP" />
+                <ScalarProperty Name="TipoMovimientoId" ColumnName="TipoMovimientoId" />
+                <ScalarProperty Name="AFPId" ColumnName="AFPId" />
+                <ScalarProperty Name="ContratoId" ColumnName="ContratoId" />
+                <ScalarProperty Name="TipoSolicitudId" ColumnName="TipoSolicitudId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="CodTransferencia" ColumnName="CodTransferencia" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoArchivoes">
+            <EntityTypeMapping TypeName="DISModelo.TipoArchivo">
+              <MappingFragment StoreEntitySet="TipoArchivo">
+                <ScalarProperty Name="TipoArchivoId" ColumnName="TipoArchivoId" />
+                <ScalarProperty Name="NombreTipoArchivo" ColumnName="NombreTipoArchivo" />
+                <ScalarProperty Name="NombreClase" ColumnName="NombreClase" />
+                <ScalarProperty Name="EsEntrada" ColumnName="EsEntrada" />
+                <ScalarProperty Name="CabeceraLargo" ColumnName="CabeceraLargo" />
+                <ScalarProperty Name="DetalleLargo" ColumnName="DetalleLargo" />
+                <ScalarProperty Name="TotalLargo" ColumnName="TotalLargo" />
+                <ScalarProperty Name="ReglaPrevia" ColumnName="ReglaPrevia" />
+                <ScalarProperty Name="ReglaPosterior" ColumnName="ReglaPosterior" />
+                <ScalarProperty Name="TipoInformeId" ColumnName="TipoInformeId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCambios">
+            <EntityTypeMapping TypeName="DISModelo.TipoCambio">
+              <MappingFragment StoreEntitySet="TipoCambio">
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDocumentoIdentificacions">
+            <EntityTypeMapping TypeName="DISModelo.TipoDocumentoIdentificacion">
+              <MappingFragment StoreEntitySet="TipoDocumentoIdentificacion">
+                <ScalarProperty Name="TipoDocumentoIdentificacionId" ColumnName="TipoDocumentoIdentificacionId" />
+                <ScalarProperty Name="NombreTipoDocumentoIdentificacion" ColumnName="NombreTipoDocumentoIdentificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoInformes">
+            <EntityTypeMapping TypeName="DISModelo.TipoInforme">
+              <MappingFragment StoreEntitySet="TipoInforme">
+                <ScalarProperty Name="TipoInformeId" ColumnName="TipoInformeId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMonedas">
+            <EntityTypeMapping TypeName="DISModelo.TipoMoneda">
+              <MappingFragment StoreEntitySet="TipoMoneda">
+                <ScalarProperty Name="TipoMonedaId" ColumnName="TipoMonedaId" />
+                <ScalarProperty Name="NombreMoneda" ColumnName="NombreMoneda" />
+                <ScalarProperty Name="MonedaId" ColumnName="MonedaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMovimientos">
+            <EntityTypeMapping TypeName="DISModelo.TipoMovimiento">
+              <MappingFragment StoreEntitySet="TipoMovimientos">
+                <ScalarProperty Name="TipoMovimientoId" ColumnName="TipoMovimientoId" />
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPensions">
+            <EntityTypeMapping TypeName="DISModelo.TipoPension">
+              <MappingFragment StoreEntitySet="TipoPension">
+                <ScalarProperty Name="TipoPensionId" ColumnName="TipoPensionId" />
+                <ScalarProperty Name="CodigoPension" ColumnName="CodigoPension" />
+                <ScalarProperty Name="NombreTipoPension" ColumnName="NombreTipoPension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoRegistroes">
+            <EntityTypeMapping TypeName="DISModelo.TipoRegistro">
+              <MappingFragment StoreEntitySet="TipoRegistro">
+                <ScalarProperty Name="TipoRegistroId" ColumnName="TipoRegistroId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoSolicitudes">
+            <EntityTypeMapping TypeName="DISModelo.TipoSolicitude">
+              <MappingFragment StoreEntitySet="TipoSolicitudes">
+                <ScalarProperty Name="TipoSolicitudId" ColumnName="TipoSolicitudId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consultas">
+            <EntityTypeMapping TypeName="DISModelo.Consulta">
+              <MappingFragment StoreEntitySet="Consulta">
+                <ScalarProperty Name="IdReglaArchivo" ColumnName="IdReglaArchivo" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="TipoLinea" ColumnName="TipoLinea" />
+                <ScalarProperty Name="CaracterInicial" ColumnName="CaracterInicial" />
+                <ScalarProperty Name="LargoCampo" ColumnName="LargoCampo" />
+                <ScalarProperty Name="TipoCampo" ColumnName="TipoCampo" />
+                <ScalarProperty Name="InformacionCampo" ColumnName="InformacionCampo" />
+                <ScalarProperty Name="FormatoContenido" ColumnName="FormatoContenido" />
+                <ScalarProperty Name="TipoValidacion" ColumnName="TipoValidacion" />
+                <ScalarProperty Name="ReglaValidacion" ColumnName="ReglaValidacion" />
+                <ScalarProperty Name="ReglaValidacionInterna" ColumnName="ReglaValidacionInterna" />
+                <ScalarProperty Name="TablaDestino" ColumnName="TablaDestino" />
+                <ScalarProperty Name="vigente" ColumnName="vigente" />
+                <ScalarProperty Name="CampoNegocio" ColumnName="CampoNegocio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckLists">
+            <EntityTypeMapping TypeName="DISModelo.CheckList">
+              <MappingFragment StoreEntitySet="CheckLists">
+                <ScalarProperty Name="CheckListId" ColumnName="CheckListId" />
+                <ScalarProperty Name="CUSPP" ColumnName="CUSPP" />
+                <ScalarProperty Name="TipoMovimientoId" ColumnName="TipoMovimientoId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+                <ScalarProperty Name="TipoSolicitudId" ColumnName="TipoSolicitudId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pa_audit_InsertaBitacora" FunctionName="DISModelo.Store.pa_audit_InsertaBitacora" />
+          <FunctionImportMapping FunctionImportName="pa_devuelveresultado" FunctionName="DISModelo.Store.pa_devuelveresultado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DISModelo.pa_devuelveresultado_Result">
+                <ScalarProperty Name="IdRegistroMontoAlto" ColumnName="IdRegistroMontoAlto" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+                <ScalarProperty Name="Cuspp" ColumnName="Cuspp" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_envioCorreo_Procesos" FunctionName="DISModelo.Store.pa_envioCorreo_Procesos" />
+          <FunctionImportMapping FunctionImportName="pa_file_AgregaReferenciaTablaArchivo" FunctionName="DISModelo.Store.pa_file_AgregaReferenciaTablaArchivo" />
+          <FunctionImportMapping FunctionImportName="pa_file_ArchivoValido" FunctionName="DISModelo.Store.pa_file_ArchivoValido" />
+          <FunctionImportMapping FunctionImportName="pa_file_CantidadRegistroArchivo" FunctionName="DISModelo.Store.pa_file_CantidadRegistroArchivo" />
+          <FunctionImportMapping FunctionImportName="pa_file_CierreCarga" FunctionName="DISModelo.Store.pa_file_CierreCarga" />
+          <FunctionImportMapping FunctionImportName="pa_file_ConsultaEstadoArchivo" FunctionName="DISModelo.Store.pa_file_ConsultaEstadoArchivo" />
+          <FunctionImportMapping FunctionImportName="pa_file_Imputa_Nomina" FunctionName="DISModelo.Store.pa_file_Imputa_Nomina" />
+          <FunctionImportMapping FunctionImportName="pa_file_InsertaHistorialCarga" FunctionName="DISModelo.Store.pa_file_InsertaHistorialCarga" />
+          <FunctionImportMapping FunctionImportName="pa_file_InsertaReferenciaArchivo" FunctionName="DISModelo.Store.pa_file_InsertaReferenciaArchivo" />
+          <FunctionImportMapping FunctionImportName="pa_file_ObtieneErrorArchivo" FunctionName="DISModelo.Store.pa_file_ObtieneErrorArchivo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DISModelo.pa_file_ObtieneErrorArchivo_Result">
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="TipoLinea" ColumnName="TipoLinea" />
+                <ScalarProperty Name="NumeroLinea" ColumnName="NumeroLinea" />
+                <ScalarProperty Name="CampoInicial" ColumnName="CampoInicial" />
+                <ScalarProperty Name="LargoCampo" ColumnName="LargoCampo" />
+                <ScalarProperty Name="ValorCampo" ColumnName="ValorCampo" />
+                <ScalarProperty Name="InformacionCampo" ColumnName="InformacionCampo" />
+                <ScalarProperty Name="FormatoContenido" ColumnName="FormatoContenido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_file_ObtienePrimerCaracterLineaPorTipoArchivo" FunctionName="DISModelo.Store.pa_file_ObtienePrimerCaracterLineaPorTipoArchivo" />
+          <FunctionImportMapping FunctionImportName="pa_file_ObtieneReglasArchivoPorLinea" FunctionName="DISModelo.Store.pa_file_ObtieneReglasArchivoPorLinea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DISModelo.pa_file_ObtieneReglasArchivoPorLinea_Result">
+                <ScalarProperty Name="IdReglaArchivo" ColumnName="IdReglaArchivo" />
+                <ScalarProperty Name="InformacionCampo" ColumnName="InformacionCampo" />
+                <ScalarProperty Name="CaracterInicial" ColumnName="CaracterInicial" />
+                <ScalarProperty Name="LargoCampo" ColumnName="LargoCampo" />
+                <ScalarProperty Name="TipoCampo" ColumnName="TipoCampo" />
+                <ScalarProperty Name="TipoValidacion" ColumnName="TipoValidacion" />
+                <ScalarProperty Name="ReglaValidacion" ColumnName="ReglaValidacion" />
+                <ScalarProperty Name="TablaDestino" ColumnName="TablaDestino" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_file_ObtieneReglavalidacionArchivo" FunctionName="DISModelo.Store.pa_file_ObtieneReglavalidacionArchivo" />
+          <FunctionImportMapping FunctionImportName="pa_file_ObtieneTipoArchivos" FunctionName="DISModelo.Store.pa_file_ObtieneTipoArchivos" />
+          <FunctionImportMapping FunctionImportName="pa_impactanegocio" FunctionName="DISModelo.Store.pa_impactanegocio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DISModelo.pa_impactanegocio_Result">
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="ContratoId" ColumnName="ContratoId" />
+                <ScalarProperty Name="TipoMovimientoId" ColumnName="TipoMovimientoId" />
+                <ScalarProperty Name="AfpId" ColumnName="AfpId" />
+                <ScalarProperty Name="Cuspp" ColumnName="Cuspp" />
+                <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+                <ScalarProperty Name="Monedaid" ColumnName="Monedaid" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
+                <ScalarProperty Name="usuariomodificacion" ColumnName="usuariomodificacion" />
+                <ScalarProperty Name="CodTransferencia" ColumnName="CodTransferencia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_impactanomina" FunctionName="DISModelo.Store.pa_impactanomina" />
+          <FunctionImportMapping FunctionImportName="pa_imputa_aad" FunctionName="DISModelo.Store.pa_imputa_aad" />
+          <FunctionImportMapping FunctionImportName="pa_imputa_ppp" FunctionName="DISModelo.Store.pa_imputa_ppp" />
+          <FunctionImportMapping FunctionImportName="pa_imputa_ppr" FunctionName="DISModelo.Store.pa_imputa_ppr" />
+          <FunctionImportMapping FunctionImportName="pa_imputa_prp" FunctionName="DISModelo.Store.pa_imputa_prp" />
+          <FunctionImportMapping FunctionImportName="pa_imputa_rgs" FunctionName="DISModelo.Store.pa_imputa_rgs" />
+          <FunctionImportMapping FunctionImportName="pa_ReporteArchivo_CUSPP" FunctionName="DISModelo.Store.pa_ReporteArchivo_CUSPP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DISModelo.pa_ReporteArchivo_CUSPP_Result">
+                <ScalarProperty Name="informacioncampo" ColumnName="informacioncampo" />
+                <ScalarProperty Name="NumeroLinea" ColumnName="NumeroLinea" />
+                <ScalarProperty Name="ValorCampo" ColumnName="ValorCampo" />
+                <ScalarProperty Name="CaracterInicial" ColumnName="CaracterInicial" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_rpt_archivocarga_fecha" FunctionName="DISModelo.Store.pa_rpt_archivocarga_fecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DISModelo.pa_rpt_archivocarga_fecha_Result">
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_rptNominas" FunctionName="DISModelo.Store.pa_rptNominas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DISModelo.pa_rptNominas_Result">
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="AFP" ColumnName="AFP" />
+                <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+                <ScalarProperty Name="Código_Transferencia" ColumnName="Código Transferencia" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_rptPrimas" FunctionName="DISModelo.Store.pa_rptPrimas" />
+          <FunctionImportMapping FunctionImportName="pa_valida_CodigoTransferenciaNomina" FunctionName="DISModelo.Store.pa_valida_CodigoTransferenciaNomina" />
+          <FunctionImportMapping FunctionImportName="pa_valida_CUSPP" FunctionName="DISModelo.Store.pa_valida_CUSPP" />
+          <FunctionImportMapping FunctionImportName="pa_valida_EjecutaProcedimientoAlmacenado" FunctionName="DISModelo.Store.pa_valida_EjecutaProcedimientoAlmacenado" />
+          <FunctionImportMapping FunctionImportName="pa_valida_EjecutaQuery" FunctionName="DISModelo.Store.pa_valida_EjecutaQuery" />
+          <FunctionImportMapping FunctionImportName="pa_valida_Fecha" FunctionName="DISModelo.Store.pa_valida_Fecha" />
+          <FunctionImportMapping FunctionImportName="pa_valida_MontoAlto" FunctionName="DISModelo.Store.pa_valida_MontoAlto" />
+          <FunctionImportMapping FunctionImportName="pa_valida_NoEspacios" FunctionName="DISModelo.Store.pa_valida_NoEspacios" />
+          <FunctionImportMapping FunctionImportName="pa_valida_Numero12x2" FunctionName="DISModelo.Store.pa_valida_Numero12x2" />
+          <FunctionImportMapping FunctionImportName="pa_valida_Numero2x2" FunctionName="DISModelo.Store.pa_valida_Numero2x2" />
+          <FunctionImportMapping FunctionImportName="pa_valida_Numero4x7" FunctionName="DISModelo.Store.pa_valida_Numero4x7" />
+          <FunctionImportMapping FunctionImportName="pa_valida_Numero7x2" FunctionName="DISModelo.Store.pa_valida_Numero7x2" />
+          <FunctionImportMapping FunctionImportName="pa_valida_Numero8x2" FunctionName="DISModelo.Store.pa_valida_Numero8x2" />
+          <FunctionImportMapping FunctionImportName="pa_valida_ObtieneValor" FunctionName="DISModelo.Store.pa_valida_ObtieneValor" />
+          <FunctionImportMapping FunctionImportName="pa_valida_Periodo" FunctionName="DISModelo.Store.pa_valida_Periodo" />
+          <FunctionImportMapping FunctionImportName="pa_valida_Periodo_PrimaPag" FunctionName="DISModelo.Store.pa_valida_Periodo_PrimaPag" />
+          <FunctionImportMapping FunctionImportName="pa_valida_persona" FunctionName="DISModelo.Store.pa_valida_persona" />
+          <FunctionImportMapping FunctionImportName="pa_valida_RetornaTrue" FunctionName="DISModelo.Store.pa_valida_RetornaTrue" />
+          <FunctionImportMapping FunctionImportName="pa_valida_SoloNumeros" FunctionName="DISModelo.Store.pa_valida_SoloNumeros" />
+          <FunctionImportMapping FunctionImportName="pa_valida_SumaDetalleEnTotal" FunctionName="DISModelo.Store.pa_valida_SumaDetalleEnTotal" />
+          <FunctionImportMapping FunctionImportName="pa_valida_TotalNominaEnLiquidacion" FunctionName="DISModelo.Store.pa_valida_TotalNominaEnLiquidacion" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
