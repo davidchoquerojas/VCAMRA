@@ -5,6 +5,14 @@ body {
         .breadcrumb{
             margin-bottom:0;
         }
+        .button_box{
+            position:absolute;
+            top:120px;
+            right:20px;
+            .btn-default:not(.btn-link):not(.btn-flat), .btn:not(.btn-link):not(.btn-flat){
+                background-color:white;
+            }
+        }
         .tabBody{
             background-color:$white;
             margin-top:5px;
@@ -12,11 +20,15 @@ body {
             .form-group{
                 /*background-color:red;*/
                 margin:0;
-                padding:0;
+                padding:6px 0;
                 label{
-                    font-size:1em;
+                    font-size:.6em;
+                    background-color:rgba(0,10,10,0.1);
+                    color:black;
+                    line-height:2;
+                    height:24px;
                 }
-                .form-control{
+                .form-control:not(select){
                     margin-bottom:5px;
                     height:24px;
                 }
