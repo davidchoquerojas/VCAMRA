@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebPage/Inicio/mpFEPCMAC.Master" AutoEventWireup="true" CodeBehind="frmCargaDatos.aspx.cs" Inherits="VidaCamara.Web.WebPage.ModuloDIS.Operaciones.CargaDatos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<link href="/Resources/CSS/Progressbar.css" rel="stylesheet" />
 <script src="/WebPage/ModuloDIS/Operaciones/js/CargaDatos.js"></script>
 <script src="/WebPage/ModuloDIS/Operaciones/js/CargaRsp.js"></script>
 
@@ -32,11 +31,16 @@
             multiTabs.ActiveViewIndex = Int32.Parse(menuTabs.SelectedValue);
         }
     </script>
-
-        <div class="btn_crud">
+    <div class="button_box">
+        <asp:LinkButton ID="btn_borrar" runat="server" CssClass="btn btn-default btn-fab btn-raised mdi-editor-insert-drive-file pull-right" ToolTip="Nuevo"></asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-default btn-fab btn-raised mdi-content-save pull-right" ToolTip="Guardar"></asp:LinkButton>
+        <asp:LinkButton ID="btnNuevo" runat="server" CssClass="btn btn-default btn-fab btn-raised mdi-action-delete pull-right" ToolTip="Eliminar"></asp:LinkButton>
+        <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default btn-fab btn-raised mdi-navigation-arrow-back pull-right"  ToolTip="Inicio" runat="server" NavigateUrl="~/Inicio"></asp:HyperLink>
+    </div>
+        <%--<div class="btn_crud">
             <asp:HyperLink CssClass="btn_crud_button"  ToolTip="Inicio" runat="server" ImageUrl="~/Resources/Imagenes/u158_normal.png" NavigateUrl="~/Inicio"></asp:HyperLink>
             <asp:ImageButton  CssClass="btn_crud_button" ID="btnGuardar" runat="server" ToolTip="Guardar" ImageUrl="~/Resources/Imagenes/upload.png" OnClick="btnGuardar_Click" />
-        </div>
+        </div>--%>
         <asp:Menu id="menuTabs" CssClass="menuTabs" StaticMenuItemStyle-CssClass="tab" StaticSelectedStyle-CssClass="selectedTab"
                     Orientation="Horizontal" OnMenuItemClick="menuTabs_MenuItemClick" Runat="server">
                 <Items >
