@@ -2,6 +2,12 @@
   font-size: 1.5em; }
   body section .breadcrumb {
     margin-bottom: 0; }
+  body section .button_box {
+    position: absolute;
+    top: 120px;
+    right: 20px; }
+    body section .button_box .btn-default:not(.btn-link):not(.btn-flat), body section .button_box .btn:not(.btn-link):not(.btn-flat) {
+      background-color: white; }
   body section .tabBody {
     background-color: white;
     margin-top: 5px;
@@ -9,10 +15,14 @@
     body section .tabBody .form-group {
       /*background-color:red;*/
       margin: 0;
-      padding: 0; }
+      padding: 6px 0; }
       body section .tabBody .form-group label {
-        font-size: 1em; }
-      body section .tabBody .form-group .form-control {
+        font-size: .6em;
+        background-color: rgba(0, 10, 10, 0.1);
+        color: black;
+        line-height: 2;
+        height: 24px; }
+      body section .tabBody .form-group .form-control:not(select) {
         margin-bottom: 5px;
         height: 24px; }
 
