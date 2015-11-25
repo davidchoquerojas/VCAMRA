@@ -98,6 +98,14 @@
                             <li><asp:HyperLink NavigateUrl="~/Informes?go=12" runat="server">Informes SBS</asp:HyperLink></li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-label="left Align">Modulo SIS
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><asp:HyperLink ID="HyperLink1" NavigateUrl="~/CargaDatosDIS?go=5" runat="server">Carga Datos</asp:HyperLink></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
