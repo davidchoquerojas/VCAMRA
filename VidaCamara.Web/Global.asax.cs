@@ -29,6 +29,7 @@ namespace VidaCamara.Web
             coleccion.MapPageRoute("Informes", "Informes", "~/WebPage/ModuloSBS/Consultas/frmInformes.aspx");
 
             coleccion.MapPageRoute("CargaDatosDIS", "CargaDatosDIS", "~/WebPage/ModuloDIS/Operaciones/frmCargaDatos.aspx");
+            coleccion.MapPageRoute("AprobacionCarga", "AprobacionCarga", "~/WebPage/ModuloDIS/Operaciones/frmAprobacionCarga.aspx");
         }
         protected void Session_Start(object sender, EventArgs e)
         {

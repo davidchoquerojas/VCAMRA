@@ -4,5 +4,11 @@
   margin-bottom: 12px !important; }
   body .navbar .navbar-nav > li > a {
     padding-top: 10px !important;
-    padding-bottom: 10px !important; }
+    padding-bottom: 10px !important;
+    font-size: .9em; }
+  body .navbar .navbar-nav > li .dropdown-menu li > a {
+    font-size: 0.9em !important;
+    padding: 5px 10px; }
+    body .navbar .navbar-nav > li .dropdown-menu li > a span {
+      font-size: 1em; }
 

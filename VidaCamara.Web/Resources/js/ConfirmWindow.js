@@ -1,4 +1,5 @@
-﻿function SomeMethod() {
+﻿$.material.init();
+function SomeMethod() {
     var message = "";
     var textbox = document.getElementById('ctl00_hdf_control');
     if (textbox.value == "210") {
@@ -19,6 +20,9 @@ function DeleteMethod() {
     }
     return message;
 
+}
+function showLoading() {
+    $("#alert").modal("show");
 }
 $(document).ready(function () {
 

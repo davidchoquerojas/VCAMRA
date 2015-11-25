@@ -1,0 +1,19 @@
+﻿body {
+    .container-fluid{
+        .box_login{
+            background:white;
+            padding:10px 40px;
+            margin-top:10%;
+            figure{
+                img{
+                    height:100px;
+                    margin:auto;
+                }
+            }
+            .form-group{
+                padding-bottom:0;
+                margin:0;
+            }
+        }
+    }
+}

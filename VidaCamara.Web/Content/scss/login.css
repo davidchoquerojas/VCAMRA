@@ -1,0 +1,11 @@
+﻿body .container-fluid .box_login {
+  background: white;
+  padding: 10px 40px;
+  margin-top: 10%; }
+  body .container-fluid .box_login figure img {
+    height: 100px;
+    margin: auto; }
+  body .container-fluid .box_login .form-group {
+    padding-bottom: 0;
+    margin: 0; }
+

@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿$.material.init();
+$(document).ready(function () {
     $("body").delegate("#txtUsuario", "focus", function () {
         $("#lbl_error_login").text("...");
     });

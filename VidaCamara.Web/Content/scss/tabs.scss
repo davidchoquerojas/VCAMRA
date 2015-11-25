@@ -3,7 +3,6 @@ body {
     section{
         .menuTabs{
             background-color:$camara;
-            height:30px;
             line-height:2;
             ul{
                 &>li{
@@ -11,6 +10,8 @@ body {
                     border-right:1px solid #EEE;
                     &>a{
                         color:white;
+                        font-size:.8em;
+                        padding:5px 8px;
                     }
                 }
             }

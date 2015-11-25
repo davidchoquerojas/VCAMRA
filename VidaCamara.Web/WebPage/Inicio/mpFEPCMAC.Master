@@ -47,7 +47,7 @@
              </div>
              <div class="col-md-4">
                  <figure class="user_avatar">
-                     <asp:Image ID="vida_camara" runat="server" ImageUrl="~/Resources/Imagenes/im_titulo.jpg" CssClass="img-responsive pull-right"/>
+                     <asp:Image ID="vida_camara" runat="server" ImageUrl="~/Resources/img/im_titulo.jpg" CssClass="img-responsive pull-right"/>
                  </figure>
              </div>
          </div>
@@ -69,10 +69,9 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a><span class="mdi-toggle-radio-button-off"></span> Parámetros</a></li>
-                            <li><asp:HyperLink NavigateUrl="~/Parametros?go=1" runat="server"> Parámetros</asp:HyperLink></li>
-                            <li><asp:HyperLink NavigateUrl="~/Usuarios?go=2" runat="server">Usuarios</asp:HyperLink></li>
-                            <li><asp:HyperLink NavigateUrl="~/Tablas?go=3" runat="server">Tablas</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/Parametros?go=1" runat="server"><span class="mdi-toggle-radio-button-off"></span> Parámetros</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/Usuarios?go=2" runat="server"><span class="mdi-toggle-radio-button-off"></span> Usuarios</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/Tablas?go=3" runat="server"><span class="mdi-toggle-radio-button-off"></span> Tablas</asp:HyperLink></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -80,12 +79,12 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><asp:HyperLink NavigateUrl="~/RegistroDatos?go=4" runat="server">Registro Datos</asp:HyperLink></li>
-                            <li><asp:HyperLink NavigateUrl="~/CargaDatos?go=5" runat="server">Carga Datos</asp:HyperLink></li>
-                            <li><asp:HyperLink NavigateUrl="~/OperacionManual?go=6" runat="server">Operación Manual</asp:HyperLink></li>
-                            <li><asp:HyperLink NavigateUrl="~/ProcesoOperacion?go=7" runat="server">Procesa Operaciones</asp:HyperLink></li>
-                            <li><asp:HyperLink NavigateUrl="~/CierreOperacion?go=8" runat="server">Cierre de Operaciones</asp:HyperLink></li>
-                            <li><asp:HyperLink NavigateUrl="~/InterfaceContable?go=10" runat="server">Interface Contable</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/RegistroDatos?go=4" runat="server"><span class="mdi-toggle-radio-button-off"></span> Registro Datos</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/CargaDatos?go=5" runat="server"><span class="mdi-toggle-radio-button-off"></span> Carga Datos</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/OperacionManual?go=6" runat="server"><span class="mdi-toggle-radio-button-off"></span> Operación Manual</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/ProcesoOperacion?go=7" runat="server"><span class="mdi-toggle-radio-button-off"></span> Procesa Operaciones</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/CierreOperacion?go=8" runat="server"><span class="mdi-toggle-radio-button-off"></span> Cierre de Operaciones</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/InterfaceContable?go=10" runat="server"><span class="mdi-toggle-radio-button-off"></span> Interface Contable</asp:HyperLink></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -93,9 +92,9 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><asp:HyperLink NavigateUrl="~/Operaciones?go=9" runat="server">Operaciones</asp:HyperLink></li>
-                            <li><asp:HyperLink NavigateUrl="~/Comprobantes?go=11" runat="server">Comprobantes</asp:HyperLink></li>
-                            <li><asp:HyperLink NavigateUrl="~/Informes?go=12" runat="server">Informes SBS</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/Operaciones?go=9" runat="server"><span class="mdi-toggle-radio-button-off"></span> Operaciones</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/Comprobantes?go=11" runat="server"><span class="mdi-toggle-radio-button-off"></span> Comprobantes</asp:HyperLink></li>
+                            <li><asp:HyperLink NavigateUrl="~/Informes?go=12" runat="server"><span class="mdi-toggle-radio-button-off"></span> Informes SBS</asp:HyperLink></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -103,7 +102,8 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><asp:HyperLink ID="HyperLink1" NavigateUrl="~/CargaDatosDIS?go=5" runat="server">Carga Datos</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink1" NavigateUrl="~/CargaDatosDIS?go=5" runat="server"><span class="mdi-toggle-radio-button-off"></span> Carga Datos</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink2" NavigateUrl="~/AprobacionCarga?go=5" runat="server"><span class="mdi-toggle-radio-button-off"></span> Aprobación Carga</asp:HyperLink></li>
                         </ul>
                     </li>
                 </ul>

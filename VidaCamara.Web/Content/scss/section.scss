@@ -22,15 +22,16 @@ body {
                 margin:0;
                 padding:6px 0;
                 label{
-                    font-size:.6em;
+                    font-size:.8em;
                     background-color:rgba(0,10,10,0.1);
                     color:black;
                     line-height:2;
-                    height:24px;
+                    height:28px;
                 }
-                .form-control:not(select){
+                .form-control{
                     margin-bottom:5px;
-                    height:24px;
+                    height:28px;
+                    font-size:.8em;
                 }
             }
         }

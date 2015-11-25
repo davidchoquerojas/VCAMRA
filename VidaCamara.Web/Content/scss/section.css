@@ -17,12 +17,13 @@
       margin: 0;
       padding: 6px 0; }
       body section .tabBody .form-group label {
-        font-size: .6em;
+        font-size: .8em;
         background-color: rgba(0, 10, 10, 0.1);
         color: black;
         line-height: 2;
-        height: 24px; }
-      body section .tabBody .form-group .form-control:not(select) {
+        height: 28px; }
+      body section .tabBody .form-group .form-control {
         margin-bottom: 5px;
-        height: 24px; }
+        height: 28px;
+        font-size: .8em; }
 

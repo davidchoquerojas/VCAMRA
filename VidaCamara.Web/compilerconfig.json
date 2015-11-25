@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "Content/scss/section.css",
+    "inputFile": "Content/scss/section.scss"
+  },
+  {
+    "outputFile": "Content/scss/nav.css",
+    "inputFile": "Content/scss/nav.scss"
+  },
+  {
+    "outputFile": "Content/scss/tabs.css",
+    "inputFile": "Content/scss/tabs.scss"
+  },
+  {
+    "outputFile": "Content/scss/login.css",
+    "inputFile": "Content/scss/login.scss"
+  }
+]

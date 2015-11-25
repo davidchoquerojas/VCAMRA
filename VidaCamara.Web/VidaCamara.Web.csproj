@@ -124,6 +124,12 @@
     <Content Include="Content\roboto.min.css" />
     <Content Include="Content\scss\header.css" />
     <Content Include="Content\scss\header.min.css" />
+    <Content Include="Content\scss\login.css">
+      <DependentUpon>login.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\login.min.css">
+      <DependentUpon>login.css</DependentUpon>
+    </Content>
     <Content Include="Content\scss\nav.css" />
     <Content Include="Content\scss\nav.min.css" />
     <Content Include="Content\scss\section.css" />
@@ -150,6 +156,8 @@
     <Content Include="Content\scss\section.scss" />
     <Content Include="Content\scss\tabs.scss" />
     <Content Include="Content\page.scss" />
+    <Content Include="Resources\img\im_titulo.jpg" />
+    <Content Include="Resources\img\loading19.gif" />
     <Content Include="Resources\js\bootstrap.min.js" />
     <Content Include="Resources\js\ConfirmWindow.js" />
     <Content Include="Resources\js\j-valida-login.js" />
@@ -175,6 +183,11 @@
     <Content Include="Resources\js\jqueryUI\jquery-ui.theme.min.css" />
     <Content Include="Resources\js\jqueryUI\jquery.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="compilerconfig.json" />
+    <Content Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\login.scss" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jtable\localization\jquery.jtable.bd.js" />
@@ -195,6 +208,7 @@
     <Content Include="Scripts\jtable\themes\metro\green\list_metro.png" />
     <Content Include="Scripts\material.min.js" />
     <Content Include="Scripts\ripples.min.js" />
+    <Content Include="WebPage\ModuloDIS\Operaciones\frmAprobacionCarga.aspx" />
     <Content Include="WebPage\ModuloDIS\Operaciones\frmCargaDatos.aspx" />
     <Content Include="WebPage\ModuloDIS\Operaciones\js\CargaDatos.js" />
     <Content Include="WebPage\ModuloSBS\Consultas\js\frmInformes.js" />
@@ -312,6 +326,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebPage\ModuloDIS\Operaciones\frmAprobacionCarga.aspx.cs">
+      <DependentUpon>frmAprobacionCarga.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\ModuloDIS\Operaciones\frmAprobacionCarga.aspx.designer.cs">
+      <DependentUpon>frmAprobacionCarga.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebPage\ModuloDIS\Operaciones\frmCargaDatos.aspx.cs">
       <DependentUpon>frmCargaDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
