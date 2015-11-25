@@ -40,6 +40,24 @@ namespace VidaCamara.Web.WebPage.Inicio {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// hdf_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdf_control;
+        
+        /// <summary>
+        /// lbl_conexion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_conexion;
+        
+        /// <summary>
         /// lbl_title control.
         /// </summary>
         /// <remarks>
@@ -58,33 +76,6 @@ namespace VidaCamara.Web.WebPage.Inicio {
         protected global::System.Web.UI.WebControls.Label lbl_titulo;
         
         /// <summary>
-        /// lbl_usuario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_usuario;
-        
-        /// <summary>
-        /// lbl_conexion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_conexion;
-        
-        /// <summary>
-        /// hdf_control control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdf_control;
-        
-        /// <summary>
         /// vida_camara control.
         /// </summary>
         /// <remarks>
@@ -92,6 +83,15 @@ namespace VidaCamara.Web.WebPage.Inicio {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image vida_camara;
+        
+        /// <summary>
+        /// lbl_usuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_usuario;
         
         /// <summary>
         /// SiteMapPath1 control.
