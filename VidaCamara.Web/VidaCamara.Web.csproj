@@ -33,6 +33,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -160,32 +161,6 @@
     <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.js" />
     <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.min.js" />
     <None Include="packages\jQuery.2.1.4\Tools\jquery-2.1.4.intellisense.js" />
-    <Content Include="Resources\CSS\AjaxMenu.css" />
-    <Content Include="Resources\CSS\BarraHerramientas.css" />
-    <Content Include="Resources\CSS\bootstrap.css" />
-    <Content Include="Resources\CSS\Label.css" />
-    <Content Include="Resources\CSS\Login.css" />
-    <Content Include="Resources\CSS\mpHead.css" />
-    <Content Include="Resources\CSS\normalize.css" />
-    <Content Include="Resources\CSS\Page.css" />
-    <Content Include="Resources\CSS\Progressbar.css" />
-    <Content Include="Resources\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Resources\Imagenes\Buscar_Documento.jpg" />
-    <Content Include="Resources\Imagenes\data_transfer.jpg" />
-    <Content Include="Resources\Imagenes\edit.jpg" />
-    <Content Include="Resources\Imagenes\im_titulo.jpg" />
-    <Content Include="Resources\Imagenes\loading19.gif" />
-    <Content Include="Resources\Imagenes\Login.jpg" />
-    <Content Include="Resources\Imagenes\u10_normal.png" />
-    <Content Include="Resources\Imagenes\u123_normal.png" />
-    <Content Include="Resources\Imagenes\u13_normal.jpg" />
-    <Content Include="Resources\Imagenes\u14_normal.png" />
-    <Content Include="Resources\Imagenes\u154_normal.png" />
-    <Content Include="Resources\Imagenes\u158_normal.png" />
-    <Content Include="Resources\Imagenes\u17_original.png" />
-    <Content Include="Resources\Imagenes\u20_original.jpg" />
-    <Content Include="Resources\Imagenes\u6_normal.png" />
-    <Content Include="Resources\Imagenes\upload.png" />
     <Content Include="Resources\js\bootstrap.min.js" />
     <Content Include="Resources\js\ConfirmWindow.js" />
     <Content Include="Resources\js\j-valida-login.js" />
@@ -210,13 +185,8 @@
     <Content Include="Resources\js\jqueryUI\jquery-ui.min.js" />
     <Content Include="Resources\js\jqueryUI\jquery-ui.theme.min.css" />
     <Content Include="Resources\js\jqueryUI\jquery.js" />
-    <Content Include="Resources\Menu\images\downArrow.png" />
-    <Content Include="Resources\Menu\menu.js" />
-    <Content Include="Resources\Menu\menu.css" />
-    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jtable\localization\jquery.jtable.bd.js" />
     <Content Include="Scripts\jtable\localization\jquery.jtable.ca.js" />
@@ -253,11 +223,9 @@
     <Content Include="Resources\Lib\ICSharpCode.SharpZipLib.dll" />
     <Content Include="Resources\Lib\itextsharp.dll" />
     <Content Include="Resources\Lib\skmMenu.dll" />
-    <Content Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Scripts\jtable\themes\jtable_theme_base.less" />
     <Content Include="Scripts\jtable\themes\metro\green\jtable.less" />
     <Content Include="Scripts\jtable\themes\metro\jtable_metro_base.less" />
-    <Content Include="Resources\CSS\Mater.css" />
     <Content Include="WebPage\ModuloSBS\Operaciones\frmOperacionManual.aspx" />
     <Content Include="WebPage\ModuloSBS\Operaciones\js\CargaDatos.js" />
     <Content Include="WebPage\ModuloDIS\Operaciones\js\CargaRsp.js" />
@@ -266,10 +234,6 @@
     <Content Include="WebPage\ModuloSBS\Operaciones\js\ProcesaOperacion.js" />
     <Content Include="WebPage\ModuloSBS\Operaciones\js\ProcesoManual.js" />
     <Content Include="WebPage\ModuloSBS\Operaciones\js\RegistroDato.js" />
-    <Content Include="Resources\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Resources\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Resources\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Resources\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="packages.config" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
@@ -307,11 +271,8 @@
     <Content Include="packages\jQuery.2.1.4\Tools\uninstall.ps1" />
     <None Include="Properties\PublishProfiles\DAVID.pubxml" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.0.js" />
-    <Content Include="Scripts\jquery-1.9.0.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.0.js" />
     <Content Include="Scripts\jquery-ui-1.10.0.min.js" />
-    <Content Include="Scripts\jquery-ui-1.9.2.min.js" />
     <Content Include="Scripts\jtablesite.js" />
     <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.js" />
     <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.min.js" />
@@ -369,7 +330,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="web.config" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
